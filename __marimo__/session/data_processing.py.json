@@ -1,0 +1,183 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.23.4",
+    "script_metadata_hash": null
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "2770c794167391608cdd09579a229684",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"taxonomy-and-abundance-data\">Taxonomy and Abundance data</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "d64e78d5bd49ea824224abbbb25b1913",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "ce4ff71e152b3c344a40b94a86324850",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "19892544f9936d86078b48b0a89650d4",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "37d874bea7b3ff2747c142ed0aa9252a",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "7a82c64bd9f885f90262c578338fabdc",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"abundance-heatmaps\">Abundance heatmaps</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "317a4050ff083fb764d5adcb054f2c60",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "aba971730fd4dec687591fed1885a593",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "739d46f8fe87399a2e98dd028aa600b4",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "3e90ba951fea60b52761835b60b83631",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"correlate-member-abundances-with-methane\">Correlate member abundances with methane</h1></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "f3b52af0a2947d40ab4092f70753d9b6",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "6ed05af0fa296e3e72c471f8b2e9ac33",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "bb43deb29765aec043afc02cb9080012",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "9755024736db2a65f1ab9e40ebd50689",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "e6cff8320c562e7978f4457d15ba4a8a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"all-v-all-correlation-matrix\">All v All correlation matrix</h1></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "59225674f6f345552c42ccb77e5d7999",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h4 id=\"abundance\">Abundance</h4></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "40932b74f3173122151cc35c5b2052c0",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "7a3b68d274237b148ff13459cfead793",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "7e4165288028154eb392a78c90d21f41",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "62b8e85dde533e1acf0a0bf39e484d46",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"co-occurrence-figure\">co-occurrence figure</h1></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "71ca6e8430f0283e59d4773c31aedbfb",
+      "outputs": [],
+      "console": []
+    }
+  ]
+}
