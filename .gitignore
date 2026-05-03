@@ -6,3 +6,6 @@
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Large rendered network figures (each >20MB)
+cooccurrence_network_*.png
