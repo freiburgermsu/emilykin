@@ -1198,12 +1198,15 @@ def _(
         compressor = np.sqrt
         node_sizes = [scale * compressor(_mean_rel_abund.get(n, 0)) for n in G_sub.nodes()]
         node_colors = [order_color_map_local.get(iterativeID_level.get(n, 'Unknown'), 'lightgray') for n in G_sub.nodes()]
-        edgecolors = ['black' if focus_nodes and n in focus_nodes else 'none' for n in G_sub.nodes()]
-        linewidths = [3 if focus_nodes and n in focus_nodes else 0 for n in G_sub.nodes()]
+        edgecolors = [_gao_pao_label_color(n) if focus_nodes and n in focus_nodes else 'none' for n in G_sub.nodes()]
+        linewidths = [6 if focus_nodes and n in focus_nodes else 0 for n in G_sub.nodes()]
         nx.draw_networkx_nodes(G_sub, pos, node_size=node_sizes, node_color=node_colors, edgecolors=edgecolors, linewidths=linewidths, alpha=0.9, ax=ax)
         nx.draw_networkx_edges(G_sub, pos, width=edge_widths, edge_color=edge_colors, alpha=0.85, ax=ax)
+        label_min_abund = 0.001  # 0.1% — skip labels for nodes below this
         for n, (x, y) in pos.items():
             abund = _mean_rel_abund.get(n, 0)
+            if abund < label_min_abund:
+                continue
             font_size = 6 + 14 * compressor(abund) / compressor(_mean_rel_abund.max()) * (width / 10)
             font_size = max(5, min(font_size, 48))
             _lbl_color = _gao_pao_label_color(n)
@@ -1213,14 +1216,41 @@ def _(
         _cbar = plt.colorbar(sm, ax=ax, shrink=0.6, pad=0.02)
         _cbar.set_label('Spearman ρ', fontsize=10 * (width / 10))
         _cbar.ax.tick_params(labelsize=8 * (width / 10), length=8, width=2)
+        legend_entries = [(0.002, '0.2%'), (0.02, '2%'), (0.20, '20%')]
+        sizes_pt2 = [scale * compressor(_a) for _a, _ in legend_entries]
+        diameters_pt = [2 * np.sqrt(_s / np.pi) for _s in sizes_pt2]
+        breather_pt = 8
+        offsets_pt = [0.0]
+        for _i in range(1, len(legend_entries)):
+            offsets_pt.append(offsets_pt[-1] + (diameters_pt[_i - 1] + diameters_pt[_i]) / 2 + breather_pt)
+        fig_h_pts = fig.get_figheight() * 72
+        top_y = 0.9
+        circle_x = 0.85
+        label_x = 0.88
+        ax.text(circle_x, top_y + 0.025, 'Mean rel. abundance',
+                transform=fig.transFigure, va='bottom', fontweight='bold',
+                fontsize=6 * (width / 10), clip_on=False)
+        for (_abund, _slabel), _s, _off in zip(legend_entries, sizes_pt2, offsets_pt):
+            _y = top_y - _off / fig_h_pts
+            ax.scatter([circle_x], [_y], s=_s, color='slategray', alpha=0.9,
+                       transform=fig.transFigure, clip_on=False)
+            ax.text(label_x, _y, _slabel,
+                    transform=fig.transFigure, va='center',
+                    fontsize=5 * (width / 10), clip_on=False)
         phyla_in_sub = sorted({iterativeID_level.get(n, 'Unknown') for n in G_sub.nodes()})
         _archaea_markers = ('archae', 'methano', 'halobac')
         _archaea_in_sub = [p for p in phyla_in_sub if any(m in p.lower() for m in _archaea_markers)]
         _bacteria_in_sub = [p for p in phyla_in_sub if p not in _archaea_in_sub and p in order_color_map_local]
         archaea_patches = [mpatches.Patch(color=order_color_map_local[_p], label=_p) for _p in _archaea_in_sub if _p in order_color_map_local]
         bacteria_patches = [mpatches.Patch(color=order_color_map_local[_p], label=_p) for _p in _bacteria_in_sub]
-        legend_handles = [header_patch('Archaea')] + archaea_patches + [header_patch('Bacteria')] + bacteria_patches
-        ax.legend(handles=legend_handles, title='Taxonomic ' + level_3, title_fontsize=8 * (width / 10), loc='lower left', bbox_to_anchor=(-0.24, 0.1), fontsize=7 * (width / 10), frameon=True)
+        legend_handles = []
+        if archaea_patches:
+            legend_handles.append(header_patch('Archaea'))
+            legend_handles.extend(archaea_patches)
+        if bacteria_patches:
+            legend_handles.append(header_patch('Bacteria'))
+            legend_handles.extend(bacteria_patches)
+        ax.legend(handles=legend_handles, title='Taxonomic ' + level_3, title_fontsize=8 * (width / 10), loc='upper left', bbox_to_anchor=(0, 1), fontsize=7 * (width / 10), frameon=True)
         ax.axis('off')
         plt.tight_layout()
         plt.savefig(f'cooccurrence_network_{title_slug}_min{abund_thresh*100:g}pct.png', dpi=300, bbox_inches='tight')
