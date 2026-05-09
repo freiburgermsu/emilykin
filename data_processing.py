@@ -206,12 +206,14 @@ def _(dump, level, load):
     dump({'Proteobacteria': _proteo_base}, open('phylum_base_overrides.json', 'w'))
     phylum_colors = load(open('phylum_colors.json', 'r'))
     DEFAULT = 'lightgray'
+    genera_color_map = {ID.split('.')[0]: v for ID, v in iterativeID_color_map.items()}
     return (
         DEFAULT,
         archaea_phyla,
         bacteria_phyla,
         combinations,
         defaultdict,
+        genera_color_map,
         iterativeID_color_map,
         iterativeID_phylums_1,
         iterativeID_taxonomy_1,
@@ -364,17 +366,20 @@ def _(
         _clusterMap.ax_heatmap.yaxis.set_label_position('left')
         label_right = 0.22
         heatmap_right = 0.68
-        dendro_left = 0.72
+        dendro_left = 0.71
         dendro_right = 0.85
         hm_pos = _clusterMap.ax_heatmap.get_position()
         dend_pos = _clusterMap.ax_row_dendrogram.get_position()
-        _clusterMap.ax_cbar.set_position([0.09, 0.86, 0.06, 0.14])
         _clusterMap.ax_heatmap.set_position([label_right, hm_pos.y0, heatmap_right - label_right, hm_pos.height])
         _clusterMap.ax_row_dendrogram.set_position([dendro_left, dend_pos.y0, dendro_right - dendro_left, dend_pos.height])
         _clusterMap.ax_row_dendrogram.invert_xaxis()
         gap = 0.03
         col_dend_pos = _clusterMap.ax_col_dendrogram.get_position()
         _clusterMap.ax_col_dendrogram.set_position([label_right, col_dend_pos.y0 + gap, heatmap_right - label_right, col_dend_pos.height])
+        _shannon_pos = _clusterMap.ax_col_dendrogram.get_position()
+        _cbar_w = 0.05
+        _cbar_x = _shannon_pos.x0 - _cbar_w - 0.02
+        _clusterMap.ax_cbar.set_position([_cbar_x, _shannon_pos.y0, _cbar_w, _shannon_pos.height])
         _iterativeID_levels = json.load(open('iterativeID_levels.json', 'r'))
         _ID_levels = {}
         for _k, _v in _iterativeID_levels.items():
@@ -390,11 +395,11 @@ def _(
                 if 'GAOs' in val:
                     _label.set_color('green')
                     if 'Putative' in val:
-                        _label.set_color('lightgreen')
+                        _label.set_color('mediumseagreen')
                 elif 'PAOs' in val:
                     _label.set_color('blue')
                     if 'Putative' in val:
-                        _label.set_color('lightblue')
+                        _label.set_color('cornflowerblue')
                 elif 'PHA' in val:
                     _label.set_color('red')
             if _ID_levels.get(_text) == 'Genus':
@@ -405,8 +410,7 @@ def _(
         strip_w = 0.015
         strip_h = 0.015
         _clusterMap.ax_row_colors.set_position([hm_pos.x1 + 0.005, hm_pos.y0, strip_w, hm_pos.height])
-        y_pad_pts = strip_w * fig_w * 72 + 12
-        _clusterMap.ax_heatmap.tick_params(axis='y', pad=y_pad_pts)
+        _clusterMap.ax_heatmap.tick_params(axis='y', pad=4)
         if isinstance(row_colors, Series):
             rc = row_colors
         else:
@@ -446,11 +450,54 @@ def _(
                         handles.append(Patch(facecolor=_color, label=f'      {cls}'))
                 else:
                     handles.append(Patch(facecolor=phylum_color[_p], label=_p))
-        _clusterMap.figure.legend(handles=handles, title='Phylum', title_fontsize=20, fontsize=18, loc='upper right', bbox_to_anchor=(0.8, 1.0), frameon=True, borderaxespad=0.5, handlelength=1.5, handletextpad=0.6)
+        _clusterMap.figure.legend(handles=handles, title='Phylum', title_fontsize=20, fontsize=18, loc='upper right', bbox_to_anchor=(dendro_right, 1.0), frameon=True, borderaxespad=0.5, handlelength=1.5, handletextpad=0.6)
         for spine in _clusterMap.ax_heatmap.spines.values():
             spine.set_visible(True)
             spine.set_edgecolor('black')
             spine.set_linewidth(1)
+        try:
+            _phase_day_ranges = json.load(open('phase_day_ranges.json', 'r'))
+        except FileNotFoundError:
+            _phase_day_ranges = {}
+        if _phase_day_ranges:
+            import matplotlib.lines as _mlines
+            _days_int = []
+            for _c in df.columns:
+                try:
+                    _days_int.append(int(_c))
+                except (ValueError, TypeError):
+                    _days_int = None
+                    break
+            if _days_int:
+                _n_cols = len(_days_int)
+
+                def _day_to_heatmap_x(_d):
+                    if _d <= _days_int[0]:
+                        return 0.5
+                    if _d >= _days_int[-1]:
+                        return _n_cols - 0.5
+                    for _i in range(_n_cols - 1):
+                        if _days_int[_i] <= _d <= _days_int[_i + 1]:
+                            if _days_int[_i + 1] == _days_int[_i]:
+                                return _i + 0.5
+                            _frac = (_d - _days_int[_i]) / (_days_int[_i + 1] - _days_int[_i])
+                            return _i + 0.5 + _frac
+                    return None
+                _fig = _clusterMap.figure
+                _hm_pos = _clusterMap.ax_heatmap.get_position()
+                _top_pos = _clusterMap.ax_col_dendrogram.get_position()
+                _y_bot = _hm_pos.y0
+                _y_top = _top_pos.y1
+                _fig.canvas.draw()
+                _lower_bounds = sorted({_span['start'] for _span in _phase_day_ranges.values()})
+                _lower_bounds = _lower_bounds[1:]
+                for _day in _lower_bounds:
+                    _x_data = _day_to_heatmap_x(_day)
+                    if _x_data is None:
+                        continue
+                    _x_disp = _clusterMap.ax_heatmap.transData.transform((_x_data, 0))[0]
+                    _x_fig = _fig.transFigure.inverted().transform((_x_disp, 0))[0]
+                    _fig.add_artist(_mlines.Line2D([_x_fig, _x_fig], [_y_bot, _y_top], transform=_fig.transFigure, color='black', linewidth=1.2, linestyle='--', alpha=0.6))
         _clusterMap.figure.savefig(f"{title.lower().replace(' ', '_')}.png", bbox_inches='tight', dpi=300)
     from numpy import log
     _DEFAULT_COLOR = 'lightgray'
@@ -493,6 +540,28 @@ def _(
     arr_filled = where(isnan(_arr), row_means, _arr)
     row_linkage = linkage(arr_filled, method='average', metric='euclidean')
     create_heatmap(df_1, _taxonomy_series, f'Top {_topNum} ASVs (% abundance)', shannon_indices, row_linkage)
+
+    _root_abundances = abundances.copy()
+    _root_abundances.columns = [c.split('.')[0] for c in _root_abundances.columns]
+    _root_abundances = _root_abundances.T.groupby(level=0).sum().T
+    _min_max_pct = 0.01
+    _root_abundances = _root_abundances.loc[:, _root_abundances.max(axis=0) >= _min_max_pct]
+    _root_taxonomies = {}
+    for _ID, _taxa in taxonomy_1.items():
+        _root = _ID.split('.')[0]
+        if _root in _root_abundances.columns and _root not in _root_taxonomies:
+            _root_taxonomies[_root] = '|'.join([str(_taxa[l]) for l in _taxonomic_levels if _taxonomic_levels.index(l) <= _taxonomic_levels.index('Genus')])
+    _root_per_day = {}
+    for _sample, _abs_row in _root_abundances.iterrows():
+        _root_per_day[_sample] = {_root: log10(_v) for _root, _v in _abs_row.items() if _v > _zero_level}
+    df_root = DataFrame(_root_per_day)
+    df_root = df_root.astype(float).replace([inf, -inf], nan)
+    _root_taxonomy_series = Series({idx: _root_taxonomies.get(idx, f'Unknown|{idx}') for idx in df_root.index})
+    _arr_root = df_root.values.astype(float)
+    _row_means_root = nanmean(_arr_root, axis=1, keepdims=True)
+    _arr_filled_root = where(isnan(_arr_root), _row_means_root, _arr_root)
+    _row_linkage_root = linkage(_arr_filled_root, method='average', metric='euclidean')
+    create_heatmap(df_root, _root_taxonomy_series, 'Taxa Above 1% Max Abundance', shannon_indices, _row_linkage_root)
     return (
         Patch,
         Series,
@@ -848,11 +917,11 @@ def _(
             if 'GAOs' in val:
                 _label.set_color('green')
                 if 'Putative' in val:
-                    _label.set_color('lightgreen')
+                    _label.set_color('mediumseagreen')
             elif 'PAOs' in val:
                 _label.set_color('blue')
                 if 'Putative' in val:
-                    _label.set_color('lightblue')
+                    _label.set_color('cornflowerblue')
             elif 'PHA' in val:
                 _label.set_color('red')
         if _ID_levels.get(_text) == 'Genus':
@@ -866,11 +935,11 @@ def _(
             if 'GAOs' in val:
                 _label.set_color('green')
                 if 'Putative' in val:
-                    _label.set_color('lightgreen')
+                    _label.set_color('mediumseagreen')
             elif 'PAOs' in val:
                 _label.set_color('blue')
                 if 'Putative' in val:
-                    _label.set_color('lightblue')
+                    _label.set_color('cornflowerblue')
             elif 'PHA' in val:
                 _label.set_color('red')
         if _ID_levels.get(_text) == 'Genus':
@@ -1165,9 +1234,9 @@ def _(
     _inverted_GAOs_PAOs = {_v: _k for _k, vs in GAOs_PAOs.items() for _v in vs}
     _GAO_PAO_label_colors = {
         'GAOs': 'green',
-        'Putative GAOs': 'lightgreen',
+        'Putative GAOs': 'mediumseagreen',
         'PAOs': 'blue',
-        'Putative PAOs': 'lightblue',
+        'Putative PAOs': 'cornflowerblue',
         'Other PHA storing potential+ function': 'red',
     }
 
@@ -1202,11 +1271,11 @@ def _(
         linewidths = [6 if focus_nodes and n in focus_nodes else 0 for n in G_sub.nodes()]
         nx.draw_networkx_nodes(G_sub, pos, node_size=node_sizes, node_color=node_colors, edgecolors=edgecolors, linewidths=linewidths, alpha=0.9, ax=ax)
         nx.draw_networkx_edges(G_sub, pos, width=edge_widths, edge_color=edge_colors, alpha=0.85, ax=ax)
-        label_min_abund = 0.001  # 0.1% — skip labels for nodes below this
+        # label_min_abund = 0.001  # 0.1% — skip labels for nodes below this
         for n, (x, y) in pos.items():
             abund = _mean_rel_abund.get(n, 0)
-            if abund < label_min_abund:
-                continue
+            # if abund < label_min_abund:
+            #     continue
             font_size = 6 + 14 * compressor(abund) / compressor(_mean_rel_abund.max()) * (width / 10)
             font_size = max(5, min(font_size, 48))
             _lbl_color = _gao_pao_label_color(n)
