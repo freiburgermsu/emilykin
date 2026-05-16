@@ -316,14 +316,25 @@ def _(
     intervals = [0] + list(logspace(-2, -0.3, 5))
     print(intervals)
 
-    def create_heatmap(df, taxonomies, title, inlayed_data=None, linkage=None):
-        new_cmap = LinearSegmentedColormap.from_list('NewMap', [(0.0, 'aliceblue'), (0.25, 'lightblue'), (1.0, 'navy')])
-        new_cmap.set_bad('aliceblue')
-        vmin = df.min().min()
-        vmax = df.max().max()
-        vcenter = log10(0.1)
-        vcenter = min(max(vcenter, vmin + 1e-06), vmax - 1e-06)
-        norm = TwoSlopeNorm(vmin=vmin, vcenter=vcenter, vmax=vmax)
+    def create_heatmap(df, taxonomies, title, inlayed_data=None, linkage=None, mode='abundance'):
+        if mode == 'log2fc':
+            new_cmap = LinearSegmentedColormap.from_list('FCMap', [(0.0, '#2166ac'), (0.5, 'white'), (1.0, '#b2182b')])
+            new_cmap.set_bad('lightgray')
+            _abs_max = float(np.nanmax(np.abs(df.values))) if df.size else 1.0
+            if not np.isfinite(_abs_max) or _abs_max == 0:
+                _abs_max = 1.0
+            vmin = -_abs_max
+            vmax = _abs_max
+            vcenter = 0.0
+            norm = TwoSlopeNorm(vmin=vmin, vcenter=vcenter, vmax=vmax)
+        else:
+            new_cmap = LinearSegmentedColormap.from_list('NewMap', [(0.0, 'aliceblue'), (0.25, 'lightblue'), (1.0, 'navy')])
+            new_cmap.set_bad('aliceblue')
+            vmin = df.min().min()
+            vmax = df.max().max()
+            vcenter = log10(0.1)
+            vcenter = min(max(vcenter, vmin + 1e-06), vmax - 1e-06)
+            norm = TwoSlopeNorm(vmin=vmin, vcenter=vcenter, vmax=vmax)
         proteo_class_color = json.load(open('proteo_class_color.json'))
         _proteo_base = json.load(open('phylum_base_overrides.json'))['Proteobacteria']
 
@@ -334,52 +345,91 @@ def _(
                 return genera_color_map[idx]
             return _DEFAULT_COLOR
         row_colors = Series({idx: lookup(idx) for idx in df.index}, name='Phylum')
-        _clusterMap = sns.clustermap(df, row_colors=row_colors, cmap=new_cmap, norm=norm, clip_on=True, col_cluster=False, row_cluster=True, figsize=(50, 20), row_linkage=taxonomy_linkage(taxonomies), dendrogram_ratio=(0.2, 0.15))
+        if mode == 'log2fc':
+            _figsize = (max(14, 1.5 * df.shape[1] + 8), 20)
+            _dendro_ratio = (0.08, 0.15)
+        else:
+            _figsize = (50, 20)
+            _dendro_ratio = (0.2, 0.15)
+        _clusterMap = sns.clustermap(df, row_colors=row_colors, cmap=new_cmap, norm=norm, clip_on=True, col_cluster=False, row_cluster=True, figsize=_figsize, row_linkage=taxonomy_linkage(taxonomies), dendrogram_ratio=_dendro_ratio)
         for tick in _clusterMap.ax_row_colors.get_xticklabels():
             tick.set_fontsize(22)
         _cbar = _clusterMap.ax_cbar
-        log_ticks = np.array([vmin, log10(0.01), vcenter, log10(0.2), vmax])
-        _cbar.set_yticks(log_ticks)
-        original_ticks = 10 ** log_ticks
-        original_labels = [f'{x * 100:.1e}'.replace('e-0', 'E-') if x * 100 < 0.1 else round(x * 100) for x in original_ticks]
-        original_labels[0] = '0'
-        _cbar.set_yticklabels(original_labels, fontsize=22)
-        _cbar.set_yticks(log_ticks)
-        _cbar.set_xlabel('Rel. Abundance %', fontsize=18, labelpad=10)
-        if inlayed_data:
-            top_ax = _clusterMap.ax_col_dendrogram
-            top_ax.clear()
-            top_ax.plot(inlayed_data.keys(), inlayed_data.values(), color='black', marker='o', linewidth=3)
-            top_ax.set_ylabel('Shannon Diversity', fontsize=20)
-            top_ax.yaxis.tick_right()
-            top_ax.yaxis.set_label_position('right')
-            top_ax.grid(True, axis='y', linestyle='--', alpha=0.7)
-            top_ax.set_xticks([])
-            top_ax.tick_params(axis='y', labelsize=16)
+        if mode == 'log2fc':
+            _fc_ticks = np.linspace(vmin, vmax, 5)
+            _cbar.set_yticks(_fc_ticks)
+            _cbar.set_yticklabels([f'{t:+.1f}' for t in _fc_ticks], fontsize=22)
+            _cbar.set_xlabel('log$_2$ fold change', fontsize=18, labelpad=10)
+        else:
+            log_ticks = np.array([vmin, log10(0.01), vcenter, log10(0.2), vmax])
+            _cbar.set_yticks(log_ticks)
+            original_ticks = 10 ** log_ticks
+            original_labels = [f'{x * 100:.1e}'.replace('e-0', 'E-') if x * 100 < 0.1 else round(x * 100) for x in original_ticks]
+            original_labels[0] = '0'
+            _cbar.set_yticklabels(original_labels, fontsize=22)
+            _cbar.set_yticks(log_ticks)
+            _cbar.set_xlabel('Rel. Abundance %', fontsize=18, labelpad=10)
+        # Shannon-diversity inlay disabled per request.
+        # if inlayed_data:
+        #     top_ax = _clusterMap.ax_col_dendrogram
+        #     top_ax.clear()
+        #     top_ax.plot(inlayed_data.keys(), inlayed_data.values(), color='black', marker='o', linewidth=3)
+        #     top_ax.set_ylabel('Shannon Diversity', fontsize=20)
+        #     top_ax.yaxis.tick_right()
+        #     top_ax.yaxis.set_label_position('right')
+        #     top_ax.grid(True, axis='y', linestyle='--', alpha=0.7)
+        #     top_ax.set_xticks([])
+        #     top_ax.tick_params(axis='y', labelsize=16)
+        _clusterMap.ax_col_dendrogram.set_visible(False)
         _clusterMap.figure.subplots_adjust(bottom=0.15, top=0.95)
         _clusterMap.ax_heatmap.set_yticklabels(_clusterMap.ax_heatmap.get_yticklabels(), fontsize=24, rotation=0)
         _clusterMap.ax_heatmap.set_xticklabels(_clusterMap.ax_heatmap.get_xticklabels(), fontsize=24, rotation=70, ha='right')
-        _clusterMap.ax_heatmap.set_xlabel('Days of operation', fontsize=32, labelpad=20)
+        _xlabel = 'Phase comparison (log$_2$ fold change)' if mode == 'log2fc' else 'Days of operation'
+        _clusterMap.ax_heatmap.set_xlabel(_xlabel, fontsize=32, labelpad=20)
         _clusterMap.ax_row_dendrogram.xaxis.set_visible(False)
         _clusterMap.ax_row_dendrogram.text(0.65, -0.02, 'Taxonomical tree', fontsize=24, ha='center', transform=_clusterMap.ax_row_dendrogram.transAxes)
-        _clusterMap.ax_heatmap.yaxis.tick_left()
-        _clusterMap.ax_heatmap.yaxis.set_label_position('left')
-        label_right = 0.22
-        heatmap_right = 0.68
-        dendro_left = 0.71
-        dendro_right = 0.85
-        hm_pos = _clusterMap.ax_heatmap.get_position()
-        dend_pos = _clusterMap.ax_row_dendrogram.get_position()
-        _clusterMap.ax_heatmap.set_position([label_right, hm_pos.y0, heatmap_right - label_right, hm_pos.height])
-        _clusterMap.ax_row_dendrogram.set_position([dendro_left, dend_pos.y0, dendro_right - dendro_left, dend_pos.height])
-        _clusterMap.ax_row_dendrogram.invert_xaxis()
-        gap = 0.03
-        col_dend_pos = _clusterMap.ax_col_dendrogram.get_position()
-        _clusterMap.ax_col_dendrogram.set_position([label_right, col_dend_pos.y0 + gap, heatmap_right - label_right, col_dend_pos.height])
-        _shannon_pos = _clusterMap.ax_col_dendrogram.get_position()
-        _cbar_w = 0.05
-        _cbar_x = _shannon_pos.x0 - _cbar_w - 0.02
-        _clusterMap.ax_cbar.set_position([_cbar_x, _shannon_pos.y0, _cbar_w, _shannon_pos.height])
+        if mode == 'log2fc':
+            # Layout: [phylum colors] [heatmap] [row labels] [compressed dendrogram]
+            colors_left = 0.18
+            colors_w = 0.018
+            heatmap_left = colors_left + colors_w + 0.005
+            heatmap_right = 0.58
+            dendro_w = 0.06
+            dendro_left = heatmap_right + 0.20
+            dendro_right = dendro_left + dendro_w
+            hm_pos = _clusterMap.ax_heatmap.get_position()
+            dend_pos = _clusterMap.ax_row_dendrogram.get_position()
+            _clusterMap.ax_heatmap.set_position([heatmap_left, hm_pos.y0, heatmap_right - heatmap_left, hm_pos.height])
+            _clusterMap.ax_heatmap.yaxis.tick_right()
+            _clusterMap.ax_heatmap.yaxis.set_label_position('right')
+            _clusterMap.ax_heatmap.tick_params(axis='y', pad=4)
+            # Tentative dendrogram placement; final x is set after labels render.
+            _clusterMap.ax_row_dendrogram.set_position([heatmap_right + 0.20, dend_pos.y0, dendro_w, dend_pos.height])
+            # Flip so branches open leftward, toward the heatmap.
+            _clusterMap.ax_row_dendrogram.invert_xaxis()
+            col_dend_pos = _clusterMap.ax_col_dendrogram.get_position()
+            _cbar_w = 0.035
+            _cbar_x = colors_left - _cbar_w - 0.04
+            _clusterMap.ax_cbar.set_position([_cbar_x, col_dend_pos.y0, _cbar_w, col_dend_pos.height])
+        else:
+            _clusterMap.ax_heatmap.yaxis.tick_left()
+            _clusterMap.ax_heatmap.yaxis.set_label_position('left')
+            label_right = 0.22
+            heatmap_right = 0.68
+            dendro_left = 0.71
+            dendro_right = 0.85
+            hm_pos = _clusterMap.ax_heatmap.get_position()
+            dend_pos = _clusterMap.ax_row_dendrogram.get_position()
+            _clusterMap.ax_heatmap.set_position([label_right, hm_pos.y0, heatmap_right - label_right, hm_pos.height])
+            _clusterMap.ax_row_dendrogram.set_position([dendro_left, dend_pos.y0, dendro_right - dendro_left, dend_pos.height])
+            _clusterMap.ax_row_dendrogram.invert_xaxis()
+            gap = 0.03
+            col_dend_pos = _clusterMap.ax_col_dendrogram.get_position()
+            _clusterMap.ax_col_dendrogram.set_position([label_right, col_dend_pos.y0 + gap, heatmap_right - label_right, col_dend_pos.height])
+            _shannon_pos = _clusterMap.ax_col_dendrogram.get_position()
+            _cbar_w = 0.05
+            _cbar_x = _shannon_pos.x0 - _cbar_w - 0.02
+            _clusterMap.ax_cbar.set_position([_cbar_x, _shannon_pos.y0, _cbar_w, _shannon_pos.height])
         _iterativeID_levels = json.load(open('iterativeID_levels.json', 'r'))
         _ID_levels = {}
         for _k, _v in _iterativeID_levels.items():
@@ -409,8 +459,11 @@ def _(
         fig_h = _clusterMap.figure.get_figheight()
         strip_w = 0.015
         strip_h = 0.015
-        _clusterMap.ax_row_colors.set_position([hm_pos.x1 + 0.005, hm_pos.y0, strip_w, hm_pos.height])
-        _clusterMap.ax_heatmap.tick_params(axis='y', pad=4)
+        if mode == 'log2fc':
+            _clusterMap.ax_row_colors.set_position([hm_pos.x0 - strip_w - 0.005, hm_pos.y0, strip_w, hm_pos.height])
+        else:
+            _clusterMap.ax_row_colors.set_position([hm_pos.x1 + 0.005, hm_pos.y0, strip_w, hm_pos.height])
+            _clusterMap.ax_heatmap.tick_params(axis='y', pad=4)
         if isinstance(row_colors, Series):
             rc = row_colors
         else:
@@ -450,7 +503,11 @@ def _(
                         handles.append(Patch(facecolor=_color, label=f'      {cls}'))
                 else:
                     handles.append(Patch(facecolor=phylum_color[_p], label=_p))
-        _clusterMap.figure.legend(handles=handles, title='Phylum', title_fontsize=20, fontsize=18, loc='upper right', bbox_to_anchor=(dendro_right, 1.0), frameon=True, borderaxespad=0.5, handlelength=1.5, handletextpad=0.6)
+        if mode == 'log2fc':
+            _ncol = int(np.ceil(len(handles) / 2))
+            _clusterMap.figure.legend(handles=handles, title='Phylum', title_fontsize=20, fontsize=16, loc='upper center', bbox_to_anchor=(0.5, 0.99), ncol=_ncol, frameon=True, borderaxespad=0.5, handlelength=1.5, handletextpad=0.6, columnspacing=1.2)
+        else:
+            _clusterMap.figure.legend(handles=handles, title='Phylum', title_fontsize=20, fontsize=18, loc='upper right', bbox_to_anchor=(dendro_right, 1.0), frameon=True, borderaxespad=0.5, handlelength=1.5, handletextpad=0.6)
         for spine in _clusterMap.ax_heatmap.spines.values():
             spine.set_visible(True)
             spine.set_edgecolor('black')
@@ -459,7 +516,7 @@ def _(
             _phase_day_ranges = json.load(open('phase_day_ranges.json', 'r'))
         except FileNotFoundError:
             _phase_day_ranges = {}
-        if _phase_day_ranges:
+        if _phase_day_ranges and mode != 'log2fc':
             import matplotlib.lines as _mlines
             _days_int = []
             for _c in df.columns:
@@ -498,15 +555,34 @@ def _(
                     _x_disp = _clusterMap.ax_heatmap.transData.transform((_x_data, 0))[0]
                     _x_fig = _fig.transFigure.inverted().transform((_x_disp, 0))[0]
                     _fig.add_artist(_mlines.Line2D([_x_fig, _x_fig], [_y_bot, _y_top], transform=_fig.transFigure, color='black', linewidth=1.2, linestyle='--', alpha=0.6))
-        _clusterMap.figure.savefig(f"{title.lower().replace(' ', '_')}.png", bbox_inches='tight', dpi=300)
-    from numpy import log
+        if mode == 'log2fc':
+            # Align the dendrogram's left edge with the right edge of the longest y-tick label.
+            _fig = _clusterMap.figure
+            _fig.canvas.draw()
+            _renderer = _fig.canvas.get_renderer()
+            _max_right_disp = None
+            for _lab in _clusterMap.ax_heatmap.get_yticklabels():
+                if not _lab.get_text():
+                    continue
+                _bb = _lab.get_window_extent(renderer=_renderer)
+                if _max_right_disp is None or _bb.x1 > _max_right_disp:
+                    _max_right_disp = _bb.x1
+            if _max_right_disp is not None:
+                _max_right_fig = _fig.transFigure.inverted().transform((_max_right_disp, 0))[0]
+                _dend_pos = _clusterMap.ax_row_dendrogram.get_position()
+                _clusterMap.ax_row_dendrogram.set_position([_max_right_fig + 0.008, _dend_pos.y0, dendro_w, _dend_pos.height])
+        _suffix = '_diff' if mode == 'log2fc' else ''
+        _clusterMap.figure.savefig(f"{title.lower().replace(' ', '_')}{_suffix}.png", bbox_inches='tight', dpi=300)
+    from numpy import log, log2
     _DEFAULT_COLOR = 'lightgray'
     iterativeIDs_1 = json.load(open('iterativeIDs.json', 'r'))
     _zero_level = 1e-05
 
-    def shannon_index(abundances):
-        return -sum([abundance * log(abundance) for abundance in abundances if abundance > _zero_level])
-    shannon_indices = {_sample: shannon_index(list(abs.to_numpy())) for _sample, abs in abundances.iterrows()}
+    # Shannon-diversity index computation disabled per request.
+    # def shannon_index(abundances):
+    #     return -sum([abundance * log(abundance) for abundance in abundances if abundance > _zero_level])
+    # shannon_indices = {_sample: shannon_index(list(abs.to_numpy())) for _sample, abs in abundances.iterrows()}
+    shannon_indices = None
     taxonomy_1 = json.load(open('iterativeID_taxonomy.json', 'r'))
     dic, _taxonomies = ({}, {})
     level_1 = 'Genus'
@@ -551,17 +627,33 @@ def _(
         _root = _ID.split('.')[0]
         if _root in _root_abundances.columns and _root not in _root_taxonomies:
             _root_taxonomies[_root] = '|'.join([str(_taxa[l]) for l in _taxonomic_levels if _taxonomic_levels.index(l) <= _taxonomic_levels.index('Genus')])
-    _root_per_day = {}
-    for _sample, _abs_row in _root_abundances.iterrows():
-        _root_per_day[_sample] = {_root: log10(_v) for _root, _v in _abs_row.items() if _v > _zero_level}
-    df_root = DataFrame(_root_per_day)
+
+    # Per-phase mean relative abundance, then log2 fold change for each
+    # unordered phase pair (all C(n_phases, 2) permutations explored).
+    _phase_day_ranges = json.load(open('phase_day_ranges.json', 'r'))
+    _phase_means = {}
+    for _phase, _span in _phase_day_ranges.items():
+        _start, _end = (_span['start'], _span['end'])
+        _in_phase = [_d for _d in _root_abundances.index if _start <= int(_d) <= _end]
+        if not _in_phase:
+            continue
+        _phase_means[_phase] = _root_abundances.loc[_in_phase].mean(axis=0)
+    _phase_mean_df = DataFrame(_phase_means)
+    _pseudocount = 1e-06
+    _phase_order = [_p for _p in _phase_day_ranges.keys() if _p in _phase_mean_df.columns]
+    _fc_cols = {}
+    for _i, _p1 in enumerate(_phase_order):
+        for _p2 in _phase_order[_i + 1:]:
+            _label = f'{_p1} / {_p2}'
+            _fc_cols[_label] = log2((_phase_mean_df[_p1] + _pseudocount) / (_phase_mean_df[_p2] + _pseudocount))
+    df_root = DataFrame(_fc_cols)
     df_root = df_root.astype(float).replace([inf, -inf], nan)
     _root_taxonomy_series = Series({idx: _root_taxonomies.get(idx, f'Unknown|{idx}') for idx in df_root.index})
     _arr_root = df_root.values.astype(float)
     _row_means_root = nanmean(_arr_root, axis=1, keepdims=True)
     _arr_filled_root = where(isnan(_arr_root), _row_means_root, _arr_root)
     _row_linkage_root = linkage(_arr_filled_root, method='average', metric='euclidean')
-    create_heatmap(df_root, _root_taxonomy_series, 'Taxa Above 1% Max Abundance', shannon_indices, _row_linkage_root)
+    create_heatmap(df_root, _root_taxonomy_series, 'Taxa Above 1% Max Abundance', None, _row_linkage_root, mode='log2fc')
     return (
         Patch,
         Series,
