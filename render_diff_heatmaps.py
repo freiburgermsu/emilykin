@@ -144,6 +144,24 @@ def _draw_phase_delimiters(clustermap, df, phase_day_ranges):
             [x_fig, x_fig], [y_bot, y_top], transform=fig.transFigure,
             color='black', linewidth=1.2, linestyle='--', alpha=0.6))
 
+    # Phase-name (Roman numeral) at the horizontal midpoint of each phase region,
+    # just inside the top edge of the heatmap.
+    for phase_name, span in phase_day_ranges.items():
+        days_in_phase = [d for d in days_int if span['start'] <= d <= span['end']]
+        if not days_in_phase:
+            continue
+        mid_day = (min(days_in_phase) + max(days_in_phase)) / 2
+        center_x_data = day_to_x(mid_day)
+        if center_x_data is None:
+            continue
+        center_x_disp = clustermap.ax_heatmap.transData.transform((center_x_data, 0))[0]
+        center_x_fig = fig.transFigure.inverted().transform((center_x_disp, 0))[0]
+        fig.text(
+            center_x_fig, y_top - 0.006, phase_name,
+            ha='center', va='top', fontsize=36, fontweight='bold',
+            color='black', transform=fig.transFigure,
+        )
+
 
 def create_heatmap(df, taxonomies, title, *, mode, suffix,
                    iterativeID_color_map, genera_color_map,
@@ -173,13 +191,13 @@ def create_heatmap(df, taxonomies, title, *, mode, suffix,
     row_colors = pd.Series({idx: lookup(idx) for idx in df.index}, name='Phylum')
 
     if mode == 'log2fc_days':
-        figsize = (50, 20)
+        figsize = (50, 24)
         dendro_ratio = (0.06, 0.15)
         heatmap_right = 0.72
         dendro_w = 0.04
         xlabel = 'Days of operation'
     else:
-        figsize = (max(14, 1.5 * df.shape[1] + 8), 20)
+        figsize = (max(14, 1.5 * df.shape[1] + 8), 24)
         dendro_ratio = (0.08, 0.15)
         heatmap_right = 0.58
         dendro_w = 0.06
@@ -191,21 +209,27 @@ def create_heatmap(df, taxonomies, title, *, mode, suffix,
         row_linkage=taxonomy_linkage(taxonomies), dendrogram_ratio=dendro_ratio,
     )
     for tick in cm.ax_row_colors.get_xticklabels():
-        tick.set_fontsize(22)
+        tick.set_fontsize(26)
 
     cbar = cm.ax_cbar
     fc_ticks = np.linspace(vmin, vmax, 5)
     cbar.set_yticks(fc_ticks)
-    cbar.set_yticklabels([f'{t:+.1f}' for t in fc_ticks], fontsize=22)
-    cbar.set_xlabel('log$_2$ fold change', fontsize=18, labelpad=10)
+    cbar.set_yticklabels([f'{t:+.1f}' for t in fc_ticks], fontsize=26)
+    cbar.set_xlabel('')  # clear default bottom label; the vertical label goes on the left
+    cbar.set_ylabel('log$_2$ fold change', rotation=90, fontsize=22, labelpad=15)
+    cbar.yaxis.set_label_position('left')
+    cbar.yaxis.tick_right()  # tick labels on the right of the bar (toward the colors strip)
 
     cm.ax_col_dendrogram.set_visible(False)
     cm.figure.subplots_adjust(bottom=0.15, top=0.95)
-    cm.ax_heatmap.set_yticklabels(cm.ax_heatmap.get_yticklabels(), fontsize=24, rotation=0)
-    cm.ax_heatmap.set_xticklabels(cm.ax_heatmap.get_xticklabels(), fontsize=24, rotation=70, ha='right')
-    cm.ax_heatmap.set_xlabel(xlabel, fontsize=32, labelpad=20)
+    cm.ax_heatmap.set_yticklabels(cm.ax_heatmap.get_yticklabels(), fontsize=29, rotation=0)
+    cm.ax_heatmap.set_xticklabels(
+        cm.ax_heatmap.get_xticklabels(), fontsize=29, rotation=80,
+        ha='right', va='center', rotation_mode='anchor',
+    )
+    cm.ax_heatmap.set_xlabel(xlabel, fontsize=38, labelpad=20)
     cm.ax_row_dendrogram.xaxis.set_visible(False)
-    cm.ax_row_dendrogram.text(0.65, -0.02, 'Taxonomical tree', fontsize=24, ha='center',
+    cm.ax_row_dendrogram.text(0.65, -0.02, 'Taxonomical tree', fontsize=29, ha='center',
                               transform=cm.ax_row_dendrogram.transAxes)
 
     # [phylum colors] [heatmap] [labels] [compressed dendrogram]
@@ -221,10 +245,13 @@ def create_heatmap(df, taxonomies, title, *, mode, suffix,
     cm.ax_row_dendrogram.set_position([heatmap_right + 0.10, dend_pos.y0, dendro_w, dend_pos.height])
     cm.ax_row_dendrogram.invert_xaxis()  # branches open leftward, toward heatmap
 
-    col_dend_pos = cm.ax_col_dendrogram.get_position()
-    cbar_w = 0.035
-    cbar_x = colors_left - cbar_w - 0.04
-    cm.ax_cbar.set_position([cbar_x, col_dend_pos.y0, cbar_w, col_dend_pos.height])
+    cbar_w = 0.015
+    # Initial cbar placement; final x is set after labels render so the longest
+    # tick label's right edge aligns with the phylum-color strip's left edge.
+    cbar_x = colors_left - cbar_w - 0.05
+    cbar_h = hm_pos.height * 0.7
+    cbar_y = hm_pos.y0 + (hm_pos.height - cbar_h) / 2
+    cm.ax_cbar.set_position([cbar_x, cbar_y, cbar_w, cbar_h])
 
     # GAO/PAO label coloring and italicization at the genus level.
     id_levels = {}
@@ -279,12 +306,15 @@ def create_heatmap(df, taxonomies, title, *, mode, suffix,
 
     archaea = sorted(p for p in phylum_color if is_archaea(p))
     bacteria = sorted(p for p in phylum_color if not is_archaea(p))
+    show_kingdom_headers = bool(archaea) and bool(bacteria)
     handles = []
     if archaea:
-        handles.append(Patch(color='none', label=r'$\bf{Archaea}$'))
+        if show_kingdom_headers:
+            handles.append(Patch(color='none', label=r'$\bf{Archaea}$'))
         handles += [Patch(facecolor=phylum_color[p], label=p) for p in archaea]
     if bacteria:
-        handles.append(Patch(color='none', label=r'$\bf{Bacteria}$'))
+        if show_kingdom_headers:
+            handles.append(Patch(color='none', label=r'$\bf{Bacteria}$'))
         for p in bacteria:
             if p == 'Proteobacteria' and proteo_class_color:
                 handles.append(Patch(color='none', label=p))
@@ -296,7 +326,7 @@ def create_heatmap(df, taxonomies, title, *, mode, suffix,
     # Sit the legend's bottom just above the top edge of the heatmap.
     hm_top = cm.ax_heatmap.get_position().y1
     cm.figure.legend(
-        handles=handles, title='Phylum', title_fontsize=20, fontsize=16,
+        handles=handles, title='Phylum', title_fontsize=24, fontsize=19,
         loc='lower center', bbox_to_anchor=(0.5, hm_top + 0.005), ncol=ncol,
         frameon=True, borderaxespad=0.5, handlelength=1.5, handletextpad=0.6,
         columnspacing=1.2,
@@ -324,6 +354,24 @@ def create_heatmap(df, taxonomies, title, *, mode, suffix,
         max_right_fig = fig.transFigure.inverted().transform((max_right_disp, 0))[0]
         d_pos = cm.ax_row_dendrogram.get_position()
         cm.ax_row_dendrogram.set_position([max_right_fig + 0.008, d_pos.y0, dendro_w, d_pos.height])
+
+    # Shift the cbar so the right edge of its longest tick label lands on the
+    # left edge of the phylum row-color strip.
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+    cbar_label_right_disp = None
+    for lab in cm.ax_cbar.get_yticklabels():
+        if not lab.get_text():
+            continue
+        bb = lab.get_window_extent(renderer=renderer)
+        if cbar_label_right_disp is None or bb.x1 > cbar_label_right_disp:
+            cbar_label_right_disp = bb.x1
+    if cbar_label_right_disp is not None:
+        cbar_label_right_fig = fig.transFigure.inverted().transform((cbar_label_right_disp, 0))[0]
+        colors_left_edge = cm.ax_row_colors.get_position().x0
+        shift = colors_left_edge - cbar_label_right_fig
+        cbar_pos = cm.ax_cbar.get_position()
+        cm.ax_cbar.set_position([cbar_pos.x0 + shift, cbar_pos.y0, cbar_pos.width, cbar_pos.height])
 
     out_path = f"{title.lower().replace(' ', '_')}{suffix}.png"
     cm.figure.savefig(out_path, bbox_inches='tight', dpi=300)
