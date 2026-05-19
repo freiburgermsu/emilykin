@@ -25,6 +25,8 @@ import seaborn as sns
 from matplotlib.colors import LinearSegmentedColormap, TwoSlopeNorm
 from matplotlib.patches import Patch
 from scipy.cluster.hierarchy import linkage
+from scipy.stats import wilcoxon
+from statsmodels.stats.multitest import multipletests
 
 REPO = Path(__file__).resolve().parent
 os.chdir(REPO)
@@ -105,8 +107,13 @@ def taxonomy_linkage(taxonomy_series):
     return Z
 
 
-def _draw_phase_delimiters(clustermap, df, phase_day_ranges):
-    """Vertical dashed lines at the lower bound of each phase (skipping the first)."""
+def _draw_phase_delimiters(clustermap, df, phase_day_ranges, time_based=False):
+    """Vertical dashed lines at the lower bound of each phase (skipping the first),
+    plus a phase-name label at the horizontal midpoint of each region.
+
+    time_based=True maps day → day-valued x coordinate (used when the heatmap is
+    drawn with pcolormesh on the day axis); otherwise day → column-index x.
+    """
     days_int = []
     for c in df.columns:
         try:
@@ -115,58 +122,83 @@ def _draw_phase_delimiters(clustermap, df, phase_day_ranges):
             return
     n_cols = len(days_int)
 
-    def day_to_x(d):
-        if d <= days_int[0]:
-            return 0.5
-        if d >= days_int[-1]:
-            return n_cols - 0.5
-        for i in range(n_cols - 1):
-            if days_int[i] <= d <= days_int[i + 1]:
-                if days_int[i + 1] == days_int[i]:
-                    return i + 0.5
-                frac = (d - days_int[i]) / (days_int[i + 1] - days_int[i])
-                return i + 0.5 + frac
-        return None
+    if time_based:
+        def day_to_x(d):
+            if d < days_int[0]:
+                return float(days_int[0])
+            if d > days_int[-1]:
+                return float(days_int[-1])
+            return float(d)
+    else:
+        def day_to_x(d):
+            if d <= days_int[0]:
+                return 0.5
+            if d >= days_int[-1]:
+                return n_cols - 0.5
+            for i in range(n_cols - 1):
+                if days_int[i] <= d <= days_int[i + 1]:
+                    if days_int[i + 1] == days_int[i]:
+                        return i + 0.5
+                    frac = (d - days_int[i]) / (days_int[i + 1] - days_int[i])
+                    return i + 0.5 + frac
+            return None
 
     fig = clustermap.figure
     hm_pos = clustermap.ax_heatmap.get_position()
     y_bot = hm_pos.y0
     y_top = hm_pos.y1  # stop at the top edge of the heatmap; don't extend above it
     fig.canvas.draw()
-    lower_bounds = sorted({span['start'] for span in phase_day_ranges.values()})[1:]
-    for day in lower_bounds:
-        x_data = day_to_x(day)
-        if x_data is None:
+    # Place each dashed line on the cell BOUNDARY between two adjacent phases
+    # (right edge of the last cell in the earlier phase), rather than through
+    # the middle of any cell.
+    phase_items = list(phase_day_ranges.items())
+    for i in range(len(phase_items) - 1):
+        earlier_span = phase_items[i][1]
+        later_span = phase_items[i + 1][1]
+        days_earlier = [d for d in days_int if earlier_span['start'] <= d <= earlier_span['end']]
+        days_later = [d for d in days_int if later_span['start'] <= d <= later_span['end']]
+        if not days_earlier or not days_later:
             continue
+        last_day = max(days_earlier)
+        first_day = min(days_later)
+        if time_based:
+            # pcolormesh edge between adjacent samples is at their midpoint.
+            x_data = (last_day + first_day) / 2.0
+        else:
+            # Column-index mode: each cell occupies [col, col+1] in data coords;
+            # boundary is at col + 1 (the right edge of the last cell).
+            try:
+                x_data = days_int.index(last_day) + 1.0
+            except ValueError:
+                continue
         x_disp = clustermap.ax_heatmap.transData.transform((x_data, 0))[0]
         x_fig = fig.transFigure.inverted().transform((x_disp, 0))[0]
         fig.add_artist(mlines.Line2D(
             [x_fig, x_fig], [y_bot, y_top], transform=fig.transFigure,
             color='black', linewidth=1.2, linestyle='--', alpha=0.6))
 
-    # Phase-name (Roman numeral) at the horizontal midpoint of each phase region,
-    # just inside the top edge of the heatmap.
-    for phase_name, span in phase_day_ranges.items():
-        days_in_phase = [d for d in days_int if span['start'] <= d <= span['end']]
-        if not days_in_phase:
-            continue
-        mid_day = (min(days_in_phase) + max(days_in_phase)) / 2
-        center_x_data = day_to_x(mid_day)
-        if center_x_data is None:
-            continue
-        center_x_disp = clustermap.ax_heatmap.transData.transform((center_x_data, 0))[0]
-        center_x_fig = fig.transFigure.inverted().transform((center_x_disp, 0))[0]
-        fig.text(
-            center_x_fig, y_top - 0.006, phase_name,
-            ha='center', va='top', fontsize=36, fontweight='bold',
-            color='black', transform=fig.transFigure,
-        )
+    # Phase-name (Roman numeral) labels disabled per request.
+    # for phase_name, span in phase_day_ranges.items():
+    #     days_in_phase = [d for d in days_int if span['start'] <= d <= span['end']]
+    #     if not days_in_phase:
+    #         continue
+    #     mid_day = (min(days_in_phase) + max(days_in_phase)) / 2
+    #     center_x_data = day_to_x(mid_day)
+    #     if center_x_data is None:
+    #         continue
+    #     center_x_disp = clustermap.ax_heatmap.transData.transform((center_x_data, 0))[0]
+    #     center_x_fig = fig.transFigure.inverted().transform((center_x_disp, 0))[0]
+    #     fig.text(
+    #         center_x_fig, y_top - 0.006, phase_name,
+    #         ha='center', va='top', fontsize=36, fontweight='bold',
+    #         color='black', transform=fig.transFigure,
+    #     )
 
 
 def create_heatmap(df, taxonomies, title, *, mode, suffix,
                    iterativeID_color_map, genera_color_map,
                    proteo_class_color, proteo_base, iterativeID_levels,
-                   phase_day_ranges):
+                   phase_day_ranges, significance=None):
     """Render a log2-fold-change heatmap with phylum row colors on the left,
     organism labels between heatmap and dendrogram, and a horizontal phylum
     legend centered at the top.
@@ -190,7 +222,8 @@ def create_heatmap(df, taxonomies, title, *, mode, suffix,
         return DEFAULT_COLOR
     row_colors = pd.Series({idx: lookup(idx) for idx in df.index}, name='Phylum')
 
-    if mode == 'log2fc_days':
+    is_day_mode = mode in ('log2fc_days', 'log2fc_time')
+    if is_day_mode:
         figsize = (50, 24)
         dendro_ratio = (0.06, 0.15)
         heatmap_right = 0.72
@@ -252,6 +285,52 @@ def create_heatmap(df, taxonomies, title, *, mode, suffix,
     cbar_h = hm_pos.height * 0.7
     cbar_y = hm_pos.y0 + (hm_pos.height - cbar_h) / 2
     cm.ax_cbar.set_position([cbar_x, cbar_y, cbar_w, cbar_h])
+
+    if mode == 'log2fc_time':
+        # Re-render the heatmap with pcolormesh so each column's width is
+        # proportional to the time delta to its neighbors. Column width / time
+        # delta is constant across the x-axis: x positions ARE the day values.
+        ax = cm.ax_heatmap
+        days = np.array([int(c) for c in df.columns], dtype=float)
+        n_cols_t = len(days)
+        if n_cols_t > 1:
+            edges = np.empty(n_cols_t + 1)
+            edges[1:-1] = (days[:-1] + days[1:]) / 2.0
+            edges[0] = days[0] - (days[1] - days[0]) / 2.0
+            edges[-1] = days[-1] + (days[-1] - days[-2]) / 2.0
+        else:
+            edges = np.array([days[0] - 0.5, days[0] + 0.5])
+        reordered_idx = cm.dendrogram_row.reordered_ind
+        reordered_data = df.values[reordered_idx, :]
+        masked = np.ma.masked_invalid(reordered_data)
+        n_rows_t = len(reordered_data)
+        y_edges = np.arange(n_rows_t + 1, dtype=float)
+        for _img in list(ax.images):
+            _img.remove()
+        for _coll in list(ax.collections):
+            _coll.remove()
+        ax.pcolormesh(edges, y_edges, masked, cmap=cmap, norm=norm, shading='flat')
+        ax.set_xlim(edges[0], edges[-1])
+        ax.set_ylim(n_rows_t, 0)
+        # X-axis treated as a continuous graphical axis: ticks at every
+        # multiple of 25 across the day domain, independent of which days
+        # actually have samples.
+        tick_step = 25
+        x_lo, x_hi = float(edges[0]), float(edges[-1])
+        first_tick = int(np.ceil(x_lo / tick_step) * tick_step)
+        last_tick = int(np.floor(x_hi / tick_step) * tick_step)
+        tick_days = list(range(first_tick, last_tick + 1, tick_step))
+        ax.set_xticks(tick_days)
+        ax.set_xticklabels(
+            [str(d) for d in tick_days], fontsize=29, rotation=80,
+            ha='right', va='center', rotation_mode='anchor',
+        )
+        ax.set_yticks(np.arange(n_rows_t) + 0.5)
+        reordered_labels = [df.index[i] for i in reordered_idx]
+        ax.set_yticklabels(reordered_labels, fontsize=29, rotation=0)
+        ax.yaxis.tick_right()
+        ax.yaxis.set_label_position('right')
+        ax.tick_params(axis='y', pad=4)
 
     # GAO/PAO label coloring and italicization at the genus level.
     id_levels = {}
@@ -336,8 +415,8 @@ def create_heatmap(df, taxonomies, title, *, mode, suffix,
         spine.set_edgecolor('black')
         spine.set_linewidth(1)
 
-    if mode == 'log2fc_days' and phase_day_ranges:
-        _draw_phase_delimiters(cm, df, phase_day_ranges)
+    if is_day_mode and phase_day_ranges:
+        _draw_phase_delimiters(cm, df, phase_day_ranges, time_based=(mode == 'log2fc_time'))
 
     # Anchor the dendrogram's left edge to the rightmost edge of the longest label.
     fig = cm.figure
@@ -355,23 +434,33 @@ def create_heatmap(df, taxonomies, title, *, mode, suffix,
         d_pos = cm.ax_row_dendrogram.get_position()
         cm.ax_row_dendrogram.set_position([max_right_fig + 0.008, d_pos.y0, dendro_w, d_pos.height])
 
-    # Shift the cbar so the right edge of its longest tick label lands on the
-    # left edge of the phylum row-color strip.
-    fig.canvas.draw()
-    renderer = fig.canvas.get_renderer()
-    cbar_label_right_disp = None
-    for lab in cm.ax_cbar.get_yticklabels():
-        if not lab.get_text():
-            continue
-        bb = lab.get_window_extent(renderer=renderer)
-        if cbar_label_right_disp is None or bb.x1 > cbar_label_right_disp:
-            cbar_label_right_disp = bb.x1
-    if cbar_label_right_disp is not None:
-        cbar_label_right_fig = fig.transFigure.inverted().transform((cbar_label_right_disp, 0))[0]
-        colors_left_edge = cm.ax_row_colors.get_position().x0
-        shift = colors_left_edge - cbar_label_right_fig
-        cbar_pos = cm.ax_cbar.get_position()
-        cm.ax_cbar.set_position([cbar_pos.x0 + shift, cbar_pos.y0, cbar_pos.width, cbar_pos.height])
+    # Move the cbar to the far right of the figure: align its left edge with
+    # the dendrogram's right edge (plus a small gap).
+    dendro_pos = cm.ax_row_dendrogram.get_position()
+    cbar_pos = cm.ax_cbar.get_position()
+    target_left = dendro_pos.x1 + 0.012
+    cm.ax_cbar.set_position([target_left, cbar_pos.y0, cbar_pos.width, cbar_pos.height])
+
+    # Significance asterisks: drawn at each phase's horizontal midpoint, in data
+    # coordinates of the time-based heatmap, for each (phase, taxon) cell whose
+    # FDR-adjusted q-value passed.
+    if significance and mode == 'log2fc_time' and phase_day_ranges:
+        reordered_idx = cm.dendrogram_row.reordered_ind
+        taxon_to_row = {df.index[reordered_idx[i]]: i + 0.5 for i in range(len(reordered_idx))}
+        days_in_df = [int(c) for c in df.columns]
+        phase_centers = {}
+        for phase_name, span in phase_day_ranges.items():
+            in_phase = [d for d in days_in_df if span['start'] <= d <= span['end']]
+            if not in_phase:
+                continue
+            phase_centers[phase_name] = (min(in_phase) + max(in_phase)) / 2.0
+        ax = cm.ax_heatmap
+        for (phase_name, taxon), _q in significance.items():
+            if phase_name not in phase_centers or taxon not in taxon_to_row:
+                continue
+            ax.text(phase_centers[phase_name], taxon_to_row[taxon], '*',
+                    color='lime', fontsize=34, fontweight='bold',
+                    ha='center', va='center')
 
     out_path = f"{title.lower().replace(' ', '_')}{suffix}.png"
     cm.figure.savefig(out_path, bbox_inches='tight', dpi=300)
@@ -394,10 +483,10 @@ def main():
     abundances = abundances.loc[sorted(abundances.index, key=int)]
 
     # Aggregate to root organism ID and keep taxa with max relative abundance ≥ 1%.
-    root = abundances.copy()
-    root.columns = [c.split('.')[0] for c in root.columns]
-    root = root.T.groupby(level=0).sum().T
-    root = root.loc[:, root.max(axis=0) >= MIN_MAX_PCT]
+    root_full = abundances.copy()
+    root_full.columns = [c.split('.')[0] for c in root_full.columns]
+    root_full = root_full.T.groupby(level=0).sum().T
+    root = root_full.loc[:, root_full.max(axis=0) >= MIN_MAX_PCT]
     root_taxonomies = {}
     for ID, taxa in iterativeID_taxonomy.items():
         r = ID.split('.')[0]
@@ -441,6 +530,49 @@ def main():
     tax_innoc = pd.Series({idx: root_taxonomies.get(idx, f'Unknown|{idx}') for idx in df_innoc.index})
     create_heatmap(df_innoc, tax_innoc, 'Taxa Above 1% Max Abundance',
                    mode='log2fc_days', suffix='_diff_innoculum', **shared_kwargs)
+    create_heatmap(df_innoc, tax_innoc, 'Taxa Above 1% Max Abundance',
+                   mode='log2fc_time', suffix='_diff_innoculum_time', **shared_kwargs)
+
+    # ---- CLR → one-sample Wilcoxon (phase vs innoculum) → BH-FDR ----
+    # CLR on the full root-aggregated composition (not just filtered taxa).
+    log_full = np.log(root_full + PSEUDO)
+    clr_full = log_full.sub(log_full.mean(axis=1), axis=0)
+    clr = clr_full[root.columns]  # subset to filtered taxa, rows still days
+    innoculum_day = root.index[0]
+    innoc_phase = next(
+        (p for p, s in phase_day_ranges.items()
+         if s['start'] <= int(innoculum_day) <= s['end']),
+        None,
+    )
+    innoc_clr = clr.loc[innoculum_day]
+    pvals_map = {}
+    for phase, span in phase_day_ranges.items():
+        if phase == innoc_phase:
+            continue
+        in_phase = [d for d in root.index if span['start'] <= int(d) <= span['end']]
+        if len(in_phase) < 1:
+            continue
+        phase_clr = clr.loc[in_phase]
+        for taxon in clr.columns:
+            diffs = (phase_clr[taxon] - innoc_clr[taxon]).values
+            nz = diffs[diffs != 0]
+            if nz.size < 1:
+                continue
+            try:
+                _, p = wilcoxon(nz, alternative='two-sided', zero_method='wilcox')
+            except ValueError:
+                continue
+            pvals_map[(phase, taxon)] = p
+    significance = {}
+    if pvals_map:
+        keys = list(pvals_map.keys())
+        pvals = np.array([pvals_map[k] for k in keys])
+        reject, qvals, _, _ = multipletests(pvals, alpha=0.05, method='fdr_bh')
+        significance = {keys[i]: qvals[i] for i in range(len(keys)) if reject[i]}
+    print(f'FDR-significant (phase, taxon) cells: {len(significance)} / {len(pvals_map)}')
+    create_heatmap(df_innoc, tax_innoc, 'Taxa Above 1% Max Abundance',
+                   mode='log2fc_time', suffix='_diff_innoculum_time_FDR',
+                   significance=significance, **shared_kwargs)
 
 
 if __name__ == '__main__':
