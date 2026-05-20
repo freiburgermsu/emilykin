@@ -966,6 +966,23 @@ def _(
         _col_pos = _dendrogram_col.index(_colIx)
         _rect = patches.Rectangle((_col_pos, 0) if not _one_triangle else (_col_pos, len(corr_matrix.index)), 1, len(corr_matrix.index) if not _one_triangle else -(len(corr_matrix.index) - _col_pos), linewidth=6, edgecolor='black', facecolor='none', clip_on=False)
         _clusterMap.ax_heatmap.add_patch(_rect)
+    _gao_pao_box_color = {'GAOs': 'green', 'Putative GAOs': 'mediumseagreen', 'PAOs': 'blue', 'Putative PAOs': 'cornflowerblue'}
+    _n_corr = len(corr_matrix.index)
+    for _id in corr_matrix.index:
+        _cat = inverted_GAOs_PAOs.get(_id.split('.')[0])
+        if _cat not in _gao_pao_box_color:
+            continue
+        _box_color = _gao_pao_box_color[_cat]
+        _row_pos = _dendrogram_row.index(corr_matrix.index.get_loc(_id))
+        _col_pos = _dendrogram_col.index(corr_matrix.columns.get_loc(_id))
+        if _one_triangle:
+            _row_rect = patches.Rectangle((0, _row_pos), _row_pos + 1, 1, linewidth=4, edgecolor=_box_color, facecolor='none', clip_on=False)
+            _col_rect = patches.Rectangle((_col_pos, _n_corr), 1, -(_n_corr - _col_pos), linewidth=4, edgecolor=_box_color, facecolor='none', clip_on=False)
+        else:
+            _row_rect = patches.Rectangle((0, _row_pos), len(corr_matrix.columns), 1, linewidth=4, edgecolor=_box_color, facecolor='none', clip_on=False)
+            _col_rect = patches.Rectangle((_col_pos, 0), 1, _n_corr, linewidth=4, edgecolor=_box_color, facecolor='none', clip_on=False)
+        _clusterMap.ax_heatmap.add_patch(_row_rect)
+        _clusterMap.ax_heatmap.add_patch(_col_rect)
     proteo_class_color_1 = json.load(open('proteo_class_color.json'))
     _proteo_base = json.load(open('phylum_base_overrides.json'))['Proteobacteria']
     if isinstance(row_colors, Series):
@@ -1356,6 +1373,200 @@ def _(
         G_sub = G.edge_subgraph(incident_edges).copy()
         render_network(G_sub, _name, focus_nodes=set(focus_in_G))
 
+    return
+
+
+@app.cell(disabled=True)
+def _(GAOs_PAOs):
+    """Per-phase versions of the one-triangle correlation and co-occurrence network figures."""
+    from json import load as _load
+    from collections import defaultdict as _dd
+    from itertools import combinations as _comb
+    import numpy as _np
+    from numpy import triu as _triu, ones_like as _ones_like, nan as _nan, ones as _ones
+    from pandas import DataFrame as _DF, Series as _Ser, read_csv as _read_csv
+    from scipy.stats import spearmanr as _spr
+    from statsmodels.stats.multitest import multipletests as _mt
+    import matplotlib.pyplot as _plt
+    import matplotlib.colors as _mc
+    import matplotlib.cm as _cm_mpl
+    import matplotlib.patches as _mpatch
+    import seaborn as _sns
+    import networkx as _nx
+    _sd = _load(open('sample_days.json'))
+    _phr = _load(open('phase_day_ranges.json'))
+    _itx = _load(open('iterativeID_taxonomy.json'))
+    _icm = _load(open('iterativeID_color_map.json'))
+    _ilv = _load(open('iterativeID_levels.json'))
+    _pcm = _load(open('Phylum_color_map.json'))
+    _pcc = _load(open('proteo_class_color.json'))
+    _pb = _load(open('phylum_base_overrides.json'))['Proteobacteria']
+    _inv = {v: k for k, vs in GAOs_PAOs.items() for v in vs}
+    _LBL = {'GAOs': 'green', 'Putative GAOs': 'mediumseagreen', 'PAOs': 'blue', 'Putative PAOs': 'cornflowerblue', 'Other PHA storing potential+ function': 'red'}
+    _BOX = {'GAOs': 'green', 'Putative GAOs': 'mediumseagreen', 'PAOs': 'blue', 'Putative PAOs': 'cornflowerblue'}
+    _IDLV = {}
+    for _k, _v in _ilv.items():
+        _IDLV[_k] = _v
+        _IDLV.setdefault(_k.split('.')[0], _v)
+    _ABT = 0.005
+    _ZL = 1e-05
+    _EXCLUDE_DAYS_BELOW = 15
+
+    def _gpc(node_id, mapping):
+        text = str(node_id)
+        for _o, _c in _inv.items():
+            if _o in text:
+                return mapping.get(_c)
+        return None
+
+    def _corr_pv(df):
+        n = df.shape[1]
+        pv = _DF(_ones((n, n)), index=df.columns, columns=df.columns)
+        cr = _DF(_ones((n, n)), index=df.columns, columns=df.columns)
+        for _i in range(n):
+            for _j in range(_i + 1, n):
+                _c, _p = _spr(df.iloc[:, _i], df.iloc[:, _j])
+                pv.iloc[_i, _j] = _p; pv.iloc[_j, _i] = _p
+                cr.iloc[_i, _j] = _c; cr.iloc[_j, _i] = _c
+        return (pv, cr)
+
+    def _fdr(df):
+        pres = (df > _ZL).astype(int)
+        cooc = _dd(int)
+        for s in pres.itertuples(index=False):
+            present = [c for c, v in zip(pres.columns, s) if v]
+            for p in _comb(sorted(present), 2):
+                cooc[p] += 1
+        pdat = []
+        for (_a, _b), _ct in cooc.items():
+            _r, _pv = _spr(df[_a], df[_b])
+            if _np.isnan(_r):
+                continue
+            pdat.append((_a, _b, _r, _pv, _ct))
+        if not pdat:
+            return [], set()
+        pvs = _np.array([t[3] for t in pdat])
+        rj, _, _, _ = _mt(pvs, alpha=0.05, method='fdr_bh')
+        passing = [pdat[_i] for _i in range(len(pdat)) if rj[_i]]
+        orgs = {a for a, b, *_ in passing} | {b for a, b, *_ in passing}
+        return passing, orgs
+
+    def _build_tax(orgs):
+        return _Ser({o: '|'.join([_itx.get(o, {}).get(l, '') for l in ['Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus']]) for o in orgs})
+
+    def _render_one_triangle_phase(corr_matrix, taxonomies, suffix):
+        if corr_matrix.shape[0] < 2:
+            print(f'[one-triangle {suffix}] not enough orgs'); return
+        DEFAULT = 'lightgray'
+        rc = _Ser({i: _icm.get(i, DEFAULT) for i in corr_matrix.index}, name='Phylum')
+        cc = _Ser({c: _icm.get(c, DEFAULT) for c in corr_matrix.columns}, name='Phylum')
+        cm = _sns.clustermap(corr_matrix, row_colors=rc, col_colors=cc, cmap='coolwarm_r', center=0, figsize=(60, 70), dendrogram_ratio=(0.1, 0.2))
+        cm.figure.subplots_adjust(bottom=0.15, top=0.95)
+        cm.ax_row_dendrogram.set_visible(False); cm.ax_col_dendrogram.set_visible(False)
+        cm.ax_heatmap.yaxis.set_ticks_position('left'); cm.ax_heatmap.yaxis.set_label_position('left')
+        d_row = cm.dendrogram_row.reordered_ind; d_col = cm.dendrogram_col.reordered_ind
+        df_re = corr_matrix.iloc[d_row, d_col]
+        mask = _triu(_ones_like(df_re, dtype=bool), k=1)
+        mesh = cm.ax_heatmap.collections[0]
+        arr = mesh.get_array().reshape(df_re.shape); arr[mask] = _nan; mesh.set_array(arr.ravel())
+        for axis_get in (cm.ax_heatmap.get_yticklabels, cm.ax_heatmap.get_xticklabels):
+            for lbl in axis_get():
+                t = lbl.get_text()
+                for _o, _c in _inv.items():
+                    if _o in t:
+                        lbl.set_fontweight('bold')
+                        col = _LBL.get(_c)
+                        if col:
+                            lbl.set_color(col)
+                if _IDLV.get(t) == 'Genus':
+                    lbl.set_fontstyle('italic')
+        N = len(corr_matrix.index)
+        for _id in corr_matrix.index:
+            cat = _inv.get(_id.split('.')[0])
+            if cat not in _BOX:
+                continue
+            color = _BOX[cat]
+            rp = d_row.index(corr_matrix.index.get_loc(_id))
+            cp = d_col.index(corr_matrix.columns.get_loc(_id))
+            cm.ax_heatmap.add_patch(_mpatch.Rectangle((0, rp), rp + 1, 1, linewidth=4, edgecolor=color, facecolor='none', clip_on=False))
+            cm.ax_heatmap.add_patch(_mpatch.Rectangle((cp, N), 1, -(N - cp), linewidth=4, edgecolor=color, facecolor='none', clip_on=False))
+        cm.ax_heatmap.set_xlabel('Member ASVs', fontsize=50); cm.ax_heatmap.set_ylabel('Member ASVs', fontsize=50)
+        out = f'abundance_correlatons_one_triangle_{suffix}.png'
+        cm.figure.savefig(out, dpi=200, bbox_inches='tight'); _plt.close(cm.figure)
+        print(f'wrote {out}')
+
+    def _render_network_phase(G_sub, mean_rel, suffix, focus=None):
+        if G_sub.number_of_edges() == 0:
+            print(f'[network {suffix}] no edges'); return
+        pos = _nx.spring_layout(G_sub, seed=42, iterations=100, k=0.3)
+        edges = G_sub.edges(data=True)
+        rho_values = [d['rho'] for _, _, d in edges]
+        edge_widths = [3 * d['weight'] for _, _, d in edges]
+        norm = _mc.TwoSlopeNorm(vmin=-1, vcenter=0, vmax=1)
+        cmap = _cm_mpl.RdBu
+        edge_colors = [cmap(norm(r)) for r in rho_values]
+        width = 40
+        fig, ax = _plt.subplots(figsize=(width, 30))
+        scale = 5000 * (width / 10) * 2
+        cps = _np.sqrt
+        node_sizes = [scale * cps(mean_rel.get(n, 0)) for n in G_sub.nodes()]
+        node_colors = [_pcm.get(_itx.get(n, {}).get('Phylum', ''), 'lightgray') for n in G_sub.nodes()]
+        edgecolors = [(_gpc(n, _LBL) or 'none') if focus and n in focus else 'none' for n in G_sub.nodes()]
+        linewidths = [6 if focus and n in focus else 0 for n in G_sub.nodes()]
+        _nx.draw_networkx_nodes(G_sub, pos, node_size=node_sizes, node_color=node_colors, edgecolors=edgecolors, linewidths=linewidths, alpha=0.9, ax=ax)
+        _nx.draw_networkx_edges(G_sub, pos, width=edge_widths, edge_color=edge_colors, alpha=0.85, ax=ax)
+        max_a = mean_rel.max() if len(mean_rel) else 0
+        for n, (x, y) in pos.items():
+            ab = mean_rel.get(n, 0)
+            fs = 6 + (14 * cps(ab) / cps(max_a) * (width / 10) if max_a > 0 else 0)
+            fs = max(5, min(fs, 48))
+            color = _gpc(n, _LBL) or 'black'
+            ax.text(x, y, str(n), fontsize=fs, color=color, fontweight='bold', ha='center', va='center')
+        sm = _cm_mpl.ScalarMappable(cmap=cmap, norm=norm); sm.set_array([])
+        cb = _plt.colorbar(sm, ax=ax, shrink=0.6, pad=0.02)
+        cb.set_label('Spearman ρ', fontsize=10 * (width / 10))
+        ax.axis('off'); _plt.tight_layout()
+        out = f'cooccurrence_network_{suffix}.png'
+        _plt.savefig(out, dpi=300, bbox_inches='tight'); _plt.close(fig)
+        print(f'wrote {out}')
+
+    _g2i = _dd(list)
+    for _ID, _t in _itx.items():
+        _g = _t.get('Genus', '')
+        if _g:
+            _g2i[_g].append(_ID)
+
+    _abf = _read_csv('abundances.csv', header=0).set_index('sample')
+    for _phase, _span in _phr.items():
+        _lo = max(_span['start'], _EXCLUDE_DAYS_BELOW)
+        print(f"\n=== Phase {_phase} (days {_lo}-{_span['end']}; first {_EXCLUDE_DAYS_BELOW - 1} days excluded) ===")
+        _kp = [s for s in _abf.index if _lo <= int(_sd[s]) <= _span['end']]
+        _ab = _abf.loc[_kp]
+        _ab = _ab.loc[:, (_ab.fillna(0) > 0).any(axis=0)]
+        print(f"  samples: {_ab.shape[0]}, organisms: {_ab.shape[1]}")
+        if _ab.shape[0] < 3 or _ab.shape[1] < 2:
+            continue
+        _pp, _po = _fdr(_ab)
+        if not _po:
+            continue
+        _absig = _ab[[c for c in _ab.columns if c in _po]]
+        _abc = _absig.loc[:, _absig.max() >= _ABT]
+        if _abc.shape[1] >= 2:
+            _, _corr = _corr_pv(_abc)
+            _render_one_triangle_phase(_corr, _build_tax(_corr.columns), f'phase{_phase}')
+        _G = _nx.Graph()
+        for _a, _b, _r, _pv, _ct in _pp:
+            _G.add_edge(_a, _b, weight=abs(_r), rho=_r, pvalue=_pv, cooccurrence=_ct)
+        _mr = _ab.mean(axis=0)
+        for _sn, _gn in {'GAOs': GAOs_PAOs['GAOs'], 'PAOs': GAOs_PAOs['PAOs']}.items():
+            _focus = [_id for _g in _gn for _id in _g2i.get(_g, []) if _id in _G]
+            if not _focus:
+                continue
+            _high = {n for n in _G.nodes() if _mr.get(n, 0) > _ABT}
+            _kpb = set(_focus) | _high
+            _es = [(u, v) for u, v in _G.edges() if (u in set(_focus) or v in set(_focus)) and u in _kpb and v in _kpb]
+            _Gs = _G.edge_subgraph(_es).copy()
+            _render_network_phase(_Gs, _mr, f'{_sn}_phase{_phase}_min{_ABT*100:g}pct', focus=set(_focus))
     return
 
 

@@ -9,3 +9,7 @@
 
 # Large rendered network figures (each >20MB)
 cooccurrence_network_*.png
+
+# Annotation and binning output directories
+bakta/
+bins_*/
