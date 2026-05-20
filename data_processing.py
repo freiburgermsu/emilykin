@@ -316,14 +316,25 @@ def _(
     intervals = [0] + list(logspace(-2, -0.3, 5))
     print(intervals)
 
-    def create_heatmap(df, taxonomies, title, inlayed_data=None, linkage=None):
-        new_cmap = LinearSegmentedColormap.from_list('NewMap', [(0.0, 'aliceblue'), (0.25, 'lightblue'), (1.0, 'navy')])
-        new_cmap.set_bad('aliceblue')
-        vmin = df.min().min()
-        vmax = df.max().max()
-        vcenter = log10(0.1)
-        vcenter = min(max(vcenter, vmin + 1e-06), vmax - 1e-06)
-        norm = TwoSlopeNorm(vmin=vmin, vcenter=vcenter, vmax=vmax)
+    def create_heatmap(df, taxonomies, title, inlayed_data=None, linkage=None, mode='abundance'):
+        if mode == 'log2fc':
+            new_cmap = LinearSegmentedColormap.from_list('FCMap', [(0.0, '#2166ac'), (0.5, 'white'), (1.0, '#b2182b')])
+            new_cmap.set_bad('lightgray')
+            _abs_max = float(np.nanmax(np.abs(df.values))) if df.size else 1.0
+            if not np.isfinite(_abs_max) or _abs_max == 0:
+                _abs_max = 1.0
+            vmin = -_abs_max
+            vmax = _abs_max
+            vcenter = 0.0
+            norm = TwoSlopeNorm(vmin=vmin, vcenter=vcenter, vmax=vmax)
+        else:
+            new_cmap = LinearSegmentedColormap.from_list('NewMap', [(0.0, 'aliceblue'), (0.25, 'lightblue'), (1.0, 'navy')])
+            new_cmap.set_bad('aliceblue')
+            vmin = df.min().min()
+            vmax = df.max().max()
+            vcenter = log10(0.1)
+            vcenter = min(max(vcenter, vmin + 1e-06), vmax - 1e-06)
+            norm = TwoSlopeNorm(vmin=vmin, vcenter=vcenter, vmax=vmax)
         proteo_class_color = json.load(open('proteo_class_color.json'))
         _proteo_base = json.load(open('phylum_base_overrides.json'))['Proteobacteria']
 
@@ -334,52 +345,91 @@ def _(
                 return genera_color_map[idx]
             return _DEFAULT_COLOR
         row_colors = Series({idx: lookup(idx) for idx in df.index}, name='Phylum')
-        _clusterMap = sns.clustermap(df, row_colors=row_colors, cmap=new_cmap, norm=norm, clip_on=True, col_cluster=False, row_cluster=True, figsize=(50, 20), row_linkage=taxonomy_linkage(taxonomies), dendrogram_ratio=(0.2, 0.15))
+        if mode == 'log2fc':
+            _figsize = (max(14, 1.5 * df.shape[1] + 8), 20)
+            _dendro_ratio = (0.08, 0.15)
+        else:
+            _figsize = (50, 20)
+            _dendro_ratio = (0.2, 0.15)
+        _clusterMap = sns.clustermap(df, row_colors=row_colors, cmap=new_cmap, norm=norm, clip_on=True, col_cluster=False, row_cluster=True, figsize=_figsize, row_linkage=taxonomy_linkage(taxonomies), dendrogram_ratio=_dendro_ratio)
         for tick in _clusterMap.ax_row_colors.get_xticklabels():
             tick.set_fontsize(22)
         _cbar = _clusterMap.ax_cbar
-        log_ticks = np.array([vmin, log10(0.01), vcenter, log10(0.2), vmax])
-        _cbar.set_yticks(log_ticks)
-        original_ticks = 10 ** log_ticks
-        original_labels = [f'{x * 100:.1e}'.replace('e-0', 'E-') if x * 100 < 0.1 else round(x * 100) for x in original_ticks]
-        original_labels[0] = '0'
-        _cbar.set_yticklabels(original_labels, fontsize=22)
-        _cbar.set_yticks(log_ticks)
-        _cbar.set_xlabel('Rel. Abundance %', fontsize=18, labelpad=10)
-        if inlayed_data:
-            top_ax = _clusterMap.ax_col_dendrogram
-            top_ax.clear()
-            top_ax.plot(inlayed_data.keys(), inlayed_data.values(), color='black', marker='o', linewidth=3)
-            top_ax.set_ylabel('Shannon Diversity', fontsize=20)
-            top_ax.yaxis.tick_right()
-            top_ax.yaxis.set_label_position('right')
-            top_ax.grid(True, axis='y', linestyle='--', alpha=0.7)
-            top_ax.set_xticks([])
-            top_ax.tick_params(axis='y', labelsize=16)
+        if mode == 'log2fc':
+            _fc_ticks = np.linspace(vmin, vmax, 5)
+            _cbar.set_yticks(_fc_ticks)
+            _cbar.set_yticklabels([f'{t:+.1f}' for t in _fc_ticks], fontsize=22)
+            _cbar.set_xlabel('log$_2$ fold change', fontsize=18, labelpad=10)
+        else:
+            log_ticks = np.array([vmin, log10(0.01), vcenter, log10(0.2), vmax])
+            _cbar.set_yticks(log_ticks)
+            original_ticks = 10 ** log_ticks
+            original_labels = [f'{x * 100:.1e}'.replace('e-0', 'E-') if x * 100 < 0.1 else round(x * 100) for x in original_ticks]
+            original_labels[0] = '0'
+            _cbar.set_yticklabels(original_labels, fontsize=22)
+            _cbar.set_yticks(log_ticks)
+            _cbar.set_xlabel('Rel. Abundance %', fontsize=18, labelpad=10)
+        # Shannon-diversity inlay disabled per request.
+        # if inlayed_data:
+        #     top_ax = _clusterMap.ax_col_dendrogram
+        #     top_ax.clear()
+        #     top_ax.plot(inlayed_data.keys(), inlayed_data.values(), color='black', marker='o', linewidth=3)
+        #     top_ax.set_ylabel('Shannon Diversity', fontsize=20)
+        #     top_ax.yaxis.tick_right()
+        #     top_ax.yaxis.set_label_position('right')
+        #     top_ax.grid(True, axis='y', linestyle='--', alpha=0.7)
+        #     top_ax.set_xticks([])
+        #     top_ax.tick_params(axis='y', labelsize=16)
+        _clusterMap.ax_col_dendrogram.set_visible(False)
         _clusterMap.figure.subplots_adjust(bottom=0.15, top=0.95)
         _clusterMap.ax_heatmap.set_yticklabels(_clusterMap.ax_heatmap.get_yticklabels(), fontsize=24, rotation=0)
         _clusterMap.ax_heatmap.set_xticklabels(_clusterMap.ax_heatmap.get_xticklabels(), fontsize=24, rotation=70, ha='right')
-        _clusterMap.ax_heatmap.set_xlabel('Days of operation', fontsize=32, labelpad=20)
+        _xlabel = 'Phase comparison (log$_2$ fold change)' if mode == 'log2fc' else 'Days of operation'
+        _clusterMap.ax_heatmap.set_xlabel(_xlabel, fontsize=32, labelpad=20)
         _clusterMap.ax_row_dendrogram.xaxis.set_visible(False)
         _clusterMap.ax_row_dendrogram.text(0.65, -0.02, 'Taxonomical tree', fontsize=24, ha='center', transform=_clusterMap.ax_row_dendrogram.transAxes)
-        _clusterMap.ax_heatmap.yaxis.tick_left()
-        _clusterMap.ax_heatmap.yaxis.set_label_position('left')
-        label_right = 0.22
-        heatmap_right = 0.68
-        dendro_left = 0.71
-        dendro_right = 0.85
-        hm_pos = _clusterMap.ax_heatmap.get_position()
-        dend_pos = _clusterMap.ax_row_dendrogram.get_position()
-        _clusterMap.ax_heatmap.set_position([label_right, hm_pos.y0, heatmap_right - label_right, hm_pos.height])
-        _clusterMap.ax_row_dendrogram.set_position([dendro_left, dend_pos.y0, dendro_right - dendro_left, dend_pos.height])
-        _clusterMap.ax_row_dendrogram.invert_xaxis()
-        gap = 0.03
-        col_dend_pos = _clusterMap.ax_col_dendrogram.get_position()
-        _clusterMap.ax_col_dendrogram.set_position([label_right, col_dend_pos.y0 + gap, heatmap_right - label_right, col_dend_pos.height])
-        _shannon_pos = _clusterMap.ax_col_dendrogram.get_position()
-        _cbar_w = 0.05
-        _cbar_x = _shannon_pos.x0 - _cbar_w - 0.02
-        _clusterMap.ax_cbar.set_position([_cbar_x, _shannon_pos.y0, _cbar_w, _shannon_pos.height])
+        if mode == 'log2fc':
+            # Layout: [phylum colors] [heatmap] [row labels] [compressed dendrogram]
+            colors_left = 0.18
+            colors_w = 0.018
+            heatmap_left = colors_left + colors_w + 0.005
+            heatmap_right = 0.58
+            dendro_w = 0.06
+            dendro_left = heatmap_right + 0.20
+            dendro_right = dendro_left + dendro_w
+            hm_pos = _clusterMap.ax_heatmap.get_position()
+            dend_pos = _clusterMap.ax_row_dendrogram.get_position()
+            _clusterMap.ax_heatmap.set_position([heatmap_left, hm_pos.y0, heatmap_right - heatmap_left, hm_pos.height])
+            _clusterMap.ax_heatmap.yaxis.tick_right()
+            _clusterMap.ax_heatmap.yaxis.set_label_position('right')
+            _clusterMap.ax_heatmap.tick_params(axis='y', pad=4)
+            # Tentative dendrogram placement; final x is set after labels render.
+            _clusterMap.ax_row_dendrogram.set_position([heatmap_right + 0.20, dend_pos.y0, dendro_w, dend_pos.height])
+            # Flip so branches open leftward, toward the heatmap.
+            _clusterMap.ax_row_dendrogram.invert_xaxis()
+            col_dend_pos = _clusterMap.ax_col_dendrogram.get_position()
+            _cbar_w = 0.035
+            _cbar_x = colors_left - _cbar_w - 0.04
+            _clusterMap.ax_cbar.set_position([_cbar_x, col_dend_pos.y0, _cbar_w, col_dend_pos.height])
+        else:
+            _clusterMap.ax_heatmap.yaxis.tick_left()
+            _clusterMap.ax_heatmap.yaxis.set_label_position('left')
+            label_right = 0.22
+            heatmap_right = 0.68
+            dendro_left = 0.71
+            dendro_right = 0.85
+            hm_pos = _clusterMap.ax_heatmap.get_position()
+            dend_pos = _clusterMap.ax_row_dendrogram.get_position()
+            _clusterMap.ax_heatmap.set_position([label_right, hm_pos.y0, heatmap_right - label_right, hm_pos.height])
+            _clusterMap.ax_row_dendrogram.set_position([dendro_left, dend_pos.y0, dendro_right - dendro_left, dend_pos.height])
+            _clusterMap.ax_row_dendrogram.invert_xaxis()
+            gap = 0.03
+            col_dend_pos = _clusterMap.ax_col_dendrogram.get_position()
+            _clusterMap.ax_col_dendrogram.set_position([label_right, col_dend_pos.y0 + gap, heatmap_right - label_right, col_dend_pos.height])
+            _shannon_pos = _clusterMap.ax_col_dendrogram.get_position()
+            _cbar_w = 0.05
+            _cbar_x = _shannon_pos.x0 - _cbar_w - 0.02
+            _clusterMap.ax_cbar.set_position([_cbar_x, _shannon_pos.y0, _cbar_w, _shannon_pos.height])
         _iterativeID_levels = json.load(open('iterativeID_levels.json', 'r'))
         _ID_levels = {}
         for _k, _v in _iterativeID_levels.items():
@@ -409,8 +459,11 @@ def _(
         fig_h = _clusterMap.figure.get_figheight()
         strip_w = 0.015
         strip_h = 0.015
-        _clusterMap.ax_row_colors.set_position([hm_pos.x1 + 0.005, hm_pos.y0, strip_w, hm_pos.height])
-        _clusterMap.ax_heatmap.tick_params(axis='y', pad=4)
+        if mode == 'log2fc':
+            _clusterMap.ax_row_colors.set_position([hm_pos.x0 - strip_w - 0.005, hm_pos.y0, strip_w, hm_pos.height])
+        else:
+            _clusterMap.ax_row_colors.set_position([hm_pos.x1 + 0.005, hm_pos.y0, strip_w, hm_pos.height])
+            _clusterMap.ax_heatmap.tick_params(axis='y', pad=4)
         if isinstance(row_colors, Series):
             rc = row_colors
         else:
@@ -450,7 +503,11 @@ def _(
                         handles.append(Patch(facecolor=_color, label=f'      {cls}'))
                 else:
                     handles.append(Patch(facecolor=phylum_color[_p], label=_p))
-        _clusterMap.figure.legend(handles=handles, title='Phylum', title_fontsize=20, fontsize=18, loc='upper right', bbox_to_anchor=(dendro_right, 1.0), frameon=True, borderaxespad=0.5, handlelength=1.5, handletextpad=0.6)
+        if mode == 'log2fc':
+            _ncol = int(np.ceil(len(handles) / 2))
+            _clusterMap.figure.legend(handles=handles, title='Phylum', title_fontsize=20, fontsize=16, loc='upper center', bbox_to_anchor=(0.5, 0.99), ncol=_ncol, frameon=True, borderaxespad=0.5, handlelength=1.5, handletextpad=0.6, columnspacing=1.2)
+        else:
+            _clusterMap.figure.legend(handles=handles, title='Phylum', title_fontsize=20, fontsize=18, loc='upper right', bbox_to_anchor=(dendro_right, 1.0), frameon=True, borderaxespad=0.5, handlelength=1.5, handletextpad=0.6)
         for spine in _clusterMap.ax_heatmap.spines.values():
             spine.set_visible(True)
             spine.set_edgecolor('black')
@@ -459,7 +516,7 @@ def _(
             _phase_day_ranges = json.load(open('phase_day_ranges.json', 'r'))
         except FileNotFoundError:
             _phase_day_ranges = {}
-        if _phase_day_ranges:
+        if _phase_day_ranges and mode != 'log2fc':
             import matplotlib.lines as _mlines
             _days_int = []
             for _c in df.columns:
@@ -498,15 +555,34 @@ def _(
                     _x_disp = _clusterMap.ax_heatmap.transData.transform((_x_data, 0))[0]
                     _x_fig = _fig.transFigure.inverted().transform((_x_disp, 0))[0]
                     _fig.add_artist(_mlines.Line2D([_x_fig, _x_fig], [_y_bot, _y_top], transform=_fig.transFigure, color='black', linewidth=1.2, linestyle='--', alpha=0.6))
-        _clusterMap.figure.savefig(f"{title.lower().replace(' ', '_')}.png", bbox_inches='tight', dpi=300)
-    from numpy import log
+        if mode == 'log2fc':
+            # Align the dendrogram's left edge with the right edge of the longest y-tick label.
+            _fig = _clusterMap.figure
+            _fig.canvas.draw()
+            _renderer = _fig.canvas.get_renderer()
+            _max_right_disp = None
+            for _lab in _clusterMap.ax_heatmap.get_yticklabels():
+                if not _lab.get_text():
+                    continue
+                _bb = _lab.get_window_extent(renderer=_renderer)
+                if _max_right_disp is None or _bb.x1 > _max_right_disp:
+                    _max_right_disp = _bb.x1
+            if _max_right_disp is not None:
+                _max_right_fig = _fig.transFigure.inverted().transform((_max_right_disp, 0))[0]
+                _dend_pos = _clusterMap.ax_row_dendrogram.get_position()
+                _clusterMap.ax_row_dendrogram.set_position([_max_right_fig + 0.008, _dend_pos.y0, dendro_w, _dend_pos.height])
+        _suffix = '_diff' if mode == 'log2fc' else ''
+        _clusterMap.figure.savefig(f"{title.lower().replace(' ', '_')}{_suffix}.png", bbox_inches='tight', dpi=300)
+    from numpy import log, log2
     _DEFAULT_COLOR = 'lightgray'
     iterativeIDs_1 = json.load(open('iterativeIDs.json', 'r'))
     _zero_level = 1e-05
 
-    def shannon_index(abundances):
-        return -sum([abundance * log(abundance) for abundance in abundances if abundance > _zero_level])
-    shannon_indices = {_sample: shannon_index(list(abs.to_numpy())) for _sample, abs in abundances.iterrows()}
+    # Shannon-diversity index computation disabled per request.
+    # def shannon_index(abundances):
+    #     return -sum([abundance * log(abundance) for abundance in abundances if abundance > _zero_level])
+    # shannon_indices = {_sample: shannon_index(list(abs.to_numpy())) for _sample, abs in abundances.iterrows()}
+    shannon_indices = None
     taxonomy_1 = json.load(open('iterativeID_taxonomy.json', 'r'))
     dic, _taxonomies = ({}, {})
     level_1 = 'Genus'
@@ -551,17 +627,33 @@ def _(
         _root = _ID.split('.')[0]
         if _root in _root_abundances.columns and _root not in _root_taxonomies:
             _root_taxonomies[_root] = '|'.join([str(_taxa[l]) for l in _taxonomic_levels if _taxonomic_levels.index(l) <= _taxonomic_levels.index('Genus')])
-    _root_per_day = {}
-    for _sample, _abs_row in _root_abundances.iterrows():
-        _root_per_day[_sample] = {_root: log10(_v) for _root, _v in _abs_row.items() if _v > _zero_level}
-    df_root = DataFrame(_root_per_day)
+
+    # Per-phase mean relative abundance, then log2 fold change for each
+    # unordered phase pair (all C(n_phases, 2) permutations explored).
+    _phase_day_ranges = json.load(open('phase_day_ranges.json', 'r'))
+    _phase_means = {}
+    for _phase, _span in _phase_day_ranges.items():
+        _start, _end = (_span['start'], _span['end'])
+        _in_phase = [_d for _d in _root_abundances.index if _start <= int(_d) <= _end]
+        if not _in_phase:
+            continue
+        _phase_means[_phase] = _root_abundances.loc[_in_phase].mean(axis=0)
+    _phase_mean_df = DataFrame(_phase_means)
+    _pseudocount = 1e-06
+    _phase_order = [_p for _p in _phase_day_ranges.keys() if _p in _phase_mean_df.columns]
+    _fc_cols = {}
+    for _i, _p1 in enumerate(_phase_order):
+        for _p2 in _phase_order[_i + 1:]:
+            _label = f'{_p1} / {_p2}'
+            _fc_cols[_label] = log2((_phase_mean_df[_p1] + _pseudocount) / (_phase_mean_df[_p2] + _pseudocount))
+    df_root = DataFrame(_fc_cols)
     df_root = df_root.astype(float).replace([inf, -inf], nan)
     _root_taxonomy_series = Series({idx: _root_taxonomies.get(idx, f'Unknown|{idx}') for idx in df_root.index})
     _arr_root = df_root.values.astype(float)
     _row_means_root = nanmean(_arr_root, axis=1, keepdims=True)
     _arr_filled_root = where(isnan(_arr_root), _row_means_root, _arr_root)
     _row_linkage_root = linkage(_arr_filled_root, method='average', metric='euclidean')
-    create_heatmap(df_root, _root_taxonomy_series, 'Taxa Above 1% Max Abundance', shannon_indices, _row_linkage_root)
+    create_heatmap(df_root, _root_taxonomy_series, 'Taxa Above 1% Max Abundance', None, _row_linkage_root, mode='log2fc')
     return (
         Patch,
         Series,
@@ -1267,36 +1359,253 @@ def _(
     def header_patch(title):
         return mpatches.Patch(color='none', label=f'$\\bf{{{title}}}$')
 
-    def render_network(G_sub, title_slug, focus_nodes=None):
+    def render_network(G_sub, title_slug, focus_nodes=None, grid_layout_mode=False, use_module_weighting=True, resolution=1.0, simplified=False):
         if G_sub.number_of_edges() == 0:
             print(f'[{title_slug}] no edges — skipping')
             return
-        pos = nx.spring_layout(G_sub, seed=42, iterations=100, k=0.3)
-        edges = G_sub.edges(data=True)
-        rho_values = [d['rho'] for _, _, d in edges]
-        edge_widths = [3 * d['weight'] for _, _, d in edges]
+        import math as _math
+        import matplotlib.patheffects as path_effects
+        from scipy.spatial import ConvexHull as _ConvexHull
+
+        # === Compute Louvain communities (positive-rho subgraph) + singleton handling for isolates ===
+        _pos_edges = [(u, v) for u, v, d in G_sub.edges(data=True) if d['rho'] > 0]
+        _pos_subgraph = G_sub.edge_subgraph(_pos_edges).copy()
+        try:
+            _louvain_comms = nx.community.louvain_communities(
+                _pos_subgraph,
+                weight='weight', resolution=resolution, seed=42)
+        except AttributeError:
+            _louvain_comms = list(nx.algorithms.community.greedy_modularity_communities(G_sub, weight='weight'))
+        _louvain_comms = list(_louvain_comms)
+        try:
+            _Q_for_label = nx.community.modularity(_pos_subgraph, _louvain_comms, weight='weight') if _louvain_comms else 0.0
+        except AttributeError:
+            _Q_for_label = nx.algorithms.community.modularity(_pos_subgraph, _louvain_comms, weight='weight') if _louvain_comms else 0.0
+
+        _layout_comms = list(_louvain_comms)
+        _node_module = {n: i for i, c in enumerate(_layout_comms) for n in c}
+        _isolate_nodes = [n for n in G_sub.nodes() if n not in _node_module]
+        for _iso in _isolate_nodes:
+            _node_module[_iso] = len(_layout_comms)
+            _layout_comms.append({_iso})
+        if _isolate_nodes:
+            print(f'[{title_slug}] isolates: {len(_isolate_nodes)} nodes with only negative-rho edges -> singleton modules')
+
+        _multi_comms_only = [c for c in _layout_comms if len(c) >= 2]
+        _n_singletons = sum(1 for c in _layout_comms if len(c) == 1)
+
+        # === Module-membership JSON export ===
+        _module_export = {}
+        _louvain_n = 0
+        _singleton_n = 0
+        for _comm in sorted(_layout_comms, key=lambda c: -len(c)):
+            _members = sorted(_comm)
+            if len(_comm) >= 2:
+                _louvain_n += 1
+                _module_export[f'module_{_louvain_n}'] = {'size': len(_comm), 'type': 'louvain', 'members': _members}
+            else:
+                _singleton_n += 1
+                _module_export[f'singleton_{_singleton_n}'] = {'size': 1, 'type': 'isolate_singleton', 'members': _members}
+        json.dump(_module_export, open(f'network_module_membership_{title_slug}.json', 'w'), indent=2)
+        print(f'[{title_slug}] wrote network_module_membership_{title_slug}.json ({_louvain_n} louvain modules + {_singleton_n} singletons = {len(_module_export)} total)')
+
+        # === Anchor warm-start: place each multi-node module at a circular anchor ===
+        np.random.seed(42)
+        _anchor_radius = 9.0
+        _initial_pos = {}
+        _multi_comms_sorted = [c for c in sorted(_layout_comms, key=len, reverse=True) if len(c) >= 2]
+        for _i, _comm in enumerate(_multi_comms_sorted):
+            _angle = 2 * np.pi * _i / max(len(_multi_comms_sorted), 1)
+            _anchor = np.array([np.cos(_angle), np.sin(_angle)]) * _anchor_radius
+            _jitter_scale = 0.30 + 0.02 * len(_comm)
+            for _n in _comm:
+                _initial_pos[_n] = _anchor + np.random.normal(0, _jitter_scale, 2)
+        for _n in G_sub.nodes():
+            if _n not in _initial_pos:
+                _initial_pos[_n] = np.random.normal(0, 0.7, 2)
+
+        # === Layout: per-module subgraph layout + grid/ring placement, or unweighted spring_layout ===
+        if use_module_weighting:
+            _module_layouts = {}
+            _scale_factor = 35.0 if grid_layout_mode else 20.0
+            for _mi, _comm in enumerate(_layout_comms):
+                if len(_comm) < 2:
+                    continue
+                _sub = G_sub.subgraph(_comm).copy()
+                _module_scale = (len(_comm) if grid_layout_mode else _math.sqrt(len(_comm))) * _scale_factor
+                if _sub.number_of_edges() == 0:
+                    _module_layouts[_mi] = {n: np.random.normal(0, _module_scale * 0.3, 2) for n in _comm}
+                else:
+                    _module_layouts[_mi] = nx.spring_layout(
+                        _sub, seed=42,
+                        iterations=500 if grid_layout_mode else 300,
+                        k=30.0 if grid_layout_mode else 5.0,
+                        scale=_module_scale,
+                        weight=None if grid_layout_mode else 'weight')
+            if grid_layout_mode:
+                # === Grid placement: rotated sqrt(n) x sqrt(n) grid with vertical stretch ===
+                _intra_amp = 5.4 * 3
+                for _mi in _module_layouts:
+                    for _n in list(_module_layouts[_mi].keys()):
+                        _module_layouts[_mi][_n] = _module_layouts[_mi][_n] * _intra_amp
+                _max_module_radius = max(
+                    (max(np.linalg.norm(p) for p in _module_layouts[_mi].values())
+                     for _mi in _module_layouts), default=1.0)
+                _hull_buffer = 1.0
+                _gap_factor = 1.0 / 1.05
+                _n_multi_mods = len(_module_layouts)
+                _grid_n = int(_math.ceil(_math.sqrt(max(_n_multi_mods, 1))))
+                _cell_size = 2 * _max_module_radius * _hull_buffer * _gap_factor
+                _v_stretch = 1.6
+                _center_left_shift = -0.85 * _cell_size
+                _right_v_extra = 1.4
+                print(f'[{title_slug}] rotated grid: cell={_cell_size:.2f}, max module radius={_max_module_radius:.2f}, intra_amp={_intra_amp}')
+                pos = {}
+                _sorted_mis = sorted(_module_layouts.keys(), key=lambda mi: -len(_layout_comms[mi]))
+                for _i, _mi in enumerate(_sorted_mis):
+                    _pre_row = _i // _grid_n
+                    _pre_col = _i % _grid_n
+                    _pre_col = {0: 1, 1: 0}.get(_pre_col, _pre_col)
+                    _pre_x = (_pre_col - (_grid_n - 1) / 2.0) * _cell_size
+                    _pre_y = (_pre_row - (_grid_n - 1) / 2.0) * _cell_size
+                    _cx = -_pre_y
+                    _cy = _pre_x * _v_stretch
+                    if abs(_cx) < 0.5 * _cell_size:
+                        _cx += _center_left_shift
+                    elif _cx > 0.5 * _cell_size:
+                        _cy *= _right_v_extra
+                    _module_center = np.array([_cx, _cy])
+                    for _n, _local in _module_layouts[_mi].items():
+                        pos[_n] = _module_center + np.array([-_local[1], _local[0]])
+                _singleton_mis = [_mi for _mi, _c in enumerate(_layout_comms) if len(_c) == 1]
+                if _singleton_mis:
+                    _xext = _cell_size + _max_module_radius
+                    _yext = (_v_stretch * _right_v_extra) * _cell_size + _max_module_radius
+                    _singleton_radius = max(_xext, _yext) + _max_module_radius * 0.2
+                    for _i, _mi in enumerate(_singleton_mis):
+                        _theta = 2 * np.pi * (_i + 0.5) / max(len(_singleton_mis), 1)
+                        for _n in _layout_comms[_mi]:
+                            pos[_n] = np.array([np.cos(_theta), np.sin(_theta)]) * _singleton_radius
+            else:
+                # === Ring placement: modules around a circle (default) ===
+                _max_module_radius = max(
+                    (max(np.linalg.norm(p) for p in _module_layouts[_mi].values())
+                     for _mi in _module_layouts), default=1.0)
+                _hull_buffer = 1.02
+                _gap_factor = 1.01
+                _n_multi_mods = len(_module_layouts)
+                _min_chord = 2 * _max_module_radius * _hull_buffer * _gap_factor
+                _sep_radius = _min_chord / (2 * np.sin(np.pi / _n_multi_mods)) if _n_multi_mods > 1 else 0
+                print(f'[{title_slug}] per-module layout: ring radius={_sep_radius:.2f}, max module radius={_max_module_radius:.2f}')
+                pos = {}
+                _sorted_mis = sorted(_module_layouts.keys(), key=lambda mi: -len(_layout_comms[mi]))
+                for _i, _mi in enumerate(_sorted_mis):
+                    _theta = 2 * np.pi * _i / max(_n_multi_mods, 1)
+                    _module_center = np.array([np.cos(_theta), np.sin(_theta)]) * _sep_radius
+                    for _n, _local in _module_layouts[_mi].items():
+                        pos[_n] = _module_center + _local
+                _singleton_mis = [_mi for _mi, _c in enumerate(_layout_comms) if len(_c) == 1]
+                if _singleton_mis:
+                    _singleton_radius = _sep_radius + _max_module_radius * 2.5
+                    for _i, _mi in enumerate(_singleton_mis):
+                        _theta = 2 * np.pi * (_i + 0.5) / max(len(_singleton_mis), 1)
+                        for _n in _layout_comms[_mi]:
+                            pos[_n] = np.array([np.cos(_theta), np.sin(_theta)]) * _singleton_radius
+        else:
+            pos = nx.spring_layout(G_sub, pos=_initial_pos, seed=42, iterations=500,
+                                   k=6.0, scale=7.5, weight='weight')
+
         norm = mcolors.TwoSlopeNorm(vmin=-1, vcenter=0, vmax=1)
         cmap = cm.RdBu
-        edge_colors = [cmap(norm(r)) for r in rho_values]
         width, height = (40, 30)
         fig, ax = plt.subplots(figsize=(width, height))
         scale = 5000 * (width / 10) * 2
         compressor = np.sqrt
-        node_sizes = [scale * compressor(_mean_rel_abund.get(n, 0)) for n in G_sub.nodes()]
-        node_colors = [order_color_map_local.get(iterativeID_level.get(n, 'Unknown'), 'lightgray') for n in G_sub.nodes()]
-        edgecolors = [_gao_pao_label_color(n) if focus_nodes and n in focus_nodes else 'none' for n in G_sub.nodes()]
-        linewidths = [6 if focus_nodes and n in focus_nodes else 0 for n in G_sub.nodes()]
-        nx.draw_networkx_nodes(G_sub, pos, node_size=node_sizes, node_color=node_colors, edgecolors=edgecolors, linewidths=linewidths, alpha=0.9, ax=ax)
-        nx.draw_networkx_edges(G_sub, pos, width=edge_widths, edge_color=edge_colors, alpha=0.85, ax=ax)
-        # label_min_abund = 0.001  # 0.1% — skip labels for nodes below this
-        for n, (x, y) in pos.items():
+
+        # --- Nodes sorted by mean rel. abundance ascending: most abundant drawn last (on top) ---
+        _nodes_sorted = sorted(G_sub.nodes(), key=lambda n: _mean_rel_abund.get(n, 0))
+        node_sizes = [scale * compressor(_mean_rel_abund.get(n, 0)) for n in _nodes_sorted]
+        node_colors = [order_color_map_local.get(iterativeID_level.get(n, 'Unknown'), 'lightgray') for n in _nodes_sorted]
+        edgecolors = [_gao_pao_label_color(n) if focus_nodes and n in focus_nodes else 'none' for n in _nodes_sorted]
+        linewidths = [6 if focus_nodes and n in focus_nodes else 0 for n in _nodes_sorted]
+        nx.draw_networkx_nodes(G_sub, pos, nodelist=_nodes_sorted, node_size=node_sizes, node_color=node_colors, edgecolors=edgecolors, linewidths=linewidths, alpha=0.9, ax=ax)
+
+        if simplified:
+            # --- Two aggregate edges per module-pair (one for rho>0, one for rho<0) ---
+            # thickness ∝ |Σρ| within each bucket, color = mean ρ within that bucket
+            _module_centroid = {}
+            for _mi, _comm in enumerate(_layout_comms):
+                _pts = np.array([pos[_n] for _n in _comm if _n in pos])
+                if len(_pts) == 0:
+                    continue
+                _module_centroid[_mi] = _pts.mean(axis=0)
+            _pair_pos_sum = defaultdict(float)
+            _pair_pos_count = defaultdict(int)
+            _pair_neg_sum = defaultdict(float)
+            _pair_neg_count = defaultdict(int)
+            for u, v, d in G_sub.edges(data=True):
+                _mu = _node_module.get(u)
+                _mv = _node_module.get(v)
+                if _mu is None or _mv is None or _mu == _mv:
+                    continue
+                _key = (min(_mu, _mv), max(_mu, _mv))
+                _r = d['rho']
+                if _r > 0:
+                    _pair_pos_sum[_key] += _r
+                    _pair_pos_count[_key] += 1
+                elif _r < 0:
+                    _pair_neg_sum[_key] += _r
+                    _pair_neg_count[_key] += 1
+            _all_counts = list(_pair_pos_count.values()) + list(_pair_neg_count.values())
+            _max_count = max(_all_counts, default=1)
+            _max_log = np.log10(_max_count + 1)
+            _width_scale = 30.0 / _max_log if _max_log > 0 else 30.0
+            _offset_dist = 0.012 * max(np.linalg.norm(np.array(list(_module_centroid.values())).max(0) - np.array(list(_module_centroid.values())).min(0)), 1.0)
+
+            def _draw_split_edge(_key, _sum_rho, _count, _sign):
+                if _key[0] not in _module_centroid or _key[1] not in _module_centroid:
+                    return
+                _c_i = _module_centroid[_key[0]]
+                _c_j = _module_centroid[_key[1]]
+                _v = _c_j - _c_i
+                _norm_v = np.linalg.norm(_v)
+                if _norm_v < 1e-9:
+                    return
+                _perp = np.array([-_v[1], _v[0]]) / _norm_v * _offset_dist * _sign
+                _mean_rho = _sum_rho / _count
+                ax.plot([_c_i[0] + _perp[0], _c_j[0] + _perp[0]],
+                        [_c_i[1] + _perp[1], _c_j[1] + _perp[1]],
+                        color=cmap(norm(_mean_rho)),
+                        linewidth=_width_scale * np.log10(_count + 1),
+                        alpha=0.85, solid_capstyle='round', zorder=2)
+
+            _all_buckets = (
+                [(k, s, _pair_pos_count[k], +1) for k, s in _pair_pos_sum.items()]
+                + [(k, s, _pair_neg_count[k], -1) for k, s in _pair_neg_sum.items()]
+            )
+            _all_buckets.sort(key=lambda x: x[2])
+            for _key, _sum_rho, _count, _sign in _all_buckets:
+                _draw_split_edge(_key, _sum_rho, _count, _sign)
+            print(f'[{title_slug}] simplified: {len(_pair_pos_sum)} pos + {len(_pair_neg_sum)} neg inter-module edges (max count={_max_count})')
+        else:
+            # --- Edges sorted by |rho| ascending: stronger edges drawn last (on top) ---
+            _edges_sorted = sorted(G_sub.edges(data=True), key=lambda e: abs(e[2]['rho']))
+            _edgelist = [(u, v) for u, v, _ in _edges_sorted]
+            rho_values = [d['rho'] for _, _, d in _edges_sorted]
+            edge_widths = [3 * d['weight'] for _, _, d in _edges_sorted]
+            edge_colors = [cmap(norm(r)) for r in rho_values]
+            nx.draw_networkx_edges(G_sub, pos, edgelist=_edgelist, width=edge_widths, edge_color=edge_colors, alpha=0.85, ax=ax)
+
+        # --- Labels: per-node zorder by abundance rank, so most abundant is on top ---
+        for _rank, n in enumerate(_nodes_sorted):
+            x, y = pos[n]
             abund = _mean_rel_abund.get(n, 0)
-            # if abund < label_min_abund:
-            #     continue
             font_size = 6 + 14 * compressor(abund) / compressor(_mean_rel_abund.max()) * (width / 10)
             font_size = max(5, min(font_size, 48))
             _lbl_color = _gao_pao_label_color(n)
-            ax.text(x, y, str(n), fontsize=font_size, color=_lbl_color, fontweight='bold', ha='center', va='center')
+            _txt = ax.text(x, y, str(n), fontsize=font_size, color=_lbl_color, fontweight='bold',
+                           ha='center', va='center', zorder=5 + _rank)
+            _txt.set_path_effects([path_effects.Stroke(linewidth=max(1.5, font_size / 6), foreground='white'), path_effects.Normal()])
         sm = cm.ScalarMappable(cmap=cmap, norm=norm)
         sm.set_array([])
         _cbar = plt.colorbar(sm, ax=ax, shrink=0.6, pad=0.02)
@@ -1323,6 +1632,33 @@ def _(
             ax.text(label_x, _y, _slabel,
                     transform=fig.transFigure, va='center',
                     fontsize=5 * (width / 10), clip_on=False)
+
+        if simplified:
+            _count_legend_dy = 0.035
+            _count_legend_top_y = 4 * _count_legend_dy + 0.01  # 0.15 — bottom of thickest line at ~y=0
+            _line_x_start = 0.0
+            _line_x_end = 0.06
+            _count_label_x = 0.07
+            ax.text(_line_x_start, _count_legend_top_y + 0.025,
+                    'Inter-module edges',
+                    transform=fig.transFigure, va='bottom', fontweight='bold',
+                    fontsize=6 * (width / 10), clip_on=False)
+            ax.text(_line_x_start, _count_legend_top_y + 0.005,
+                    '(aggregated count)',
+                    transform=fig.transFigure, va='bottom',
+                    fontsize=5 * (width / 10), clip_on=False)
+            _legend_counts = [c for c in [1, 10, 100, 1000, 10000] if c <= _max_count * 1.5]
+            for _i, _count in enumerate(_legend_counts):
+                _y = _count_legend_top_y - _i * _count_legend_dy
+                _lw = _width_scale * np.log10(_count + 1)
+                ax.plot([_line_x_start, _line_x_end], [_y, _y],
+                        transform=fig.transFigure, color='gray',
+                        linewidth=_lw, alpha=0.85,
+                        solid_capstyle='round', clip_on=False)
+                ax.text(_count_label_x, _y, f'{_count:,}',
+                        transform=fig.transFigure, va='center',
+                        fontsize=5 * (width / 10), clip_on=False)
+
         phyla_in_sub = sorted({iterativeID_level.get(n, 'Unknown') for n in G_sub.nodes()})
         _archaea_markers = ('archae', 'methano', 'halobac')
         _archaea_in_sub = [p for p in phyla_in_sub if any(m in p.lower() for m in _archaea_markers)]
@@ -1336,10 +1672,103 @@ def _(
         if bacteria_patches:
             legend_handles.append(header_patch('Bacteria'))
             legend_handles.extend(bacteria_patches)
-        ax.legend(handles=legend_handles, title='Taxonomic ' + level_3, title_fontsize=8 * (width / 10), loc='upper left', bbox_to_anchor=(0, 1), fontsize=7 * (width / 10), frameon=True)
+        ax.legend(handles=legend_handles, title='Taxonomic ' + level_3, title_fontsize=8 * (width / 10),
+                  loc='upper left', bbox_to_anchor=(0.02, 0.88), bbox_transform=fig.transFigure,
+                  fontsize=7 * (width / 10), frameon=True)
         ax.axis('off')
         plt.tight_layout()
-        plt.savefig(f'cooccurrence_network_{title_slug}_min{abund_thresh*100:g}pct.png', dpi=300, bbox_inches='tight')
+
+        # --- Module shading: SAT-shrunk convex hulls ---
+        _palette_multi = plt.cm.tab10(np.linspace(0, 1, 10))
+        _module_palette = []
+        _multi_idx = 0
+        for _c in _layout_comms:
+            if len(_c) >= 2:
+                _module_palette.append(_palette_multi[_multi_idx % 10])
+                _multi_idx += 1
+            else:
+                _module_palette.append((0.65, 0.65, 0.65, 1.0))
+
+        def _convex_polys_intersect(p1, p2):
+            for poly, other in ((p1, p2), (p2, p1)):
+                for _i in range(len(poly)):
+                    _edge = poly[(_i + 1) % len(poly)] - poly[_i]
+                    _normal = np.array([-_edge[1], _edge[0]])
+                    _proj_a = poly @ _normal
+                    _proj_b = other @ _normal
+                    if _proj_a.max() < _proj_b.min() or _proj_b.max() < _proj_a.min():
+                        return False
+            return True
+
+        _hull_data = {}
+        _initial_scale = 1.30
+        for _mi, _comm in enumerate(_layout_comms):
+            if len(_comm) < 2:
+                continue
+            _pts = np.array([pos[_n] for _n in _comm if _n in pos])
+            if len(_pts) < 2:
+                continue
+            _centroid = _pts.mean(axis=0)
+            if len(_pts) >= 3:
+                _h = _ConvexHull(_pts)
+                _verts = _pts[_h.vertices]
+            else:
+                _r = max(0.05, np.linalg.norm(_pts - _centroid, axis=1).max())
+                _theta = np.linspace(0, 2 * np.pi, 32, endpoint=False)
+                _verts = _centroid + _r * np.column_stack([np.cos(_theta), np.sin(_theta)])
+            _hull_data[_mi] = [_centroid, _verts, _initial_scale]
+
+        _min_scale = 0.75
+        for _it in range(120):
+            _overlap_found = False
+            _ids = list(_hull_data.keys())
+            for _i_a in range(len(_ids)):
+                _mi_a = _ids[_i_a]
+                _ca, _va, _sa = _hull_data[_mi_a]
+                _poly_a = _ca + (_va - _ca) * _sa
+                for _i_b in range(_i_a + 1, len(_ids)):
+                    _mi_b = _ids[_i_b]
+                    _cb, _vb, _sb = _hull_data[_mi_b]
+                    _poly_b = _cb + (_vb - _cb) * _sb
+                    if _convex_polys_intersect(_poly_a, _poly_b):
+                        _overlap_found = True
+                        if _hull_data[_mi_a][2] > _min_scale:
+                            _hull_data[_mi_a][2] = max(_min_scale, _hull_data[_mi_a][2] * 0.95)
+                        if _hull_data[_mi_b][2] > _min_scale:
+                            _hull_data[_mi_b][2] = max(_min_scale, _hull_data[_mi_b][2] * 0.95)
+            if not _overlap_found:
+                print(f'[{title_slug}] hull non-overlap converged after {_it + 1} iterations')
+                break
+        else:
+            print(f'[{title_slug}] hull non-overlap floor reached at scale {_min_scale}')
+
+        for _mi, (_ca, _verts, _scale_v) in _hull_data.items():
+            _poly_pts = _ca + (_verts - _ca) * _scale_v
+            _poly = mpatches.Polygon(_poly_pts, closed=True,
+                                     facecolor=_module_palette[_mi],
+                                     edgecolor=_module_palette[_mi],
+                                     linewidth=2, alpha=0.22, zorder=0)
+            ax.add_patch(_poly)
+
+        _module_summary = (
+            r'$\bf{Modularity}$' + '\n'
+            + f'Q = {_Q_for_label:.3f}' + '\n'
+            + f'modules = {len(_multi_comms_only)} louvain + {_n_singletons} singletons '
+            + f'(total = {len(_layout_comms)})' + '\n'
+            + f'sizes (louvain): {sorted([len(c) for c in _multi_comms_only], reverse=True)}'
+        )
+        ax.text(0.02, 0.97, _module_summary,
+                transform=fig.transFigure,
+                fontsize=8 * (width / 10),
+                ha='left', va='top',
+                bbox=dict(boxstyle='round,pad=0.5',
+                          facecolor='white', edgecolor='black',
+                          alpha=0.85, linewidth=1.5))
+
+        _layout_suffix = '_grid_layout' if grid_layout_mode else ('' if use_module_weighting else '_no_module_weighting')
+        _gamma_suffix = f'_gamma{resolution:g}'
+        _simplified_suffix = '_simplified' if simplified else ''
+        plt.savefig(f'cooccurrence_network_{title_slug}_min{abund_thresh*100:g}pct{_layout_suffix}{_gamma_suffix}{_simplified_suffix}.png', dpi=300, bbox_inches='tight')
         plt.show()
         plt.close(fig)
 
@@ -1356,6 +1785,9 @@ def _(
                 if _ID in graph:
                     ids.append(_ID)
         return ids
+
+    # Full-network grid-layout render (emulates codiffusion_bioreactor's cooccurrence_network_p_value_FDR_grid_layout.png)
+    render_network(G, 'p_value_FDR', grid_layout_mode=True, resolution=1.115)
 
     selections = {'GAOs': GAOs_PAOs['GAOs'], 'PAOs': GAOs_PAOs['PAOs']}
     for _name, genus_names in selections.items():
@@ -1567,6 +1999,29 @@ def _(GAOs_PAOs):
             _es = [(u, v) for u, v in _G.edges() if (u in set(_focus) or v in set(_focus)) and u in _kpb and v in _kpb]
             _Gs = _G.edge_subgraph(_es).copy()
             _render_network_phase(_Gs, _mr, f'{_sn}_phase{_phase}_min{_ABT*100:g}pct', focus=set(_focus))
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## Diff / innoculum / time / FDR heatmaps (isolated)
+
+    This cell only reads pre-computed JSON/CSV artifacts and writes the four
+    log2-fold-change heatmap PNGs. It has no marimo inputs, so re-running it
+    will NOT trigger any of the upstream pipeline cells.
+    """)
+    return
+
+
+@app.cell
+def _():
+    """Re-render the diff / innoculum / time / FDR heatmaps from disk.
+
+    All figure logic lives in render_diff_heatmaps.py. The reload picks up
+    any edits made there since the last run without restarting marimo.
+    """
+    import importlib
+    import render_diff_heatmaps
+    importlib.reload(render_diff_heatmaps)
+    render_diff_heatmaps.main()
     return
 
 
