@@ -185,7 +185,7 @@ def render_network(G_sub, title_slug, focus_nodes=None, grid_layout_mode=False, 
             _max_module_radius = max(
                 (max(np.linalg.norm(p) for p in _module_layouts[_mi].values())
                  for _mi in _module_layouts), default=1.0)
-            _hull_buffer = 1.0
+            _hull_buffer = 1.4
             _gap_factor = 1.0 / 1.05
             _n_multi_mods = len(_module_layouts)
             _grid_n = int(_math.ceil(_math.sqrt(max(_n_multi_mods, 1))))
@@ -215,7 +215,7 @@ def render_network(G_sub, title_slug, focus_nodes=None, grid_layout_mode=False, 
             if _singleton_mis:
                 _xext = _cell_size + _max_module_radius
                 _yext = (_v_stretch * _right_v_extra) * _cell_size + _max_module_radius
-                _singleton_radius = max(_xext, _yext) + _max_module_radius * 0.2
+                _singleton_radius = max(_xext, _yext) + _max_module_radius * 0.05
                 for _i, _mi in enumerate(_singleton_mis):
                     _theta = 2 * np.pi * (_i + 0.5) / max(len(_singleton_mis), 1)
                     for _n in _layout_comms[_mi]:
@@ -239,7 +239,7 @@ def render_network(G_sub, title_slug, focus_nodes=None, grid_layout_mode=False, 
                     pos[_n] = _module_center + _local
             _singleton_mis = [_mi for _mi, _c in enumerate(_layout_comms) if len(_c) == 1]
             if _singleton_mis:
-                _singleton_radius = _sep_radius + _max_module_radius * 2.5
+                _singleton_radius = _sep_radius + _max_module_radius * 0.3
                 for _i, _mi in enumerate(_singleton_mis):
                     _theta = 2 * np.pi * (_i + 0.5) / max(len(_singleton_mis), 1)
                     for _n in _layout_comms[_mi]:
@@ -440,7 +440,7 @@ def render_network(G_sub, title_slug, focus_nodes=None, grid_layout_mode=False, 
         return True
 
     _hull_data = {}
-    _initial_scale = 1.30
+    _initial_scale = 2.2
     for _mi, _comm in enumerate(_layout_comms):
         if len(_comm) < 2:
             continue
@@ -457,7 +457,7 @@ def render_network(G_sub, title_slug, focus_nodes=None, grid_layout_mode=False, 
             _verts = _centroid + _r * np.column_stack([np.cos(_theta), np.sin(_theta)])
         _hull_data[_mi] = [_centroid, _verts, _initial_scale]
 
-    _min_scale = 0.75
+    _min_scale = 1.4
     for _it in range(120):
         _overlap_found = False
         _ids = list(_hull_data.keys())
