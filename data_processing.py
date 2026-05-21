@@ -160,7 +160,8 @@ def _(defaultdict, np):
                 if Z[_i, 2] < Z[_i - 1, 2]:
                     Z[_i, 2] = Z[_i - 1, 2]
         return Z
-    GAOs_PAOs = {'PAOs': ['Ca_Accumulibacter', 'Tetrasphaera', 'Dechloromonas', 'Microlunatus', 'Azonexus', 'Ca_Phosphoribacter'], 'GAOs': ['Ca_Competibacter', 'Defluviicoccus', 'Propionivibrio', 'Ca_Contendobacter'], 'Putative PAOs': ['Ca_Obscuribacter', 'Thauera', 'Zoogloea', 'Paracoccus'], 'Putative GAOs': ['Micropruina', 'Amaricoccus', 'Ca_Glycocaulis', 'Thauera'], 'Other PHA storing potential+ function': ['Pseudomonas', 'Bacillus', 'Acinetobacter', 'Rhodocyclaceae']}
+    import json as _json
+    GAOs_PAOs = _json.load(open('gao_pao_categories.json'))
     return GAOs_PAOs, taxonomy_linkage
 
 
@@ -1288,7 +1289,6 @@ def _(
 ):
     import networkx as nx
     import matplotlib.cm as cm
-    from numpy import ones as _np_ones
     from scipy.stats import spearmanr as _spearmanr_local
 
     iterativeID_taxonomy_local = load(open('iterativeID_taxonomy.json'))
@@ -1307,15 +1307,11 @@ def _(
     abundances_3.drop([col for col in abundances_3.columns if col not in _significantly_connected_organisms], axis=1, inplace=True)
 
     def _corr_pvalues_local(df):
-        n = df.shape[1]
-        pv = DataFrame(_np_ones((n, n)), index=df.columns, columns=df.columns)
-        cr = DataFrame(_np_ones((n, n)), index=df.columns, columns=df.columns)
-        for _i in range(n):
-            for _j in range(_i + 1, n):
-                c, _p = _spearmanr_local(df.iloc[:, _i], df.iloc[:, _j])
-                pv.iloc[_i, _j] = _p; pv.iloc[_j, _i] = _p
-                cr.iloc[_i, _j] = c; cr.iloc[_j, _i] = c
-        return (pv, cr)
+        res = _spearmanr_local(df.values, axis=0, nan_policy='omit')
+        rho_mat = np.asarray(res.correlation, dtype=float)
+        p_mat = np.asarray(res.pvalue, dtype=float)
+        return (DataFrame(p_mat, index=df.columns, columns=df.columns),
+                DataFrame(rho_mat, index=df.columns, columns=df.columns))
 
     pvals_matrix, corr_matrix_2 = _corr_pvalues_local(abundances_3)
     _mean_rel_abund = abundances_3.mean(axis=0)
@@ -1360,6 +1356,8 @@ def _(
         return mpatches.Patch(color='none', label=f'$\\bf{{{title}}}$')
 
     def render_network(G_sub, title_slug, focus_nodes=None, grid_layout_mode=False, use_module_weighting=True, resolution=1.0, simplified=False):
+        if grid_layout_mode and not use_module_weighting:
+            raise ValueError('grid_layout_mode=True requires use_module_weighting=True')
         if G_sub.number_of_edges() == 0:
             print(f'[{title_slug}] no edges — skipping')
             return

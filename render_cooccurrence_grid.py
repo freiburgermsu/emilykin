@@ -23,13 +23,7 @@ from scipy.spatial import ConvexHull as _ConvexHull
 from scipy.stats import spearmanr
 
 
-GAOs_PAOs = {
-    'PAOs': ['Ca_Accumulibacter', 'Tetrasphaera', 'Dechloromonas', 'Microlunatus', 'Azonexus', 'Ca_Phosphoribacter'],
-    'GAOs': ['Ca_Competibacter', 'Defluviicoccus', 'Propionivibrio', 'Ca_Contendobacter'],
-    'Putative PAOs': ['Ca_Obscuribacter', 'Thauera', 'Zoogloea', 'Paracoccus'],
-    'Putative GAOs': ['Micropruina', 'Amaricoccus', 'Ca_Glycocaulis', 'Thauera'],
-    'Other PHA storing potential+ function': ['Pseudomonas', 'Bacillus', 'Acinetobacter', 'Rhodocyclaceae'],
-}
+GAOs_PAOs = json.load(open('gao_pao_categories.json'))
 
 iterativeID_taxonomy_local = json.load(open('iterativeID_taxonomy.json'))
 level_3 = 'Phylum'
@@ -102,6 +96,8 @@ def header_patch(title):
 
 
 def render_network(G_sub, title_slug, focus_nodes=None, grid_layout_mode=False, use_module_weighting=True, resolution=1.0, simplified=False):
+    if grid_layout_mode and not use_module_weighting:
+        raise ValueError('grid_layout_mode=True requires use_module_weighting=True')
     if G_sub.number_of_edges() == 0:
         print(f'[{title_slug}] no edges — skipping')
         return

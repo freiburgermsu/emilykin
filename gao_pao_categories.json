@@ -1,0 +1,7 @@
+{
+  "PAOs": ["Ca_Accumulibacter", "Tetrasphaera", "Dechloromonas", "Microlunatus", "Azonexus", "Ca_Phosphoribacter"],
+  "GAOs": ["Ca_Competibacter", "Defluviicoccus", "Propionivibrio", "Ca_Contendobacter"],
+  "Putative PAOs": ["Ca_Obscuribacter", "Thauera", "Zoogloea", "Paracoccus"],
+  "Putative GAOs": ["Micropruina", "Amaricoccus", "Ca_Glycocaulis", "Thauera"],
+  "Other PHA storing potential+ function": ["Pseudomonas", "Bacillus", "Acinetobacter", "Rhodocyclaceae"]
+}

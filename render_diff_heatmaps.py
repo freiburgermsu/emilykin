@@ -37,13 +37,7 @@ MIN_MAX_PCT = 0.01
 PSEUDO = 1e-6
 GENUS_DEPTH = TAXONOMIC_LEVELS.index('Genus')
 
-GAOs_PAOs = {
-    'PAOs': ['Ca_Accumulibacter', 'Tetrasphaera', 'Dechloromonas', 'Microlunatus', 'Azonexus', 'Ca_Phosphoribacter'],
-    'GAOs': ['Ca_Competibacter', 'Defluviicoccus', 'Propionivibrio', 'Ca_Contendobacter'],
-    'Putative PAOs': ['Ca_Obscuribacter', 'Thauera', 'Zoogloea', 'Paracoccus'],
-    'Putative GAOs': ['Micropruina', 'Amaricoccus', 'Ca_Glycocaulis', 'Thauera'],
-    'Other PHA storing potential+ function': ['Pseudomonas', 'Bacillus', 'Acinetobacter', 'Rhodocyclaceae'],
-}
+GAOs_PAOs = json.load(open(REPO / 'gao_pao_categories.json'))
 
 
 def taxonomy_linkage(taxonomy_series):
