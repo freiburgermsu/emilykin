@@ -272,11 +272,11 @@ def create_heatmap(df, taxonomies, title, *, mode, suffix,
     cm.ax_row_dendrogram.set_position([heatmap_right + 0.10, dend_pos.y0, dendro_w, dend_pos.height])
     cm.ax_row_dendrogram.invert_xaxis()  # branches open leftward, toward heatmap
 
+    # Initial cbar placement (height halved); final x is re-anchored to the
+    # right of the dendrogram after labels render.
     cbar_w = 0.015
-    # Initial cbar placement; final x is set after labels render so the longest
-    # tick label's right edge aligns with the phylum-color strip's left edge.
+    cbar_h = hm_pos.height * 0.525  # 50% taller than the previous 0.35
     cbar_x = colors_left - cbar_w - 0.05
-    cbar_h = hm_pos.height * 0.7
     cbar_y = hm_pos.y0 + (hm_pos.height - cbar_h) / 2
     cm.ax_cbar.set_position([cbar_x, cbar_y, cbar_w, cbar_h])
 
@@ -392,18 +392,13 @@ def create_heatmap(df, taxonomies, title, *, mode, suffix,
             if p == 'Proteobacteria' and proteo_class_color:
                 handles.append(Patch(color='none', label=p))
                 for cls, color in proteo_class_color.items():
-                    handles.append(Patch(facecolor=color, label=f'      {cls}'))
+                    cls_short = cls.replace('proteobacteria', '').replace('Proteobacteria', '')
+                    handles.append(Patch(facecolor=color, label=f'      {cls_short}'))
             else:
                 handles.append(Patch(facecolor=phylum_color[p], label=p))
-    ncol = int(np.ceil(len(handles) / 2))
-    # Sit the legend's bottom just above the top edge of the heatmap.
-    hm_top = cm.ax_heatmap.get_position().y1
-    cm.figure.legend(
-        handles=handles, title='Phylum', title_fontsize=24, fontsize=19,
-        loc='lower center', bbox_to_anchor=(0.5, hm_top + 0.005), ncol=ncol,
-        frameon=True, borderaxespad=0.5, handlelength=1.5, handletextpad=0.6,
-        columnspacing=1.2,
-    )
+    # Phylum legend handles are built here; the legend itself is created later
+    # so it can be anchored above the (final) right-side cbar.
+    legend_handles = handles
     for spine in cm.ax_heatmap.spines.values():
         spine.set_visible(True)
         spine.set_edgecolor('black')
@@ -429,11 +424,24 @@ def create_heatmap(df, taxonomies, title, *, mode, suffix,
         cm.ax_row_dendrogram.set_position([max_right_fig + 0.008, d_pos.y0, dendro_w, d_pos.height])
 
     # Move the cbar to the far right of the figure: align its left edge with
-    # the dendrogram's right edge (plus a small gap).
+    # the dendrogram's right edge (plus a small gap), keeping the halved height.
     dendro_pos = cm.ax_row_dendrogram.get_position()
     cbar_pos = cm.ax_cbar.get_position()
-    target_left = dendro_pos.x1 + 0.012
-    cm.ax_cbar.set_position([target_left, cbar_pos.y0, cbar_pos.width, cbar_pos.height])
+    cbar_target_left = dendro_pos.x1 + 0.030  # shifted further right
+    cbar_final_y = hm_pos.y0  # anchor cbar at the bottom of the heatmap
+    cm.ax_cbar.set_position([cbar_target_left, cbar_final_y, cbar_pos.width, cbar_pos.height])
+
+    # Phylum legend (single column), top edge flush with the top of the figure
+    # and horizontally centered on the cbar so they remain vertically in-line.
+    # Text size matches the heatmap axis tick labels (29 pt).
+    cbar_final_pos = cm.ax_cbar.get_position()
+    legend_anchor_x = cbar_final_pos.x0 + cbar_final_pos.width / 2
+    cm.figure.legend(
+        handles=legend_handles, title='Phylum', title_fontsize=36, fontsize=29,
+        loc='upper center', bbox_to_anchor=(legend_anchor_x, 0.84),
+        ncol=1, frameon=True, borderaxespad=0.5,
+        handlelength=1.5, handletextpad=0.6, columnspacing=1.2,
+    )
 
     # Significance asterisks: drawn at each phase's horizontal midpoint, in data
     # coordinates of the time-based heatmap, for each (phase, taxon) cell whose
