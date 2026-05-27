@@ -83,6 +83,13 @@ def species_label_color(genus: str) -> str:
             return GAO_PAO_LABEL_COLORS.get(cat, SPECIES_DEFAULT_COLOR)
     return SPECIES_DEFAULT_COLOR
 
+def species_category(genus: str) -> str:
+    """GAO/PAO functional category for a genus (substring match), or '' if none."""
+    for org, cat in _INVERTED_GAOs_PAOs.items():
+        if org in str(genus):
+            return cat
+    return ''
+
 def stage_from_id(sample_id: str) -> str | None:
     """B17–B25 → I, B26–B30 → II, B31–B41 → III, B42–B52 → IV, B53–B60 → V."""
     s = str(sample_id)
@@ -272,7 +279,8 @@ def dbrda_perm_test(Y: pd.DataFrame, X: pd.DataFrame, *, n_perm: int = 999,
 def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: str,
                arrow_color: str, out_path: Path, custom_arrow_labels: bool = False,
                ylim: tuple[float, float] | None = None,
-               annotation: str | None = None, xs_mode: bool = False) -> None:
+               annotation: str | None = None, xs_mode: bool = False,
+               arrow_label_offsets: dict[str, tuple[float, float]] | None = None) -> None:
     sites = res['sites']
     species = res['species'].copy()
     biplot = res['biplot'].copy()
@@ -315,6 +323,13 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
                 x_lab, y_lab = x * 1.05, y - 0.07
             elif 'C/N' in var:
                 x_lab, y_lab = x + 0.12, y
+        # explicit per-variable label offsets (substring match) to separate
+        # overlapping labels (e.g. peakN2O vs P removal in the performance panel)
+        if arrow_label_offsets:
+            for key, (dx, dy) in arrow_label_offsets.items():
+                if key in var:
+                    x_lab, y_lab = x_lab + dx, y_lab + dy
+                    break
         ax.text(x_lab, y_lab, var, color=arrow_color, fontsize=12,
                 ha='center', va='center', fontweight='bold',
                 bbox=dict(boxstyle='round,pad=0.25', facecolor='white',
@@ -366,6 +381,19 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
     plt.savefig(out_path, dpi=150, bbox_inches='tight')
     plt.close(fig)
     print(f'wrote {out_path}')
+
+    # For the "X"-marker figures, export the genera each X represents, with the
+    # functional category and the plotted (scaled) coordinates so each X on the
+    # figure can be matched back to its genus.
+    if xs_mode:
+        sp_out = species[['CAP1', 'CAP2']].copy()
+        sp_out.columns = ['plot_CAP1', 'plot_CAP2']
+        sp_out.insert(0, 'functional_category', [species_category(g) for g in sp_out.index])
+        sp_out.index.name = 'genus'
+        sp_out = sp_out.sort_values(['functional_category', 'genus'])
+        csv_path = out_path.with_name(out_path.stem + '_species.csv')
+        sp_out.to_csv(csv_path)
+        print(f'wrote {csv_path} ({len(sp_out)} genera)')
 
 
 # ----- fallback: build stage-level Performance/Environmental from repo CSVs
@@ -655,18 +683,25 @@ def main() -> None:
         f'db-RDA model:      constrained={100*pm_full_p["F_like_ratio"]:.1f}%  p={pm_full_p["p"]:.3f}\n'
         f'permutations={N_PERM}'
     )
+    # peakN2O and P removal arrows point in nearly the same direction, so their
+    # default labels overlap; pull them apart horizontally and drop them below
+    # the sample-dot cluster.
+    PERF_LABEL_OFFSETS = {
+        'peakN2O':   (-0.06, -0.040),
+        'P removal': (+0.060, -0.022),
+    }
     plot_dbrda(
         res_p, stages=stages_p, sample_ids=Y_p.index.tolist(),
         title='db-RDA: Top 10 Genera ~ Performance (sample-level X)',
         arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_performance.png',
-        annotation=ann_p,
+        annotation=ann_p, arrow_label_offsets=PERF_LABEL_OFFSETS,
     )
     # _Xs variant: 20%-larger black-edged dots, species rendered as "X" (same model)
     plot_dbrda(
         res_p, stages=stages_p, sample_ids=Y_p.index.tolist(),
         title='db-RDA: Top 10 Genera ~ Performance (sample-level X)',
         arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_performance_Xs.png',
-        annotation=ann_p, xs_mode=True,
+        annotation=ann_p, xs_mode=True, arrow_label_offsets=PERF_LABEL_OFFSETS,
     )
 
     # ----- db-RDA: abundance ~ operational drivers (paper-2 curated set) ---
