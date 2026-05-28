@@ -108,13 +108,33 @@ def stage_from_id(sample_id: str) -> str | None:
 
 
 # ----- abundance matrix Y --------------------------------------------------
-def build_abundance_matrix(long_file: Path) -> tuple[pd.DataFrame, list[str], list[str]]:
-    """Return (Y, sample_ids, stages). Mirrors the first R chunk."""
+def build_abundance_matrix(
+    long_file: Path, max_rel_threshold: float | None = None,
+) -> tuple[pd.DataFrame, list[str], list[str], set[str]]:
+    """Return (Y, sample_ids, stages, top10_genera). Mirrors the first R chunk.
+
+    Genus inclusion:
+      - default (``max_rel_threshold=None``): top 10 genera per stage (union) by
+        mean relative abundance — the previously-mandated set.
+      - ``max_rel_threshold`` set: every genus whose *maximum per-sample relative
+        abundance* clears the threshold (same "max rel. abundance" convention as
+        the 1%-filtered correlation heatmaps).
+
+    ``top10_genera`` is always the top-10-per-stage union, returned so callers can
+    fade genera that fall outside the previously-mandated set.
+    """
     tab = pd.read_csv(long_file, low_memory=False)
     # filter to phases I–V
     tab_stage = tab[tab['Phase'].isin(['I', 'II', 'III', 'IV', 'V'])].copy()
 
-    # top 10 genera per stage (union)
+    # genus relative abundance per sample (sum the species within each genus)
+    abund_all = (
+        tab_stage.dropna(subset=['Genus'])
+        .groupby(['sample', 'Phase', 'Genus'], as_index=False)
+        .agg(rel_ab=('rel_ab', 'sum'))
+    )
+
+    # previously-mandated set: top 10 genera per stage (union) by mean rel. abundance
     top_genus = (
         tab_stage.dropna(subset=['Genus'])
         .groupby(['Phase', 'Genus'], as_index=False)
@@ -125,14 +145,16 @@ def build_abundance_matrix(long_file: Path) -> tuple[pd.DataFrame, list[str], li
         .groupby('Phase', as_index=False)
         .head(10)
     )
-    keep_genera = sorted(top_per_stage['Genus'].unique())
+    top10_genera = set(top_per_stage['Genus'].unique())
+
+    if max_rel_threshold is None:
+        keep_genera = sorted(top10_genera)
+    else:
+        genus_max = abund_all.groupby('Genus')['rel_ab'].max()
+        keep_genera = sorted(genus_max[genus_max >= max_rel_threshold].index)
 
     # sample × genus matrix
-    abund_long = (
-        tab_stage[tab_stage['Genus'].isin(keep_genera)]
-        .groupby(['sample', 'Phase', 'Genus'], as_index=False)
-        .agg(rel_ab=('rel_ab', 'sum'))
-    )
+    abund_long = abund_all[abund_all['Genus'].isin(keep_genera)]
     Y_wide = abund_long.pivot_table(
         index=['sample', 'Phase'], columns='Genus', values='rel_ab', fill_value=0,
     ).reset_index()
@@ -146,7 +168,7 @@ def build_abundance_matrix(long_file: Path) -> tuple[pd.DataFrame, list[str], li
     sample_ids = Y_wide['sample'].tolist()
     Y = Y_wide.drop(columns=['sample', 'Phase']).reset_index(drop=True)
     Y.index = sample_ids
-    return Y, sample_ids, stages
+    return Y, sample_ids, stages, top10_genera
 
 
 # ----- db-RDA (capscale equivalent) ----------------------------------------
@@ -283,7 +305,8 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
                arrow_label_offsets: dict[str, tuple[float, float]] | None = None,
                labels_below_head: tuple[str, ...] = (),
                show_vector_labels: bool = True,
-               label_samples: bool = False) -> None:
+               label_samples: bool = False,
+               faded_species: set[str] = frozenset()) -> None:
     sites = res['sites']
     species = res['species'].copy()
     biplot = res['biplot'].copy()
@@ -308,9 +331,13 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
     #    xs_mode renders every species marker as a literal "X" instead of its name
     for sp, row in species.iterrows():
         col = species_label_color(sp)
-        fw = 'bold' if col != SPECIES_DEFAULT_COLOR else 'normal'
+        # genera outside the previously-mandated top-10 union are drawn faded
+        is_faded = sp in faded_species
+        fw = 'bold' if (col != SPECIES_DEFAULT_COLOR and not is_faded) else 'normal'
+        alpha = 0.3 if is_faded else 1.0
         ax.text(row['CAP1'], row['CAP2'], 'X' if xs_mode else sp, color=col,
-                ha='center', va='center', fontsize=9 * 1.2 if xs_mode else 9, fontweight=fw)
+                ha='center', va='center', fontsize=9 * 1.2 if xs_mode else 9,
+                fontweight=fw, alpha=alpha)
 
     # 2. constraint arrows — layered above everything else, with bordered labels
     #    (labels suppressed entirely for the _nodes variants)
@@ -409,6 +436,7 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
         sp_out = species[['CAP1', 'CAP2']].copy()
         sp_out.columns = ['plot_CAP1', 'plot_CAP2']
         sp_out.insert(0, 'functional_category', [species_category(g) for g in sp_out.index])
+        sp_out.insert(1, 'in_prev_top10', [g not in faded_species for g in sp_out.index])
         sp_out.index.name = 'genus'
         sp_out = sp_out.sort_values(['functional_category', 'genus'])
         csv_path = out_path.with_name(out_path.stem + '_species.csv')
@@ -667,16 +695,19 @@ def per_sample_X(stage_sheet: pd.DataFrame, sample_ids: list[str], stages: list[
     return X
 
 
-# ----- main ----------------------------------------------------------------
-def main() -> None:
-    print(f'Long abundance file: {LONG_FILE}')
-    Y, sample_ids, stages = build_abundance_matrix(LONG_FILE)
-    print(f'abundance matrix Y: {Y.shape[0]} samples × {Y.shape[1]} genera')
+# ----- one full figure suite for a given abundance matrix ------------------
+def run_dbrda_suite(Y: pd.DataFrame, sample_ids: list[str], stages: list[str], *,
+                    genus_desc: str, faded_species: set[str] = frozenset(),
+                    suffix: str = '', n_perm: int = 999) -> None:
+    """Render the full db-RDA figure suite (performance + operational drivers)
+    for one abundance matrix Y.
 
-    print('using per-sample X (not stage-mean broadcast) — each sample contributes '
-          'its own row from performance_data_with_sample_ids.csv / ValueEnviromental2')
-
-    N_PERM = 999
+    ``genus_desc`` is the genus-selection phrase woven into figure titles.
+    ``faded_species`` are drawn faded (genera outside the previous top-10 union).
+    ``suffix`` is appended to every output filename (e.g. '_5%').
+    """
+    N_PERM = n_perm
+    _fade = dict(faded_species=faded_species)
 
     # ----- db-RDA: abundance ~ performance ----------------------------------
     X_perf = build_perf_X_per_sample(sample_ids, stages)
@@ -684,7 +715,6 @@ def main() -> None:
     keep_p = X_perf.notna().all(axis=1)
     Y_p = Y.loc[keep_p]
     X_p = X_perf.loc[keep_p]
-    stages_p = [s for s, k in zip(stages, keep_p) if k]
     stages_p = [s for s, k in zip(stages, keep_p) if k]
     print(f'\nperformance dbRDA: {Y_p.shape[0]} samples, {X_p.shape[1]} predictors')
     res_p = dbrda(Y_p, X_p)
@@ -714,36 +744,36 @@ def main() -> None:
                           labels_below_head=PERF_LABELS_BELOW)
     plot_dbrda(
         res_p, stages=stages_p, sample_ids=Y_p.index.tolist(),
-        title='db-RDA: Top 10 Genera ~ Performance (sample-level X)',
-        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_performance.png',
-        annotation=ann_p, **_perf_label_kw,
+        title=f'db-RDA: {genus_desc} ~ Performance (sample-level X)',
+        arrow_color='crimson', out_path=OUT_DIR / f'dbRDA_performance{suffix}.png',
+        annotation=ann_p, **_perf_label_kw, **_fade,
     )
     # _Xs variant: 20%-larger black-edged dots, species rendered as "X" (same model)
     plot_dbrda(
         res_p, stages=stages_p, sample_ids=Y_p.index.tolist(),
-        title='db-RDA: Top 10 Genera ~ Performance (sample-level X)',
-        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_performance_Xs.png',
-        annotation=ann_p, xs_mode=True, **_perf_label_kw,
+        title=f'db-RDA: {genus_desc} ~ Performance (sample-level X)',
+        arrow_color='crimson', out_path=OUT_DIR / f'dbRDA_performance_Xs{suffix}.png',
+        annotation=ann_p, xs_mode=True, **_perf_label_kw, **_fade,
     )
     # _nodes variants: same panels with vector labels omitted
     plot_dbrda(
         res_p, stages=stages_p, sample_ids=Y_p.index.tolist(),
-        title='db-RDA: Top 10 Genera ~ Performance (sample-level X)',
-        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_performance_nodes.png',
-        annotation=ann_p, show_vector_labels=False,
+        title=f'db-RDA: {genus_desc} ~ Performance (sample-level X)',
+        arrow_color='crimson', out_path=OUT_DIR / f'dbRDA_performance_nodes{suffix}.png',
+        annotation=ann_p, show_vector_labels=False, **_fade,
     )
     plot_dbrda(
         res_p, stages=stages_p, sample_ids=Y_p.index.tolist(),
-        title='db-RDA: Top 10 Genera ~ Performance (sample-level X)',
-        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_performance_Xs_nodes.png',
-        annotation=ann_p, xs_mode=True, show_vector_labels=False,
+        title=f'db-RDA: {genus_desc} ~ Performance (sample-level X)',
+        arrow_color='crimson', out_path=OUT_DIR / f'dbRDA_performance_Xs_nodes{suffix}.png',
+        annotation=ann_p, xs_mode=True, show_vector_labels=False, **_fade,
     )
     # _nodes_ids variant: no vector labels, but both genus labels and sample-ID dot labels
     plot_dbrda(
         res_p, stages=stages_p, sample_ids=Y_p.index.tolist(),
-        title='db-RDA: Top 10 Genera ~ Performance (sample-level X)',
-        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_performance_nodes_ids.png',
-        annotation=ann_p, show_vector_labels=False, label_samples=True,
+        title=f'db-RDA: {genus_desc} ~ Performance (sample-level X)',
+        arrow_color='crimson', out_path=OUT_DIR / f'dbRDA_performance_nodes_ids{suffix}.png',
+        annotation=ann_p, show_vector_labels=False, label_samples=True, **_fade,
     )
 
     # ----- db-RDA: abundance ~ operational drivers (paper-2 curated set) ---
@@ -771,22 +801,22 @@ def main() -> None:
     )
     plot_dbrda(
         res_e, stages=stages_e, sample_ids=Y_e.index.tolist(),
-        title='db-RDA: Top 10 Genera ~ Operational drivers (paper-2 set)',
-        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_environment.png',
-        annotation=ann_e,
+        title=f'db-RDA: {genus_desc} ~ Operational drivers (paper-2 set)',
+        arrow_color='crimson', out_path=OUT_DIR / f'dbRDA_environment{suffix}.png',
+        annotation=ann_e, **_fade,
     )
     plot_dbrda(
         res_e, stages=stages_e, sample_ids=Y_e.index.tolist(),
-        title='db-RDA: Top 10 Genera ~ Operational drivers (paper-2 set)',
-        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_environment_nodes.png',
-        annotation=ann_e, show_vector_labels=False,
+        title=f'db-RDA: {genus_desc} ~ Operational drivers (paper-2 set)',
+        arrow_color='crimson', out_path=OUT_DIR / f'dbRDA_environment_nodes{suffix}.png',
+        annotation=ann_e, show_vector_labels=False, **_fade,
     )
     # _nodes_ids variant: no vector labels, but both genus labels and sample-ID dot labels
     plot_dbrda(
         res_e, stages=stages_e, sample_ids=Y_e.index.tolist(),
-        title='db-RDA: Top 10 Genera ~ Operational drivers (paper-2 set)',
-        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_environment_nodes_ids.png',
-        annotation=ann_e, show_vector_labels=False, label_samples=True,
+        title=f'db-RDA: {genus_desc} ~ Operational drivers (paper-2 set)',
+        arrow_color='crimson', out_path=OUT_DIR / f'dbRDA_environment_nodes_ids{suffix}.png',
+        annotation=ann_e, show_vector_labels=False, label_samples=True, **_fade,
     )
 
     # ----- _Xs variant: drop N_Ax-1, recompute, restyle (X markers, bigger edged dots) ---
@@ -805,16 +835,39 @@ def main() -> None:
     )
     plot_dbrda(
         res_e_xs, stages=stages_e, sample_ids=Y_e.index.tolist(),
-        title='db-RDA: Top 10 Genera ~ Operational drivers (paper-2 set, N_Ax-1 removed)',
-        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_environment_Xs.png',
-        annotation=ann_e_xs, xs_mode=True,
+        title=f'db-RDA: {genus_desc} ~ Operational drivers (paper-2 set, N_Ax-1 removed)',
+        arrow_color='crimson', out_path=OUT_DIR / f'dbRDA_environment_Xs{suffix}.png',
+        annotation=ann_e_xs, xs_mode=True, **_fade,
     )
     plot_dbrda(
         res_e_xs, stages=stages_e, sample_ids=Y_e.index.tolist(),
-        title='db-RDA: Top 10 Genera ~ Operational drivers (paper-2 set, N_Ax-1 removed)',
-        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_environment_Xs_nodes.png',
-        annotation=ann_e_xs, xs_mode=True, show_vector_labels=False,
+        title=f'db-RDA: {genus_desc} ~ Operational drivers (paper-2 set, N_Ax-1 removed)',
+        arrow_color='crimson', out_path=OUT_DIR / f'dbRDA_environment_Xs_nodes{suffix}.png',
+        annotation=ann_e_xs, xs_mode=True, show_vector_labels=False, **_fade,
     )
+
+
+# ----- main ----------------------------------------------------------------
+def main() -> None:
+    print(f'Long abundance file: {LONG_FILE}')
+    print('using per-sample X (not stage-mean broadcast) — each sample contributes '
+          'its own row from performance_data_with_sample_ids.csv / ValueEnviromental2')
+
+    # ----- previously-mandated set: top 10 genera per phase (union) ---------
+    Y, sample_ids, stages, top10 = build_abundance_matrix(LONG_FILE)
+    print(f'\n=== abundance matrix Y (top-10-per-phase union): '
+          f'{Y.shape[0]} samples × {Y.shape[1]} genera ===')
+    run_dbrda_suite(Y, sample_ids, stages, genus_desc='Top 10 Genera', suffix='')
+
+    # ----- 5%-max-relative-abundance inclusion threshold --------------------
+    # genera outside the previous top-10 union are drawn faded
+    Y5, sids5, stages5, top10_5 = build_abundance_matrix(LONG_FILE, max_rel_threshold=0.05)
+    faded = set(Y5.columns) - top10_5
+    print(f'\n=== abundance matrix Y (max rel. abundance ≥5%): '
+          f'{Y5.shape[0]} samples × {Y5.shape[1]} genera '
+          f'({len(faded)} faded — outside previous top-10 union) ===')
+    run_dbrda_suite(Y5, sids5, stages5, genus_desc='Genera (max rel. ab. ≥5%)',
+                    faded_species=faded, suffix='_5%')
 
 
 if __name__ == '__main__':
