@@ -52,6 +52,10 @@ orig = pd.read_csv('modeling_files/correlations/correlation_with_time_partial.cs
 ORIG_PARAMS = sorted(orig['parameter'].unique().tolist())
 print(f'original-pipeline params to recompute: {len(ORIG_PARAMS)}')
 
+# Extra performance-CSV params needed for the dbRDA variable set but absent from
+# the original pipeline (substrate ratios + aerobic time).
+EXTRA_PERF_PARAMS = ['COD:N', 'N:P', 'A_time [minutes]']
+ORIG_PARAMS = ORIG_PARAMS + [c for c in EXTRA_PERF_PARAMS if c not in ORIG_PARAMS]
 # Pull per-sample values for those params from the performance CSV
 perf_cols_in_csv = [c for c in ORIG_PARAMS if c in perf_raw.columns]
 missing = [c for c in ORIG_PARAMS if c not in perf_raw.columns]

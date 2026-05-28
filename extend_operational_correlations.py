@@ -25,7 +25,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import seaborn as sns
 
-from _gao_pao_label_helper import color_axis_labels
+from _gao_pao_label_helper import color_axis_labels, order_param_rows
 
 ROOT = '/Users/andrewfreiburger/Documents/Research/EmilyKin'
 os.chdir(ROOT)
@@ -68,6 +68,16 @@ env_meas = pd.DataFrame(env_meas_rows).T.sort_index()
 env_interp = pd.DataFrame(env_interp_rows).T.sort_index()
 env_meas.index.name = env_interp.index.name = 'abundance_day'
 
+# Extra performance-CSV params needed for the dbRDA variable set but absent from
+# the original pipeline (substrate ratios + aerobic time). Keyed by abundance_day.
+EXTRA_PERF_PARAMS = [c for c in ['COD:N', 'N:P', 'A_time [minutes]'] if c in perf.columns]
+_perf_day = (perf[perf['sample_id'].notna() & perf['abundance_day'].notna()]
+             [['abundance_day'] + EXTRA_PERF_PARAMS].copy())
+_perf_day = _perf_day.set_index('abundance_day').apply(pd.to_numeric, errors='coerce')
+perf_meas = _perf_day.groupby(level=0).mean().sort_index()
+perf_interp = perf_meas.interpolate(method='linear', limit=7, limit_area='inside')
+print(f'extra perf params: {EXTRA_PERF_PARAMS}')
+
 # Abundances re-keyed by abundance_day for joining
 ab_by_day = ab.copy()
 ab_by_day.index = [sample_to_day.get(s, np.nan) for s in ab.index]
@@ -108,36 +118,37 @@ def _pair_corr(x, y):
 
 
 # ---------------- per-pair correlations ----------------
-rows = []
-for param in NEW_PARAMS:
-    meas_vec = env_meas[param].dropna() if param in env_meas.columns else pd.Series(dtype=float)
-    interp_vec = env_interp[param].dropna() if param in env_interp.columns else pd.Series(dtype=float)
-    for asv in ab_by_day.columns:
-        asv_vec = ab_by_day[asv].dropna()
-        # measured-only
-        cm = meas_vec.index.intersection(asv_vec.index)
-        rho_m, p_m = _pair_corr(meas_vec.loc[cm].values, asv_vec.loc[cm].values) if len(cm) >= 3 else (np.nan, np.nan)
-        # interpolated
-        ci = interp_vec.index.intersection(asv_vec.index)
-        rho_i, p_i = _pair_corr(interp_vec.loc[ci].values, asv_vec.loc[ci].values) if len(ci) >= 3 else (np.nan, np.nan)
-        # time-partial on interpolated set
-        if len(ci) >= 4:
-            x = interp_vec.loc[ci].values
-            y = asv_vec.loc[ci].values
-            z = np.asarray(list(ci), dtype=float)
-            rho_p_partial, p_p_partial = _spearman_partial(x, y, z)
-            n_p_partial = len(ci)
-        else:
-            rho_p_partial, p_p_partial, n_p_partial = np.nan, np.nan, 0
-        rows.append({
-            'parameter': param, 'ASV': asv,
-            'rho_interp': rho_i, 'p_interp': p_i, 'n_interp': len(ci),
-            'rho_meas': rho_m, 'p_meas': p_m, 'n_meas': len(cm),
-            'rho_partial': rho_p_partial, 'p_partial': p_p_partial, 'n_partial': n_p_partial,
-        })
+def _rows_for_params(param_list, meas_df, interp_df):
+    out = []
+    for param in param_list:
+        meas_vec = meas_df[param].dropna() if param in meas_df.columns else pd.Series(dtype=float)
+        interp_vec = interp_df[param].dropna() if param in interp_df.columns else pd.Series(dtype=float)
+        for asv in ab_by_day.columns:
+            asv_vec = ab_by_day[asv].dropna()
+            cm = meas_vec.index.intersection(asv_vec.index)
+            rho_m, p_m = _pair_corr(meas_vec.loc[cm].values, asv_vec.loc[cm].values) if len(cm) >= 3 else (np.nan, np.nan)
+            ci = interp_vec.index.intersection(asv_vec.index)
+            rho_i, p_i = _pair_corr(interp_vec.loc[ci].values, asv_vec.loc[ci].values) if len(ci) >= 3 else (np.nan, np.nan)
+            if len(ci) >= 4:
+                rho_p_partial, p_p_partial = _spearman_partial(
+                    interp_vec.loc[ci].values, asv_vec.loc[ci].values,
+                    np.asarray(list(ci), dtype=float))
+                n_p_partial = len(ci)
+            else:
+                rho_p_partial, p_p_partial, n_p_partial = np.nan, np.nan, 0
+            out.append({
+                'parameter': param, 'ASV': asv,
+                'rho_interp': rho_i, 'p_interp': p_i, 'n_interp': len(ci),
+                'rho_meas': rho_m, 'p_meas': p_m, 'n_meas': len(cm),
+                'rho_partial': rho_p_partial, 'p_partial': p_p_partial, 'n_partial': n_p_partial,
+            })
+    return out
 
+rows = _rows_for_params(NEW_PARAMS, env_meas, env_interp)
+rows += _rows_for_params(EXTRA_PERF_PARAMS, perf_meas, perf_interp)
 new = pd.DataFrame(rows)
-print(f'new rows computed: {len(new)} ({len(NEW_PARAMS)} params × {len(ab_by_day.columns)} ASVs)')
+print(f'new rows computed: {len(new)} '
+      f'({len(NEW_PARAMS)} env + {len(EXTRA_PERF_PARAMS)} extra-perf params × {len(ab_by_day.columns)} ASVs)')
 
 # BH-FDR within the new rows (preserves original q-values verbatim)
 for pcol, qcol in [('p_meas', 'q_meas'), ('p_interp', 'q_interp'), ('p_partial', 'q_partial')]:
@@ -182,13 +193,9 @@ def _cluster_order(mat, by_axis):
 
 
 rho_mat = rho_mat.iloc[:, _cluster_order(rho_mat, by_axis=1)]
-orig_params = [p for p in rho_mat.index if p not in NEW_PARAMS]
-new_in_mat = [p for p in NEW_PARAMS if p in rho_mat.index]
-if len(orig_params) > 1:
-    orig_params = [orig_params[i] for i in _cluster_order(rho_mat.loc[orig_params], by_axis=0)]
-if len(new_in_mat) > 1:
-    new_in_mat = [new_in_mat[i] for i in _cluster_order(rho_mat.loc[new_in_mat], by_axis=0)]
-rho_mat = rho_mat.reindex(orig_params + new_in_mat)
+# Keep only the dbRDA variable set (+ Ax_time); performance rows on top,
+# environmental/operational-driver rows below the dashed separator.
+rho_mat, _n_perf = order_param_rows(rho_mat)
 
 fig_w = max(20, 0.16 * rho_mat.shape[1])
 fig_h = max(10, 0.45 * rho_mat.shape[0])
@@ -208,9 +215,9 @@ for _, r in partial_hits.iterrows():
         ys.append(param_to_row[r['parameter']] + 0.5)
 ax.scatter(xs, ys, s=12, c='lime', marker='o', edgecolors='none', zorder=10)
 
-# Separator line between original and new env params
-if new_in_mat:
-    ax.axhline(len(orig_params), color='black', linewidth=1.5, linestyle='--')
+# Separator line between performance and environmental rows
+if 0 < _n_perf < rho_mat.shape[0]:
+    ax.axhline(_n_perf, color='black', linewidth=1.5, linestyle='--')
 
 ax.set_xlabel('')
 ax.set_ylabel('')

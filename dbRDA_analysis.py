@@ -280,7 +280,10 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
                arrow_color: str, out_path: Path, custom_arrow_labels: bool = False,
                ylim: tuple[float, float] | None = None,
                annotation: str | None = None, xs_mode: bool = False,
-               arrow_label_offsets: dict[str, tuple[float, float]] | None = None) -> None:
+               arrow_label_offsets: dict[str, tuple[float, float]] | None = None,
+               labels_below_head: tuple[str, ...] = (),
+               show_vector_labels: bool = True,
+               label_samples: bool = False) -> None:
     sites = res['sites']
     species = res['species'].copy()
     biplot = res['biplot'].copy()
@@ -310,11 +313,16 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
                 ha='center', va='center', fontsize=9 * 1.2 if xs_mode else 9, fontweight=fw)
 
     # 2. constraint arrows — layered above everything else, with bordered labels
+    #    (labels suppressed entirely for the _nodes variants)
+    _y_all = pd.concat([sites['CAP2'], species['CAP2'], biplot['CAP2']])
+    _y_span = float(_y_all.max() - _y_all.min()) or 1.0
     for var, row in biplot.iterrows():
         x, y = row['CAP1'], row['CAP2']
         ax.annotate('', xy=(x, y), xytext=(0, 0),
                     arrowprops=dict(arrowstyle='->', color=arrow_color, lw=2),
                     zorder=10)
+        if not show_vector_labels:
+            continue
         # default placement: out 10%
         x_lab, y_lab = x * 1.1, y * 1.1
         # match R's custom-label nudges for environment plot
@@ -330,6 +338,10 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
                 if key in var:
                     x_lab, y_lab = x_lab + dx, y_lab + dy
                     break
+        # park selected labels just below their arrowhead (~5% of fig height gap);
+        # keep any horizontal offset so near-parallel arrows' labels don't overlap
+        if any(key in var for key in labels_below_head):
+            y_lab = y - 0.05 * _y_span
         ax.text(x_lab, y_lab, var, color=arrow_color, fontsize=12,
                 ha='center', va='center', fontweight='bold',
                 bbox=dict(boxstyle='round,pad=0.25', facecolor='white',
@@ -346,6 +358,14 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
     ax.scatter(sites['CAP1'], sites['CAP2'], c=cols, s=dot_size, marker='o', alpha=0.9,
                edgecolors='black' if xs_mode else 'none',
                linewidths=0.6 if xs_mode else 0, zorder=3)
+
+    # optionally label each sample dot with its sample ID (small text nudged
+    # up-right of the dot so the marker stays visible)
+    if label_samples:
+        for sid, sx, sy in zip(sites.index, sites['CAP1'], sites['CAP2']):
+            ax.annotate(str(sid), (sx, sy), textcoords='offset points',
+                        xytext=(2.5, 2.5), fontsize=5, color='0.25',
+                        ha='left', va='bottom', zorder=4)
 
     # 4. axes, legend, title
     ax.axhline(0, color='lightgray', lw=0.8, zorder=0)
@@ -366,7 +386,7 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
     legend_handles = [
         plt.Line2D([0], [0], marker='s', color='none',
                    markerfacecolor=STAGE_COLORS[s], markeredgecolor='none',
-                   markersize=10, label=f'Stage {s}')
+                   markersize=10, label=f'Phase {s}')
         for s in ['I', 'II', 'III', 'IV', 'V']
     ]
     ax.legend(handles=legend_handles, loc='upper right', frameon=False)
@@ -683,25 +703,47 @@ def main() -> None:
         f'db-RDA model:      constrained={100*pm_full_p["F_like_ratio"]:.1f}%  p={pm_full_p["p"]:.3f}\n'
         f'permutations={N_PERM}'
     )
-    # peakN2O and P removal arrows point in nearly the same direction, so their
-    # default labels overlap; pull them apart horizontally and drop them below
-    # the sample-dot cluster.
+    # peakN2O and P removal arrows point in nearly the same direction; nudge their
+    # labels apart horizontally and park them just below their respective arrowheads.
     PERF_LABEL_OFFSETS = {
-        'peakN2O':   (-0.06, -0.040),
-        'P removal': (+0.060, -0.022),
+        'peakN2O':   (-0.06, 0.0),
+        'P removal': (+0.06, 0.0),
     }
+    PERF_LABELS_BELOW = ('peakN2O', 'P removal')
+    _perf_label_kw = dict(arrow_label_offsets=PERF_LABEL_OFFSETS,
+                          labels_below_head=PERF_LABELS_BELOW)
     plot_dbrda(
         res_p, stages=stages_p, sample_ids=Y_p.index.tolist(),
         title='db-RDA: Top 10 Genera ~ Performance (sample-level X)',
         arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_performance.png',
-        annotation=ann_p, arrow_label_offsets=PERF_LABEL_OFFSETS,
+        annotation=ann_p, **_perf_label_kw,
     )
     # _Xs variant: 20%-larger black-edged dots, species rendered as "X" (same model)
     plot_dbrda(
         res_p, stages=stages_p, sample_ids=Y_p.index.tolist(),
         title='db-RDA: Top 10 Genera ~ Performance (sample-level X)',
         arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_performance_Xs.png',
-        annotation=ann_p, xs_mode=True, arrow_label_offsets=PERF_LABEL_OFFSETS,
+        annotation=ann_p, xs_mode=True, **_perf_label_kw,
+    )
+    # _nodes variants: same panels with vector labels omitted
+    plot_dbrda(
+        res_p, stages=stages_p, sample_ids=Y_p.index.tolist(),
+        title='db-RDA: Top 10 Genera ~ Performance (sample-level X)',
+        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_performance_nodes.png',
+        annotation=ann_p, show_vector_labels=False,
+    )
+    plot_dbrda(
+        res_p, stages=stages_p, sample_ids=Y_p.index.tolist(),
+        title='db-RDA: Top 10 Genera ~ Performance (sample-level X)',
+        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_performance_Xs_nodes.png',
+        annotation=ann_p, xs_mode=True, show_vector_labels=False,
+    )
+    # _nodes_ids variant: no vector labels, but both genus labels and sample-ID dot labels
+    plot_dbrda(
+        res_p, stages=stages_p, sample_ids=Y_p.index.tolist(),
+        title='db-RDA: Top 10 Genera ~ Performance (sample-level X)',
+        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_performance_nodes_ids.png',
+        annotation=ann_p, show_vector_labels=False, label_samples=True,
     )
 
     # ----- db-RDA: abundance ~ operational drivers (paper-2 curated set) ---
@@ -733,6 +775,19 @@ def main() -> None:
         arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_environment.png',
         annotation=ann_e,
     )
+    plot_dbrda(
+        res_e, stages=stages_e, sample_ids=Y_e.index.tolist(),
+        title='db-RDA: Top 10 Genera ~ Operational drivers (paper-2 set)',
+        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_environment_nodes.png',
+        annotation=ann_e, show_vector_labels=False,
+    )
+    # _nodes_ids variant: no vector labels, but both genus labels and sample-ID dot labels
+    plot_dbrda(
+        res_e, stages=stages_e, sample_ids=Y_e.index.tolist(),
+        title='db-RDA: Top 10 Genera ~ Operational drivers (paper-2 set)',
+        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_environment_nodes_ids.png',
+        annotation=ann_e, show_vector_labels=False, label_samples=True,
+    )
 
     # ----- _Xs variant: drop N_Ax-1, recompute, restyle (X markers, bigger edged dots) ---
     X_e_xs = X_e.drop(columns=[c for c in X_e.columns if c == 'N_Ax-1'])
@@ -753,6 +808,12 @@ def main() -> None:
         title='db-RDA: Top 10 Genera ~ Operational drivers (paper-2 set, N_Ax-1 removed)',
         arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_environment_Xs.png',
         annotation=ann_e_xs, xs_mode=True,
+    )
+    plot_dbrda(
+        res_e_xs, stages=stages_e, sample_ids=Y_e.index.tolist(),
+        title='db-RDA: Top 10 Genera ~ Operational drivers (paper-2 set, N_Ax-1 removed)',
+        arrow_color='crimson', out_path=OUT_DIR / 'dbRDA_environment_Xs_nodes.png',
+        annotation=ann_e_xs, xs_mode=True, show_vector_labels=False,
     )
 
 

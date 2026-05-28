@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import seaborn as sns
 
-from _gao_pao_label_helper import color_axis_labels
+from _gao_pao_label_helper import color_axis_labels, order_param_rows
 
 ROOT = '/Users/andrewfreiburger/Documents/Research/EmilyKin'
 os.chdir(ROOT)
@@ -65,13 +65,9 @@ def _cluster_order(mat, by_axis):
 
 
 rho_mat = rho_mat.iloc[:, _cluster_order(rho_mat, by_axis=1)]
-orig_params = [p for p in rho_mat.index if p not in NEW_PARAMS]
-new_in_mat = [p for p in NEW_PARAMS if p in rho_mat.index]
-if len(orig_params) > 1:
-    orig_params = [orig_params[i] for i in _cluster_order(rho_mat.loc[orig_params], by_axis=0)]
-if len(new_in_mat) > 1:
-    new_in_mat = [new_in_mat[i] for i in _cluster_order(rho_mat.loc[new_in_mat], by_axis=0)]
-rho_mat = rho_mat.reindex(orig_params + new_in_mat)
+# Keep only the dbRDA variable set (+ Ax_time); performance rows on top,
+# environmental/operational-driver rows below the dashed separator.
+rho_mat, _n_perf = order_param_rows(rho_mat)
 print(f'final matrix: {rho_mat.shape[0]} params x {rho_mat.shape[1]} ASVs')
 
 # ---- plot ----
@@ -95,8 +91,8 @@ for _, r in partial_hits.iterrows():
 ax.scatter(xs, ys, s=18, c='lime', marker='o', edgecolors='none', zorder=10)
 
 # Separator between original and new params
-if new_in_mat:
-    ax.axhline(len(orig_params), color='black', linewidth=1.5, linestyle='--')
+if 0 < _n_perf < rho_mat.shape[0]:
+    ax.axhline(_n_perf, color='black', linewidth=1.5, linestyle='--')
 
 ax.set_xlabel('')
 ax.set_ylabel('')
