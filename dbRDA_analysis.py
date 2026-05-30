@@ -34,8 +34,17 @@ from skbio.diversity import beta_diversity
 from skbio.stats.ordination import pcoa
 from skbio.stats.distance import permanova as skbio_permanova
 
+import networkx as nx
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+from scipy.spatial import ConvexHull
+from scipy.spatial.distance import pdist, squareform
+from matplotlib.patches import Polygon as MplPolygon, Circle as MplCircle, Patch as MplPatch
+
 # ----- paths ---------------------------------------------------------------
 ROOT = Path('/Users/andrewfreiburger/Documents/Research/EmilyKin')
+if not ROOT.exists():  # fall back to the repo dir this script lives in (e.g. Linux box)
+    ROOT = Path(__file__).resolve().parent
 # R: long_file <- file.path(base_dir, "table_rel_full.csv")
 LONG_FILE = ROOT / 'table_rel_full.csv'
 if not LONG_FILE.exists():  # fall back to the file actually committed to this repo
@@ -248,6 +257,160 @@ def dbrda(Y: pd.DataFrame, X: pd.DataFrame, metric: str = 'braycurtis') -> dict:
     }
 
 
+# ----- CAP2 orientation alignment ------------------------------------------
+# db-RDA axis signs are arbitrary (SVD sign ambiguity), so a re-run on a
+# different genus set can come out mirrored across y=0. These helpers flip a
+# result's CAP2 (sites, species, biplot) so a derived figure matches the
+# orientation of a reference figure built from the same predictors.
+def _flip_cap2(res: dict) -> None:
+    """Reflect a db-RDA result across the y=0 line (negate every CAP2 score)."""
+    for key in ('sites', 'sites_wa', 'species', 'biplot'):
+        if 'CAP2' in res[key].columns:
+            res[key]['CAP2'] = -res[key]['CAP2']
+
+
+def _align_cap2_to(res: dict, ref_cap2: pd.Series | None) -> pd.Series:
+    """Flip res's CAP2 to match a reference biplot-CAP2 orientation.
+
+    The two results share the same predictor (biplot) variables even when their
+    species sets differ, so we compare the CAP2 loadings of the shared
+    predictors: if they point the opposite way on balance, reflect res across
+    y=0. Returns res's biplot CAP2 after any flip (use as the next reference).
+    """
+    bp = res['biplot']['CAP2']
+    if ref_cap2 is not None:
+        common = bp.index.intersection(ref_cap2.index)
+        if len(common) and float((bp.loc[common] * ref_cap2.loc[common]).sum()) < 0:
+            _flip_cap2(res)
+            bp = res['biplot']['CAP2']
+    return bp
+
+
+# ----- organism ↔ variable alignment ---------------------------------------
+def export_alignment_csv(res: dict, out_path: Path) -> None:
+    """CSV of how each organism "X" aligns with each variable arrow in a figure.
+
+    Each row is an organism (species score, drawn as an "X"); each column is a
+    predictor variable (its biplot arrow). The value is the cosine of the angle
+    between the organism's (CAP1, CAP2) vector and the variable's (CAP1, CAP2)
+    arrow vector — +1 = same direction, -1 = opposite, 0 = orthogonal. Cosine is
+    invariant to the per-set display scaling and to a shared y=0 reflection, so
+    it reflects exactly the angles visible in the figure.
+    """
+    sp = res['species'][['CAP1', 'CAP2']].to_numpy()   # n_organisms × 2
+    bp = res['biplot'][['CAP1', 'CAP2']].to_numpy()     # n_variables × 2
+    sp_norm = np.linalg.norm(sp, axis=1, keepdims=True)
+    bp_norm = np.linalg.norm(bp, axis=1, keepdims=True)
+    sp_unit = sp / np.where(sp_norm == 0, 1.0, sp_norm)
+    bp_unit = bp / np.where(bp_norm == 0, 1.0, bp_norm)
+    cos = sp_unit @ bp_unit.T                            # n_organisms × n_variables
+    out = pd.DataFrame(cos, index=res['species'].index, columns=res['biplot'].index)
+    out.index.name = 'organism'
+    out = out.round(4)
+    out.to_csv(out_path)
+    print(f'wrote {out_path} ({out.shape[0]} organisms × {out.shape[1]} variables)')
+
+
+# ----- organism modularity (clustering in CAP space) -----------------------
+# Organisms are clustered by their (CAP1, CAP2) species-score positions — the
+# same points drawn as "X"s in the figures. Those scores are already weighted by
+# sqrt(eigenvalue), so Euclidean distance between them reflects ordination
+# inertia (CAP1, the dominant gradient, counts proportionally more).
+def _knn_similarity_graph(X: np.ndarray, names: list[str], knn: int) -> "nx.Graph":
+    """Mutual-kNN graph with Gaussian (RBF) edge weights for Louvain.
+
+    sigma is the median nonzero pairwise distance; each node links to its ``knn``
+    nearest neighbours with weight exp(-d²/2σ²).
+    """
+    D = squareform(pdist(X))
+    pos = D[D > 0]
+    sigma = float(np.median(pos)) if pos.size else 1.0
+    sigma = sigma or 1.0
+    G = nx.Graph()
+    G.add_nodes_from(names)
+    n = len(names)
+    for i in range(n):
+        order = np.argsort(D[i])
+        for j in order[1:knn + 1]:
+            w = float(np.exp(-D[i, j] ** 2 / (2 * sigma ** 2)))
+            if G.has_edge(names[i], names[j]):
+                G[names[i]][names[j]]['weight'] = max(G[names[i]][names[j]]['weight'], w)
+            else:
+                G.add_edge(names[i], names[j], weight=w)
+    return G
+
+
+def _relabel_by_centroid(coords: pd.DataFrame, labels: pd.Series) -> pd.Series:
+    """Renumber module labels 1..k ordered by centroid (CAP1, then CAP2) so the
+    module IDs are stable and read left-to-right across the figure."""
+    df = coords[['CAP1', 'CAP2']].copy()
+    df['_m'] = labels.reindex(df.index).values
+    cents = df.groupby('_m')[['CAP1', 'CAP2']].mean().sort_values(['CAP1', 'CAP2'])
+    remap = {old: i + 1 for i, old in enumerate(cents.index)}
+    return labels.map(remap)
+
+
+def compute_modules(coords: pd.DataFrame, *, kmax: int = 8, knn: int = 6,
+                    seed: int = 0) -> dict:
+    """Cluster organisms by their (CAP1, CAP2) positions.
+
+    - k-means: k chosen by maximising the silhouette over k = 2..kmax. Gives
+      spatially compact modules (clean shaded regions).
+    - Louvain: community detection on a kNN RBF-similarity graph; the number of
+      modules is found by maximising Newman modularity Q (no k to pick).
+
+    Returns both label Series plus the modularity Q of each partition on the
+    shared graph, so the two views can be compared.
+    """
+    sp = coords[['CAP1', 'CAP2']]
+    names = list(sp.index)
+    X = sp.to_numpy(float)
+    n = len(X)
+
+    best = {'k': 1, 'sil': -1.0, 'lab': np.zeros(n, int)}
+    for k in range(2, min(kmax, n - 1) + 1):
+        lab = KMeans(n_clusters=k, n_init=10, random_state=seed).fit_predict(X)
+        if len(set(lab)) < 2:
+            continue
+        s = float(silhouette_score(X, lab))
+        if s > best['sil']:
+            best = {'k': k, 'sil': s, 'lab': lab}
+    km = _relabel_by_centroid(sp, pd.Series(best['lab'], index=names))
+
+    G = _knn_similarity_graph(X, names, knn=min(knn, n - 1))
+    comms = nx.community.louvain_communities(G, weight='weight', seed=seed)
+    lv = _relabel_by_centroid(
+        sp, pd.Series({nm: i for i, c in enumerate(comms) for nm in c}).reindex(names))
+    Q_louvain = float(nx.community.modularity(G, comms, weight='weight'))
+    km_comms = [set(km.index[km == m]) for m in sorted(km.unique())]
+    Q_kmeans = float(nx.community.modularity(G, km_comms, weight='weight'))
+
+    return {'kmeans': km, 'louvain': lv, 'k': int(best['k']),
+            'silhouette': float(best['sil']), 'Q_louvain': Q_louvain,
+            'Q_kmeans': Q_kmeans, 'n_louvain': len(comms)}
+
+
+def _shade_module(ax, pts: np.ndarray, color, *, min_r: float) -> None:
+    """Shade a module's region: padded convex hull for ≥3 points, else a circle."""
+    pts = np.asarray(pts, float)
+    c = pts.mean(0)
+    if len(pts) >= 3:
+        try:
+            hull = ConvexHull(pts)
+            poly = pts[hull.vertices]
+            poly = c + (poly - c) * 1.25  # pad outward so the markers sit inside
+            ax.add_patch(MplPolygon(poly, closed=True, facecolor=color,
+                                    edgecolor='none', alpha=0.13, zorder=0.5))
+            ax.add_patch(MplPolygon(poly, closed=True, fill=False,
+                                    edgecolor=color, alpha=0.55, lw=1.5, zorder=0.6))
+            return
+        except Exception:
+            pass  # collinear / degenerate → fall through to circle
+    r = max(float(np.linalg.norm(pts - c, axis=1).max()) * 1.6, min_r)
+    ax.add_patch(MplCircle(c, r, facecolor=color, edgecolor='none', alpha=0.13, zorder=0.5))
+    ax.add_patch(MplCircle(c, r, fill=False, edgecolor=color, alpha=0.55, lw=1.5, zorder=0.6))
+
+
 # ----- PERMANOVA companions ------------------------------------------------
 def permanova_phase(Y: pd.DataFrame, phases: list[str], permutations: int = 999) -> dict:
     """PERMANOVA on Bray-Curtis distance, testing Phase as the grouping factor."""
@@ -306,6 +469,7 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
                labels_below_head: tuple[str, ...] = (),
                show_vector_labels: bool = True,
                label_samples: bool = False,
+               modules: pd.Series | None = None,
                faded_species: set[str] = frozenset()) -> None:
     sites = res['sites']
     species = res['species'].copy()
@@ -326,6 +490,24 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
     biplot[['CAP1', 'CAP2']] *= bp_scale
 
     fig, ax = plt.subplots(figsize=(10.7, 6.7))
+
+    # 0. module regions — shaded behind everything (organisms clustered in CAP space)
+    module_colors: dict[int, tuple] = {}
+    if modules is not None:
+        mods = sorted({int(m) for m in modules.dropna().values})
+        cmap = plt.get_cmap('tab10')
+        module_colors = {m: cmap(i % 10) for i, m in enumerate(mods)}
+        min_r = 0.06 * site_half
+        for m in mods:
+            members = [g for g in species.index
+                       if g in modules.index and not pd.isna(modules[g]) and int(modules[g]) == m]
+            if not members:
+                continue
+            pts = species.loc[members, ['CAP1', 'CAP2']].to_numpy(float)
+            _shade_module(ax, pts, module_colors[m], min_r=min_r)
+            c = pts.mean(0)
+            ax.text(c[0], c[1], f'M{m}', color=module_colors[m], fontsize=14,
+                    fontweight='bold', ha='center', va='center', alpha=0.45, zorder=0.7)
 
     # 1. species labels — colored by GAO/PAO functional category (same scheme as heatmap axis labels)
     #    xs_mode renders every species marker as a literal "X" instead of its name
@@ -416,7 +598,18 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
                    markersize=10, label=f'Phase {s}')
         for s in ['I', 'II', 'III', 'IV', 'V']
     ]
-    ax.legend(handles=legend_handles, loc='upper right', frameon=False)
+    leg_phase = ax.legend(handles=legend_handles, loc='upper right', frameon=False)
+    ax.add_artist(leg_phase)
+
+    # second legend: module color key (sizes), only on _modules figures
+    if module_colors:
+        m_handles = [
+            MplPatch(facecolor=module_colors[m], edgecolor=module_colors[m], alpha=0.5,
+                     label=f'Module {m} (n={int((modules == m).sum())})')
+            for m in sorted(module_colors)
+        ]
+        ax.legend(handles=m_handles, loc='upper left', frameon=False,
+                  fontsize=8, title='Modules')
 
     if annotation:
         ax.text(0.02, 0.02, annotation, transform=ax.transAxes,
@@ -432,7 +625,7 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
     # For the "X"-marker figures, export the genera each X represents, with the
     # functional category and the plotted (scaled) coordinates so each X on the
     # figure can be matched back to its genus.
-    if xs_mode:
+    if xs_mode and modules is None:
         sp_out = species[['CAP1', 'CAP2']].copy()
         sp_out.columns = ['plot_CAP1', 'plot_CAP2']
         sp_out.insert(0, 'functional_category', [species_category(g) for g in sp_out.index])
@@ -695,17 +888,72 @@ def per_sample_X(stage_sheet: pd.DataFrame, sample_ids: list[str], stages: list[
     return X
 
 
+# ----- module figure + assignment spreadsheet for one panel ----------------
+def export_panel_modules(res: dict, *, stages: list[str], sample_ids: list[str],
+                         title: str, arrow_color: str, out_png: Path, out_csv: Path,
+                         faded_species: set[str] = frozenset(), xs_mode: bool = False,
+                         shade_by: str = 'louvain', plot_kw: dict | None = None) -> dict:
+    """Cluster a panel's organisms in CAP space, render a region-shaded `_modules`
+    figure, and write the per-organism module-assignment spreadsheet.
+
+    Both partitions are explored: k-means (k auto-selected by silhouette) and
+    Louvain (community detection that maximises Newman modularity Q). The figure
+    is shaded by ``shade_by`` — Louvain by default, since it directly optimises
+    modularity and here resolves more (and higher-Q) modules than the k=2 split
+    silhouette favours. The spreadsheet carries BOTH assignments for comparison.
+    """
+    plot_kw = plot_kw or {}
+    coords = res['species'][['CAP1', 'CAP2']]
+    mod = compute_modules(coords)
+    n_shade = mod['n_louvain'] if shade_by == 'louvain' else mod['k']
+    q_shade = mod['Q_louvain'] if shade_by == 'louvain' else mod['Q_kmeans']
+    print(f'  modules [{out_png.name}]: k-means k={mod["k"]} '
+          f'(silhouette={mod["silhouette"]:.3f}, Q={mod["Q_kmeans"]:.3f}); '
+          f'Louvain {mod["n_louvain"]} modules (Q={mod["Q_louvain"]:.3f}); '
+          f'shading by {shade_by}')
+
+    fig_title = (f'{title} ({shade_by.capitalize()}: {n_shade} modules, '
+                 f'Q={q_shade:.2f})')
+    plot_dbrda(res, stages=stages, sample_ids=sample_ids, title=fig_title,
+               arrow_color=arrow_color, out_path=out_png, modules=mod[shade_by],
+               xs_mode=xs_mode, faded_species=faded_species, **plot_kw)
+
+    out = coords.copy()
+    out.insert(0, 'functional_category', [species_category(g) for g in out.index])
+    out['louvain_module'] = mod['louvain'].reindex(out.index).astype('Int64')
+    out['kmeans_module'] = mod['kmeans'].reindex(out.index).astype('Int64')
+    out['in_prev_top10'] = [g not in faded_species for g in out.index]
+    out.index.name = 'organism'
+    out[['CAP1', 'CAP2']] = out[['CAP1', 'CAP2']].round(4)
+    shade_col = f'{shade_by}_module'
+    out = out.sort_values([shade_col, 'organism'])
+    out.to_csv(out_csv)
+    print(f'  wrote {out_csv} ({out.shape[0]} organisms, '
+          f'k-means k={mod["k"]}, Louvain {mod["n_louvain"]} modules)')
+    return mod
+
+
 # ----- one full figure suite for a given abundance matrix ------------------
 def run_dbrda_suite(Y: pd.DataFrame, sample_ids: list[str], stages: list[str], *,
                     genus_desc: str, faded_species: set[str] = frozenset(),
-                    suffix: str = '', n_perm: int = 999) -> None:
+                    suffix: str = '', n_perm: int = 999,
+                    align_ref: dict[str, pd.Series] | None = None,
+                    export_alignments: bool = False,
+                    export_modules: bool = False) -> dict[str, pd.Series]:
     """Render the full db-RDA figure suite (performance + operational drivers)
     for one abundance matrix Y.
 
     ``genus_desc`` is the genus-selection phrase woven into figure titles.
     ``faded_species`` are drawn faded (genera outside the previous top-10 union).
     ``suffix`` is appended to every output filename (e.g. '_5%').
+    ``align_ref`` maps panel name → reference biplot-CAP2 orientation; each panel
+    is reflected across y=0 if needed to match it (db-RDA axis signs are
+    arbitrary, so a re-run on a different genus set can come out mirrored).
+    Returns this suite's panel → biplot-CAP2 orientations, to serve as the
+    reference for a derived suite.
     """
+    ref = align_ref or {}
+    orient: dict[str, pd.Series] = {}
     N_PERM = n_perm
     _fade = dict(faded_species=faded_species)
 
@@ -718,6 +966,9 @@ def run_dbrda_suite(Y: pd.DataFrame, sample_ids: list[str], stages: list[str], *
     stages_p = [s for s, k in zip(stages, keep_p) if k]
     print(f'\nperformance dbRDA: {Y_p.shape[0]} samples, {X_p.shape[1]} predictors')
     res_p = dbrda(Y_p, X_p)
+    orient['performance'] = _align_cap2_to(res_p, ref.get('performance'))
+    if export_alignments:
+        export_alignment_csv(res_p, OUT_DIR / f'dbRDA_performance_alignment{suffix}.csv')
     print(f'  constrained inertia: {res_p["constrained_inertia"]:.4f} '
           f'({100 * res_p["prop_constrained"]:.1f}% of total {res_p["total_inertia"]:.4f})')
     print(f'  running {N_PERM}-permutation PERMANOVAs...')
@@ -775,6 +1026,17 @@ def run_dbrda_suite(Y: pd.DataFrame, sample_ids: list[str], stages: list[str], *
         arrow_color='crimson', out_path=OUT_DIR / f'dbRDA_performance_nodes_ids{suffix}.png',
         annotation=ann_p, show_vector_labels=False, label_samples=True, **_fade,
     )
+    # _modules variant: organisms clustered in CAP space, regions shaded
+    if export_modules:
+        export_panel_modules(
+            res_p, stages=stages_p, sample_ids=Y_p.index.tolist(),
+            title=f'db-RDA: {genus_desc} ~ Performance — organism modules',
+            arrow_color='crimson',
+            out_png=OUT_DIR / f'dbRDA_performance_modules{suffix}.png',
+            out_csv=OUT_DIR / f'dbRDA_performance_modules{suffix}.csv',
+            faded_species=faded_species,
+            plot_kw=dict(annotation=ann_p, **_perf_label_kw),
+        )
 
     # ----- db-RDA: abundance ~ operational drivers (paper-2 curated set) ---
     X_inf = build_influence_X_per_sample(sample_ids, stages)
@@ -784,6 +1046,9 @@ def run_dbrda_suite(Y: pd.DataFrame, sample_ids: list[str], stages: list[str], *
     stages_e = [s for s, k in zip(stages, keep_e) if k]
     print(f'\noperational-drivers dbRDA: {Y_e.shape[0]} samples, {X_e.shape[1]} predictors')
     res_e = dbrda(Y_e, X_e)
+    orient['environment'] = _align_cap2_to(res_e, ref.get('environment'))
+    if export_alignments:
+        export_alignment_csv(res_e, OUT_DIR / f'dbRDA_environment_alignment{suffix}.csv')
     print(f'  constrained inertia: {res_e["constrained_inertia"]:.4f} '
           f'({100 * res_e["prop_constrained"]:.1f}% of total {res_e["total_inertia"]:.4f})')
     print(f'  running {N_PERM}-permutation PERMANOVAs...')
@@ -818,11 +1083,24 @@ def run_dbrda_suite(Y: pd.DataFrame, sample_ids: list[str], stages: list[str], *
         arrow_color='crimson', out_path=OUT_DIR / f'dbRDA_environment_nodes_ids{suffix}.png',
         annotation=ann_e, show_vector_labels=False, label_samples=True, **_fade,
     )
+    # _modules variant: organisms clustered in CAP space, regions shaded
+    if export_modules:
+        export_panel_modules(
+            res_e, stages=stages_e, sample_ids=Y_e.index.tolist(),
+            title=f'db-RDA: {genus_desc} ~ Operational drivers — organism modules',
+            arrow_color='crimson',
+            out_png=OUT_DIR / f'dbRDA_environment_modules{suffix}.png',
+            out_csv=OUT_DIR / f'dbRDA_environment_modules{suffix}.csv',
+            faded_species=faded_species, plot_kw=dict(annotation=ann_e),
+        )
 
     # ----- _Xs variant: drop N_Ax-1, recompute, restyle (X markers, bigger edged dots) ---
     X_e_xs = X_e.drop(columns=[c for c in X_e.columns if c == 'N_Ax-1'])
     print(f'\noperational-drivers dbRDA (_Xs, N_Ax-1 removed): {Y_e.shape[0]} samples, {X_e_xs.shape[1]} predictors')
     res_e_xs = dbrda(Y_e, X_e_xs)
+    orient['environment_Xs'] = _align_cap2_to(res_e_xs, ref.get('environment_Xs'))
+    if export_alignments:
+        export_alignment_csv(res_e_xs, OUT_DIR / f'dbRDA_environment_Xs_alignment{suffix}.csv')
     print(f'  running {N_PERM}-permutation PERMANOVAs...')
     pm_phase_e_xs = permanova_phase(Y_e, stages_e, permutations=N_PERM)
     pm_full_e_xs  = dbrda_perm_test(Y_e, X_e_xs, n_perm=N_PERM)
@@ -845,6 +1123,18 @@ def run_dbrda_suite(Y: pd.DataFrame, sample_ids: list[str], stages: list[str], *
         arrow_color='crimson', out_path=OUT_DIR / f'dbRDA_environment_Xs_nodes{suffix}.png',
         annotation=ann_e_xs, xs_mode=True, show_vector_labels=False, **_fade,
     )
+    # _modules variant: organisms (drawn as "X") clustered in CAP space, regions shaded
+    if export_modules:
+        export_panel_modules(
+            res_e_xs, stages=stages_e, sample_ids=Y_e.index.tolist(),
+            title=f'db-RDA: {genus_desc} ~ Operational drivers (N_Ax-1 removed) — organism modules',
+            arrow_color='crimson',
+            out_png=OUT_DIR / f'dbRDA_environment_Xs_modules{suffix}.png',
+            out_csv=OUT_DIR / f'dbRDA_environment_Xs_modules{suffix}.csv',
+            faded_species=faded_species, xs_mode=True, plot_kw=dict(annotation=ann_e_xs),
+        )
+
+    return orient
 
 
 # ----- main ----------------------------------------------------------------
@@ -857,17 +1147,21 @@ def main() -> None:
     Y, sample_ids, stages, top10 = build_abundance_matrix(LONG_FILE)
     print(f'\n=== abundance matrix Y (top-10-per-phase union): '
           f'{Y.shape[0]} samples × {Y.shape[1]} genera ===')
-    run_dbrda_suite(Y, sample_ids, stages, genus_desc='Top 10 Genera', suffix='')
+    base_orient = run_dbrda_suite(Y, sample_ids, stages, genus_desc='Top 10 Genera', suffix='',
+                                  export_alignments=True, export_modules=True)
 
     # ----- 5%-max-relative-abundance inclusion threshold --------------------
-    # genera outside the previous top-10 union are drawn faded
+    # genera outside the previous top-10 union are drawn faded. The X predictors
+    # are built identically (same functions, same samples), so the 5% suite uses
+    # the same variables as the base suite; align_ref reflects each 5% panel
+    # across y=0 when its arbitrary axis sign comes out mirrored from the base.
     Y5, sids5, stages5, top10_5 = build_abundance_matrix(LONG_FILE, max_rel_threshold=0.05)
     faded = set(Y5.columns) - top10_5
     print(f'\n=== abundance matrix Y (max rel. abundance ≥5%): '
           f'{Y5.shape[0]} samples × {Y5.shape[1]} genera '
           f'({len(faded)} faded — outside previous top-10 union) ===')
     run_dbrda_suite(Y5, sids5, stages5, genus_desc='Genera (max rel. ab. ≥5%)',
-                    faded_species=faded, suffix='_5%')
+                    faded_species=faded, suffix='_5%', align_ref=base_orient)
 
 
 if __name__ == '__main__':

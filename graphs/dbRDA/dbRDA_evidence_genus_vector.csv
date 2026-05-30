@@ -1,0 +1,349 @@
+organism,module,peak_phase,panel,vector,vector_main_phase,projection,cosine,abs_CAP,proj_rank,is_best_driver
+Thauera,M1,I,environment,Acetate,I,0.4716,0.7629,0.6181,1,False
+midas_g_428,M1,I,environment,Acetate,I,0.4242,0.7306,0.5806,2,False
+Zoogloea,M1,I,environment,Acetate,I,0.4105,0.7558,0.5432,3,False
+Sediminibacterium,M1,I,environment,Acetate,I,0.4014,0.7244,0.5541,4,False
+Pseudoxanthomonas,M1,I,environment,Acetate,I,0.3974,0.8732,0.4551,5,False
+Ca_Competibacter,M1,II,environment,Acetate,I,0.3182,0.9999,0.3182,6,True
+Azospira,M1,II,environment,Acetate,I,0.2828,0.9996,0.2829,7,True
+Denitratisoma,M1,III,environment,Acetate,I,0.2069,0.7755,0.2669,8,False
+Dokdonella,M1,IV,environment,Acetate,I,0.1309,0.9679,0.1353,9,False
+Hydrogenophaga,M1,III,environment,Acetate,I,0.0966,0.9933,0.0973,10,True
+Aeromonas,M1,III,environment,Acetate,I,-0.046,-0.6779,0.0679,11,False
+midas_g_41804,M2,IV,environment,Acetate,I,-0.0637,-0.3542,0.1797,12,False
+midas_g_171,M2,IV,environment,Acetate,I,-0.1242,-0.3421,0.363,13,False
+midas_g_61007,M2,IV,environment,Acetate,I,-0.1316,-0.4917,0.2677,14,False
+Lysobacter,M2,IV,environment,Acetate,I,-0.1494,-0.4472,0.3339,15,False
+midas_g_36422,M2,III,environment,Acetate,I,-0.1624,-0.5566,0.2917,16,False
+midas_g_973,M3,V,environment,Acetate,I,-0.2332,-1.0,0.2332,17,False
+midas_g_8672,M2,IV,environment,Acetate,I,-0.2652,-0.7409,0.3579,18,False
+midas_g_3943,M3,V,environment,Acetate,I,-0.3261,-0.9955,0.3276,19,False
+midas_g_12887,M2,IV,environment,Acetate,I,-0.3433,-0.8227,0.4173,20,False
+Ca_Caldilinea,M3,IV,environment,Acetate,I,-0.3507,-0.827,0.424,21,False
+midas_g_2019,M3,V,environment,Acetate,I,-0.3693,-0.9392,0.3932,22,False
+midas_g_71310,M3,V,environment,Acetate,I,-0.3798,-0.9009,0.4216,23,False
+midas_g_26667,M3,V,environment,Acetate,I,-0.3827,-0.9674,0.3956,24,False
+Ca_Accumulibacter,M3,V,environment,Acetate,I,-0.4217,-0.8325,0.5065,25,False
+midas_g_31688,M3,V,environment,Acetate,I,-0.4263,-0.989,0.431,26,False
+alphaI_cluster,M3,V,environment,Acetate,I,-0.473,-0.9874,0.479,27,False
+Ca_Sarcinithrix,M3,V,environment,Acetate,I,-0.4826,-0.9562,0.5048,28,False
+Rhodoplanes,M3,V,environment,Acetate,I,-0.4979,-0.958,0.5197,29,False
+Ca_Competibacter,M1,II,environment,C/N,II,0.2812,0.8835,0.3182,1,False
+Denitratisoma,M1,III,environment,C/N,II,0.2624,0.9832,0.2669,2,True
+Azospira,M1,II,environment,C/N,II,0.2519,0.8904,0.2829,3,False
+Pseudoxanthomonas,M1,I,environment,C/N,II,0.2425,0.5329,0.4551,4,False
+Thauera,M1,I,environment,C/N,II,0.2224,0.3597,0.6181,5,False
+Zoogloea,M1,I,environment,C/N,II,0.1899,0.3496,0.5432,6,False
+midas_g_428,M1,I,environment,C/N,II,0.1823,0.314,0.5806,7,False
+Sediminibacterium,M1,I,environment,C/N,II,0.1692,0.3054,0.5541,8,False
+Dokdonella,M1,IV,environment,C/N,II,0.1312,0.9699,0.1353,9,True
+Hydrogenophaga,M1,III,environment,C/N,II,0.0794,0.8163,0.0973,10,False
+midas_g_171,M2,IV,environment,C/N,II,0.0545,0.15,0.363,11,False
+midas_g_41804,M2,IV,environment,C/N,II,0.0247,0.1372,0.1797,12,False
+Lysobacter,M2,IV,environment,C/N,II,0.0121,0.0361,0.3339,13,False
+midas_g_61007,M2,IV,environment,C/N,II,-0.0038,-0.0142,0.2677,14,False
+Aeromonas,M1,III,environment,C/N,II,-0.0165,-0.2427,0.0679,15,False
+midas_g_36422,M2,III,environment,C/N,II,-0.0264,-0.0904,0.2917,16,False
+midas_g_8672,M2,IV,environment,C/N,II,-0.1176,-0.3285,0.3579,17,False
+midas_g_12887,M2,IV,environment,C/N,II,-0.1876,-0.4497,0.4173,18,False
+Ca_Caldilinea,M3,IV,environment,C/N,II,-0.1936,-0.4565,0.424,19,False
+midas_g_973,M3,V,environment,C/N,II,-0.2052,-0.8798,0.2332,20,False
+Ca_Accumulibacter,M3,V,environment,C/N,II,-0.2357,-0.4652,0.5065,21,False
+midas_g_71310,M3,V,environment,C/N,II,-0.2456,-0.5826,0.4216,22,False
+midas_g_2019,M3,V,environment,C/N,II,-0.2594,-0.6598,0.3932,23,False
+midas_g_3943,M3,V,environment,C/N,II,-0.2713,-0.8282,0.3276,24,False
+midas_g_26667,M3,V,environment,C/N,II,-0.2878,-0.7276,0.3956,25,False
+midas_g_31688,M3,V,environment,C/N,II,-0.3436,-0.7973,0.431,26,False
+Ca_Sarcinithrix,M3,V,environment,C/N,II,-0.3528,-0.6989,0.5048,27,False
+Rhodoplanes,M3,V,environment,C/N,II,-0.3655,-0.7033,0.5197,28,False
+alphaI_cluster,M3,V,environment,C/N,II,-0.3787,-0.7906,0.479,29,False
+Thauera,M1,I,environment,DO avg,I,0.6024,0.9745,0.6181,1,False
+midas_g_428,M1,I,environment,DO avg,I,0.5714,0.9842,0.5806,2,False
+Sediminibacterium,M1,I,environment,DO avg,I,0.5462,0.9858,0.5541,3,False
+Zoogloea,M1,I,environment,DO avg,I,0.5306,0.9769,0.5432,4,False
+Pseudoxanthomonas,M1,I,environment,DO avg,I,0.4154,0.9129,0.4551,5,False
+Ca_Competibacter,M1,II,environment,DO avg,I,0.1872,0.5883,0.3182,6,False
+Azospira,M1,II,environment,DO avg,I,0.163,0.5762,0.2829,7,False
+Hydrogenophaga,M1,III,environment,DO avg,I,0.0668,0.6871,0.0973,8,False
+Dokdonella,M1,IV,environment,DO avg,I,0.0511,0.3778,0.1353,9,False
+Denitratisoma,M1,III,environment,DO avg,I,-0.0112,-0.042,0.2669,10,False
+Aeromonas,M1,III,environment,DO avg,I,-0.0675,-0.9946,0.0679,11,False
+midas_g_973,M3,V,environment,DO avg,I,-0.1387,-0.5947,0.2332,12,False
+midas_g_41804,M2,IV,environment,DO avg,I,-0.1727,-0.9613,0.1797,13,False
+midas_g_3943,M3,V,environment,DO avg,I,-0.22,-0.6716,0.3276,14,False
+midas_g_61007,M2,IV,environment,DO avg,I,-0.2655,-0.9919,0.2677,15,False
+midas_g_36422,M2,III,environment,DO avg,I,-0.2914,-0.9987,0.2917,16,False
+midas_g_31688,M3,V,environment,DO avg,I,-0.3061,-0.7101,0.431,17,False
+midas_g_26667,M3,V,environment,DO avg,I,-0.3093,-0.7818,0.3956,18,False
+Lysobacter,M2,IV,environment,DO avg,I,-0.3287,-0.9843,0.3339,19,False
+midas_g_2019,M3,V,environment,DO avg,I,-0.3292,-0.837,0.3932,20,False
+alphaI_cluster,M3,V,environment,DO avg,I,-0.3438,-0.7177,0.479,21,False
+midas_g_171,M2,IV,environment,DO avg,I,-0.3476,-0.9576,0.363,22,False
+midas_g_8672,M2,IV,environment,DO avg,I,-0.3512,-0.9814,0.3579,23,False
+midas_g_71310,M3,V,environment,DO avg,I,-0.3738,-0.8868,0.4216,24,False
+midas_g_12887,M2,IV,environment,DO avg,I,-0.3954,-0.9477,0.4173,25,False
+Ca_Caldilinea,M3,IV,environment,DO avg,I,-0.4008,-0.9452,0.424,26,False
+Ca_Sarcinithrix,M3,V,environment,DO avg,I,-0.4072,-0.8067,0.5048,27,False
+Rhodoplanes,M3,V,environment,DO avg,I,-0.4173,-0.803,0.5197,28,False
+Ca_Accumulibacter,M3,V,environment,DO avg,I,-0.4771,-0.942,0.5065,29,False
+Ca_Accumulibacter,M3,V,environment,N/P,IV,0.4076,0.8047,0.5065,1,False
+midas_g_171,M2,IV,environment,N/P,IV,0.363,1.0,0.363,2,True
+Ca_Caldilinea,M3,IV,environment,N/P,IV,0.3437,0.8105,0.424,3,False
+midas_g_12887,M2,IV,environment,N/P,IV,0.3401,0.815,0.4173,4,False
+Lysobacter,M2,IV,environment,N/P,IV,0.3317,0.9933,0.3339,5,False
+midas_g_8672,M2,IV,environment,N/P,IV,0.3164,0.884,0.3579,6,False
+Rhodoplanes,M3,V,environment,N/P,IV,0.31,0.5964,0.5197,7,False
+Ca_Sarcinithrix,M3,V,environment,N/P,IV,0.3036,0.6014,0.5048,8,False
+midas_g_71310,M3,V,environment,N/P,IV,0.3016,0.7153,0.4216,9,False
+midas_g_36422,M2,III,environment,N/P,IV,0.2832,0.9708,0.2917,10,False
+midas_g_61007,M2,IV,environment,N/P,IV,0.264,0.9863,0.2677,11,False
+midas_g_2019,M3,V,environment,N/P,IV,0.2529,0.6431,0.3932,12,False
+alphaI_cluster,M3,V,environment,N/P,IV,0.2327,0.4857,0.479,13,False
+midas_g_26667,M3,V,environment,N/P,IV,0.2247,0.5681,0.3956,14,False
+midas_g_31688,M3,V,environment,N/P,IV,0.2052,0.4762,0.431,15,False
+midas_g_41804,M2,IV,environment,N/P,IV,0.1797,0.9999,0.1797,16,True
+midas_g_3943,M3,V,environment,N/P,IV,0.1404,0.4287,0.3276,17,False
+Denitratisoma,M1,III,environment,N/P,IV,0.0878,0.3291,0.2669,18,False
+midas_g_973,M3,V,environment,N/P,IV,0.0786,0.3369,0.2332,19,False
+Aeromonas,M1,III,environment,N/P,IV,0.0626,0.9223,0.0679,20,False
+Dokdonella,M1,IV,environment,N/P,IV,-0.0127,-0.094,0.1353,21,False
+Hydrogenophaga,M1,III,environment,N/P,IV,-0.0435,-0.4477,0.0973,22,False
+Azospira,M1,II,environment,N/P,IV,-0.0892,-0.3153,0.2829,23,False
+Ca_Competibacter,M1,II,environment,N/P,IV,-0.1048,-0.3294,0.3182,24,False
+Pseudoxanthomonas,M1,I,environment,N/P,IV,-0.344,-0.7559,0.4551,25,False
+Zoogloea,M1,I,environment,N/P,IV,-0.4743,-0.8733,0.5432,26,False
+Sediminibacterium,M1,I,environment,N/P,IV,-0.496,-0.8951,0.5541,27,False
+midas_g_428,M1,I,environment,N/P,IV,-0.5173,-0.891,0.5806,28,False
+Thauera,M1,I,environment,N/P,IV,-0.5365,-0.868,0.6181,29,False
+Ca_Accumulibacter,M3,V,environment,N_Ax-1,IV,0.4325,0.8538,0.5065,1,False
+Ca_Caldilinea,M3,IV,environment,N_Ax-1,IV,0.3642,0.8589,0.424,2,True
+midas_g_171,M2,IV,environment,N_Ax-1,IV,0.3616,0.9962,0.363,3,False
+midas_g_12887,M2,IV,environment,N_Ax-1,IV,0.36,0.8628,0.4173,4,True
+Rhodoplanes,M3,V,environment,N_Ax-1,IV,0.3455,0.6648,0.5197,5,False
+Ca_Sarcinithrix,M3,V,environment,N_Ax-1,IV,0.3379,0.6694,0.5048,6,False
+Lysobacter,M2,IV,environment,N_Ax-1,IV,0.3338,0.9996,0.3339,7,True
+midas_g_8672,M2,IV,environment,N_Ax-1,IV,0.3299,0.9217,0.3579,8,True
+midas_g_71310,M3,V,environment,N_Ax-1,IV,0.3263,0.7741,0.4216,9,False
+midas_g_36422,M2,III,environment,N_Ax-1,IV,0.2883,0.9882,0.2917,10,True
+midas_g_2019,M3,V,environment,N_Ax-1,IV,0.2784,0.708,0.3932,11,False
+alphaI_cluster,M3,V,environment,N_Ax-1,IV,0.2686,0.5608,0.479,12,False
+midas_g_61007,M2,IV,environment,N_Ax-1,IV,0.2669,0.997,0.2677,13,True
+midas_g_26667,M3,V,environment,N_Ax-1,IV,0.2525,0.6384,0.3956,14,False
+midas_g_31688,M3,V,environment,N_Ax-1,IV,0.2378,0.5518,0.431,15,False
+midas_g_41804,M2,IV,environment,N_Ax-1,IV,0.1792,0.9973,0.1797,16,False
+midas_g_3943,M3,V,environment,N_Ax-1,IV,0.1659,0.5066,0.3276,17,False
+midas_g_973,M3,V,environment,N_Ax-1,IV,0.0976,0.4185,0.2332,18,False
+Denitratisoma,M1,III,environment,N_Ax-1,IV,0.0653,0.2446,0.2669,19,False
+Aeromonas,M1,III,environment,N_Ax-1,IV,0.0646,0.9527,0.0679,20,True
+Dokdonella,M1,IV,environment,N_Ax-1,IV,-0.0245,-0.1813,0.1353,21,False
+Hydrogenophaga,M1,III,environment,N_Ax-1,IV,-0.051,-0.5247,0.0973,22,False
+Azospira,M1,II,environment,N_Ax-1,IV,-0.1125,-0.3977,0.2829,23,False
+Ca_Competibacter,M1,II,environment,N_Ax-1,IV,-0.1309,-0.4113,0.3182,24,False
+Pseudoxanthomonas,M1,I,environment,N_Ax-1,IV,-0.3689,-0.8106,0.4551,25,False
+Zoogloea,M1,I,environment,N_Ax-1,IV,-0.4958,-0.9128,0.5432,26,False
+Sediminibacterium,M1,I,environment,N_Ax-1,IV,-0.5158,-0.9309,0.5541,27,False
+midas_g_428,M1,I,environment,N_Ax-1,IV,-0.5385,-0.9275,0.5806,28,False
+Thauera,M1,I,environment,N_Ax-1,IV,-0.5615,-0.9083,0.6181,29,False
+Thauera,M1,I,environment,N_Ax-2,I,0.5962,0.9645,0.6181,1,False
+midas_g_428,M1,I,environment,N_Ax-2,I,0.5519,0.9505,0.5806,2,False
+Sediminibacterium,M1,I,environment,N_Ax-2,I,0.5251,0.9477,0.5541,3,False
+Zoogloea,M1,I,environment,N_Ax-2,I,0.5223,0.9616,0.5432,4,False
+Pseudoxanthomonas,M1,I,environment,N_Ax-2,I,0.4539,0.9973,0.4551,5,True
+Ca_Competibacter,M1,II,environment,N_Ax-2,I,0.2868,0.9013,0.3182,6,False
+Azospira,M1,II,environment,N_Ax-2,I,0.2531,0.8947,0.2829,7,False
+Denitratisoma,M1,III,environment,N_Ax-2,I,0.1165,0.4365,0.2669,8,False
+Dokdonella,M1,IV,environment,N_Ax-2,I,0.1044,0.7715,0.1353,9,False
+Hydrogenophaga,M1,III,environment,N_Ax-2,I,0.0923,0.9494,0.0973,10,False
+Aeromonas,M1,III,environment,N_Ax-2,I,-0.0628,-0.9248,0.0679,11,False
+midas_g_41804,M2,IV,environment,N_Ax-2,I,-0.1286,-0.7158,0.1797,12,False
+midas_g_973,M3,V,environment,N_Ax-2,I,-0.211,-0.9047,0.2332,13,False
+midas_g_61007,M2,IV,environment,N_Ax-2,I,-0.2177,-0.8133,0.2677,14,False
+midas_g_36422,M2,III,environment,N_Ax-2,I,-0.2495,-0.8552,0.2917,15,False
+midas_g_171,M2,IV,environment,N_Ax-2,I,-0.2565,-0.7067,0.363,16,False
+Lysobacter,M2,IV,environment,N_Ax-2,I,-0.2615,-0.783,0.3339,17,False
+midas_g_3943,M3,V,environment,N_Ax-2,I,-0.3087,-0.9425,0.3276,18,False
+midas_g_8672,M2,IV,environment,N_Ax-2,I,-0.3418,-0.9552,0.3579,19,False
+midas_g_26667,M3,V,environment,N_Ax-2,I,-0.3892,-0.9839,0.3956,20,False
+midas_g_2019,M3,V,environment,N_Ax-2,I,-0.3918,-0.9964,0.3932,21,False
+midas_g_12887,M2,IV,environment,N_Ax-2,I,-0.4113,-0.9858,0.4173,22,False
+midas_g_31688,M3,V,environment,N_Ax-2,I,-0.4133,-0.959,0.431,23,False
+Ca_Caldilinea,M3,IV,environment,N_Ax-2,I,-0.4185,-0.987,0.424,24,False
+midas_g_71310,M3,V,environment,N_Ax-2,I,-0.4215,-0.9999,0.4216,25,False
+alphaI_cluster,M3,V,environment,N_Ax-2,I,-0.4608,-0.962,0.479,26,False
+Ca_Sarcinithrix,M3,V,environment,N_Ax-2,I,-0.4999,-0.9904,0.5048,27,False
+Ca_Accumulibacter,M3,V,environment,N_Ax-2,I,-0.5007,-0.9886,0.5065,28,False
+Rhodoplanes,M3,V,environment,N_Ax-2,I,-0.5143,-0.9895,0.5197,29,False
+Rhodoplanes,M3,V,environment,Propionate,V,0.5055,0.9726,0.5197,1,True
+Ca_Sarcinithrix,M3,V,environment,Propionate,V,0.4902,0.9712,0.5048,2,True
+alphaI_cluster,M3,V,environment,Propionate,V,0.4765,0.9947,0.479,3,True
+Ca_Accumulibacter,M3,V,environment,Propionate,V,0.4369,0.8625,0.5065,4,True
+midas_g_31688,M3,V,environment,Propionate,V,0.4292,0.9958,0.431,5,True
+midas_g_71310,M3,V,environment,Propionate,V,0.3895,0.924,0.4216,6,True
+midas_g_26667,M3,V,environment,Propionate,V,0.3877,0.9802,0.3956,7,True
+midas_g_2019,M3,V,environment,Propionate,V,0.3764,0.9571,0.3932,8,True
+Ca_Caldilinea,M3,IV,environment,Propionate,V,0.3636,0.8575,0.424,9,False
+midas_g_12887,M2,IV,environment,Propionate,V,0.3562,0.8536,0.4173,10,False
+midas_g_3943,M3,V,environment,Propionate,V,0.3273,0.9993,0.3276,11,True
+midas_g_8672,M2,IV,environment,Propionate,V,0.2783,0.7777,0.3579,12,False
+midas_g_973,M3,V,environment,Propionate,V,0.2328,0.9981,0.2332,13,True
+midas_g_36422,M2,III,environment,Propionate,V,0.1758,0.6027,0.2917,14,False
+Lysobacter,M2,IV,environment,Propionate,V,0.166,0.4971,0.3339,15,False
+midas_g_61007,M2,IV,environment,Propionate,V,0.1446,0.5401,0.2677,16,False
+midas_g_171,M2,IV,environment,Propionate,V,0.1433,0.3947,0.363,17,False
+midas_g_41804,M2,IV,environment,Propionate,V,0.0731,0.4066,0.1797,18,False
+Aeromonas,M1,III,environment,Propionate,V,0.0487,0.7184,0.0679,19,False
+Hydrogenophaga,M1,III,environment,Propionate,V,-0.0971,-0.9982,0.0973,20,False
+Dokdonella,M1,IV,environment,Propionate,V,-0.1288,-0.9522,0.1353,21,False
+Denitratisoma,M1,III,environment,Propionate,V,-0.1971,-0.7385,0.2669,22,False
+Azospira,M1,II,environment,Propionate,V,-0.2819,-0.9965,0.2829,23,False
+Ca_Competibacter,M1,II,environment,Propionate,V,-0.3175,-0.9976,0.3182,24,False
+Pseudoxanthomonas,M1,I,environment,Propionate,V,-0.4093,-0.8994,0.4551,25,False
+Sediminibacterium,M1,I,environment,Propionate,V,-0.4223,-0.7622,0.5541,26,False
+Zoogloea,M1,I,environment,Propionate,V,-0.43,-0.7917,0.5432,27,False
+midas_g_428,M1,I,environment,Propionate,V,-0.4459,-0.7681,0.5806,28,False
+Thauera,M1,I,environment,Propionate,V,-0.4934,-0.7982,0.6181,29,False
+Thauera,M1,I,environment,cumulative aeration,I,0.6174,0.9988,0.6181,1,True
+midas_g_428,M1,I,environment,cumulative aeration,I,0.5778,0.9952,0.5806,2,True
+Sediminibacterium,M1,I,environment,cumulative aeration,I,0.5509,0.9942,0.5541,3,True
+Zoogloea,M1,I,environment,cumulative aeration,I,0.5422,0.9982,0.5432,4,True
+Pseudoxanthomonas,M1,I,environment,cumulative aeration,I,0.4504,0.9896,0.4551,5,False
+Ca_Competibacter,M1,II,environment,cumulative aeration,I,0.2503,0.7865,0.3182,6,False
+Azospira,M1,II,environment,cumulative aeration,I,0.2199,0.7773,0.2829,7,False
+Hydrogenophaga,M1,III,environment,cumulative aeration,I,0.0836,0.8592,0.0973,8,False
+Dokdonella,M1,IV,environment,cumulative aeration,I,0.0833,0.616,0.1353,9,False
+Denitratisoma,M1,III,environment,cumulative aeration,I,0.0619,0.2321,0.2669,10,False
+Aeromonas,M1,III,environment,cumulative aeration,I,-0.0668,-0.9851,0.0679,11,False
+midas_g_41804,M2,IV,environment,cumulative aeration,I,-0.1527,-0.8497,0.1797,12,False
+midas_g_973,M3,V,environment,cumulative aeration,I,-0.1846,-0.7914,0.2332,13,False
+midas_g_61007,M2,IV,environment,cumulative aeration,I,-0.2462,-0.9197,0.2677,14,False
+midas_g_36422,M2,III,environment,cumulative aeration,I,-0.2763,-0.9469,0.2917,15,False
+midas_g_3943,M3,V,environment,cumulative aeration,I,-0.2778,-0.8482,0.3276,16,False
+Lysobacter,M2,IV,environment,cumulative aeration,I,-0.3001,-0.8988,0.3339,17,False
+midas_g_171,M2,IV,environment,cumulative aeration,I,-0.3059,-0.8428,0.363,18,False
+midas_g_8672,M2,IV,environment,cumulative aeration,I,-0.3567,-0.9966,0.3579,19,False
+midas_g_26667,M3,V,environment,cumulative aeration,I,-0.3648,-0.9222,0.3956,20,False
+midas_g_2019,M3,V,environment,cumulative aeration,I,-0.3754,-0.9545,0.3932,21,False
+midas_g_31688,M3,V,environment,cumulative aeration,I,-0.3772,-0.8752,0.431,22,False
+midas_g_71310,M3,V,environment,cumulative aeration,I,-0.4128,-0.9792,0.4216,23,False
+midas_g_12887,M2,IV,environment,cumulative aeration,I,-0.4168,-0.9988,0.4173,24,False
+alphaI_cluster,M3,V,environment,cumulative aeration,I,-0.4217,-0.8804,0.479,25,False
+Ca_Caldilinea,M3,IV,environment,cumulative aeration,I,-0.4234,-0.9984,0.424,26,False
+Ca_Sarcinithrix,M3,V,environment,cumulative aeration,I,-0.4731,-0.9373,0.5048,27,False
+Rhodoplanes,M3,V,environment,cumulative aeration,I,-0.486,-0.9351,0.5197,28,False
+Ca_Accumulibacter,M3,V,environment,cumulative aeration,I,-0.5054,-0.9978,0.5065,29,False
+Ca_Accumulibacter,M3,V,performance,N removal (ppm) [N-ppn],V,0.4415,0.9223,0.4787,1,False
+midas_g_71310,M3,V,performance,N removal (ppm) [N-ppn],V,0.3429,0.8426,0.4069,2,False
+Rhodoplanes,M3,V,performance,N removal (ppm) [N-ppn],V,0.3374,0.7326,0.4606,3,False
+Ca_Sarcinithrix,M3,V,performance,N removal (ppm) [N-ppn],V,0.3285,0.7311,0.4493,4,False
+Ca_Caldilinea,M3,IV,performance,N removal (ppm) [N-ppn],V,0.3136,0.8779,0.3572,6,False
+midas_g_12887,M3,IV,performance,N removal (ppm) [N-ppn],V,0.3136,0.8807,0.3561,5,False
+midas_g_2019,M3,V,performance,N removal (ppm) [N-ppn],V,0.3063,0.8373,0.3658,7,False
+alphaI_cluster,M3,V,performance,N removal (ppm) [N-ppn],V,0.305,0.6843,0.4458,8,False
+midas_g_171,M2,IV,performance,N removal (ppm) [N-ppn],V,0.3038,0.9669,0.3142,9,False
+Lysobacter,M2,IV,performance,N removal (ppm) [N-ppn],V,0.285,0.999,0.2853,10,True
+midas_g_31688,M3,V,performance,N removal (ppm) [N-ppn],V,0.2845,0.7042,0.404,11,False
+midas_g_36422,M2,III,performance,N removal (ppm) [N-ppn],V,0.2572,0.9997,0.2573,12,True
+midas_g_26667,M3,V,performance,N removal (ppm) [N-ppn],V,0.2402,0.7532,0.3189,13,False
+midas_g_8672,M2,IV,performance,N removal (ppm) [N-ppn],V,0.2385,0.9382,0.2542,14,True
+midas_g_61007,M2,IV,performance,N removal (ppm) [N-ppn],V,0.2146,0.998,0.2151,15,True
+midas_g_3943,M3,V,performance,N removal (ppm) [N-ppn],V,0.209,0.6939,0.3012,16,False
+midas_g_41804,M2,IV,performance,N removal (ppm) [N-ppn],V,0.1069,0.988,0.1082,17,False
+midas_g_973,M2,V,performance,N removal (ppm) [N-ppn],V,0.1053,0.6477,0.1625,18,False
+Denitratisoma,M1,III,performance,N removal (ppm) [N-ppn],V,0.0685,0.2572,0.2662,19,False
+Aeromonas,M1,III,performance,N removal (ppm) [N-ppn],V,0.045,0.8403,0.0535,20,False
+Hydrogenophaga,M1,III,performance,N removal (ppm) [N-ppn],V,-0.0461,-0.5325,0.0866,21,False
+Azospira,M1,II,performance,N removal (ppm) [N-ppn],V,-0.0845,-0.3277,0.2579,22,False
+Dokdonella,M1,IV,performance,N removal (ppm) [N-ppn],V,-0.0855,-0.7188,0.119,23,False
+Ca_Competibacter,M1,II,performance,N removal (ppm) [N-ppn],V,-0.1397,-0.4944,0.2826,24,False
+Pseudoxanthomonas,M1,I,performance,N removal (ppm) [N-ppn],V,-0.3738,-0.9054,0.4129,25,False
+Zoogloea,M1,I,performance,N removal (ppm) [N-ppn],V,-0.4608,-0.9666,0.4767,26,False
+Sediminibacterium,M1,I,performance,N removal (ppm) [N-ppn],V,-0.5028,-0.9791,0.5135,27,False
+midas_g_428,M1,I,performance,N removal (ppm) [N-ppn],V,-0.5236,-0.9761,0.5364,28,False
+Thauera,M1,I,performance,N removal (ppm) [N-ppn],V,-0.5482,-0.9631,0.5692,29,False
+Ca_Accumulibacter,M3,V,performance,P removal [P%],V,0.3925,0.8198,0.4787,1,False
+midas_g_171,M2,IV,performance,P removal [P%],V,0.3138,0.999,0.3142,2,True
+midas_g_71310,M3,V,performance,P removal [P%],V,0.2888,0.7098,0.4069,3,False
+Lysobacter,M2,IV,performance,P removal [P%],V,0.2812,0.9859,0.2853,4,False
+midas_g_12887,M3,IV,performance,P removal [P%],V,0.2709,0.7607,0.3561,5,False
+Ca_Caldilinea,M3,IV,performance,P removal [P%],V,0.2704,0.757,0.3572,6,False
+Rhodoplanes,M3,V,performance,P removal [P%],V,0.2636,0.5722,0.4606,7,False
+midas_g_2019,M3,V,performance,P removal [P%],V,0.2571,0.7029,0.3658,8,False
+Ca_Sarcinithrix,M3,V,performance,P removal [P%],V,0.2564,0.5705,0.4493,9,False
+midas_g_36422,M2,III,performance,P removal [P%],V,0.25,0.9716,0.2573,10,False
+alphaI_cluster,M3,V,performance,P removal [P%],V,0.2295,0.5148,0.4458,11,False
+midas_g_31688,M3,V,performance,P removal [P%],V,0.2175,0.5383,0.404,12,False
+midas_g_8672,M2,IV,performance,P removal [P%],V,0.2145,0.844,0.2542,13,False
+midas_g_61007,M2,IV,performance,P removal [P%],V,0.2126,0.9888,0.2151,14,False
+midas_g_26667,M3,V,performance,P removal [P%],V,0.1905,0.5973,0.3189,15,False
+midas_g_3943,M3,V,performance,P removal [P%],V,0.1585,0.5262,0.3012,16,False
+Denitratisoma,M1,III,performance,P removal [P%],V,0.1213,0.4555,0.2662,17,False
+midas_g_41804,M2,IV,performance,P removal [P%],V,0.108,0.9983,0.1082,18,True
+midas_g_973,M2,V,performance,P removal [P%],V,0.0767,0.4721,0.1625,19,False
+Aeromonas,M1,III,performance,P removal [P%],V,0.0501,0.9359,0.0535,20,False
+Hydrogenophaga,M1,III,performance,P removal [P%],V,-0.0296,-0.3417,0.0866,21,False
+Azospira,M1,II,performance,P removal [P%],V,-0.0311,-0.1207,0.2579,22,False
+Dokdonella,M1,IV,performance,P removal [P%],V,-0.0661,-0.5557,0.119,23,False
+Ca_Competibacter,M1,II,performance,P removal [P%],V,-0.0847,-0.2997,0.2826,24,False
+Pseudoxanthomonas,M1,I,performance,P removal [P%],V,-0.3284,-0.7953,0.4129,25,False
+Zoogloea,M1,I,performance,P removal [P%],V,-0.4246,-0.8907,0.4767,26,False
+Sediminibacterium,M1,I,performance,P removal [P%],V,-0.4694,-0.914,0.5135,27,False
+midas_g_428,M1,I,performance,P removal [P%],V,-0.4872,-0.9082,0.5364,28,False
+Thauera,M1,I,performance,P removal [P%],V,-0.5035,-0.8846,0.5692,29,False
+midas_g_171,M2,IV,performance,peakN2O [mg/L],IV,0.3018,0.9608,0.3142,1,False
+Ca_Accumulibacter,M3,V,performance,peakN2O [mg/L],IV,0.284,0.5932,0.4787,2,False
+Lysobacter,M2,IV,performance,peakN2O [mg/L],IV,0.2511,0.8803,0.2853,3,False
+midas_g_36422,M2,III,performance,peakN2O [mg/L],IV,0.2173,0.8446,0.2573,4,False
+midas_g_61007,M2,IV,performance,peakN2O [mg/L],IV,0.1911,0.8887,0.2151,5,False
+Denitratisoma,M1,III,performance,peakN2O [mg/L],IV,0.1908,0.7167,0.2662,6,True
+midas_g_12887,M3,IV,performance,peakN2O [mg/L],IV,0.1826,0.5127,0.3561,7,False
+midas_g_71310,M3,V,performance,peakN2O [mg/L],IV,0.1818,0.4468,0.4069,8,False
+Ca_Caldilinea,M3,IV,performance,peakN2O [mg/L],IV,0.1814,0.5077,0.3572,9,False
+midas_g_2019,M3,V,performance,peakN2O [mg/L],IV,0.1602,0.4379,0.3658,10,False
+midas_g_8672,M2,IV,performance,peakN2O [mg/L],IV,0.1596,0.6276,0.2542,11,False
+Rhodoplanes,M3,V,performance,peakN2O [mg/L],IV,0.1287,0.2794,0.4606,12,False
+Ca_Sarcinithrix,M3,V,performance,peakN2O [mg/L],IV,0.1246,0.2774,0.4493,13,False
+midas_g_41804,M2,IV,performance,peakN2O [mg/L],IV,0.1003,0.9271,0.1082,14,False
+midas_g_26667,M3,V,performance,peakN2O [mg/L],IV,0.0985,0.3088,0.3189,15,False
+midas_g_31688,M3,V,performance,peakN2O [mg/L],IV,0.097,0.24,0.404,16,False
+alphaI_cluster,M3,V,performance,peakN2O [mg/L],IV,0.0949,0.213,0.4458,17,False
+midas_g_3943,M3,V,performance,peakN2O [mg/L],IV,0.0681,0.226,0.3012,18,False
+Aeromonas,M1,III,performance,peakN2O [mg/L],IV,0.0535,0.9994,0.0535,19,True
+Azospira,M1,II,performance,peakN2O [mg/L],IV,0.0525,0.2037,0.2579,20,True
+midas_g_973,M2,V,performance,peakN2O [mg/L],IV,0.0268,0.1648,0.1625,21,False
+Ca_Competibacter,M1,II,performance,peakN2O [mg/L],IV,0.0062,0.0218,0.2826,22,True
+Hydrogenophaga,M1,III,performance,peakN2O [mg/L],IV,-0.002,-0.0226,0.0866,23,True
+Dokdonella,M1,IV,performance,peakN2O [mg/L],IV,-0.031,-0.2601,0.119,24,True
+Pseudoxanthomonas,M1,I,performance,peakN2O [mg/L],IV,-0.2309,-0.5592,0.4129,25,True
+Zoogloea,M1,I,performance,peakN2O [mg/L],IV,-0.3328,-0.698,0.4767,26,True
+Sediminibacterium,M1,I,performance,peakN2O [mg/L],IV,-0.3779,-0.7359,0.5135,27,True
+midas_g_428,M1,I,performance,peakN2O [mg/L],IV,-0.3896,-0.7262,0.5364,28,True
+Thauera,M1,I,performance,peakN2O [mg/L],IV,-0.3919,-0.6885,0.5692,29,True
+Rhodoplanes,M3,V,performance,specific denitrification rates,V,0.4605,0.9998,0.4606,1,True
+Ca_Sarcinithrix,M3,V,performance,specific denitrification rates,V,0.4493,0.9999,0.4493,2,True
+Ca_Accumulibacter,M3,V,performance,specific denitrification rates,V,0.4462,0.932,0.4787,3,True
+alphaI_cluster,M3,V,performance,specific denitrification rates,V,0.4452,0.9988,0.4458,4,True
+midas_g_31688,M3,V,performance,specific denitrification rates,V,0.4039,0.9998,0.404,5,True
+midas_g_71310,M3,V,performance,specific denitrification rates,V,0.3989,0.9803,0.4069,6,True
+midas_g_2019,M3,V,performance,specific denitrification rates,V,0.3593,0.9822,0.3658,7,True
+Ca_Caldilinea,M3,IV,performance,specific denitrification rates,V,0.3444,0.9642,0.3572,8,True
+midas_g_12887,M3,IV,performance,specific denitrification rates,V,0.3428,0.9627,0.3561,9,True
+midas_g_26667,M3,V,performance,specific denitrification rates,V,0.3185,0.9988,0.3189,10,True
+midas_g_3943,M3,V,performance,specific denitrification rates,V,0.301,0.9993,0.3012,11,True
+midas_g_8672,M2,IV,performance,specific denitrification rates,V,0.2327,0.9154,0.2542,12,False
+Lysobacter,M2,IV,performance,specific denitrification rates,V,0.1962,0.6878,0.2853,13,False
+midas_g_36422,M2,III,performance,specific denitrification rates,V,0.1897,0.7374,0.2573,14,False
+midas_g_171,M2,IV,performance,specific denitrification rates,V,0.1629,0.5185,0.3142,15,False
+midas_g_973,M2,V,performance,specific denitrification rates,V,0.1617,0.9951,0.1625,16,True
+midas_g_61007,M2,IV,performance,specific denitrification rates,V,0.1451,0.6746,0.2151,17,False
+midas_g_41804,M2,IV,performance,specific denitrification rates,V,0.0653,0.6039,0.1082,18,False
+Aeromonas,M1,III,performance,specific denitrification rates,V,0.0122,0.2283,0.0535,19,False
+Hydrogenophaga,M1,III,performance,specific denitrification rates,V,-0.0841,-0.9709,0.0866,20,False
+Dokdonella,M1,IV,performance,specific denitrification rates,V,-0.119,-1.0,0.119,21,False
+Denitratisoma,M1,III,performance,specific denitrification rates,V,-0.1294,-0.486,0.2662,22,False
+Azospira,M1,II,performance,specific denitrification rates,V,-0.23,-0.8919,0.2579,23,False
+Ca_Competibacter,M1,II,performance,specific denitrification rates,V,-0.2711,-0.9594,0.2826,24,False
+Pseudoxanthomonas,M1,I,performance,specific denitrification rates,V,-0.3907,-0.9463,0.4129,25,False
+Zoogloea,M1,I,performance,specific denitrification rates,V,-0.4164,-0.8735,0.4767,26,False
+Sediminibacterium,M1,I,performance,specific denitrification rates,V,-0.4343,-0.8458,0.5135,27,False
+midas_g_428,M1,I,performance,specific denitrification rates,V,-0.4577,-0.8533,0.5364,28,False
+Thauera,M1,I,performance,specific denitrification rates,V,-0.5008,-0.8799,0.5692,29,False

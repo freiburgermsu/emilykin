@@ -1,0 +1,9 @@
+vector,strongest_associated_genera,main_phase,module,interpretation
+DO avg,Thauera; midas_g_428; Sediminibacterium; Zoogloea; Pseudoxanthomonas,I,M1,Higher oxygen exposure selected the aeration-associated early community.
+Cumulative aeration,Thauera; Zoogloea; midas_g_428; Sediminibacterium; Pseudoxanthomonas,I,M1,Aeration history explains the early community state; near-collinear with DO avg and N_Ax-2.
+N_Ax-2,Pseudoxanthomonas; Thauera; Zoogloea; midas_g_428; Sediminibacterium; Ca. Competibacter,I-II,M1,Points with the aeration/early cluster rather than a distinct anoxic group - a Phase I->II aerobic-to-anoxic transition signal.
+Acetate,Ca. Competibacter; Azospira; Hydrogenophaga; Dokdonella; Denitratisoma,II,M1,Acetate selected GAO-like (Ca. Competibacter) and denitrification/carbon-cycling taxa.
+C/N,Denitratisoma; Dokdonella; Azospira; Ca. Competibacter; Hydrogenophaga,III/II,M1,C/N ratio structured denitrification/carbon-storage taxa.
+Propionate,Rhodoplanes; Ca. Sarcinithrix; alpha I-cluster; Ca. Accumulibacter; midas_g_31688; midas_g_71310; midas_g_3943; midas_g_973,V,M3,Phase V propionate-responsive denitrifying/PAO community.
+N/P,Ca. Accumulibacter; midas_g_171; Ca. Caldilinea; midas_g_12887; Lysobacter; midas_g_8672,IV (-V),M2/M3,"Nutrient stoichiometry structured the Phase IV-V nutrient-removal community, centered on the PAO Ca. Accumulibacter."
+N_Ax-1,Ca. Accumulibacter; midas_g_171; Ca. Caldilinea; midas_g_12887; Lysobacter; midas_g_61007,IV (-V),M2/M3,First anoxic N condition tracked the Phase IV-V low-aeration/N2O nutrient-removal cluster; near-collinear with N/P.
