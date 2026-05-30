@@ -23,8 +23,21 @@ import json
 import os
 from pathlib import Path
 
+# Pin BLAS/OpenMP to one thread BEFORE numpy imports so the joblib permutation
+# pool can use all cores without nested-thread oversubscription. The per-permutation
+# matrices are tiny (75x75 distance), so single-threaded BLAS costs nothing here.
+for _thr in ('OMP_NUM_THREADS', 'OPENBLAS_NUM_THREADS', 'MKL_NUM_THREADS',
+             'NUMEXPR_NUM_THREADS', 'VECLIB_MAXIMUM_THREADS'):
+    os.environ.setdefault(_thr, '1')
+
 import numpy as np
 import pandas as pd
+
+import warnings
+# Bray-Curtis PCoA legitimately yields small negative eigenvalues; silence the
+# per-call skbio RuntimeWarning so it doesn't flood the parallel workers' stderr.
+warnings.filterwarnings('ignore', category=RuntimeWarning,
+                        message='The result contains negative eigenvalues')
 
 import matplotlib
 matplotlib.use('Agg')
@@ -40,6 +53,11 @@ from sklearn.metrics import silhouette_score
 from scipy.spatial import ConvexHull
 from scipy.spatial.distance import pdist, squareform
 from matplotlib.patches import Polygon as MplPolygon, Circle as MplCircle, Patch as MplPatch
+from joblib import Parallel, delayed, cpu_count
+
+# Cores used for the permutation tests (this box: AMD Threadripper, 64 logical).
+# -1 = all logical cores; override with the DBRDA_NJOBS env var.
+N_JOBS = int(os.environ.get('DBRDA_NJOBS', '-1'))
 
 # ----- paths ---------------------------------------------------------------
 ROOT = Path('/Users/andrewfreiburger/Documents/Research/EmilyKin')
@@ -433,21 +451,53 @@ def permanova_phase(Y: pd.DataFrame, phases: list[str], permutations: int = 999)
     }
 
 
+def _perm_batch_ratios(Y: pd.DataFrame, X: pd.DataFrame, idx_list, metric: str) -> np.ndarray:
+    """Worker: constrained/total ratio for a batch of Y row-permutations.
+
+    Warnings are silenced inside the call: joblib re-emits worker warnings with an
+    'always' filter that overrides the module-level one, so the Bray-Curtis PCoA
+    negative-eigenvalue notice must be suppressed here to keep stderr clean.
+    """
+    out = np.empty(len(idx_list))
+    with warnings.catch_warnings():
+        warnings.simplefilter('ignore')
+        for j, idx in enumerate(idx_list):
+            Y_perm = Y.iloc[idx].copy()
+            Y_perm.index = Y.index
+            out[j] = dbrda(Y_perm, X, metric=metric)['prop_constrained']
+    return out
+
+
 def dbrda_perm_test(Y: pd.DataFrame, X: pd.DataFrame, *, n_perm: int = 999,
-                    metric: str = 'braycurtis', seed: int = 42) -> dict:
+                    metric: str = 'braycurtis', seed: int = 42, n_jobs: int = N_JOBS) -> dict:
     """Whole-model PERMANOVA-style test for db-RDA: shuffle Y rows and recompute the
     constrained-to-total inertia ratio (≅ vegan's anova(capscale, permutations=)).
+
+    The permutations are pre-generated from the seeded RNG, then evaluated across
+    ``n_jobs`` worker processes in balanced batches (Y/X pickle once per batch).
+    Because the permutation SET is identical regardless of worker count, the
+    p-value is bit-identical to the serial version — only faster.
     """
     obs = dbrda(Y, X, metric=metric)
     obs_ratio = obs['prop_constrained']
     rng = np.random.default_rng(seed)
     n = Y.shape[0]
-    null = np.empty(n_perm)
-    for i in range(n_perm):
-        idx = rng.permutation(n)
-        Y_perm = Y.iloc[idx].copy()
-        Y_perm.index = Y.index
-        null[i] = dbrda(Y_perm, X, metric=metric)['prop_constrained']
+    perms = [rng.permutation(n) for _ in range(n_perm)]          # deterministic
+
+    # Adaptive: the per-permutation dbRDA cost scales with Y's size. For small Y
+    # (e.g. the 29-genus base panels) the worker dispatch/pickle overhead exceeds
+    # the work, so run serially; for large Y (the 244-genus 5% panels) fan the
+    # permutations across all cores (≈20x here). Threshold sits between the two.
+    parallel = (n_jobs != 1) and (Y.shape[0] * Y.shape[1] >= 6000)
+    if not parallel:
+        null = _perm_batch_ratios(Y, X, perms, metric)
+    else:
+        n_workers = cpu_count() if n_jobs in (-1, None) else max(1, n_jobs)
+        n_batches = max(1, min(n_workers, n_perm))
+        batches = [perms[i::n_batches] for i in range(n_batches)]  # round-robin → balanced
+        null = np.concatenate(
+            Parallel(n_jobs=n_jobs)(delayed(_perm_batch_ratios)(Y, X, b, metric) for b in batches)
+        )
     p = (np.sum(null >= obs_ratio) + 1) / (n_perm + 1)
     return {
         'F_like_ratio': float(obs_ratio),
@@ -658,7 +708,8 @@ INFLUENCE_VARS = [
     ('perf', 'A_time [minutes]',     'cumulative aeration'),
     ('perf', 'Acetate ppm [mg/L]',   'Acetate'),
     ('perf', 'Propionate ppm [mg/L]','Propionate'),
-    ('perf', 'N_Ax-1 [mg/L]',        'N_Ax-1'),
+    # N_Ax-1 dropped: near-collinear with N/P; N/P kept for clearer biological
+    # meaning (P stays ~constant, so N_Ax-1 mainly tracked N like N/P does).
     ('perf', 'N_Ax-2 [mg/L]',        'N_Ax-2'),
 ]
 PHASE_RANGES_FILE = ROOT / 'phase_day_ranges.json'
@@ -1094,9 +1145,9 @@ def run_dbrda_suite(Y: pd.DataFrame, sample_ids: list[str], stages: list[str], *
             faded_species=faded_species, plot_kw=dict(annotation=ann_e),
         )
 
-    # ----- _Xs variant: drop N_Ax-1, recompute, restyle (X markers, bigger edged dots) ---
-    X_e_xs = X_e.drop(columns=[c for c in X_e.columns if c == 'N_Ax-1'])
-    print(f'\noperational-drivers dbRDA (_Xs, N_Ax-1 removed): {Y_e.shape[0]} samples, {X_e_xs.shape[1]} predictors')
+    # ----- _Xs variant: same operational-drivers model, restyled (X markers, bigger edged dots) ---
+    X_e_xs = X_e
+    print(f'\noperational-drivers dbRDA (_Xs, X-marker restyle): {Y_e.shape[0]} samples, {X_e_xs.shape[1]} predictors')
     res_e_xs = dbrda(Y_e, X_e_xs)
     orient['environment_Xs'] = _align_cap2_to(res_e_xs, ref.get('environment_Xs'))
     if export_alignments:
@@ -1113,13 +1164,13 @@ def run_dbrda_suite(Y: pd.DataFrame, sample_ids: list[str], stages: list[str], *
     )
     plot_dbrda(
         res_e_xs, stages=stages_e, sample_ids=Y_e.index.tolist(),
-        title=f'db-RDA: {genus_desc} ~ Operational drivers (paper-2 set, N_Ax-1 removed)',
+        title=f'db-RDA: {genus_desc} ~ Operational drivers (paper-2 set)',
         arrow_color='crimson', out_path=OUT_DIR / f'dbRDA_environment_Xs{suffix}.png',
         annotation=ann_e_xs, xs_mode=True, **_fade,
     )
     plot_dbrda(
         res_e_xs, stages=stages_e, sample_ids=Y_e.index.tolist(),
-        title=f'db-RDA: {genus_desc} ~ Operational drivers (paper-2 set, N_Ax-1 removed)',
+        title=f'db-RDA: {genus_desc} ~ Operational drivers (paper-2 set)',
         arrow_color='crimson', out_path=OUT_DIR / f'dbRDA_environment_Xs_nodes{suffix}.png',
         annotation=ann_e_xs, xs_mode=True, show_vector_labels=False, **_fade,
     )
@@ -1127,7 +1178,7 @@ def run_dbrda_suite(Y: pd.DataFrame, sample_ids: list[str], stages: list[str], *
     if export_modules:
         export_panel_modules(
             res_e_xs, stages=stages_e, sample_ids=Y_e.index.tolist(),
-            title=f'db-RDA: {genus_desc} ~ Operational drivers (N_Ax-1 removed) — organism modules',
+            title=f'db-RDA: {genus_desc} ~ Operational drivers (X-marker restyle) — organism modules',
             arrow_color='crimson',
             out_png=OUT_DIR / f'dbRDA_environment_Xs_modules{suffix}.png',
             out_csv=OUT_DIR / f'dbRDA_environment_Xs_modules{suffix}.csv',
