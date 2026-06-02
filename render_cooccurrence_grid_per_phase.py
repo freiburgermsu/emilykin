@@ -20,6 +20,8 @@ from statsmodels.stats.multitest import multipletests
 import render_cooccurrence_grid as rcg
 
 ROOT = '/Users/andrewfreiburger/Documents/Research/EmilyKin'
+if not os.path.isdir(ROOT):  # fall back to the repo dir this script lives in (e.g. Linux box)
+    ROOT = os.path.dirname(os.path.abspath(__file__))
 os.chdir(ROOT)
 
 EXCLUDE_DAYS_HEAD = 14  # drop the first N days of each phase

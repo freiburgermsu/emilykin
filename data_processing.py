@@ -501,7 +501,8 @@ def _(
                 if _p == 'Proteobacteria' and proteo_class_color:
                     handles.append(Patch(color='none', label=_p))
                     for cls, _color in proteo_class_color.items():
-                        handles.append(Patch(facecolor=_color, label=f'      {cls}'))
+                        cls_short = cls.replace('proteobacteria', '').replace('Proteobacteria', '')
+                        handles.append(Patch(facecolor=_color, label=f'      {cls_short}'))
                 else:
                     handles.append(Patch(facecolor=phylum_color[_p], label=_p))
         if mode == 'log2fc':
@@ -1114,7 +1115,8 @@ def _(
             if _p == 'Proteobacteria' and proteo_class_color_1:
                 handles.append(Patch(color='none', label=_p))
                 for cls, _color in proteo_class_color_1.items():
-                    handles.append(Patch(facecolor=_color, label=f'      {cls}'))
+                    cls_short = cls.replace('proteobacteria', '').replace('Proteobacteria', '')
+                    handles.append(Patch(facecolor=_color, label=f'      {cls_short}'))
             else:
                 handles.append(Patch(facecolor=phylum_color[_p], label=_p))
     _clusterMap.figure.legend(handles=handles, title='Phylum', title_fontsize=50, fontsize=40, loc='upper right', bbox_to_anchor=(0.65, 0.7), frameon=True, borderaxespad=0.5, handlelength=1.5, handletextpad=0.6)
@@ -2011,15 +2013,24 @@ def _(mo):
 
 @app.cell
 def _():
-    """Re-render the diff / innoculum / time / FDR heatmaps from disk.
+    """Re-render the diff / innoculum / time / FDR heatmaps, the relative-
+    abundance (non-root + root) heatmaps, and the one-triangle abundance
+    correlation figures (main + per-phase, non-root + root) from disk.
 
-    All figure logic lives in render_diff_heatmaps.py. The reload picks up
-    any edits made there since the last run without restarting marimo.
+    All figure logic lives in render_diff_heatmaps.py,
+    render_abundance_heatmaps.py, and render_correlation_triangles.py. The reload
+    picks up any edits made there since the last run without restarting marimo.
     """
     import importlib
     import render_diff_heatmaps
     importlib.reload(render_diff_heatmaps)
     render_diff_heatmaps.main()
+    import render_abundance_heatmaps
+    importlib.reload(render_abundance_heatmaps)
+    render_abundance_heatmaps.main()
+    import render_correlation_triangles
+    importlib.reload(render_correlation_triangles)
+    render_correlation_triangles.main()
     return
 
 
