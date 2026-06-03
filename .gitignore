@@ -16,3 +16,7 @@ bins_*/
 
 # Python bytecode
 __pycache__/
+
+# MAG FAA outputs (keep tracking the .zip)
+MAG_faas/
+MAG_faas.tar.gz
