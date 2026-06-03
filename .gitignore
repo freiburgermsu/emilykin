@@ -19,4 +19,4 @@ __pycache__/
 
 # MAG FAA outputs (keep tracking the .zip)
 MAG_faas/
-MAG_faas.tar.gz
+MAG_faas.*
