@@ -13,3 +13,4 @@ cooccurrence_network_*.png
 # Annotation and binning output directories
 bakta/
 bins_*/
+mag_16s_mapping_tmp/
