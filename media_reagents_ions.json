@@ -1,0 +1,1003 @@
+{
+  "_meta": {
+    "source_file": "Synthetic media and other reagents preparation_EM.xlsx",
+    "description": "Molecules/ions and their concentrations for the synthetic wastewater media and feed reagents of the EmilyKin bioreactor.",
+    "concentration_bases": {
+      "prepared": "as-prepared stock / feed-bottle concentration",
+      "in_reactor": "concentration delivered to the reactor influent (after dilution / dosing)"
+    },
+    "units": "mg_L = milligrams per litre; mM = millimoles per litre",
+    "ion_naming": "underscores denote charge magnitude, e.g. SO4_2- = sulfate (SO4^2-)",
+    "assumptions": [
+      "Trace-element stocks dosed at 0.3 mL/L (solution II) or 1 mL/L (solution I): in_reactor = prepared * dose / 1000.",
+      "H3BO3 (boric acid) and EDTA are treated as molecular (not added to ion totals); EDTA in practice chelates the trace-metal cations.",
+      "Yeast extract has no defined formula, so no molar or ion concentration is computed.",
+      "Recipe 1 lists both anhydrous MgSO4 and MgSO4·7H2O; both are included as written and their Mg2+/SO4_2- contributions are summed, which may double-count magnesium.",
+      "For the media, prepared concentrations live in separate stock bottles (each major component + one shared trace-element bottle), so a single prepared ion_total is not a physical solution; the in_reactor ion_total is the physically mixed reactor influent.",
+      "Feed targets given as COD/element-N/element-P were converted to the parent compound using the molar masses and COD factors in the sheet.",
+      "COD+P, nitrate and nitrite feeds are time-varying; one representative documented recipe is captured per feed (date noted)."
+    ]
+  },
+  "media": {
+    "synthetic_wastewater_no_COD_P_nitrate": {
+      "sheet": "Media ingredients_conc.",
+      "description": "Synthetic wastewater media without COD, P and nitrate.",
+      "compounds": [
+        {
+          "name": "Magnesium sulfate (anhydrous)",
+          "formula": "MgSO4",
+          "molar_mass_g_per_mol": 120.37,
+          "concentration": {
+            "prepared_mg_L": 66790.0,
+            "prepared_mM": 554.872477,
+            "in_reactor_mg_L": 66.79,
+            "in_reactor_mM": 0.554872
+          },
+          "dissociation": {
+            "Mg2+": 1,
+            "SO4_2-": 1
+          },
+          "note": "Sheet also lists MgSO4·7H2O separately; both are summed in ion_totals (see notes)."
+        },
+        {
+          "name": "Magnesium sulfate heptahydrate",
+          "formula": "MgSO4·7H2O",
+          "molar_mass_g_per_mol": 246.48,
+          "concentration": {
+            "prepared_mg_L": 90000,
+            "prepared_mM": 365.141188,
+            "in_reactor_mg_L": 90,
+            "in_reactor_mM": 0.365141
+          },
+          "dissociation": {
+            "Mg2+": 1,
+            "SO4_2-": 1
+          }
+        },
+        {
+          "name": "Calcium chloride dihydrate",
+          "formula": "CaCl2·2H2O",
+          "molar_mass_g_per_mol": 147.01,
+          "concentration": {
+            "prepared_mg_L": 56000,
+            "prepared_mM": 380.926468,
+            "in_reactor_mg_L": 14,
+            "in_reactor_mM": 0.095232
+          },
+          "dissociation": {
+            "Ca2+": 1,
+            "Cl-": 2
+          }
+        },
+        {
+          "name": "Yeast extract",
+          "formula": "Yeast extract",
+          "molar_mass_g_per_mol": null,
+          "concentration": {
+            "prepared_mg_L": 10000,
+            "prepared_mM": null,
+            "in_reactor_mg_L": 1,
+            "in_reactor_mM": null
+          },
+          "dissociation": "molecular (not dissociated)"
+        },
+        {
+          "name": "Allylthiourea (ATU)",
+          "formula": "ATU",
+          "molar_mass_g_per_mol": 116.19,
+          "concentration": {
+            "prepared_mg_L": 40000,
+            "prepared_mM": 344.263706,
+            "in_reactor_mg_L": 20,
+            "in_reactor_mM": 0.172132
+          },
+          "dissociation": "molecular (not dissociated)"
+        },
+        {
+          "name": "Sodium bicarbonate (buffer)",
+          "formula": "NaHCO3",
+          "molar_mass_g_per_mol": 84.01,
+          "concentration": {
+            "prepared_mg_L": 65000,
+            "prepared_mM": 773.717415,
+            "in_reactor_mg_L": 500,
+            "in_reactor_mM": 5.951672
+          },
+          "dissociation": {
+            "Na+": 1,
+            "HCO3-": 1
+          }
+        },
+        {
+          "name": "Iron(III) chloride hexahydrate",
+          "formula": "FeCl3·6H2O",
+          "molar_mass_g_per_mol": 270.3,
+          "concentration": {
+            "prepared_mg_L": 1500,
+            "prepared_mM": 5.54939,
+            "in_reactor_mg_L": 0.45,
+            "in_reactor_mM": 0.001665
+          },
+          "dissociation": {
+            "Fe3+": 1,
+            "Cl-": 3
+          },
+          "note": "trace elements solution II, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Boric acid",
+          "formula": "H3BO3",
+          "molar_mass_g_per_mol": 61.83,
+          "concentration": {
+            "prepared_mg_L": 150,
+            "prepared_mM": 2.426007,
+            "in_reactor_mg_L": 0.045,
+            "in_reactor_mM": 0.000728
+          },
+          "dissociation": "molecular (not dissociated)",
+          "note": "trace elements solution II, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Copper(II) sulfate pentahydrate",
+          "formula": "CuSO4·5H2O",
+          "molar_mass_g_per_mol": 249.68,
+          "concentration": {
+            "prepared_mg_L": 30,
+            "prepared_mM": 0.120154,
+            "in_reactor_mg_L": 0.009,
+            "in_reactor_mM": 3.6e-05
+          },
+          "dissociation": {
+            "Cu2+": 1,
+            "SO4_2-": 1
+          },
+          "note": "trace elements solution II, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Potassium iodide",
+          "formula": "KI",
+          "molar_mass_g_per_mol": 166.0,
+          "concentration": {
+            "prepared_mg_L": 180,
+            "prepared_mM": 1.084337,
+            "in_reactor_mg_L": 0.054,
+            "in_reactor_mM": 0.000325
+          },
+          "dissociation": {
+            "K+": 1,
+            "I-": 1
+          },
+          "note": "trace elements solution II, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Manganese(II) chloride tetrahydrate",
+          "formula": "MnCl2·4H2O",
+          "molar_mass_g_per_mol": 197.91,
+          "concentration": {
+            "prepared_mg_L": 120,
+            "prepared_mM": 0.606336,
+            "in_reactor_mg_L": 0.036,
+            "in_reactor_mM": 0.000182
+          },
+          "dissociation": {
+            "Mn2+": 1,
+            "Cl-": 2
+          },
+          "note": "trace elements solution II, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Sodium molybdate dihydrate",
+          "formula": "Na2MoO4·2H2O",
+          "molar_mass_g_per_mol": 241.95,
+          "concentration": {
+            "prepared_mg_L": 60,
+            "prepared_mM": 0.247985,
+            "in_reactor_mg_L": 0.018,
+            "in_reactor_mM": 7.4e-05
+          },
+          "dissociation": {
+            "Na+": 2,
+            "MoO4_2-": 1
+          },
+          "note": "trace elements solution II, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Zinc sulfate heptahydrate",
+          "formula": "ZnSO4·7H2O",
+          "molar_mass_g_per_mol": 287.56,
+          "concentration": {
+            "prepared_mg_L": 120,
+            "prepared_mM": 0.417304,
+            "in_reactor_mg_L": 0.036,
+            "in_reactor_mM": 0.000125
+          },
+          "dissociation": {
+            "Zn2+": 1,
+            "SO4_2-": 1
+          },
+          "note": "trace elements solution II, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Cobalt(II) chloride hexahydrate",
+          "formula": "CoCl2·6H2O",
+          "molar_mass_g_per_mol": 237.93,
+          "concentration": {
+            "prepared_mg_L": 150,
+            "prepared_mM": 0.630438,
+            "in_reactor_mg_L": 0.045,
+            "in_reactor_mM": 0.000189
+          },
+          "dissociation": {
+            "Co2+": 1,
+            "Cl-": 2
+          },
+          "note": "trace elements solution II, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Nickel chloride hexahydrate",
+          "formula": "NiCl2·6H2O",
+          "molar_mass_g_per_mol": 237.69,
+          "concentration": {
+            "prepared_mg_L": 630,
+            "prepared_mM": 2.650511,
+            "in_reactor_mg_L": 0.189,
+            "in_reactor_mM": 0.000795
+          },
+          "dissociation": {
+            "Ni2+": 1,
+            "Cl-": 2
+          },
+          "note": "trace elements solution II, dosed 0.3 mL/L"
+        },
+        {
+          "name": "EDTA",
+          "formula": "EDTA",
+          "molar_mass_g_per_mol": 292.24,
+          "concentration": {
+            "prepared_mg_L": 15000,
+            "prepared_mM": 51.327676,
+            "in_reactor_mg_L": 4.5,
+            "in_reactor_mM": 0.015398
+          },
+          "dissociation": "molecular (not dissociated)",
+          "note": "trace elements solution II, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Iron(II) sulfate heptahydrate",
+          "formula": "FeSO4·7H2O",
+          "molar_mass_g_per_mol": 278.01,
+          "concentration": {
+            "prepared_mg_L": 8340,
+            "prepared_mM": 29.998921,
+            "in_reactor_mg_L": 8.34,
+            "in_reactor_mM": 0.029999
+          },
+          "dissociation": {
+            "Fe2+": 1,
+            "SO4_2-": 1
+          },
+          "note": "trace elements solution I, dosed 1 mL/L"
+        },
+        {
+          "name": "EDTA",
+          "formula": "EDTA",
+          "molar_mass_g_per_mol": 292.24,
+          "concentration": {
+            "prepared_mg_L": 8340,
+            "prepared_mM": 28.538188,
+            "in_reactor_mg_L": 8.34,
+            "in_reactor_mM": 0.028538
+          },
+          "dissociation": "molecular (not dissociated)",
+          "note": "trace elements solution I, dosed 1 mL/L"
+        }
+      ],
+      "ion_totals": {
+        "Ca2+": {
+          "prepared_mM": 380.926468,
+          "prepared_mg_L": 15266.770985,
+          "in_reactor_mM": 0.095232,
+          "in_reactor_mg_L": 3.816708
+        },
+        "Cl-": {
+          "prepared_mM": 786.275676,
+          "prepared_mg_L": 27875.831541,
+          "in_reactor_mM": 0.197791,
+          "in_reactor_mg_L": 7.012284
+        },
+        "Co2+": {
+          "prepared_mM": 0.630438,
+          "prepared_mg_L": 37.153603,
+          "in_reactor_mM": 0.000189,
+          "in_reactor_mg_L": 0.011138
+        },
+        "Cu2+": {
+          "prepared_mM": 0.120154,
+          "prepared_mg_L": 7.635306,
+          "in_reactor_mM": 3.6e-05,
+          "in_reactor_mg_L": 0.002288
+        },
+        "Fe2+": {
+          "prepared_mM": 29.998921,
+          "prepared_mg_L": 1675.289743,
+          "in_reactor_mM": 0.029999,
+          "in_reactor_mg_L": 1.675294
+        },
+        "Fe3+": {
+          "prepared_mM": 5.54939,
+          "prepared_mg_L": 309.905685,
+          "in_reactor_mM": 0.001665,
+          "in_reactor_mg_L": 0.092982
+        },
+        "HCO3-": {
+          "prepared_mM": 773.717415,
+          "prepared_mg_L": 47209.915511,
+          "in_reactor_mM": 5.951672,
+          "in_reactor_mg_L": 363.15317
+        },
+        "I-": {
+          "prepared_mM": 1.084337,
+          "prepared_mg_L": 137.606703,
+          "in_reactor_mM": 0.000325,
+          "in_reactor_mg_L": 0.041244
+        },
+        "K+": {
+          "prepared_mM": 1.084337,
+          "prepared_mg_L": 42.395408,
+          "in_reactor_mM": 0.000325,
+          "in_reactor_mg_L": 0.012707
+        },
+        "Mg2+": {
+          "prepared_mM": 920.013665,
+          "prepared_mg_L": 22360.932128,
+          "in_reactor_mM": 0.920013,
+          "in_reactor_mg_L": 22.360916
+        },
+        "Mn2+": {
+          "prepared_mM": 0.606336,
+          "prepared_mg_L": 33.310887,
+          "in_reactor_mM": 0.000182,
+          "in_reactor_mg_L": 0.009999
+        },
+        "MoO4_2-": {
+          "prepared_mM": 0.247985,
+          "prepared_mg_L": 39.662721,
+          "in_reactor_mM": 7.4e-05,
+          "in_reactor_mg_L": 0.011836
+        },
+        "Na+": {
+          "prepared_mM": 774.213385,
+          "prepared_mg_L": 17799.165721,
+          "in_reactor_mM": 5.95182,
+          "in_reactor_mg_L": 136.832342
+        },
+        "Ni2+": {
+          "prepared_mM": 2.650511,
+          "prepared_mg_L": 155.566442,
+          "in_reactor_mM": 0.000795,
+          "in_reactor_mg_L": 0.046661
+        },
+        "SO4_2-": {
+          "prepared_mM": 950.550044,
+          "prepared_mg_L": 91309.837227,
+          "in_reactor_mM": 0.950173,
+          "in_reactor_mg_L": 91.273618
+        },
+        "Zn2+": {
+          "prepared_mM": 0.417304,
+          "prepared_mg_L": 27.283336,
+          "in_reactor_mM": 0.000125,
+          "in_reactor_mg_L": 0.008172
+        }
+      },
+      "notes": "Major-component in-reactor values are the sheet \"Influent Conc. (mg/L)\" row; prepared values are the stock \"g/L\" row x1000."
+    },
+    "synthetic_wastewater_VFA_P_NO3_NO2_free": {
+      "sheet": "Media ingredients_conc.",
+      "description": "Synthetic wastewater media free of VFA, P, NO3-N and NO2-N.",
+      "compounds": [
+        {
+          "name": "Ammonium chloride",
+          "formula": "NH4Cl",
+          "molar_mass_g_per_mol": 53.49,
+          "concentration": {
+            "prepared_mg_L": null,
+            "prepared_mM": null,
+            "in_reactor_mg_L": 107,
+            "in_reactor_mM": 2.000374
+          },
+          "dissociation": {
+            "NH4+": 1,
+            "Cl-": 1
+          }
+        },
+        {
+          "name": "Magnesium sulfate heptahydrate",
+          "formula": "MgSO4·7H2O",
+          "molar_mass_g_per_mol": 246.48,
+          "concentration": {
+            "prepared_mg_L": null,
+            "prepared_mM": null,
+            "in_reactor_mg_L": 90,
+            "in_reactor_mM": 0.365141
+          },
+          "dissociation": {
+            "Mg2+": 1,
+            "SO4_2-": 1
+          }
+        },
+        {
+          "name": "Calcium chloride dihydrate",
+          "formula": "CaCl2·2H2O",
+          "molar_mass_g_per_mol": 147.01,
+          "concentration": {
+            "prepared_mg_L": null,
+            "prepared_mM": null,
+            "in_reactor_mg_L": 14,
+            "in_reactor_mM": 0.095232
+          },
+          "dissociation": {
+            "Ca2+": 1,
+            "Cl-": 2
+          }
+        },
+        {
+          "name": "Yeast extract",
+          "formula": "Yeast extract",
+          "molar_mass_g_per_mol": null,
+          "concentration": {
+            "prepared_mg_L": null,
+            "prepared_mM": null,
+            "in_reactor_mg_L": 1,
+            "in_reactor_mM": null
+          },
+          "dissociation": "molecular (not dissociated)"
+        },
+        {
+          "name": "Allylthiourea (ATU)",
+          "formula": "ATU",
+          "molar_mass_g_per_mol": 116.19,
+          "concentration": {
+            "prepared_mg_L": null,
+            "prepared_mM": null,
+            "in_reactor_mg_L": 20,
+            "in_reactor_mM": 0.172132
+          },
+          "dissociation": "molecular (not dissociated)"
+        },
+        {
+          "name": "Sodium bicarbonate (buffer)",
+          "formula": "NaHCO3",
+          "molar_mass_g_per_mol": 84.01,
+          "concentration": {
+            "prepared_mg_L": null,
+            "prepared_mM": null,
+            "in_reactor_mg_L": 200,
+            "in_reactor_mM": 2.380669
+          },
+          "dissociation": {
+            "Na+": 1,
+            "HCO3-": 1
+          }
+        },
+        {
+          "name": "Iron(III) chloride hexahydrate",
+          "formula": "FeCl3·6H2O",
+          "molar_mass_g_per_mol": 270.3,
+          "concentration": {
+            "prepared_mg_L": 1500,
+            "prepared_mM": 5.54939,
+            "in_reactor_mg_L": 0.45,
+            "in_reactor_mM": 0.001665
+          },
+          "dissociation": {
+            "Fe3+": 1,
+            "Cl-": 3
+          },
+          "note": "trace elements solution, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Boric acid",
+          "formula": "H3BO3",
+          "molar_mass_g_per_mol": 61.83,
+          "concentration": {
+            "prepared_mg_L": 150,
+            "prepared_mM": 2.426007,
+            "in_reactor_mg_L": 0.045,
+            "in_reactor_mM": 0.000728
+          },
+          "dissociation": "molecular (not dissociated)",
+          "note": "trace elements solution, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Copper(II) sulfate pentahydrate",
+          "formula": "CuSO4·5H2O",
+          "molar_mass_g_per_mol": 249.68,
+          "concentration": {
+            "prepared_mg_L": 30,
+            "prepared_mM": 0.120154,
+            "in_reactor_mg_L": 0.009,
+            "in_reactor_mM": 3.6e-05
+          },
+          "dissociation": {
+            "Cu2+": 1,
+            "SO4_2-": 1
+          },
+          "note": "trace elements solution, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Potassium iodide",
+          "formula": "KI",
+          "molar_mass_g_per_mol": 166.0,
+          "concentration": {
+            "prepared_mg_L": 180,
+            "prepared_mM": 1.084337,
+            "in_reactor_mg_L": 0.054,
+            "in_reactor_mM": 0.000325
+          },
+          "dissociation": {
+            "K+": 1,
+            "I-": 1
+          },
+          "note": "trace elements solution, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Manganese(II) chloride tetrahydrate",
+          "formula": "MnCl2·4H2O",
+          "molar_mass_g_per_mol": 197.91,
+          "concentration": {
+            "prepared_mg_L": 120,
+            "prepared_mM": 0.606336,
+            "in_reactor_mg_L": 0.036,
+            "in_reactor_mM": 0.000182
+          },
+          "dissociation": {
+            "Mn2+": 1,
+            "Cl-": 2
+          },
+          "note": "trace elements solution, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Sodium molybdate dihydrate",
+          "formula": "Na2MoO4·2H2O",
+          "molar_mass_g_per_mol": 241.95,
+          "concentration": {
+            "prepared_mg_L": 60,
+            "prepared_mM": 0.247985,
+            "in_reactor_mg_L": 0.018,
+            "in_reactor_mM": 7.4e-05
+          },
+          "dissociation": {
+            "Na+": 2,
+            "MoO4_2-": 1
+          },
+          "note": "trace elements solution, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Zinc sulfate heptahydrate",
+          "formula": "ZnSO4·7H2O",
+          "molar_mass_g_per_mol": 287.56,
+          "concentration": {
+            "prepared_mg_L": 120,
+            "prepared_mM": 0.417304,
+            "in_reactor_mg_L": 0.036,
+            "in_reactor_mM": 0.000125
+          },
+          "dissociation": {
+            "Zn2+": 1,
+            "SO4_2-": 1
+          },
+          "note": "trace elements solution, dosed 0.3 mL/L"
+        },
+        {
+          "name": "Cobalt(II) chloride hexahydrate",
+          "formula": "CoCl2·6H2O",
+          "molar_mass_g_per_mol": 237.93,
+          "concentration": {
+            "prepared_mg_L": 150,
+            "prepared_mM": 0.630438,
+            "in_reactor_mg_L": 0.045,
+            "in_reactor_mM": 0.000189
+          },
+          "dissociation": {
+            "Co2+": 1,
+            "Cl-": 2
+          },
+          "note": "trace elements solution, dosed 0.3 mL/L"
+        },
+        {
+          "name": "EDTA",
+          "formula": "EDTA",
+          "molar_mass_g_per_mol": 292.24,
+          "concentration": {
+            "prepared_mg_L": 10000,
+            "prepared_mM": 34.218451,
+            "in_reactor_mg_L": 3.0,
+            "in_reactor_mM": 0.010266
+          },
+          "dissociation": "molecular (not dissociated)",
+          "note": "trace elements solution, dosed 0.3 mL/L"
+        }
+      ],
+      "ion_totals": {
+        "Ca2+": {
+          "in_reactor_mM": 0.095232,
+          "in_reactor_mg_L": 3.816708
+        },
+        "Cl-": {
+          "prepared_mM": 19.121718,
+          "prepared_mg_L": 677.922268,
+          "in_reactor_mM": 2.196575,
+          "in_reactor_mg_L": 77.875173
+        },
+        "Co2+": {
+          "prepared_mM": 0.630438,
+          "prepared_mg_L": 37.153603,
+          "in_reactor_mM": 0.000189,
+          "in_reactor_mg_L": 0.011138
+        },
+        "Cu2+": {
+          "prepared_mM": 0.120154,
+          "prepared_mg_L": 7.635306,
+          "in_reactor_mM": 3.6e-05,
+          "in_reactor_mg_L": 0.002288
+        },
+        "Fe3+": {
+          "prepared_mM": 5.54939,
+          "prepared_mg_L": 309.905685,
+          "in_reactor_mM": 0.001665,
+          "in_reactor_mg_L": 0.092982
+        },
+        "HCO3-": {
+          "in_reactor_mM": 2.380669,
+          "in_reactor_mg_L": 145.26128
+        },
+        "I-": {
+          "prepared_mM": 1.084337,
+          "prepared_mg_L": 137.606703,
+          "in_reactor_mM": 0.000325,
+          "in_reactor_mg_L": 0.041244
+        },
+        "K+": {
+          "prepared_mM": 1.084337,
+          "prepared_mg_L": 42.395408,
+          "in_reactor_mM": 0.000325,
+          "in_reactor_mg_L": 0.012707
+        },
+        "Mg2+": {
+          "in_reactor_mM": 0.365141,
+          "in_reactor_mg_L": 8.874752
+        },
+        "Mn2+": {
+          "prepared_mM": 0.606336,
+          "prepared_mg_L": 33.310887,
+          "in_reactor_mM": 0.000182,
+          "in_reactor_mg_L": 0.009999
+        },
+        "MoO4_2-": {
+          "prepared_mM": 0.247985,
+          "prepared_mg_L": 39.662721,
+          "in_reactor_mM": 7.4e-05,
+          "in_reactor_mg_L": 0.011836
+        },
+        "NH4+": {
+          "in_reactor_mM": 2.000374,
+          "in_reactor_mg_L": 36.084747
+        },
+        "Na+": {
+          "prepared_mM": 0.49597,
+          "prepared_mg_L": 11.40235,
+          "in_reactor_mM": 2.380817,
+          "in_reactor_mg_L": 54.734983
+        },
+        "SO4_2-": {
+          "prepared_mM": 0.537458,
+          "prepared_mg_L": 51.628215,
+          "in_reactor_mM": 0.365302,
+          "in_reactor_mg_L": 35.09091
+        },
+        "Zn2+": {
+          "prepared_mM": 0.417304,
+          "prepared_mg_L": 27.283336,
+          "in_reactor_mM": 0.000125,
+          "in_reactor_mg_L": 0.008172
+        }
+      },
+      "notes": "Major components give only an in-reactor \"Conc. (mg/L)\" (no separate stock)."
+    }
+  },
+  "feeds": {
+    "acid_base_feed": {
+      "sheet": "acid and base feed",
+      "description": "Acid (HCl) and base (NaOH) pH-control feeds.",
+      "compounds": [
+        {
+          "name": "Hydrochloric acid (feed)",
+          "formula": "HCl",
+          "molar_mass_g_per_mol": 36.46,
+          "concentration": {
+            "prepared_mg_L": 27345.0,
+            "prepared_mM": 750.0,
+            "in_reactor_mg_L": null,
+            "in_reactor_mM": null
+          },
+          "dissociation": {
+            "H+": 1,
+            "Cl-": 1
+          },
+          "note": "feed-bottle 0.75 mol/L; purchased stock 12.1 mol/L (=441.2 g/L). Dosed to a pH set-point, so no fixed in-reactor concentration."
+        },
+        {
+          "name": "Sodium hydroxide (feed)",
+          "formula": "NaOH",
+          "molar_mass_g_per_mol": 40.0,
+          "concentration": {
+            "prepared_mg_L": 20000.0,
+            "prepared_mM": 500.0,
+            "in_reactor_mg_L": null,
+            "in_reactor_mM": null
+          },
+          "dissociation": {
+            "Na+": 1,
+            "OH-": 1
+          },
+          "note": "feed-bottle 0.5 mol/L. Dosed to a pH set-point, so no fixed in-reactor concentration."
+        }
+      ],
+      "ion_totals": {
+        "Cl-": {
+          "prepared_mM": 750.0,
+          "prepared_mg_L": 26589.75
+        },
+        "H+": {
+          "prepared_mM": 750.0,
+          "prepared_mg_L": 756.0
+        },
+        "Na+": {
+          "prepared_mM": 500.0,
+          "prepared_mg_L": 11495.0
+        },
+        "OH-": {
+          "prepared_mM": 500.0,
+          "prepared_mg_L": 8503.5
+        }
+      }
+    },
+    "COD_P_N_feed": {
+      "sheet": "COD+P feed",
+      "description": "Carbon (acetate/propionate) + P (KH2PO4) + N (NaNO2) feed.",
+      "compounds": [
+        {
+          "name": "Sodium acetate",
+          "formula": "CH3COONa",
+          "molar_mass_g_per_mol": 82.03,
+          "concentration": {
+            "prepared_mg_L": 26267.953433,
+            "prepared_mM": 320.22374,
+            "in_reactor_mg_L": 96.09375,
+            "in_reactor_mM": 1.171446
+          },
+          "dissociation": {
+            "Na+": 1,
+            "CH3COO-": 1
+          },
+          "note": "carbon source; in-reactor from 75 mg/L-COD target (0.7805 gCOD/g)."
+        },
+        {
+          "name": "Sodium propionate",
+          "formula": "CH3CH2COONa",
+          "molar_mass_g_per_mol": 96.06,
+          "concentration": {
+            "prepared_mg_L": 5861.933301,
+            "prepared_mM": 61.023665,
+            "in_reactor_mg_L": 21.444196,
+            "in_reactor_mM": 0.223238
+          },
+          "dissociation": {
+            "Na+": 1,
+            "CH3CH2COO-": 1
+          },
+          "note": "carbon source; in-reactor from 25 mg/L-COD target (1.166 gCOD/g)."
+        },
+        {
+          "name": "Potassium phosphate monobasic",
+          "formula": "KH2PO4",
+          "molar_mass_g_per_mol": 136.09,
+          "concentration": {
+            "prepared_mg_L": 12001.278866,
+            "prepared_mM": 88.186339,
+            "in_reactor_mg_L": 43.93685,
+            "in_reactor_mM": 0.322851
+          },
+          "dissociation": {
+            "K+": 1,
+            "H2PO4-": 1
+          },
+          "note": "P source; in-reactor from 10 mg/L PO4-P target."
+        },
+        {
+          "name": "Sodium nitrite",
+          "formula": "NaNO2",
+          "molar_mass_g_per_mol": 69.0,
+          "concentration": {
+            "prepared_mg_L": 5928.448788,
+            "prepared_mM": 85.919548,
+            "in_reactor_mg_L": 24.630542,
+            "in_reactor_mM": 0.356964
+          },
+          "dissociation": {
+            "Na+": 1,
+            "NO2-": 1
+          },
+          "note": "N source; in-reactor from 5 mg/L NO2-N target."
+        }
+      ],
+      "ion_totals": {
+        "CH3CH2COO-": {
+          "prepared_mM": 61.023665,
+          "prepared_mg_L": 4459.060225,
+          "in_reactor_mM": 0.223238,
+          "in_reactor_mg_L": 16.312224
+        },
+        "CH3COO-": {
+          "prepared_mM": 320.22374,
+          "prepared_mg_L": 18907.290505,
+          "in_reactor_mM": 1.171446,
+          "in_reactor_mg_L": 69.166858
+        },
+        "H2PO4-": {
+          "prepared_mM": 88.186339,
+          "prepared_mg_L": 8552.928461,
+          "in_reactor_mM": 0.322851,
+          "in_reactor_mg_L": 31.31235
+        },
+        "K+": {
+          "prepared_mM": 88.186339,
+          "prepared_mg_L": 3447.909482,
+          "in_reactor_mM": 0.322851,
+          "in_reactor_mg_L": 12.622828
+        },
+        "NO2-": {
+          "prepared_mM": 85.919548,
+          "prepared_mg_L": 3952.728806,
+          "in_reactor_mM": 0.356964,
+          "in_reactor_mg_L": 16.422129
+        },
+        "Na+": {
+          "prepared_mM": 467.166953,
+          "prepared_mg_L": 10740.168249,
+          "in_reactor_mM": 1.751648,
+          "in_reactor_mg_L": 40.270388
+        }
+      }
+    },
+    "nitrate_feed": {
+      "sheet": "nitrate feed",
+      "description": "Nitrate (NaNO3) N feed.",
+      "compounds": [
+        {
+          "name": "Sodium nitrate",
+          "formula": "NaNO3",
+          "molar_mass_g_per_mol": 84.99,
+          "concentration": {
+            "prepared_mg_L": 91071.428571,
+            "prepared_mM": 1071.554637,
+            "in_reactor_mg_L": 606.768045,
+            "in_reactor_mM": 7.139287
+          },
+          "dissociation": {
+            "Na+": 1,
+            "NO3-": 1
+          },
+          "note": "first documented recipe (2021-08-06): bottle 91.07 g/L, target 100 mg/L NO3-N. Feed is time-varying; later recipes target 10-20 mg/L NO3-N (do not exceed 20)."
+        }
+      ],
+      "ion_totals": {
+        "NO3-": {
+          "prepared_mM": 1071.554637,
+          "prepared_mg_L": 66440.673713,
+          "in_reactor_mM": 7.139287,
+          "in_reactor_mg_L": 442.664351
+        },
+        "Na+": {
+          "prepared_mM": 1071.554637,
+          "prepared_mg_L": 24635.041105,
+          "in_reactor_mM": 7.139287,
+          "in_reactor_mg_L": 164.132208
+        }
+      }
+    },
+    "nitrite_feed": {
+      "sheet": "nitrite feed test",
+      "description": "Nitrite (NaNO2) N feed.",
+      "compounds": [
+        {
+          "name": "Sodium nitrite",
+          "formula": "NaNO2",
+          "molar_mass_g_per_mol": 69.0,
+          "concentration": {
+            "prepared_mg_L": 201623.376623,
+            "prepared_mM": 2922.077922,
+            "in_reactor_mg_L": 73.891626,
+            "in_reactor_mM": 1.070893
+          },
+          "dissociation": {
+            "Na+": 1,
+            "NO2-": 1
+          },
+          "note": "representative recipe (2021-12-06): bottle 201.6 g/L, target 15 mg/L NO2-N. Earlier recipes targeted 3 and 10 mg/L NO2-N (bottles 40.3 and 134.4 g/L)."
+        }
+      ],
+      "ion_totals": {
+        "NO2-": {
+          "prepared_mM": 2922.077922,
+          "prepared_mg_L": 134430.194802,
+          "in_reactor_mM": 1.070893,
+          "in_reactor_mg_L": 49.266432
+        },
+        "Na+": {
+          "prepared_mM": 2922.077922,
+          "prepared_mg_L": 67178.571427,
+          "in_reactor_mM": 1.070893,
+          "in_reactor_mg_L": 24.61983
+        }
+      }
+    },
+    "biomass_storage_media": {
+      "sheet": "Biomass storage media",
+      "description": "Biomass storage media (0.5 mM NaNO2 + 0.5 mM NH4Cl).",
+      "compounds": [
+        {
+          "name": "Sodium nitrite",
+          "formula": "NaNO2",
+          "molar_mass_g_per_mol": 69.0,
+          "concentration": {
+            "prepared_mg_L": 34.5,
+            "prepared_mM": 0.5,
+            "in_reactor_mg_L": null,
+            "in_reactor_mM": null
+          },
+          "dissociation": {
+            "Na+": 1,
+            "NO2-": 1
+          },
+          "note": "0.5 mM NaNO2 in 1 L (34.5 mg)."
+        },
+        {
+          "name": "Ammonium chloride",
+          "formula": "NH4Cl",
+          "molar_mass_g_per_mol": 53.49,
+          "concentration": {
+            "prepared_mg_L": 26.75,
+            "prepared_mM": 0.500093,
+            "in_reactor_mg_L": null,
+            "in_reactor_mM": null
+          },
+          "dissociation": {
+            "NH4+": 1,
+            "Cl-": 1
+          },
+          "note": "0.5 mM NH4Cl in 1 L (26.75 mg)."
+        }
+      ],
+      "ion_totals": {
+        "Cl-": {
+          "prepared_mM": 0.500093,
+          "prepared_mg_L": 17.729797
+        },
+        "NH4+": {
+          "prepared_mM": 0.500093,
+          "prepared_mg_L": 9.021178
+        },
+        "NO2-": {
+          "prepared_mM": 0.5,
+          "prepared_mg_L": 23.0025
+        },
+        "Na+": {
+          "prepared_mM": 0.5,
+          "prepared_mg_L": 11.495
+        }
+      }
+    }
+  }
+}
