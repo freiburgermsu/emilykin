@@ -1,0 +1,277 @@
+MAG	Completeness_pct	Contamination_pct	Genome_Type	Num_Contigs	Genome_Size_bp	N50_bp	Max_Contig_Length_bp	GC_Content	Coding_Density	Total_CDS	Domain	Phylum	Class	Order	Family	Genus	Species
+coasm_bin.93	100.0	0.5	Gradient Boost (General Model)	6	3518286	917514	1200782	0.69	0.91	3389	Bacteria	Pseudomonadota	Alphaproteobacteria	Micropepsales	Micropepsaceae	JADZAI01	JADZAI01 sp016792565
+coasm_bin.88	100.0	0.28	Gradient Boost (General Model)	20	4175069	444280	1095050	0.63	0.87	3796	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodospirillales_A	UXAT02	Defluviicoccus	
+CAN_1_bin.177	100.0	0.15	Gradient Boost (General Model)	2	4385690	3311625	3311625	0.68	0.9	4270	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Pararhodobacter	
+CAN_1_bin.48	100.0	0.1	Gradient Boost (General Model)	1	668260	668260	668260	0.44	0.91	709	Bacteria	Patescibacteria	Paceibacteria	UBA6257	GWB1-50-10		
+coasm_bin.74	100.0	0.78	Gradient Boost (General Model)	5	4396509	3605535	3605535	0.43	0.91	3593	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	F082	JALNZU01	
+coasm_bin.448	100.0	2.36	Gradient Boost (General Model)	6	4722211	4584362	4584362	0.49	0.92	4425	Bacteria	Chloroflexota	Anaerolineae	Anaerolineales	Villigracilaceae	Villigracilis	
+coasm_bin.423	100.0	2.4	Gradient Boost (General Model)	5	5032491	3647027	3647027	0.62	0.89	4156	Bacteria	Acidobacteriota	Terriglobia	Bryobacterales	Bryobacteraceae	JACTMJ01	JACTMJ01 sp020853155
+coasm_bin.481	100.0	4.49	Gradient Boost (General Model)	6	6260831	3282000	3282000	0.57	0.86	5054	Bacteria	Chloroflexota	Anaerolineae	Promineifilales	Promineifilaceae	Leptovillus	
+CAN_1_bin.5	100.0	2.92	Gradient Boost (General Model)	2	2295354	1600197	1600197	0.45	0.92	2216	Bacteria	Pseudomonadota	Alphaproteobacteria	Micavibrionales	Micavibrionaceae	UBA1573	UBA1573 sp002425415
+CAN_5_bin.1	100.0	0.04	Gradient Boost (General Model)	1	3153730	3153730	3153730	0.64	0.92	3010	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Beijerinckiaceae	Rhabdaerophilum	
+coasm_bin.392	100.0	0.67	Bacteria	11	4320884	498268	1220214	0.65	0.91	4243	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Gemmobacter	Gemmobacter caeni
+coasm_bin.347	100.0	6.12	Bacteria	80	5645528	209863	771134	0.64	0.89	5104	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Accumulibacter	Accumulibacter sp017302455
+coasm_bin.373	100.0	0.03	Bacteria	4	4961388	1316926	2315476	0.36	0.89	4249	Bacteria	Bacteroidota	Bacteroidia	Cytophagales	Spirosomataceae	Leadbetterella	
+CAN_5_bin.70	100.0	2.58	Bacteria	26	3721586	327651	635554	0.65	0.9	3606	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Azonexus	Azonexus sp017302355
+CAN_4_bin.238	100.0	0.12	Gradient Boost (General Model)	4	5992716	2408332	2590916	0.52	0.9	4455	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Saprospiraceae	UBA2329	UBA2329 sp002344975
+CAN_4_bin.35	100.0	0.06	Bacteria	3	2759345	2730425	2730425	0.66	0.91	2813	Bacteria	Pseudomonadota	Alphaproteobacteria	Caulobacterales	Caulobacteraceae	Brevundimonas	
+CAN_5_bin.112	100.0	0.05	Gradient Boost (General Model)	1	4028776	4028776	4028776	0.42	0.92	3427	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	JJ008	
+coasm_bin.563	100.0	0.66	Bacteria	7	4265863	1014774	1148401	0.67	0.93	3933	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Burkholderiaceae	Hydrogenophaga	
+coasm_bin.185	100.0	0.15	Bacteria	15	4222546	347496	850366	0.64	0.89	3667	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Accumulibacter	Accumulibacter sp000585075
+coasm_bin.142	100.0	0.96	Gradient Boost (General Model)	13	3357996	417142	711144	0.37	0.92	2769	Bacteria	Bacteroidota	Bacteroidia	AKYH767-A	OLB10	OLB10	OLB10 sp002455375
+coasm_bin.10	100.0	2.62	Gradient Boost (General Model)	4	5717529	5068721	5068721	0.58	0.88	4666	Bacteria	Chloroflexota	Anaerolineae	Promineifilales	Promineifilaceae	Leptovillus	
+coasm_bin.171	100.0	1.12	Bacteria	24	4478548	320601	830679	0.68	0.93	4056	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Burkholderiaceae	Inhella	Inhella sp017302655
+coasm_bin.337	100.0	0.61	Gradient Boost (General Model)	12	3254729	2365054	2365054	0.31	0.92	2901	Bacteria	Bacteroidota	Ignavibacteria	SJA-28	B-1AR	UBA9002	
+coasm_bin.321	100.0	0.0	Bacteria	10	4057075	617394	1324311	0.62	0.89	3387	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Rhodanobacteraceae	Dokdonella	
+CAN_4_bin.220	100.0	0.04	Gradient Boost (General Model)	1	3787436	3787436	3787436	0.65	0.91	3556	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Beijerinckiaceae	JAIUNP01	
+coasm_bin.579	100.0	0.05	Gradient Boost (General Model)	1	4162672	4162672	4162672	0.61	0.93	3486	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	PHOS-HE28	PHOS-HE28	
+coasm_bin.551	100.0	0.03	Gradient Boost (General Model)	4	4388295	1932082	2001832	0.43	0.92	3932	Bacteria	Bacteroidota	Bacteroidia	Cytophagales	Cyclobacteriaceae	UBA2336	UBA2336 sp002344065
+coasm_bin.53	100.0	0.37	Gradient Boost (General Model)	2	3937983	3674171	3674171	0.36	0.88	3161	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Saprospiraceae	OLB9	
+coasm_bin.521	100.0	0.08	Gradient Boost (General Model)	8	3302460	598714	811660	0.33	0.93	2932	Bacteria	Bacteroidota	Kapaibacteriia	Kapaibacteriales	UBA2268	PGYR01	
+CAN_3_bin.205	100.0	0.14	Bacteria	10	4163202	509609	700975	0.41	0.89	3652	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	Niabella	
+CAN_1_bin.98	100.0	0.19	Bacteria	6	5022376	3573482	3573482	0.65	0.89	4258	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Accumulibacter	Accumulibacter sp014879755
+CAN_2_bin.159	100.0	0.02	Bacteria	3	2816656	1658373	1658373	0.7	0.9	2500	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Pseudoxanthomonas	Pseudoxanthomonas sp017302035
+coasm_bin.2	100.0	0.05	Bacteria	2	3739567	2944056	2944056	0.69	0.9	3481	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Burkholderiaceae	Ottowia	
+coasm_bin.364	100.0	0.01	Gradient Boost (General Model)	1	3382666	3382666	3382666	0.39	0.93	3057	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	Sediminibacterium	Sediminibacterium sp937907555
+CAN_4_bin.44	99.99	0.07	Bacteria	5	5523224	1873950	2429018	0.67	0.89	5308	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Rhizobiaceae	DUSC01	
+coasm_bin.471	99.99	0.21	Bacteria	10	2887019	651905	1026238	0.65	0.9	2597	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Lysobacter_B	
+coasm_bin.411	99.99	0.67	Bacteria	18	5047092	578788	869604	0.68	0.88	4008	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Aquimonas	
+CAN_5_bin.147	99.99	0.0	Bacteria	1	3696231	3696231	3696231	0.46	0.91	3187	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	SpSt-398	SpSt-398 sp017303415
+coasm_bin.134	99.99	0.13	Bacteria	5	2496231	792327	913937	0.65	0.92	2309	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Lysobacter_B	Lysobacter_B sp014879375
+coasm_bin.215	99.99	0.38	Bacteria	2	3258281	3243340	3243340	0.68	0.91	2699	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Chiayiivirga	Chiayiivirga sp963205495
+CAN_5_bin.177	99.99	0.06	Bacteria	1	4245465	4245465	4245465	0.7	0.9	3646	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	SCMT01	SCMT01 sp019510125
+CAN_3_bin.203	99.99	0.1	Gradient Boost (General Model)	10	4236105	876071	1360828	0.67	0.86	3551	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Ancalomicrobiaceae	JAEULV01	JAEULV01 sp016793065
+CAN_3_bin.216	99.99	0.13	Bacteria	4	4692493	2870839	2870839	0.66	0.91	4189	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Zoogloea	
+CAN_2_bin.151	99.99	1.73	Bacteria	2	2857677	2456369	2456369	0.68	0.9	2802	Bacteria	Pseudomonadota	Alphaproteobacteria	Caulobacterales	Caulobacteraceae	Brevundimonas	
+coasm_bin.51	99.99	0.74	Bacteria	16	4725434	874656	974277	0.67	0.92	4473	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Burkholderiaceae	Hydrogenophaga	Hydrogenophaga pseudoflava
+coasm_bin.335	99.98	0.31	Bacteria	60	4441825	122185	302213	0.69	0.93	4128	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Burkholderiaceae	Inhella	
+CAN_1_bin.180	99.98	0.52	Bacteria	20	4039223	593163	1063574	0.34	0.91	3910	Bacteria	Bdellovibrionota	Bdellovibrionia	Bdellovibrionales	Bdellovibrionaceae	UBA2316	
+coasm_bin.40	99.98	0.05	Bacteria	1	3210752	3210752	3210752	0.38	0.9	2754	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	Flavipsychrobacter	
+coasm_bin.539	99.98	0.08	Bacteria	2	3355373	3130224	3130224	0.34	0.91	2921	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Flavobacteriaceae	Flavobacterium	Flavobacterium filum
+coasm_bin.289	99.98	0.52	Bacteria	12	4475613	648294	1012444	0.68	0.9	4365	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Phreatobacteraceae	Phreatobacter	
+coasm_bin.417	99.97	0.01	Bacteria	8	3220004	444050	836130	0.69	0.9	2738	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Rhodanobacteraceae	Dokdonella_A	Dokdonella_A sp019634845
+coasm_bin.485	99.96	0.19	Bacteria	3	3759541	1118308	1782813	0.73	0.89	3154	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	UBA2363	Pseudofulvimonas	Pseudofulvimonas sp002344355
+CAN_3_bin.13	99.95	2.82	Bacteria	31	4099468	704182	982913	0.68	0.89	3847	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Pseudoxanthomonas_A	Pseudoxanthomonas_A japonensis
+coasm_bin.514	99.95	0.47	Gradient Boost (General Model)	80	4003075	86853	211674	0.59	0.9	4196	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Rhizobiaceae	Mesorhizobium_G	
+coasm_bin.280	99.92	0.11	Bacteria	20	3812033	270306	485987	0.65	0.9	3691	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Rhizobiaceae	Mesorhizobium_A	Mesorhizobium_A sp002336975
+coasm_bin.535	99.89	0.08	Bacteria	1	3284844	3284844	3284844	0.65	0.92	3180	Bacteria	Pseudomonadota	Alphaproteobacteria	Sphingomonadales	Sphingomonadaceae	Novosphingobium	Novosphingobium sp017302615
+coasm_bin.15	99.86	2.56	Bacteria	38	4606115	219398	569513	0.64	0.91	4365	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Sulfuritalea	Sulfuritalea sp017302275
+coasm_bin.561	99.85	0.52	Gradient Boost (General Model)	7	1195515	238273	405229	0.43	0.9	1241	Bacteria	Patescibacteria	Microgenomatia	UBA1400	PJMF01		
+coasm_bin.28	99.84	0.41	Gradient Boost (General Model)	4	5730873	4431066	4431066	0.65	0.86	4636	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	SZUA-5	JADKFD01	JADKFD01 sp937928755
+coasm_bin.314	99.81	1.11	Bacteria	48	6359901	177389	480168	0.49	0.91	5194	Bacteria	Bacteroidota	Bacteroidia	Cytophagales	Spirosomataceae	SCN-52-12	
+CAN_3_bin.43	99.81	0.71	Bacteria	23	3423860	279963	554136	0.65	0.91	3130	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Luteimonas_D	
+CAN_3_bin.221	99.8	0.37	Gradient Boost (General Model)	1	3823334	3823334	3823334	0.39	0.88	3493	Bacteria	Bacteroidota	Ignavibacteria	SJA-28	OLB5	OLB5	OLB5 sp002344125
+CAN_2_bin.125	99.78	1.71	Bacteria	25	3440139	222642	752375	0.68	0.9	3276	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Pseudoxanthomonas_A	Pseudoxanthomonas_A mexicana
+coasm_bin.218	99.71	2.14	Gradient Boost (General Model)	6	3423845	1832400	1832400	0.67	0.92	3378	Bacteria	Pseudomonadota	Alphaproteobacteria	Micropepsales	Micropepsaceae	JADZAI01	JADZAI01 sp029778105
+CAN_2_bin.6	99.7	0.37	Bacteria	4	3163088	950453	1470666	0.65	0.93	3033	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Desulfobacillus	
+CAN_4_bin.25	99.64	0.22	Gradient Boost (General Model)	3	4488114	3712171	3712171	0.64	0.89	3840	Bacteria	Pseudomonadota	Gammaproteobacteria	Competibacterales	Competibacteraceae	Competibacter_A	
+coasm_bin.365	99.6	1.18	Gradient Boost (General Model)	1	3568950	3568950	3568950	0.61	0.9	3312	Bacteria	Pseudomonadota	Gammaproteobacteria	Competibacterales	Competibacteraceae	JARSSO01	
+coasm_bin.31	99.57	1.06	Bacteria	14	4918739	1060694	1613482	0.66	0.9	4755	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	JAAKGP01	JAAKGP01 sp016704435
+CAN_1_bin.210	99.55	0.45	Bacteria	13	3941745	728973	865606	0.69	0.9	3450	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Rhodanobacteraceae	Dokdonella	
+coasm_bin.203	99.51	6.08	Bacteria	53	4308965	2919232	2919232	0.67	0.9	4178	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Fuscibacter	Fuscibacter sp014859945
+coasm_bin.150	99.43	1.29	Bacteria	12	3894412	526685	1038311	0.34	0.93	3235	Bacteria	Bacteroidota	Ignavibacteria	Ignavibacteriales	Ignavibacteriaceae	JAGUXE01	
+CAN_5_bin.150	99.24	0.14	Gradient Boost (General Model)	6	860190	204403	284372	0.43	0.88	914	Bacteria	Patescibacteria	Paceibacteria	UBA6257	2-01-FULL-56-20	JAHFLJ01	
+coasm_bin.156	99.23	0.16	Gradient Boost (General Model)	8	8304411	1969375	3605234	0.52	0.9	6108	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Saprospiraceae	M3007	
+coasm_bin.181	99.17	5.41	Gradient Boost (General Model)	85	5566583	129521	389411	0.65	0.84	4821	Bacteria	Chloroflexota	Anaerolineae	JAAEKA01	JAAEKA01	JAAEKA01	JAAEKA01 sp014879765
+coasm_bin.132	99.16	0.24	Gradient Boost (General Model)	2	4369269	3407060	3407060	0.45	0.93	3870	Bacteria	Bacteroidota	Bacteroidia	Cytophagales	Cyclobacteriaceae	ELB16-189	ELB16-189 sp017303805
+coasm_bin.482	99.13	0.23	Bacteria	1	4073591	4073591	4073591	0.35	0.88	3160	Bacteria	Bacteroidota	Ignavibacteria	Ignavibacteriales	Ignavibacteriaceae	BA9	
+CAN_5_bin.2	99.11	0.09	Gradient Boost (General Model)	1	2108970	2108970	2108970	0.62	0.92	2023	Bacteria	Pseudomonadota	Alphaproteobacteria	UBA2400	UBA2400		
+coasm_bin.55	99.11	1.89	Gradient Boost (General Model)	3	4171001	3379307	3379307	0.53	0.89	3920	Bacteria	Pseudomonadota	Gammaproteobacteria	Competibacterales	Competibacteraceae	Competibacter	
+coasm_bin.386	99.01	0.05	Gradient Boost (General Model)	9	4707507	1078931	1302601	0.69	0.9	4423	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Beijerinckiaceae	GCA-013693735	
+coasm_bin.271	98.95	0.02	Gradient Boost (General Model)	23	4533503	348793	903715	0.62	0.9	4049	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Casimicrobiaceae	Casimicrobium	
+coasm_bin.75	98.93	0.85	Bacteria	55	3216513	124825	335307	0.74	0.91	2935	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae		
+coasm_bin.222	98.93	0.04	Bacteria	20	4463354	302128	773118	0.64	0.91	4032	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Zoogloea	Zoogloea sp016790385
+coasm_bin.114	98.93	2.34	Gradient Boost (General Model)	76	3965360	77508	290710	0.41	0.91	3645	Bacteria	Bacteroidota	Bacteroidia	B-17B0	B-17BO	UBA2475	
+CAN_3_bin.227	98.91	0.07	Gradient Boost (General Model)	1	3461866	3461866	3461866	0.59	0.92	2807	Bacteria	Bacteroidota	Kapaibacteriia	Kapaibacteriales	Kapaibacteriaceae	Kapaibacterium	
+CAN_1_bin.2	98.74	1.2	Gradient Boost (General Model)	1	3126569	3126569	3126569	0.35	0.89	2829	Bacteria	Bacteroidota	Ignavibacteria	SJA-28	B-1AR		
+coasm_bin.202	98.71	0.68	Bacteria	64	3503168	80421	297913	0.66	0.91	3558	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Albidovulum	
+coasm_bin.489	98.7	0.07	Bacteria	1	3695497	3695497	3695497	0.41	0.91	3027	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	Tenuifilaceae	UBA2287	
+CAN_5_bin.145	98.65	0.1	Gradient Boost (General Model)	1	4785324	4785324	4785324	0.49	0.89	3656	Bacteria	Bacteroidota	Bacteroidia	J057	J057	JAAFHL01	
+CAN_3_bin.10	98.63	0.99	Bacteria	10	4215738	965618	1149811	0.67	0.89	4066	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	JAAKGP01	
+CAN_4_bin.11	98.63	3.28	Gradient Boost (General Model)	2	5045851	4043212	4043212	0.53	0.92	4723	Bacteria	Chloroflexota	Anaerolineae	Anaerolineales	Villigracilaceae	Villigracilis	Villigracilis sp002343775
+coasm_bin.348	98.58	1.0	Gradient Boost (General Model)	3	8110918	2594159	3341136	0.71	0.93	6754	Bacteria	Myxococcota	Myxococcia	Myxococcales	Myxococcaceae	JAEUJQ01	JAEUJQ01 sp014879945
+CAN_4_bin.166	98.55	0.56	Bacteria	1	4092854	4092854	4092854	0.39	0.92	3291	Bacteria	Bacteroidota	Ignavibacteria	Ignavibacteriales	Ignavibacteriaceae	UTCHB3	UTCHB3 sp016707285
+coasm_bin.519	98.54	2.04	Gradient Boost (General Model)	1	5503164	5503164	5503164	0.59	0.92	4716	Bacteria	Chloroflexota	Anaerolineae	Aggregatilineales	Phototrophicaceae	Flexifilum	
+coasm_bin.61	98.54	0.23	Gradient Boost (General Model)	11	3663202	821535	1152856	0.33	0.9	3173	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	UBA1930	
+coasm_bin.512	98.49	1.04	Gradient Boost (General Model)	2	4839791	4159274	4159274	0.47	0.93	4111	Bacteria	Chloroflexota	Anaerolineae	Aggregatilineales	Phototrophicaceae	GCA-2794515	
+coasm_bin.497	98.39	0.81	Bacteria	13	3818240	424400	585408	0.69	0.89	3616	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Amaricoccus	Amaricoccus sp937891315
+coasm_bin.70	98.28	1.0	Gradient Boost (General Model)	11	4473621	786000	1226232	0.67	0.9	3733	Bacteria	Verrucomicrobiota	Verrucomicrobiae	Opitutales	Opitutaceae	UBA2377	
+coasm_bin.260	98.28	1.54	Gradient Boost (General Model)	7	5808007	3224900	3224900	0.64	0.88	4946	Bacteria	Chloroflexota	Anaerolineae	JAAEKA01	JAAEKA01	JAAEKA01	
+CAN_4_bin.197	98.27	5.01	Gradient Boost (General Model)	12	3779477	882621	1208538	0.36	0.88	3089	Bacteria	Bacteroidota	Ignavibacteria	SJA-28	B-1AR	CAIKZJ01	
+CAN_4_bin.116	98.19	0.78	Gradient Boost (General Model)	3	3624861	3478669	3478669	0.54	0.89	3343	Bacteria	Pseudomonadota	Gammaproteobacteria	Competibacterales	Competibacteraceae	Competibacter	Competibacter sp014879435
+coasm_bin.543	98.19	3.79	Gradient Boost (General Model)	3	7282889	4327451	4327451	0.6	0.9	6123	Bacteria	Chloroflexota	Anaerolineae	Fen-1058	Fen-1058	Fen-1058	
+coasm_bin.578	98.17	0.36	Gradient Boost (General Model)	1	3679858	3679858	3679858	0.59	0.92	3307	Bacteria	Verrucomicrobiota	Verrucomicrobiae	Chthoniobacterales	Terrimicrobiaceae	QYQL01	QYQL01 sp014879575
+coasm_bin.237	98.16	0.73	Gradient Boost (General Model)	9	3592965	489430	1009424	0.63	0.93	3191	Bacteria	Acidobacteriota	Holophagae	Holophagales	Holophagaceae	Holophaga	
+CAN_5_bin.173	98.12	0.98	Gradient Boost (General Model)	67	3277565	69621	295678	0.43	0.9	2998	Bacteria	Bacteroidota	Bacteroidia	CAIKAF01	CAIKAF01	JAKRSD01	
+coasm_bin.249	98.05	4.99	Gradient Boost (General Model)	76	3684492	129161	378124	0.66	0.89	3696	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Burkholderiaceae	Giesbergeria	Giesbergeria sp010020825
+coasm_bin.47	98.04	2.45	Gradient Boost (General Model)	4	5966548	1752666	2647920	0.66	0.91	5152	Bacteria	Chloroflexota	Anaerolineae	Anaerolineales	UBA6663	UBA6663	
+coasm_bin.420	98.02	0.5	Gradient Boost (General Model)	15	5120037	1277553	1321658	0.64	0.9	4886	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Rhizobiaceae	Mesorhizobium_I	Mesorhizobium_I sp023953845
+CAN_4_bin.103	98.01	3.69	Gradient Boost (General Model)	5	5968436	5197021	5197021	0.55	0.9	5020	Bacteria	Chloroflexota	Anaerolineae	Aggregatilineales	UBA2796	UBA2796	UBA2796 sp014879835
+CAN_4_bin.195	98.01	6.99	Gradient Boost (General Model)	31	3561053	325893	688772	0.64	0.91	3510	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Azonexus	
+coasm_bin.207	97.9	3.23	Gradient Boost (General Model)	32	3614441	289687	598800	0.66	0.91	3162	Bacteria	Spirochaetota	Spirochaetia	Treponematales	UBA12059	UBA5200	UBA5200 sp938004315
+coasm_bin.425	97.7	0.0	Gradient Boost (General Model)	1	3451804	3451804	3451804	0.69	0.9	2896	Bacteria	Bacteroidota	Rhodothermia	Rhodothermales	BA12	BA12	
+CAN_1_bin.77	97.68	0.28	Gradient Boost (General Model)	4	5985155	1686115	1771417	0.7	0.92	4900	Bacteria	Acidobacteriota	Thermoanaerobaculia	UBA5066	UBA5066	UBA5066	
+coasm_bin.394	97.55	0.68	Gradient Boost (General Model)	39	6708877	488256	1382949	0.64	0.87	6161	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Beijerinckiaceae	Chelatococcus	Chelatococcus asaccharovorans
+CAN_1_bin.195	97.28	1.45	Gradient Boost (General Model)	1	894103	894103	894103	0.4	0.92	944	Bacteria	Patescibacteria	ABY1	BM507	UBA917	UBA919	
+CAN_1_bin.174	97.22	1.35	Gradient Boost (General Model)	1	1166702	1166702	1166702	0.43	0.9	1081	Bacteria	Patescibacteria	JAEDAM01	BD1-5	UBA2023	UBA5532	UBA5532 sp002426885
+coasm_bin.499	97.15	2.01	Gradient Boost (General Model)	3	1048312	973011	973011	0.33	0.91	993	Bacteria	Patescibacteria	Dojkabacteria	J137	J137	JAMQHH01	
+CAN_3_bin.124	97.05	1.43	Gradient Boost (General Model)	135	2710250	27215	70634	0.64	0.9	2715	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Thermomonas	
+coasm_bin.556	96.98	5.34	Gradient Boost (General Model)	5	9760845	6168456	6168456	0.71	0.91	7847	Bacteria	Myxococcota	Myxococcia	Myxococcales	UBA5297	JACRCT01	
+coasm_bin.313	96.96	5.07	Gradient Boost (General Model)	69	5830611	107212	430452	0.56	0.89	5085	Bacteria	Chloroflexota	Anaerolineae	Aggregatilineales	Phototrophicaceae	JACKCG01	JACKCG01 sp937974245
+coasm_bin.518	96.92	2.95	Gradient Boost (General Model)	5	2765113	2180942	2180942	0.54	0.94	2320	Bacteria	Elusimicrobiota	Elusimicrobia	FEN-1173	FEN-1173	JADKHR01	JADKHR01 sp016788905
+coasm_bin.395	96.87	0.79	Bacteria	55	3179587	130600	276214	0.69	0.91	2664	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Chiayiivirga	
+coasm_bin.400	96.58	0.56	Gradient Boost (General Model)	19	3256228	554789	1122059	0.35	0.93	2762	Bacteria	Bacteroidota	Bacteroidia	2-12-FULL-35-15	2-12-FULL-35-15	2-12-FULL-35-15	
+coasm_bin.340	96.56	0.0	Gradient Boost (General Model)	42	3817075	142724	304943	0.61	0.9	3843	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Rhizobiaceae	Mesorhizobium_A	
+coasm_bin.188	96.54	1.13	Gradient Boost (General Model)	31	4729347	234671	719911	0.51	0.92	3999	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	UBA10428	UBA5072	
+CAN_4_bin.154	96.5	2.11	Gradient Boost (General Model)	145	4974504	51389	209077	0.68	0.84	4312	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Aquimonas	
+CAN_1_bin.84	96.16	2.61	Gradient Boost (General Model)	8	6398485	3749479	3749479	0.55	0.9	5693	Bacteria	Chloroflexota	Anaerolineae	Aggregatilineales	Phototrophicaceae	CFX2	CFX2 sp017303775
+coasm_bin.286	96.14	0.85	Bacteria	49	4318725	127959	483348	0.44	0.91	3846	Bacteria	Bacteroidota	Bacteroidia	B-17B0	B-17BO	UBA2475	
+coasm_bin.441	96.04	0.65	Bacteria	12	3871259	1348960	1814510	0.46	0.92	3170	Bacteria	Bacteroidota	Ignavibacteria	Ignavibacteriales	Ignavibacteriaceae	UTCHB3	UTCHB3 sp023433685
+CAN_2_bin.23	96.04	0.54	Bacteria	32	4657897	295469	552223	0.66	0.9	4154	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Zoogloea	Zoogloea sp023150065
+CAN_4_bin.112	95.8	2.26	Gradient Boost (General Model)	53	3249985	109085	328583	0.33	0.92	2934	Bacteria	Bacteroidota	Bacteroidia	2-12-FULL-35-15	2-12-FULL-35-15	2-12-FULL-35-15	2-12-FULL-35-15 sp016787165
+coasm_bin.231	95.78	0.31	Gradient Boost (General Model)	26	5267406	424794	625530	0.61	0.9	4362	Bacteria	Acidobacteriota	Terriglobia	Bryobacterales	Bryobacteraceae	JACTMJ01	
+coasm_bin.484	95.77	0.07	Gradient Boost (General Model)	4	3303347	826098	1544936	0.67	0.87	3002	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Xanthobacteraceae	SCUB01	
+CAN_2_bin.176	95.76	0.52	Gradient Boost (General Model)	4	5834731	2059594	2533656	0.7	0.92	4846	Bacteria	Acidobacteriota	Thermoanaerobaculia	UBA5066	UBA5066	UBA5066	
+coasm_bin.555	95.73	0.19	Bacteria	13	4988058	597657	1153418	0.68	0.9	4731	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Rhizobiaceae	DUSC01	
+CAN_1_bin.148	95.69	7.58	Bacteria	46	4210296	415687	795907	0.69	0.89	3598	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Rhodanobacteraceae	Dokdonella	
+CAN_5_bin.9	95.65	4.49	Gradient Boost (General Model)	95	5300324	80095	456660	0.57	0.89	5004	Bacteria	Chloroflexota	Anaerolineae	Anaerolineales	Villigracilaceae	UBA5195	
+coasm_bin.208	95.59	1.19	Gradient Boost (General Model)	133	4901452	53679	214074	0.64	0.89	4628	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Niveibacterium	
+CAN_3_bin.208	95.52	1.15	Gradient Boost (General Model)	137	3204018	31041	91305	0.63	0.91	3252	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Azospira_A	
+CAN_5_bin.62	95.35	0.83	Gradient Boost (General Model)	137	6070849	70704	191981	0.61	0.88	5472	Bacteria	Chloroflexota	Anaerolineae	Caldilineales	Caldilineaceae	Caldilinea	Caldilinea sp014879855
+coasm_bin.466	95.06	4.42	Gradient Boost (General Model)	18	3911169	384352	1184387	0.42	0.88	3466	Bacteria	Bacteroidota	Ignavibacteria	SJA-28	OLB5	OLB5	
+CAN_4_bin.152	94.9	1.73	Bacteria	49	2466564	80851	266418	0.67	0.9	2620	Bacteria	Pseudomonadota	Alphaproteobacteria	Caulobacterales	Caulobacteraceae	Brevundimonas	Brevundimonas sp963205025
+coasm_bin.312	94.87	0.07	Gradient Boost (General Model)	87	3897574	55559	225271	0.58	0.91	3720	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	PHOS-HE28	PHOS-HE28	
+coasm_bin.213	94.73	1.88	Gradient Boost (General Model)	62	3282337	79041	259974	0.41	0.91	3179	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	Flavipsychrobacter	Flavipsychrobacter sp016786615
+CAN_5_bin.146	94.64	0.18	Gradient Boost (General Model)	7	1393994	286051	459039	0.24	0.91	1288	Bacteria	Patescibacteria	JAEDAM01	BD1-5	UBA6164	Altimarinus	
+CAN_5_bin.90	94.61	1.14	Gradient Boost (General Model)	1	1137081	1137081	1137081	0.43	0.89	1061	Bacteria	Patescibacteria	JAEDAM01	BD1-5	UBA2023	UBA5532	UBA5532 sp002426885
+coasm_bin.325	94.23	3.97	Gradient Boost (General Model)	12	6791272	1068441	1300201	0.6	0.92	5834	Bacteria	Chloroflexota	Anaerolineae	Aggregatilineales	Phototrophicaceae	Flexifilum	Flexifilum sp014879865
+coasm_bin.121	94.17	0.26	Bacteria	22	3317591	297300	963388	0.3	0.94	2967	Bacteria	Bacteroidota	Bacteroidia	B-17B0	B-17BO	UBA2475	UBA2475 sp020162035
+coasm_bin.542	94.16	0.12	Gradient Boost (General Model)	2	3722095	2229649	2229649	0.67	0.89	2972	Bacteria	Planctomycetota	Phycisphaerae	Phycisphaerales	UBA1924		
+coasm_bin.24	94.14	3.41	Bacteria	7	1050964	185137	397360	0.35	0.89	964	Bacteria	Patescibacteria	JAEDAM01	Absconditabacterales	Absconditicoccaceae		
+coasm_bin.407	93.69	1.23	Gradient Boost (General Model)	23	1034509	55932	193528	0.41	0.91	1065	Bacteria	Patescibacteria	Microgenomatia	UBA1400	PJMF01	1-14-0-10-56-10	
+coasm_bin.399	93.62	0.48	Bacteria	14	4801330	788298	1207140	0.67	0.88	4633	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Beijerinckiaceae	Bosea	
+coasm_bin.449	93.16	0.09	Bacteria	59	2699875	79747	260754	0.7	0.9	2613	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Thermomonas	Thermomonas mangrovi
+coasm_bin.389	93.01	0.97	Gradient Boost (General Model)	53	3915786	131101	378683	0.47	0.93	3334	Bacteria	Chloroflexota	Anaerolineae	Aggregatilineales	Phototrophicaceae	JANWYT01	
+coasm_bin.41	92.75	2.77	Gradient Boost (General Model)	16	1005698	121181	175175	0.35	0.89	1010	Bacteria	Patescibacteria	Dojkabacteria	J137	J137	JAMQHH01	
+coasm_bin.293	92.38	1.52	Gradient Boost (General Model)	108	6935733	98288	429878	0.62	0.91	5833	Bacteria	Verrucomicrobiota	Verrucomicrobiae	Verrucomicrobiales	DEV007	Arctic95D-9	Arctic95D-9 sp016795385
+coasm_bin.27	92.25	0.62	Gradient Boost (General Model)	7	3835170	3762321	3762321	0.66	0.88	3035	Bacteria	Planctomycetota	Phycisphaerae	Phycisphaerales	UBA1924		
+coasm_bin.82	92.17	2.75	Gradient Boost (General Model)	74	2096340	43413	95116	0.48	0.9	2152	Bacteria	Pseudomonadota	Alphaproteobacteria	Micavibrionales	Micavibrionaceae	UBA1573	UBA1573 sp003452275
+CAN_5_bin.106	92.13	4.17	Gradient Boost (General Model)	51	2984512	105487	190553	0.62	0.9	2756	Bacteria	Pseudomonadota	Gammaproteobacteria	Competibacterales	Competibacteraceae	Competibacter	Competibacter phosphatis
+coasm_bin.54	91.93	0.56	Gradient Boost (General Model)	52	3056091	98538	249534	0.71	0.91	2565	Bacteria	Planctomycetota	Phycisphaerae	Phycisphaerales	UBA1924	UBA2396	UBA2396 sp015200025
+coasm_bin.233	91.6	0.04	Gradient Boost (General Model)	44	2597828	116001	252448	0.65	0.92	2501	Bacteria	Pseudomonadota	Gammaproteobacteria	GCA-2729495	GCA-2729495	SHZI01	
+coasm_bin.324	91.37	3.91	Gradient Boost (General Model)	32	3070918	310868	531438	0.63	0.93	2864	Bacteria	Verrucomicrobiota	Verrucomicrobiae	Chthoniobacterales	JACTMZ01	JACTMZ01	
+CAN_5_bin.40	91.34	1.4	Bacteria	85	3501042	66986	201059	0.64	0.9	3390	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Burkholderiaceae	Giesbergeria	Giesbergeria sp026647025
+coasm_bin.318	91.19	1.84	Gradient Boost (General Model)	126	5293471	62648	247579	0.72	0.91	4528	Bacteria	Acidobacteriota	Thermoanaerobaculia	UBA5066	UBA5066	UBA5066	
+coasm_bin.60	91.19	2.82	Gradient Boost (General Model)	36	6686106	286215	928057	0.54	0.86	5416	Bacteria	Planctomycetota	Planctomycetia	Pirellulales	Pirellulaceae	M30B19	
+coasm_bin.153	90.73	0.73	Gradient Boost (General Model)	45	3904644	135166	320081	0.63	0.89	3349	Bacteria	Planctomycetota	Phycisphaerae	Phycisphaerales	UBA1924	JAFEBO01	JAFEBO01 sp016793015
+coasm_bin.492	90.47	2.76	Gradient Boost (General Model)	124	3892375	42186	166800	0.43	0.89	4064	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	JJ008	JJ008 sp002400415
+coasm_bin.118	90.28	0.25	Gradient Boost (General Model)	27	3586267	230538	426161	0.7	0.9	3439	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Beijerinckiaceae	GCA-013693735	
+coasm_bin.178	90.18	6.58	Gradient Boost (General Model)	115	5265445	104988	220549	0.7	0.83	5061	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Ancalomicrobiaceae	CALBKH01	
+coasm_bin.86	90.12	0.44	Gradient Boost (General Model)	23	5211748	273066	926377	0.66	0.84	4234	Bacteria	Planctomycetota	Planctomycetia	Pirellulales	Lacipirellulaceae	GCA-2702655	GCA-2702655 sp019636345
+CAN_5_bin.52	90.09	3.97	Gradient Boost (General Model)	38	3021602	150680	331924	0.67	0.91	2941	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Beijerinckiaceae		
+coasm_bin.262	90.01	4.09	Bacteria	44	4228235	309752	804316	0.69	0.88	4220	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Phreatobacteraceae	Phreatobacter	
+coasm_bin.201	89.66	2.27	Gradient Boost (General Model)	154	7820901	83539	372651	0.61	0.92	6419	Bacteria	Verrucomicrobiota	Verrucomicrobiae	Verrucomicrobiales	Verrucomicrobiaceae	Prosthecobacter	Prosthecobacter sp014879935
+coasm_bin.161	89.56	1.32	Gradient Boost (General Model)	54	4027075	145539	387815	0.64	0.92	3340	Bacteria	Planctomycetota	UBA8742	UBA2392	UBA2392	UBA2392	UBA2392 sp002343805
+CAN_5_bin.149	89.56	2.16	Gradient Boost (General Model)	119	3195914	35177	106005	0.45	0.89	3327	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	Flavipsychrobacter	
+coasm_bin.468	89.22	3.89	Gradient Boost (General Model)	19	3067670	366643	505967	0.64	0.93	2887	Bacteria	Verrucomicrobiota	Verrucomicrobiae	Chthoniobacterales	JACTMZ01	JACTMZ01	JACTMZ01 sp014879535
+coasm_bin.183	89.19	2.17	Bacteria	152	4070868	38925	110095	0.65	0.91	3706	Bacteria	Gemmatimonadota	Gemmatimonadetes	Gemmatimonadales	Gemmatimonadaceae	JAABRT01	
+CAN_4_bin.107	88.96	3.65	Gradient Boost (General Model)	143	5470925	50800	159533	0.6	0.87	6010	Bacteria	Chloroflexota	Anaerolineae	Caldilineales	Caldilineaceae	Caldilinea	
+coasm_bin.529	88.96	8.48	Gradient Boost (General Model)	156	3766665	35375	91715	0.64	0.9	3866	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Azonexus	
+CAN_4_bin.208	88.64	0.05	Bacteria	13	3047151	451502	640380	0.64	0.92	2899	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Azospira_A	
+coasm_bin.221	88.58	0.91	Gradient Boost (General Model)	28	1068514	57941	103194	0.41	0.91	1084	Bacteria	Patescibacteria	Microgenomatia	UBA1400	PJMF01	1-14-0-10-56-10	
+CAN_2_bin.173	88.51	3.03	Gradient Boost (General Model)	145	3870350	37630	132714	0.69	0.89	3914	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Burkholderiaceae	JACDQM01	
+CAN_5_bin.97	88.29	2.2	Gradient Boost (General Model)	68	2841694	54052	271375	0.61	0.92	2864	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	UBA1934	
+coasm_bin.250	87.73	0.11	Bacteria	10	4557472	1457384	1874609	0.62	0.88	3965	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Accumulibacter	Accumulibacter phosphatis_G
+coasm_bin.473	87.51	4.98	Gradient Boost (General Model)	169	5503368	52269	171212	0.59	0.9	5131	Bacteria	Chloroflexota	Anaerolineae	Anaerolineales	Anaerolineaceae	Anaerolinea	
+coasm_bin.84	87.37	0.45	Bacteria	67	2126503	41076	138607	0.55	0.88	2174	Bacteria	Bacteroidota	Chlorobiia	Chlorobiales	Chlorobiaceae	Chlorobium	
+CAN_2_bin.66	87.35	1.04	Gradient Boost (General Model)	69	2784204	77074	210271	0.63	0.92	2810	Bacteria	Verrucomicrobiota	Verrucomicrobiae	Chthoniobacterales	JACTMZ01	JACTMZ01	
+coasm_bin.358	87.31	1.19	Gradient Boost (General Model)	151	4054882	42757	128314	0.66	0.87	3560	Bacteria	Planctomycetota	Phycisphaerae	Phycisphaerales	UBA1924	JABWBB01	
+coasm_bin.393	86.19	1.31	Bacteria	94	4247803	79598	307211	0.32	0.89	4198	Bacteria	Bacteroidota	Ignavibacteria	Ignavibacteriales	Ignavibacteriaceae	IGN3	
+coasm_bin.385	85.95	0.47	Gradient Boost (General Model)	27	1186437	58702	155323	0.41	0.92	1282	Bacteria	Patescibacteria	Microgenomatia	UBA1400	PJMF01	UBA924	
+coasm_bin.336	85.93	2.91	Bacteria	74	2153427	42756	113311	0.46	0.9	2234	Bacteria	Pseudomonadota	Alphaproteobacteria	Micavibrionales	Micavibrionaceae	UBA1573	
+coasm_bin.538	85.92	8.78	Gradient Boost (General Model)	113	4174440	85512	190310	0.68	0.84	4177	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodospirillales_A	UXAT02	Defluviicoccus	
+coasm_bin.496	85.79	8.83	Bacteria	102	4648668	457007	1019823	0.69	0.89	4111	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Rhodanobacteraceae	Dokdonella	
+CAN_4_bin.142	85.63	1.76	Gradient Boost (General Model)	107	3167313	43334	155886	0.33	0.91	3084	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Vicingaceae	Vicingus	
+coasm_bin.13	85.56	1.64	Gradient Boost (General Model)	205	5246730	39033	191732	0.57	0.87	4952	Bacteria	Acidobacteriota	Terriglobia	Bryobacterales	Bryobacteraceae	JACTMJ01	
+coasm_bin.383	85.35	0.1	Gradient Boost (General Model)	13	742551	77572	120893	0.42	0.91	808	Bacteria	Patescibacteria	Microgenomatia	UBA1400	PJMF01	UBA1364	
+coasm_bin.255	85.34	0.25	Gradient Boost (General Model)	90	3330920	71233	239937	0.66	0.91	3052	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Burkholderiaceae	Hydrogenophaga	
+coasm_bin.139	85.3	5.49	Gradient Boost (General Model)	262	5284966	29254	118169	0.7	0.91	4617	Bacteria	Planctomycetota	UBA1135	UBA2386	UBA2386	UBA2386	
+coasm_bin.22	84.76	4.88	Gradient Boost (General Model)	106	3494417	45881	311093	0.48	0.88	3845	Bacteria	Chloroflexota	Anaerolineae	Anaerolineales	Anaerolineaceae	Leptolinea	
+coasm_bin.85	84.51	0.29	Bacteria	157	3392488	28120	97751	0.61	0.9	3243	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Aquimonas	Aquimonas sp002352135
+CAN_4_bin.92	84.51	6.83	Gradient Boost (General Model)	91	3994020	86287	449810	0.63	0.82	3872	Bacteria	Chloroflexota	Anaerolineae	Aggregatilineales	Phototrophicaceae	Flexifilum	
+CAN_4_bin.236	84.06	2.87	Bacteria	68	3302397	95236	228248	0.68	0.87	3155	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Thauera	Thauera sp017997795
+coasm_bin.196	83.81	1.05	Gradient Boost (General Model)	53	4205097	192355	343116	0.68	0.89	4097	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Beijerinckiaceae	JAIUNP01	
+coasm_bin.540	83.24	1.47	Bacteria	73	4865964	114189	361572	0.65	0.87	5042	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Rhizobiaceae	Pseudohoeflea	
+coasm_bin.502	83.16	3.14	Bacteria	50	2485341	66334	227490	0.66	0.9	2402	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Pseudoxanthomonas_B	
+coasm_bin.290	82.85	1.17	Gradient Boost (General Model)	61	2422833	62842	254654	0.63	0.87	2463	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Xanthobacteraceae	SCUB01	
+coasm_bin.256	82.84	2.62	Bacteria	122	3247075	36157	107722	0.63	0.9	3376	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Azonexus	
+coasm_bin.103	82.81	3.9	Gradient Boost (General Model)	39	3649113	153957	310045	0.67	0.9	3303	Bacteria	Chloroflexota	Anaerolineae	Aggregatilineales	Phototrophicaceae	JALHNB01	
+coasm_bin.367	82.29	2.33	Bacteria	94	3287257	65739	145841	0.7	0.88	3027	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Luteimonas_D	Luteimonas_D sp020161335
+coasm_bin.112	82.03	0.0	Gradient Boost (General Model)	34	860109	31364	50073	0.47	0.91	1022	Bacteria	Patescibacteria	Microgenomatia	UBA10105	UBA927	UBA927	
+coasm_bin.572	81.38	0.9	Gradient Boost (General Model)	175	3815579	28022	90922	0.53	0.88	4103	Bacteria	Chloroflexota	Anaerolineae	Anaerolineales	Villigracilaceae	UBA8950	
+CAN_5_bin.100	81.06	0.18	Bacteria	5	3252921	840523	1270216	0.44	0.92	2637	Bacteria	Bacteroidota	Ignavibacteria	Ignavibacteriales	Ignavibacteriaceae	JAEXTR01	
+coasm_bin.338	80.72	2.38	Bacteria	20	3242309	438381	1138698	0.68	0.9	3184	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	JAAKGP01	
+coasm_bin.426	80.6	2.41	Gradient Boost (General Model)	67	3783930	83540	267045	0.65	0.89	3409	Bacteria	Chloroflexota	Anaerolineae	Aggregatilineales	Phototrophicaceae	JALHNB01	
+coasm_bin.265	80.58	1.32	Bacteria	73	2741814	54712	152601	0.6	0.92	2793	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae		
+coasm_bin.248	80.54	4.51	Bacteria	125	4188976	53081	132653	0.68	0.89	4367	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Neotabrizicola	
+coasm_bin.157	80.25	2.65	Gradient Boost (General Model)	137	2695128	25730	87473	0.64	0.92	2688	Bacteria	Pseudomonadota	Gammaproteobacteria	GCA-2729495	GCA-2729495	SHZI01	SHZI01 sp023383735
+coasm_bin.214	80.17	5.34	Bacteria	151	2934572	27542	113963	0.66	0.9	3082	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Desulfobacillus	
+CAN_4_bin.64	79.98	1.84	Bacteria	53	3842927	109616	432259	0.64	0.88	3428	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Accumulibacter	Accumulibacter sp003538495
+coasm_bin.388	79.94	0.88	Bacteria	19	872018	54307	143099	0.4	0.86	883	Bacteria	Patescibacteria	JAEDAM01	Absconditabacterales	Absconditicoccaceae	JAGOPC01	
+coasm_bin.268	79.84	1.26	Bacteria	29	3040874	202974	357145	0.42	0.91	2867	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	Flavipsychrobacter	
+coasm_bin.277	79.21	0.0	Bacteria	67	3245928	94882	252649	0.69	0.89	2782	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Rhodanobacteraceae	Dokdonella	Dokdonella sp017302215
+coasm_bin.226	79.05	3.77	Bacteria	129	2699436	27870	78280	0.7	0.89	2619	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Arenimonas	Arenimonas sp022842045
+coasm_bin.246	79.03	1.09	Bacteria	87	2745166	53207	135551	0.63	0.9	2999	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Sulfuricystis	
+coasm_bin.495	78.95	0.21	Gradient Boost (General Model)	102	3028063	39725	109908	0.6	0.91	3047	Bacteria	Armatimonadota	Fimbriimonadia	Fimbriimonadales	Fimbriimonadaceae		
+coasm_bin.558	78.87	3.5	Bacteria	124	3193487	39318	84013	0.67	0.91	2971	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	Xanthomonadaceae	Chiayiivirga	
+coasm_bin.258	78.25	0.0	Gradient Boost (General Model)	309	6871788	29951	140432	0.73	0.9	6235	Bacteria	Myxococcota	Polyangia	Polyangiales	Ga0077539	JAEUKH01	
+coasm_bin.447	77.58	1.32	Gradient Boost (General Model)	30	1213226	55678	172405	0.43	0.91	1297	Bacteria	Patescibacteria	Dojkabacteria	J137	JAEUSD01		
+coasm_bin.108	76.93	5.88	Bacteria	105	3441887	48265	151117	0.67	0.87	3777	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Tabrizicola	
+coasm_bin.322	76.78	0.81	Bacteria	100	3182316	46826	153147	0.49	0.9	2920	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	Flavipsychrobacter	
+coasm_bin.259	76.71	0.58	Bacteria	170	2702360	21917	86349	0.38	0.89	2670	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Flavobacteriaceae	Mariniflexile	Mariniflexile maritimum
+coasm_bin.350	76.41	3.94	Gradient Boost (General Model)	156	3670560	32767	130281	0.67	0.86	3399	Bacteria	Planctomycetota	Phycisphaerae	Phycisphaerales	UBA1924	JAFLCM01	
+coasm_bin.261	75.93	1.79	Gradient Boost (General Model)	92	3228356	51914	131656	0.63	0.86	3167	Bacteria	Chloroflexota	Anaerolineae	Aggregatilineales	Phototrophicaceae	Flexifilum	
+coasm_bin.298	75.91	1.65	Gradient Boost (General Model)	125	3197618	31115	93036	0.5	0.9	3222	Bacteria	Bacteroidota	Bacteroidia	Bacteroidales	FEN-979	CAIVAT01	
+coasm_bin.414	74.12	1.87	Gradient Boost (General Model)	73	2578106	54591	130678	0.63	0.91	2555	Bacteria	Verrucomicrobiota	Verrucomicrobiae	Chthoniobacterales	JACTMZ01	JACTMZ01	
+coasm_bin.135	73.76	1.55	Gradient Boost (General Model)	158	2971819	22184	114113	0.46	0.89	2967	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	Flavipsychrobacter	
+CAN_4_bin.70	73.66	1.16	Gradient Boost (General Model)	54	4082294	132652	347504	0.62	0.9	3981	Bacteria	Chloroflexota	Anaerolineae	Aggregatilineales	Phototrophicaceae	JAIOHN01	
+coasm_bin.362	72.66	2.15	Bacteria	211	5185679	31980	88998	0.44	0.9	5446	Bacteria	Bacteroidota	Bacteroidia	Cytophagales	Spirosomataceae	Runella	Runella sp003711225
+coasm_bin.219	72.33	0.55	Bacteria	25	2789158	192161	384538	0.64	0.89	2920	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Paracoccus	
+coasm_bin.548	72.27	3.02	Gradient Boost (General Model)	155	3439245	31815	132288	0.47	0.9	3466	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	Phnomibacter	Phnomibacter ginsenosidimutans
+coasm_bin.479	71.88	0.45	Gradient Boost (General Model)	22	525065	35967	68334	0.35	0.84	628	Bacteria	Patescibacteria	Paceibacteria	UBA9973	Zambryskibacteraceae		
+coasm_bin.147	71.79	2.52	Gradient Boost (General Model)	122	3159772	33846	102736	0.63	0.9	3010	Bacteria	Acidobacteriota	Holophagae	Holophagales	Holophagaceae	Holophaga	
+CAN_4_bin.225	71.59	0.33	Bacteria	99	3678904	85400	352821	0.63	0.88	3484	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Accumulibacter	
+CAN_5_bin.180	71.0	2.74	Gradient Boost (General Model)	159	3419852	26705	118488	0.44	0.88	3681	Bacteria	Chloroflexota	Anaerolineae	Anaerolineales	Anaerolineaceae	UBA6170	
+coasm_bin.279	70.62	5.47	Gradient Boost (General Model)	146	3431269	33405	183705	0.64	0.87	3756	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	Xinfangfangia	
+coasm_bin.110	70.26	1.44	Gradient Boost (General Model)	145	3368648	31502	93389	0.54	0.89	3691	Bacteria	Spirochaetota	Leptospirae	Leptospirales	Leptonemataceae	Leptonema	Leptonema illini
+coasm_bin.532	69.12	1.77	Bacteria	6	570520	290708	290708	0.4	0.9	579	Bacteria	Patescibacteria	Paceibacteria	UBA9973	UBA5272	JALHNF01	
+coasm_bin.105	69.02	3.41	Bacteria	161	2998231	26364	77643	0.66	0.87	3393	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhodobacterales	Rhodobacteraceae	JAAKGP01	
+coasm_bin.138	68.67	3.16	Gradient Boost (General Model)	112	3404041	47752	153679	0.63	0.86	3516	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Hyphomicrobiaceae	JABFRJ01	
+coasm_bin.240	67.67	2.84	Gradient Boost (General Model)	208	2849351	16122	55333	0.52	0.9	3397	Bacteria	Chloroflexota	Anaerolineae	Anaerolineales	Villigracilaceae	Villigracilis	Villigracilis sp023382575
+coasm_bin.469	66.01	0.23	Gradient Boost (General Model)	106	2527093	36949	70550	0.72	0.86	2391	Bacteria	Pseudomonadota	Gammaproteobacteria	Xanthomonadales	UBA2363	Pseudofulvimonas	
+coasm_bin.133	65.81	1.38	Bacteria	61	1886761	40356	95906	0.37	0.86	2059	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Weeksellaceae	Kaistella	
+CAN_4_bin.38	65.19	0.7	Gradient Boost (General Model)	45	2595407	79947	202031	0.53	0.93	2406	Bacteria	Spirochaetota	Spirochaetia	DSM-27196	Salinispiraceae		
+coasm_bin.223	65.17	0.71	Gradient Boost (General Model)	74	1820315	33154	100252	0.61	0.9	1942	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	UBA1934	
+coasm_bin.315	64.75	1.88	Gradient Boost (General Model)	163	2905329	21869	66781	0.51	0.9	3304	Bacteria	Chloroflexota	Anaerolineae	Anaerolineales	Villigracilaceae	Villigracilis	
+CAN_5_bin.167	63.96	2.89	Gradient Boost (General Model)	66	3179265	76706	241394	0.42	0.87	3141	Bacteria	Bacteroidota	Ignavibacteria	SJA-28	OLB5	OLB5	
+coasm_bin.92	63.66	0.35	Gradient Boost (General Model)	5	1858860	1517876	1517876	0.49	0.93	1679	Bacteria	Chloroflexota	Anaerolineae	Anaerolineales	Anaerolineaceae	Ch132	
+coasm_bin.251	62.94	4.96	Gradient Boost (General Model)	117	3105555	39346	247509	0.62	0.85	3335	Bacteria	Pseudomonadota	Gammaproteobacteria	Competibacterales	Competibacteraceae	Competibacter_A	Competibacter_A sp016790045
+coasm_bin.409	61.8	0.3	Bacteria	76	2343331	37319	128998	0.33	0.89	2286	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	CAIVPM01	
+coasm_bin.547	61.62	0.34	Gradient Boost (General Model)	51	1156432	41562	94471	0.45	0.9	1282	Bacteria	Pseudomonadota	Alphaproteobacteria	UBA9655			
+CAN_4_bin.72	61.54	5.05	Gradient Boost (General Model)	112	3004766	39667	103015	0.59	0.87	3153	Bacteria	Pseudomonadota	Gammaproteobacteria	Competibacterales	Competibacteraceae	Competibacter_A	
+coasm_bin.320	60.25	2.53	Gradient Boost (General Model)	110	2403258	27759	108409	0.65	0.84	2662	Bacteria	Chloroflexota	Chloroflexia	Thermomicrobiales	UBA6265	JADLGF01	JADLGF01 sp020849415
+coasm_bin.206	59.01	0.44	Gradient Boost (General Model)	92	1470345	19454	55941	0.53	0.92	1663	Bacteria	Bdellovibrionota	UBA1018	UBA1018	UBA1018	JAIEMT01	
+CAN_5_bin.169	56.96	0.67	Gradient Boost (General Model)	17	3117418	295341	1014707	0.43	0.91	2654	Bacteria	Spirochaetota	GWE2-31-10	GWE2-31-10	GWE2-31-10		
+coasm_bin.115	56.4	4.03	Gradient Boost (General Model)	142	3081442	25479	120393	0.48	0.88	3442	Bacteria	Chloroflexota	Anaerolineae	Aggregatilineales	Phototrophicaceae	GCA-2794515	GCA-2794515 sp025454675
+CAN_4_bin.62	55.96	2.44	Gradient Boost (General Model)	83	1992954	31753	64117	0.6	0.88	2391	Bacteria	Chloroflexota	Anaerolineae	Anaerolineales	Anaerolineaceae	JARKPB01	
+coasm_bin.25	54.29	1.08	Gradient Boost (General Model)	16	496503	38578	90707	0.33	0.85	551	Bacteria	Patescibacteria	Paceibacteria	UBA9973	UBA9973	UBA9973	
+coasm_bin.117	53.84	1.75	Gradient Boost (General Model)	88	1715322	23204	54288	0.43	0.91	1910	Bacteria	Bacteroidota	Bacteroidia	Chitinophagales	Chitinophagaceae	JAFLBI01	JAFLBI01 sp017303835
+coasm_bin.209	53.66	0.84	Bacteria	178	3239642	22810	72051	0.5	0.87	3460	Bacteria	Chloroflexota	Chloroflexia	Chloroflexales	Herpetosiphonaceae	Herpetosiphon	
+CAN_4_bin.76	53.34	0.39	Bacteria	23	623697	33654	103021	0.33	0.88	695	Bacteria	Patescibacteria	Dojkabacteria	J137	J137	Brojett037	
+coasm_bin.476	52.64	0.2	Gradient Boost (General Model)	4	2217274	1374345	1374345	0.62	0.87	2056	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Accumulibacter	
+coasm_bin.131	52.42	0.17	Bacteria	114	2228186	22975	76358	0.63	0.87	2440	Bacteria	Pseudomonadota	Gammaproteobacteria	Burkholderiales	Rhodocyclaceae	Azoarcus_F	Azoarcus_F taiwanensis
+coasm_bin.437	52.06	1.46	Bacteria	119	2730168	34487	89881	0.62	0.88	3014	Bacteria	Pseudomonadota	Alphaproteobacteria	Rhizobiales	Rhizobiaceae	Mesorhizobium_G	
+coasm_bin.238	51.43	0.16	Gradient Boost (General Model)	66	1691459	29424	158692	0.67	0.86	1698	Bacteria	Bacteroidota	Rhodothermia	Rhodothermales	BA12	BA12	BA12 sp014879465
+coasm_bin.125	51.24	1.39	Bacteria	115	2026488	23213	55559	0.33	0.88	2211	Bacteria	Bacteroidota	Bacteroidia	Flavobacteriales	Flavobacteriaceae	Flavobacterium	
+coasm_bin.278	50.05	0.5	Gradient Boost (General Model)	155	2164871	15693	43754	0.64	0.88	2003	Bacteria	Verrucomicrobiota	Kiritimatiellia	CAIVKH01	CAIVKH01	CALMUP01	CALMUP01 sp937872895
+coasm_bin.305	50.04	0.32	Gradient Boost (General Model)	264	4295195	20316	76821	0.62	0.85	3884	Bacteria	Hydrogenedentota	Hydrogenedentia	Hydrogenedentiales	JAEUWI01	JAEUWI01	
