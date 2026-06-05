@@ -1,0 +1,11 @@
+sample-id	forward-absolute-filepath	reverse-absolute-filepath
+B96	/projects/b1052/Emily/pjts2/rawreads/3689_01_EK_B96_S763_L001_R1_001.fastq.gz	/projects/b1052/Emily/pjts2/rawreads/3689_01_EK_B96_S763_L001_R2_001.fastq.gz
+B97	/projects/b1052/Emily/pjts2/rawreads/3689_02_EK_B97_S764_L001_R1_001.fastq.gz	/projects/b1052/Emily/pjts2/rawreads/3689_02_EK_B97_S764_L001_R2_001.fastq.gz
+B98	/projects/b1052/Emily/pjts2/rawreads/3689_03_EK_B98_S765_L001_R1_001.fastq.gz	/projects/b1052/Emily/pjts2/rawreads/3689_03_EK_B98_S765_L001_R2_001.fastq.gz
+B99	/projects/b1052/Emily/pjts2/rawreads/3689_04_EK_B99_S766_L001_R1_001.fastq.gz	/projects/b1052/Emily/pjts2/rawreads/3689_04_EK_B99_S766_L001_R2_001.fastq.gz
+B100	/projects/b1052/Emily/pjts2/rawreads/3689_05_EK_B100_S767_L001_R1_001.fastq.gz	/projects/b1052/Emily/pjts2/rawreads/3689_05_EK_B100_S767_L001_R2_001.fastq.gz
+B101	/projects/b1052/Emily/pjts2/rawreads/3689_06_EK_B101_S768_L001_R1_001.fastq.gz	/projects/b1052/Emily/pjts2/rawreads/3689_06_EK_B101_S768_L001_R2_001.fastq.gz
+B102	/projects/b1052/Emily/pjts2/rawreads/3689_07_EK_B102_S769_L001_R1_001.fastq.gz	/projects/b1052/Emily/pjts2/rawreads/3689_07_EK_B102_S769_L001_R2_001.fastq.gz
+B103	/projects/b1052/Emily/pjts2/rawreads/3689_08_EK_B103_S770_L001_R1_001.fastq.gz	/projects/b1052/Emily/pjts2/rawreads/3689_08_EK_B103_S770_L001_R2_001.fastq.gz
+B104	/projects/b1052/Emily/pjts2/rawreads/3689_09_EK_B104_S771_L001_R1_001.fastq.gz	/projects/b1052/Emily/pjts2/rawreads/3689_09_EK_B104_S771_L001_R2_001.fastq.gz
+B105	/projects/b1052/Emily/pjts2/rawreads/3689_10_EK_B105_S772_L001_R1_001.fastq.gz	/projects/b1052/Emily/pjts2/rawreads/3689_10_EK_B105_S772_L001_R2_001.fastq.gz

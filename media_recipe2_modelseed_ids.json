@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "modelseed_database": "/Users/andrewfreiburger/Documents/Research/ModelSEEDDatabase/Biochemistry",
+    "match_strategy": "element-signature + charge, then name/alias",
+    "notes": [
+      "IDs are ModelSEED compound IDs (cpd#####).",
+      "Ion IDs are the charged metabolite forms; parent_salts are the neutral reagent compounds (best effort, may be null).",
+      "EDTA maps to the cpd00240 EDTA(4-) metabolite (ModelSEED has no free-acid form); matched by name.",
+      "Yeast extract has no single ModelSEED compound (null)."
+    ]
+  },
+  "species_to_modelseed": {
+    "NH4+": "cpd00013",
+    "Cl-": "cpd00099",
+    "Mg2+": "cpd00254",
+    "SO4_2-": "cpd00048",
+    "Ca2+": "cpd00063",
+    "Na+": "cpd00971",
+    "HCO3-": "cpd00242",
+    "Fe3+": "cpd10516",
+    "Cu2+": "cpd00058",
+    "K+": "cpd00205",
+    "I-": "cpd00534",
+    "Mn2+": "cpd00030",
+    "MoO4_2-": "cpd11574",
+    "Zn2+": "cpd00034",
+    "Co2+": "cpd00149",
+    "allylthiourea (ATU)": "cpd22253",
+    "Boric acid": "cpd09225",
+    "Ethylenediaminetetraacetic acid": "cpd00240",
+    "Yeast extract": "cpd30703",
+    "H2O (water of hydration)": "cpd00001"
+  },
+  "match_details": {
+    "NH4+": {
+      "id": "cpd00013",
+      "ms_name": "NH3",
+      "ms_formula": "H4N",
+      "ms_charge": 1,
+      "matched_by": "formula+charge"
+    },
+    "Cl-": {
+      "id": "cpd00099",
+      "ms_name": "Cl-",
+      "ms_formula": "Cl",
+      "ms_charge": -1,
+      "matched_by": "formula+charge"
+    },
+    "Mg2+": {
+      "id": "cpd00254",
+      "ms_name": "Mg",
+      "ms_formula": "Mg",
+      "ms_charge": 2,
+      "matched_by": "formula+charge"
+    },
+    "SO4_2-": {
+      "id": "cpd00048",
+      "ms_name": "Sulfate",
+      "ms_formula": "O4S",
+      "ms_charge": -2,
+      "matched_by": "formula+charge"
+    },
+    "Ca2+": {
+      "id": "cpd00063",
+      "ms_name": "Ca2+",
+      "ms_formula": "Ca",
+      "ms_charge": 2,
+      "matched_by": "formula+charge"
+    },
+    "Na+": {
+      "id": "cpd00971",
+      "ms_name": "Na+",
+      "ms_formula": "Na",
+      "ms_charge": 1,
+      "matched_by": "formula+charge"
+    },
+    "HCO3-": {
+      "id": "cpd00242",
+      "ms_name": "H2CO3",
+      "ms_formula": "CHO3",
+      "ms_charge": -1,
+      "matched_by": "formula+charge"
+    },
+    "Fe3+": {
+      "id": "cpd10516",
+      "ms_name": "Fe+3",
+      "ms_formula": "Fe",
+      "ms_charge": 3,
+      "matched_by": "formula+charge"
+    },
+    "Cu2+": {
+      "id": "cpd00058",
+      "ms_name": "Cu2+",
+      "ms_formula": "Cu",
+      "ms_charge": 2,
+      "matched_by": "formula+charge"
+    },
+    "K+": {
+      "id": "cpd00205",
+      "ms_name": "K+",
+      "ms_formula": "K",
+      "ms_charge": 1,
+      "matched_by": "formula+charge"
+    },
+    "I-": {
+      "id": "cpd00534",
+      "ms_name": "I-",
+      "ms_formula": "I",
+      "ms_charge": -1,
+      "matched_by": "formula+charge"
+    },
+    "Mn2+": {
+      "id": "cpd00030",
+      "ms_name": "Mn2+",
+      "ms_formula": "Mn",
+      "ms_charge": 2,
+      "matched_by": "formula+charge"
+    },
+    "MoO4_2-": {
+      "id": "cpd11574",
+      "ms_name": "Molybdate",
+      "ms_formula": "MoO4",
+      "ms_charge": -2,
+      "matched_by": "formula+charge"
+    },
+    "Zn2+": {
+      "id": "cpd00034",
+      "ms_name": "Zn2+",
+      "ms_formula": "Zn",
+      "ms_charge": 2,
+      "matched_by": "formula+charge"
+    },
+    "Co2+": {
+      "id": "cpd00149",
+      "ms_name": "Co2+",
+      "ms_formula": "Co",
+      "ms_charge": 2,
+      "matched_by": "formula+charge"
+    },
+    "allylthiourea (ATU)": {
+      "id": "cpd22253",
+      "ms_name": "allylthiourea",
+      "ms_formula": "C4H8N2S",
+      "ms_charge": 0,
+      "matched_by": "formula+charge"
+    },
+    "Boric acid": {
+      "id": "cpd09225",
+      "ms_name": "Boric acid",
+      "ms_formula": "H3BO3",
+      "ms_charge": 0,
+      "matched_by": "formula+charge"
+    },
+    "Ethylenediaminetetraacetic acid": {
+      "id": "cpd00240",
+      "ms_name": "EDTA",
+      "ms_formula": "C10H12N2O8",
+      "ms_charge": -4,
+      "matched_by": "name"
+    },
+    "Yeast extract": {
+      "id": "cpd30703",
+      "ms_name": "Yeast extract",
+      "ms_formula": "null",
+      "ms_charge": 0,
+      "matched_by": "name"
+    },
+    "H2O (water of hydration)": {
+      "id": "cpd00001",
+      "ms_name": "H2O",
+      "ms_formula": "H2O",
+      "ms_charge": 0,
+      "matched_by": "formula+charge"
+    }
+  },
+  "parent_salts_to_modelseed": {
+    "Ammonium chloride": "cpd19118",
+    "Magnesium sulfate heptahydrate": "cpd19115",
+    "Calcium chloride, dihydrate": null,
+    "Yeast extract": "cpd30703",
+    "allylthiourea (ATU)": "cpd22253",
+    "Sodium bicarbonate (buffer solution)": "cpd09249",
+    "Iron(III) chloride hexahydrate": null,
+    "Boric acid": "cpd09225",
+    "Copper(II) sulfate pentahydrate": null,
+    "Potassium iodide": "cpd05147",
+    "Managanese(II) chloride tetrahydrate": null,
+    "Sodium molybdate dihydrate": "cpd30666",
+    "Zinc sulfate, heptahydrate": null,
+    "Cobalt(II) chloride hexahydrate": "cpd30717",
+    "Ethylenediaminetetraacetic acid": "cpd00240"
+  }
+}

@@ -1,0 +1,291 @@
+{
+  "meta": {
+    "recipe": "Synthetic wastewater media (free of VFA, P, NO3--N and NO2--N)",
+    "source_file": "Synthetic media and other reagents preparation_EM.xlsx",
+    "source_sheet": "Media ingredients_conc.",
+    "source_rows": "31-35 (Recipe 2)",
+    "concentration_unit": "mM",
+    "trace_element_dosing_mL_per_L": 0.3,
+    "notes": [
+      "Trace-element concentrations are the in-medium values after the 0.3 mL/L dose (stock mg/L x 0.3/1000).",
+      "Salts dissociated into constituent ions; molar contributions summed across all salts sharing an ion.",
+      "Boric acid, EDTA (free acid C10H16N2O8), allylthiourea (ATU) and yeast extract are kept whole (not ionised). Yeast extract has no defined formula so no molar concentration is computed.",
+      "Water of crystallisation is reported separately; it merges into the bulk solvent and is not an ionic species."
+    ]
+  },
+  "compounds_as_parsed": {
+    "Ammonium chloride": {
+      "formula": "NH4Cl",
+      "category": "major",
+      "source_conc_mg_L": 107.0,
+      "dosing_mL_per_L": null,
+      "final_conc_mg_L": 107.0,
+      "MW_g_per_mol": 53.489,
+      "mM": 2.0004113
+    },
+    "Magnesium sulfate heptahydrate": {
+      "formula": "MgSO4·7H2O",
+      "category": "major",
+      "source_conc_mg_L": 90.0,
+      "dosing_mL_per_L": null,
+      "final_conc_mg_L": 90.0,
+      "MW_g_per_mol": 246.466,
+      "mM": 0.36516193
+    },
+    "Calcium chloride, dihydrate": {
+      "formula": "CaCl2·2H2O",
+      "category": "major",
+      "source_conc_mg_L": 14.0,
+      "dosing_mL_per_L": null,
+      "final_conc_mg_L": 14.0,
+      "MW_g_per_mol": 147.008,
+      "mM": 0.09523291
+    },
+    "Yeast extract": {
+      "formula": null,
+      "category": "major",
+      "source_conc_mg_L": 1.0,
+      "dosing_mL_per_L": null,
+      "final_conc_mg_L": 1.0,
+      "MW_g_per_mol": null,
+      "mM": null
+    },
+    "allylthiourea (ATU)": {
+      "formula": "C4H8N2S",
+      "category": "major",
+      "source_conc_mg_L": 20.0,
+      "dosing_mL_per_L": null,
+      "final_conc_mg_L": 20.0,
+      "MW_g_per_mol": 116.182,
+      "mM": 0.17214371
+    },
+    "Sodium bicarbonate (buffer solution)": {
+      "formula": "NaHCO3",
+      "category": "major",
+      "source_conc_mg_L": 200.0,
+      "dosing_mL_per_L": null,
+      "final_conc_mg_L": 200.0,
+      "MW_g_per_mol": 84.006,
+      "mM": 2.38078233
+    },
+    "Iron(III) chloride hexahydrate": {
+      "formula": "FeCl3·6H2O",
+      "category": "trace",
+      "source_conc_mg_L": 1500.0,
+      "dosing_mL_per_L": 0.3,
+      "final_conc_mg_L": 0.45,
+      "MW_g_per_mol": 270.285,
+      "mM": 0.00166491
+    },
+    "Boric acid": {
+      "formula": "H3BO3",
+      "category": "trace",
+      "source_conc_mg_L": 150.0,
+      "dosing_mL_per_L": 0.3,
+      "final_conc_mg_L": 0.045,
+      "MW_g_per_mol": 61.832,
+      "mM": 0.00072778
+    },
+    "Copper(II) sulfate pentahydrate": {
+      "formula": "CuSO4·5H2O",
+      "category": "trace",
+      "source_conc_mg_L": 30.0,
+      "dosing_mL_per_L": 0.3,
+      "final_conc_mg_L": 0.009,
+      "MW_g_per_mol": 249.677,
+      "mM": 3.605e-05
+    },
+    "Potassium iodide": {
+      "formula": "KI",
+      "category": "trace",
+      "source_conc_mg_L": 180.0,
+      "dosing_mL_per_L": 0.3,
+      "final_conc_mg_L": 0.054,
+      "MW_g_per_mol": 166.002,
+      "mM": 0.0003253
+    },
+    "Managanese(II) chloride tetrahydrate": {
+      "formula": "MnCl2·4H2O",
+      "category": "trace",
+      "source_conc_mg_L": 120.0,
+      "dosing_mL_per_L": 0.3,
+      "final_conc_mg_L": 0.036,
+      "MW_g_per_mol": 197.898,
+      "mM": 0.00018191
+    },
+    "Sodium molybdate dihydrate": {
+      "formula": "Na2MoO4·2H2O",
+      "category": "trace",
+      "source_conc_mg_L": 60.0,
+      "dosing_mL_per_L": 0.3,
+      "final_conc_mg_L": 0.018,
+      "MW_g_per_mol": 241.956,
+      "mM": 7.439e-05
+    },
+    "Zinc sulfate, heptahydrate": {
+      "formula": "ZnSO4·7H2O",
+      "category": "trace",
+      "source_conc_mg_L": 120.0,
+      "dosing_mL_per_L": 0.3,
+      "final_conc_mg_L": 0.036,
+      "MW_g_per_mol": 287.541,
+      "mM": 0.0001252
+    },
+    "Cobalt(II) chloride hexahydrate": {
+      "formula": "CoCl2·6H2O",
+      "category": "trace",
+      "source_conc_mg_L": 150.0,
+      "dosing_mL_per_L": 0.3,
+      "final_conc_mg_L": 0.045,
+      "MW_g_per_mol": 237.923,
+      "mM": 0.00018914
+    },
+    "Ethylenediaminetetraacetic acid": {
+      "formula": "C10H16N2O8",
+      "category": "trace",
+      "source_conc_mg_L": 10000.0,
+      "dosing_mL_per_L": 0.3,
+      "final_conc_mg_L": 3.0,
+      "MW_g_per_mol": 292.244,
+      "mM": 0.01026539
+    }
+  },
+  "species_resolved": {
+    "ions": {
+      "Na+": {
+        "formula": "Na",
+        "charge": 1,
+        "mM": 2.38093111,
+        "from_salts": [
+          "Sodium bicarbonate (buffer solution)",
+          "Sodium molybdate dihydrate"
+        ]
+      },
+      "HCO3-": {
+        "formula": "HCO3",
+        "charge": -1,
+        "mM": 2.38078233,
+        "from_salts": [
+          "Sodium bicarbonate (buffer solution)"
+        ]
+      },
+      "Cl-": {
+        "formula": "Cl",
+        "charge": -1,
+        "mM": 2.19661395,
+        "from_salts": [
+          "Ammonium chloride",
+          "Calcium chloride, dihydrate",
+          "Cobalt(II) chloride hexahydrate",
+          "Iron(III) chloride hexahydrate",
+          "Managanese(II) chloride tetrahydrate"
+        ]
+      },
+      "NH4+": {
+        "formula": "NH4",
+        "charge": 1,
+        "mM": 2.0004113,
+        "from_salts": [
+          "Ammonium chloride"
+        ]
+      },
+      "SO4_2-": {
+        "formula": "SO4",
+        "charge": -2,
+        "mM": 0.36532318,
+        "from_salts": [
+          "Copper(II) sulfate pentahydrate",
+          "Magnesium sulfate heptahydrate",
+          "Zinc sulfate, heptahydrate"
+        ]
+      },
+      "Mg2+": {
+        "formula": "Mg",
+        "charge": 2,
+        "mM": 0.36516193,
+        "from_salts": [
+          "Magnesium sulfate heptahydrate"
+        ]
+      },
+      "Ca2+": {
+        "formula": "Ca",
+        "charge": 2,
+        "mM": 0.09523291,
+        "from_salts": [
+          "Calcium chloride, dihydrate"
+        ]
+      },
+      "Fe3+": {
+        "formula": "Fe",
+        "charge": 3,
+        "mM": 0.00166491,
+        "from_salts": [
+          "Iron(III) chloride hexahydrate"
+        ]
+      },
+      "K+": {
+        "formula": "K",
+        "charge": 1,
+        "mM": 0.0003253,
+        "from_salts": [
+          "Potassium iodide"
+        ]
+      },
+      "I-": {
+        "formula": "I",
+        "charge": -1,
+        "mM": 0.0003253,
+        "from_salts": [
+          "Potassium iodide"
+        ]
+      },
+      "Co2+": {
+        "formula": "Co",
+        "charge": 2,
+        "mM": 0.00018914,
+        "from_salts": [
+          "Cobalt(II) chloride hexahydrate"
+        ]
+      },
+      "Mn2+": {
+        "formula": "Mn",
+        "charge": 2,
+        "mM": 0.00018191,
+        "from_salts": [
+          "Managanese(II) chloride tetrahydrate"
+        ]
+      },
+      "Zn2+": {
+        "formula": "Zn",
+        "charge": 2,
+        "mM": 0.0001252,
+        "from_salts": [
+          "Zinc sulfate, heptahydrate"
+        ]
+      },
+      "MoO4_2-": {
+        "formula": "MoO4",
+        "charge": -2,
+        "mM": 7.439e-05,
+        "from_salts": [
+          "Sodium molybdate dihydrate"
+        ]
+      },
+      "Cu2+": {
+        "formula": "Cu",
+        "charge": 2,
+        "mM": 3.605e-05,
+        "from_salts": [
+          "Copper(II) sulfate pentahydrate"
+        ]
+      }
+    },
+    "molecules_kept_whole": {
+      "Yeast extract": null,
+      "allylthiourea (ATU)": 0.17214371,
+      "Boric acid": 0.00072778,
+      "Ethylenediaminetetraacetic acid": 0.01026539
+    },
+    "water_of_hydration_released_mM": 2.759657
+  }
+}
