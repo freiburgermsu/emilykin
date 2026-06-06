@@ -1,0 +1,10 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Binary feature table (regenerable from ../qiime/table_merged_dada2.qza via prep_inputs.py)
+inputs/feature-table.biom
+
+# NCBI taxdump (concordance.py reuses ../../prFBA copies; never committed)
+*.dmp
+taxdump*.tar.gz

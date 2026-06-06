@@ -1,0 +1,37 @@
+{
+  "n_asv": 3950,
+  "ranks": {
+    "genus": {
+      "n_evaluable": 2090,
+      "best_hit_concordance": 0.3316,
+      "any_top20_concordance": 0.6636,
+      "abundance_weighted_best": 0.3946
+    },
+    "family": {
+      "n_evaluable": 3107,
+      "best_hit_concordance": 0.291,
+      "any_top20_concordance": 0.6312,
+      "abundance_weighted_best": 0.1563
+    },
+    "order": {
+      "n_evaluable": 3566,
+      "best_hit_concordance": 0.304,
+      "any_top20_concordance": 0.5379,
+      "abundance_weighted_best": 0.1615
+    },
+    "class": {
+      "n_evaluable": 3704,
+      "best_hit_concordance": 0.3993,
+      "any_top20_concordance": 0.6563,
+      "abundance_weighted_best": 0.4581
+    },
+    "phylum": {
+      "n_evaluable": 3775,
+      "best_hit_concordance": 0.6935,
+      "any_top20_concordance": 0.8424,
+      "abundance_weighted_best": 0.8167
+    }
+  },
+  "placeholder_genus_fraction": 0.4709,
+  "placeholder_family_fraction": 0.2134
+}
