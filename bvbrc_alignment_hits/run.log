@@ -1,0 +1,48 @@
+[load] references from 16S_md5_seq.json ...
+[load] 459,301 unique refs kept (>= 200 bp), blob 500 MB
+[load] 3,950 ASVs | workers=60 | k1=500 k2=20
+[scan] 100/3950  elapsed=    32s  eta=  1248s  (cpu edlib=1,234s bio=243s)
+[scan] 200/3950  elapsed=    60s  eta=  1117s  (cpu edlib=2,461s bio=492s)
+[scan] 300/3950  elapsed=    83s  eta=  1005s  (cpu edlib=3,710s bio=740s)
+[scan] 400/3950  elapsed=   108s  eta=   958s  (cpu edlib=4,922s bio=988s)
+[scan] 500/3950  elapsed=   132s  eta=   910s  (cpu edlib=6,127s bio=1,237s)
+[scan] 600/3950  elapsed=   157s  eta=   879s  (cpu edlib=7,397s bio=1,486s)
+[scan] 700/3950  elapsed=   181s  eta=   842s  (cpu edlib=8,627s bio=1,737s)
+[scan] 800/3950  elapsed=   205s  eta=   809s  (cpu edlib=9,835s bio=1,983s)
+[scan] 900/3950  elapsed=   231s  eta=   784s  (cpu edlib=11,092s bio=2,230s)
+[scan] 1000/3950  elapsed=   257s  eta=   759s  (cpu edlib=12,345s bio=2,479s)
+[scan] 1100/3950  elapsed=   280s  eta=   726s  (cpu edlib=13,566s bio=2,727s)
+[scan] 1200/3950  elapsed=   305s  eta=   698s  (cpu edlib=14,763s bio=2,973s)
+[scan] 1300/3950  elapsed=   329s  eta=   671s  (cpu edlib=15,965s bio=3,219s)
+[scan] 1400/3950  elapsed=   353s  eta=   643s  (cpu edlib=17,204s bio=3,469s)
+[scan] 1500/3950  elapsed=   378s  eta=   617s  (cpu edlib=18,411s bio=3,716s)
+[scan] 1600/3950  elapsed=   403s  eta=   592s  (cpu edlib=19,632s bio=3,962s)
+[scan] 1700/3950  elapsed=   427s  eta=   565s  (cpu edlib=20,833s bio=4,210s)
+[scan] 1800/3950  elapsed=   453s  eta=   541s  (cpu edlib=22,119s bio=4,457s)
+[scan] 1900/3950  elapsed=   475s  eta=   513s  (cpu edlib=23,309s bio=4,705s)
+[scan] 2000/3950  elapsed=   501s  eta=   489s  (cpu edlib=24,537s bio=4,953s)
+[scan] 2100/3950  elapsed=   526s  eta=   464s  (cpu edlib=25,788s bio=5,199s)
+[scan] 2200/3950  elapsed=   551s  eta=   438s  (cpu edlib=27,046s bio=5,446s)
+[scan] 2300/3950  elapsed=   574s  eta=   411s  (cpu edlib=28,239s bio=5,695s)
+[scan] 2400/3950  elapsed=   599s  eta=   387s  (cpu edlib=29,480s bio=5,945s)
+[scan] 2500/3950  elapsed=   625s  eta=   362s  (cpu edlib=30,718s bio=6,192s)
+[scan] 2600/3950  elapsed=   648s  eta=   337s  (cpu edlib=31,957s bio=6,439s)
+[scan] 2700/3950  elapsed=   672s  eta=   311s  (cpu edlib=33,161s bio=6,687s)
+[scan] 2800/3950  elapsed=   698s  eta=   287s  (cpu edlib=34,382s bio=6,933s)
+[scan] 2900/3950  elapsed=   721s  eta=   261s  (cpu edlib=35,577s bio=7,181s)
+[scan] 3000/3950  elapsed=   747s  eta=   236s  (cpu edlib=36,824s bio=7,429s)
+[scan] 3100/3950  elapsed=   771s  eta=   211s  (cpu edlib=38,064s bio=7,675s)
+[scan] 3200/3950  elapsed=   796s  eta=   187s  (cpu edlib=39,303s bio=7,923s)
+[scan] 3300/3950  elapsed=   821s  eta=   162s  (cpu edlib=40,526s bio=8,171s)
+[scan] 3400/3950  elapsed=   845s  eta=   137s  (cpu edlib=41,752s bio=8,418s)
+[scan] 3500/3950  elapsed=   871s  eta=   112s  (cpu edlib=43,010s bio=8,665s)
+[scan] 3600/3950  elapsed=   895s  eta=    87s  (cpu edlib=44,232s bio=8,913s)
+[scan] 3700/3950  elapsed=   919s  eta=    62s  (cpu edlib=45,427s bio=9,163s)
+[scan] 3800/3950  elapsed=   942s  eta=    37s  (cpu edlib=46,650s bio=9,409s)
+[scan] 3900/3950  elapsed=   967s  eta=    12s  (cpu edlib=47,896s bio=9,656s)
+[scan] 3950/3950  elapsed=   978s  eta=     0s  (cpu edlib=48,473s bio=9,752s)
+[enrich] loading md5->header + taxdump ...
+[done] wrote /home/freiburger/Documents/EmilyKin/bvbrc_alignment_hits/asv_top20_alignment_hits.json
+        /home/freiburger/Documents/EmilyKin/bvbrc_alignment_hits/asv_alignment_summary.csv
+        run_stats.json
+[time] scan wall=978s  total wall=995s  cpu edlib=48,473s bio=9,752s
