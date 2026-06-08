@@ -77,7 +77,7 @@ scoring scheme** as the Biopython stage, **verified bit-exact** (400/400 vs Biop
 exhaustive in 66 s @ 57 GCUPS (**7.8× faster than CPU**, 100% reproducing the CPU result); full
 3,950-ASV exhaustive extrapolates to ~3.6 h GPU vs ~28 h CPU. See **`GPU_ALIGNMENT_FINDINGS.md`** (in prFBA) for
 the full evaluation (incl. why MMseqs2-GPU and CUDASW++4.0 — both **protein-only on GPU** — do not fit
-this nucleotide task). Outputs: `gpu_align_stats.json`.
+this nucleotide task). Outputs: `gpu_align_stats.json` (in prFBA, with the code).
 
 ## Full-scale GPU run, comparison, and files not committed to git
 
