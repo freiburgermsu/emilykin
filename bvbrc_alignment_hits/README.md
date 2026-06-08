@@ -66,11 +66,16 @@ misses, 20/20 top-1 score matches, even for the hardest ASV at 67.5% identity.
 
 ## GPU tier (optional, fastest)
 
+> **The GPU acceleration code now lives in the [`prFBA`](https://github.com/freiburgermsu/prFBA)
+> repo** — `gpu_align.py` (kernel + driver), `edlib_biopython_hits.py` (its CPU-pipeline dependency,
+> copied so it imports standalone there), and `GPU_ALIGNMENT_FINDINGS.md`. The run outputs it generated
+> on **this** data stay in this folder.
+
 `gpu_align.py` — a custom local Smith-Waterman CUDA kernel (CuPy/NVRTC, **no nvcc**) with the **same
 scoring scheme** as the Biopython stage, **verified bit-exact** (400/400 vs Biopython) and able to run
 **prefilter-free exhaustive** scoring over all 459 K refs. On the RTX 5070 Ti it does the 20-ASV
 exhaustive in 66 s @ 57 GCUPS (**7.8× faster than CPU**, 100% reproducing the CPU result); full
-3,950-ASV exhaustive extrapolates to ~3.6 h GPU vs ~28 h CPU. See **`GPU_ALIGNMENT_FINDINGS.md`** for
+3,950-ASV exhaustive extrapolates to ~3.6 h GPU vs ~28 h CPU. See **`GPU_ALIGNMENT_FINDINGS.md`** (in prFBA) for
 the full evaluation (incl. why MMseqs2-GPU and CUDASW++4.0 — both **protein-only on GPU** — do not fit
 this nucleotide task). Outputs: `gpu_align_stats.json`.
 
@@ -93,12 +98,12 @@ the 20-ASV validation sample, not the full set**. Use the GPU exhaustive output 
 > **Not committed to git** (exceeds GitHub's 100 MB file limit; regenerable):
 > `asv_top500_alignment_hits_gpu.json` — **1.16 GB**, the full prefilter-free GPU exhaustive top-500
 > per ASV (same per-hit schema as `asv_top20_alignment_hits.json`). Regenerate with `python gpu_align.py`
-> (~3.6 h on the RTX 5070 Ti). It is `.gitignore`d; all other outputs in this folder are tracked.
+> (now in the prFBA repo; ~3.6 h on the RTX 5070 Ti). It is `.gitignore`d; all other outputs in this folder are tracked.
 
 ## Large files (> 100 MB, git-ignored)
 
 | file | size | what it is | regenerate |
 |---|---|---|---|
-| `asv_top500_alignment_hits_gpu.json` | 1.1 GB | GPU exhaustive Smith-Waterman top-500 hits per ASV | `python gpu_align.py` (exhaustive mode) |
+| `asv_top500_alignment_hits_gpu.json` | 1.1 GB | GPU exhaustive Smith-Waterman top-500 hits per ASV | `python gpu_align.py` (in prFBA, exhaustive mode) |
 
 Exceeds GitHub's 100 MB limit → git-ignored (regenerable). Threshold = 100 MB (GitHub hard limit); no file is near 100 GB.
