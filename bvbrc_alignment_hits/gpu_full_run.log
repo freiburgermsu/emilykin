@@ -1,0 +1,24 @@
+[load] references + ASVs ...
+[load] 459,301 refs | 3,950 ASVs | max ASV len 561 (MAXQ=600)
+[gpu] kernel compiled; ref buffer 500 MB on device
+[full] exhaustive 3,950 ASVs x 459,301 refs | batch=24 | top-20
+[full] 24/3950 ASVs  elapsed=     83s  eta=  13561s
+[full] 48/3950 ASVs  elapsed=    161s  eta=  13124s
+[full] 72/3950 ASVs  elapsed=    239s  eta=  12899s
+[full] 96/3950 ASVs  elapsed=    319s  eta=  12815s
+[full] 120/3950 ASVs  elapsed=    398s  eta=  12694s
+[full] 144/3950 ASVs  elapsed=    476s  eta=  12575s
+[full] 168/3950 ASVs  elapsed=    555s  eta=  12485s
+[full] 192/3950 ASVs  elapsed=    633s  eta=  12391s
+[full] 216/3950 ASVs  elapsed=    712s  eta=  12304s
+[full] 240/3950 ASVs  elapsed=    791s  eta=  12222s
+[full] 264/3950 ASVs  elapsed=    871s  eta=  12155s
+[full] 288/3950 ASVs  elapsed=    949s  eta=  12063s
+[full] 312/3950 ASVs  elapsed=   1029s  eta=  11998s
+[full] 336/3950 ASVs  elapsed=   1107s  eta=  11903s
+[full] 360/3950 ASVs  elapsed=   1185s  eta=  11817s
+[full] 384/3950 ASVs  elapsed=   1265s  eta=  11747s
+[full] 408/3950 ASVs  elapsed=   1345s  eta=  11676s
+[full] 432/3950 ASVs  elapsed=   1423s  eta=  11589s
+[full] 456/3950 ASVs  elapsed=   1501s  eta=  11502s
+[full] 480/3950 ASVs  elapsed=   1580s  eta=  11423s

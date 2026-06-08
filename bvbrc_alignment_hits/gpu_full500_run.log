@@ -1,0 +1,204 @@
+[load] references + ASVs ...
+[load] 459,301 refs | 3,950 ASVs | max ASV len 561 (MAXQ=600)
+[gpu] kernel compiled; ref buffer 500 MB on device
+[full] exhaustive 3,950 ASVs x 459,301 refs | batch=24 | top-500
+[full] 24/3950 ASVs  elapsed=     83s  eta=  13564s
+[full] 48/3950 ASVs  elapsed=    161s  eta=  13124s
+[full] 72/3950 ASVs  elapsed=    239s  eta=  12899s
+[full] 96/3950 ASVs  elapsed=    319s  eta=  12816s
+[full] 120/3950 ASVs  elapsed=    398s  eta=  12695s
+[full] 144/3950 ASVs  elapsed=    476s  eta=  12576s
+[full] 168/3950 ASVs  elapsed=    555s  eta=  12486s
+[full] 192/3950 ASVs  elapsed=    633s  eta=  12392s
+[full] 216/3950 ASVs  elapsed=    712s  eta=  12305s
+[full] 240/3950 ASVs  elapsed=    791s  eta=  12223s
+[full] 264/3950 ASVs  elapsed=    871s  eta=  12156s
+[full] 288/3950 ASVs  elapsed=    949s  eta=  12064s
+[full] 312/3950 ASVs  elapsed=   1029s  eta=  11999s
+[full] 336/3950 ASVs  elapsed=   1107s  eta=  11904s
+[full] 360/3950 ASVs  elapsed=   1185s  eta=  11818s
+[full] 384/3950 ASVs  elapsed=   1265s  eta=  11748s
+[full] 408/3950 ASVs  elapsed=   1345s  eta=  11677s
+[full] 432/3950 ASVs  elapsed=   1423s  eta=  11590s
+[full] 456/3950 ASVs  elapsed=   1501s  eta=  11503s
+[full] 480/3950 ASVs  elapsed=   1580s  eta=  11424s
+[full] 504/3950 ASVs  elapsed=   1659s  eta=  11340s
+[full] 528/3950 ASVs  elapsed=   1737s  eta=  11260s
+[full] 552/3950 ASVs  elapsed=   1818s  eta=  11191s
+[full] 576/3950 ASVs  elapsed=   1898s  eta=  11120s
+[full] 600/3950 ASVs  elapsed=   1978s  eta=  11043s
+[full] 624/3950 ASVs  elapsed=   2056s  eta=  10960s
+[full] 648/3950 ASVs  elapsed=   2135s  eta=  10877s
+[full] 672/3950 ASVs  elapsed=   2213s  eta=  10796s
+[full] 696/3950 ASVs  elapsed=   2292s  eta=  10714s
+[full] 720/3950 ASVs  elapsed=   2372s  eta=  10639s
+[full] 744/3950 ASVs  elapsed=   2451s  eta=  10563s
+[full] 768/3950 ASVs  elapsed=   2530s  eta=  10482s
+[full] 792/3950 ASVs  elapsed=   2608s  eta=  10399s
+[full] 816/3950 ASVs  elapsed=   2686s  eta=  10318s
+[full] 840/3950 ASVs  elapsed=   2767s  eta=  10244s
+[full] 864/3950 ASVs  elapsed=   2845s  eta=  10163s
+[full] 888/3950 ASVs  elapsed=   2925s  eta=  10087s
+[full] 912/3950 ASVs  elapsed=   3007s  eta=  10015s
+[full] 936/3950 ASVs  elapsed=   3087s  eta=   9940s
+[full] 960/3950 ASVs  elapsed=   3165s  eta=   9858s
+[full] 984/3950 ASVs  elapsed=   3244s  eta=   9777s
+[full] 1008/3950 ASVs  elapsed=   3322s  eta=   9696s
+[full] 1032/3950 ASVs  elapsed=   3400s  eta=   9615s
+[full] 1056/3950 ASVs  elapsed=   3479s  eta=   9535s
+[full] 1080/3950 ASVs  elapsed=   3558s  eta=   9455s
+[full] 1104/3950 ASVs  elapsed=   3636s  eta=   9373s
+[full] 1128/3950 ASVs  elapsed=   3714s  eta=   9292s
+[full] 1152/3950 ASVs  elapsed=   3792s  eta=   9211s
+[full] 1176/3950 ASVs  elapsed=   3871s  eta=   9130s
+[full] 1200/3950 ASVs  elapsed=   3949s  eta=   9050s
+[full] 1224/3950 ASVs  elapsed=   4028s  eta=   8970s
+[full] 1248/3950 ASVs  elapsed=   4106s  eta=   8890s
+[full] 1272/3950 ASVs  elapsed=   4184s  eta=   8809s
+[full] 1296/3950 ASVs  elapsed=   4262s  eta=   8728s
+[full] 1320/3950 ASVs  elapsed=   4340s  eta=   8648s
+[full] 1344/3950 ASVs  elapsed=   4420s  eta=   8571s
+[full] 1368/3950 ASVs  elapsed=   4499s  eta=   8491s
+[full] 1392/3950 ASVs  elapsed=   4577s  eta=   8411s
+[full] 1416/3950 ASVs  elapsed=   4655s  eta=   8331s
+[full] 1440/3950 ASVs  elapsed=   4734s  eta=   8251s
+[full] 1464/3950 ASVs  elapsed=   4812s  eta=   8171s
+[full] 1488/3950 ASVs  elapsed=   4890s  eta=   8092s
+[full] 1512/3950 ASVs  elapsed=   4969s  eta=   8013s
+[full] 1536/3950 ASVs  elapsed=   5049s  eta=   7935s
+[full] 1560/3950 ASVs  elapsed=   5127s  eta=   7855s
+[full] 1584/3950 ASVs  elapsed=   5207s  eta=   7777s
+[full] 1608/3950 ASVs  elapsed=   5286s  eta=   7699s
+[full] 1632/3950 ASVs  elapsed=   5365s  eta=   7619s
+[full] 1656/3950 ASVs  elapsed=   5443s  eta=   7540s
+[full] 1680/3950 ASVs  elapsed=   5522s  eta=   7462s
+[full] 1704/3950 ASVs  elapsed=   5602s  eta=   7384s
+[full] 1728/3950 ASVs  elapsed=   5681s  eta=   7305s
+[full] 1752/3950 ASVs  elapsed=   5760s  eta=   7226s
+[full] 1776/3950 ASVs  elapsed=   5839s  eta=   7147s
+[full] 1800/3950 ASVs  elapsed=   5917s  eta=   7068s
+[full] 1824/3950 ASVs  elapsed=   5996s  eta=   6989s
+[full] 1848/3950 ASVs  elapsed=   6076s  eta=   6911s
+[full] 1872/3950 ASVs  elapsed=   6155s  eta=   6832s
+[full] 1896/3950 ASVs  elapsed=   6233s  eta=   6753s
+[full] 1920/3950 ASVs  elapsed=   6314s  eta=   6676s
+[full] 1944/3950 ASVs  elapsed=   6392s  eta=   6596s
+[full] 1968/3950 ASVs  elapsed=   6470s  eta=   6516s
+[full] 1992/3950 ASVs  elapsed=   6550s  eta=   6438s
+[full] 2016/3950 ASVs  elapsed=   6627s  eta=   6357s
+[full] 2040/3950 ASVs  elapsed=   6705s  eta=   6278s
+[full] 2064/3950 ASVs  elapsed=   6784s  eta=   6199s
+[full] 2088/3950 ASVs  elapsed=   6864s  eta=   6121s
+[full] 2112/3950 ASVs  elapsed=   6942s  eta=   6042s
+[full] 2136/3950 ASVs  elapsed=   7022s  eta=   5964s
+[full] 2160/3950 ASVs  elapsed=   7102s  eta=   5885s
+[full] 2184/3950 ASVs  elapsed=   7180s  eta=   5806s
+[full] 2208/3950 ASVs  elapsed=   7259s  eta=   5727s
+[full] 2232/3950 ASVs  elapsed=   7337s  eta=   5648s
+[full] 2256/3950 ASVs  elapsed=   7416s  eta=   5568s
+[full] 2280/3950 ASVs  elapsed=   7495s  eta=   5490s
+[full] 2304/3950 ASVs  elapsed=   7574s  eta=   5411s
+[full] 2328/3950 ASVs  elapsed=   7654s  eta=   5333s
+[full] 2352/3950 ASVs  elapsed=   7732s  eta=   5254s
+[full] 2376/3950 ASVs  elapsed=   7812s  eta=   5175s
+[full] 2400/3950 ASVs  elapsed=   7890s  eta=   5096s
+[full] 2424/3950 ASVs  elapsed=   7968s  eta=   5016s
+[full] 2448/3950 ASVs  elapsed=   8048s  eta=   4938s
+[full] 2472/3950 ASVs  elapsed=   8128s  eta=   4859s
+[full] 2496/3950 ASVs  elapsed=   8206s  eta=   4780s
+[full] 2520/3950 ASVs  elapsed=   8284s  eta=   4701s
+[full] 2544/3950 ASVs  elapsed=   8363s  eta=   4622s
+[full] 2568/3950 ASVs  elapsed=   8442s  eta=   4543s
+[full] 2592/3950 ASVs  elapsed=   8520s  eta=   4464s
+[full] 2616/3950 ASVs  elapsed=   8597s  eta=   4384s
+[full] 2640/3950 ASVs  elapsed=   8676s  eta=   4305s
+[full] 2664/3950 ASVs  elapsed=   8755s  eta=   4226s
+[full] 2688/3950 ASVs  elapsed=   8833s  eta=   4147s
+[full] 2712/3950 ASVs  elapsed=   8912s  eta=   4068s
+[full] 2736/3950 ASVs  elapsed=   8990s  eta=   3989s
+[full] 2760/3950 ASVs  elapsed=   9068s  eta=   3910s
+[full] 2784/3950 ASVs  elapsed=   9146s  eta=   3831s
+[full] 2808/3950 ASVs  elapsed=   9226s  eta=   3752s
+[full] 2832/3950 ASVs  elapsed=   9304s  eta=   3673s
+[full] 2856/3950 ASVs  elapsed=   9382s  eta=   3594s
+[full] 2880/3950 ASVs  elapsed=   9460s  eta=   3515s
+[full] 2904/3950 ASVs  elapsed=   9541s  eta=   3437s
+[full] 2928/3950 ASVs  elapsed=   9620s  eta=   3358s
+[full] 2952/3950 ASVs  elapsed=   9699s  eta=   3279s
+[full] 2976/3950 ASVs  elapsed=   9778s  eta=   3200s
+[full] 3000/3950 ASVs  elapsed=   9858s  eta=   3122s
+[full] 3024/3950 ASVs  elapsed=   9937s  eta=   3043s
+[full] 3048/3950 ASVs  elapsed=  10016s  eta=   2964s
+[full] 3072/3950 ASVs  elapsed=  10095s  eta=   2885s
+[full] 3096/3950 ASVs  elapsed=  10173s  eta=   2806s
+[full] 3120/3950 ASVs  elapsed=  10252s  eta=   2727s
+[full] 3144/3950 ASVs  elapsed=  10332s  eta=   2649s
+[full] 3168/3950 ASVs  elapsed=  10411s  eta=   2570s
+[full] 3192/3950 ASVs  elapsed=  10491s  eta=   2491s
+[full] 3216/3950 ASVs  elapsed=  10569s  eta=   2412s
+[full] 3240/3950 ASVs  elapsed=  10647s  eta=   2333s
+[full] 3264/3950 ASVs  elapsed=  10726s  eta=   2254s
+[full] 3288/3950 ASVs  elapsed=  10804s  eta=   2175s
+[full] 3312/3950 ASVs  elapsed=  10883s  eta=   2096s
+[full] 3336/3950 ASVs  elapsed=  10961s  eta=   2017s
+[full] 3360/3950 ASVs  elapsed=  11040s  eta=   1939s
+[full] 3384/3950 ASVs  elapsed=  11119s  eta=   1860s
+[full] 3408/3950 ASVs  elapsed=  11198s  eta=   1781s
+[full] 3432/3950 ASVs  elapsed=  11278s  eta=   1702s
+[full] 3456/3950 ASVs  elapsed=  11356s  eta=   1623s
+[full] 3480/3950 ASVs  elapsed=  11435s  eta=   1544s
+[full] 3504/3950 ASVs  elapsed=  11516s  eta=   1466s
+[full] 3528/3950 ASVs  elapsed=  11594s  eta=   1387s
+[full] 3552/3950 ASVs  elapsed=  11673s  eta=   1308s
+[full] 3576/3950 ASVs  elapsed=  11751s  eta=   1229s
+[full] 3600/3950 ASVs  elapsed=  11829s  eta=   1150s
+[full] 3624/3950 ASVs  elapsed=  11908s  eta=   1071s
+[full] 3648/3950 ASVs  elapsed=  11986s  eta=    992s
+[full] 3672/3950 ASVs  elapsed=  12067s  eta=    914s
+[full] 3696/3950 ASVs  elapsed=  12148s  eta=    835s
+[full] 3720/3950 ASVs  elapsed=  12226s  eta=    756s
+[full] 3744/3950 ASVs  elapsed=  12304s  eta=    677s
+[full] 3768/3950 ASVs  elapsed=  12383s  eta=    598s
+[full] 3792/3950 ASVs  elapsed=  12461s  eta=    519s
+[full] 3816/3950 ASVs  elapsed=  12540s  eta=    440s
+[full] 3840/3950 ASVs  elapsed=  12622s  eta=    362s
+[full] 3864/3950 ASVs  elapsed=  12702s  eta=    283s
+[full] 3888/3950 ASVs  elapsed=  12780s  eta=    204s
+[full] 3912/3950 ASVs  elapsed=  12860s  eta=    125s
+[full] 3936/3950 ASVs  elapsed=  12939s  eta=     46s
+[full] 3950/3950 ASVs  elapsed=  12985s  eta=      0s
+[full] GPU exhaustive done in 12985s (57.3 GCUPS)
+[full] enrich 1,975,000 hits (500/ASV) across 60 workers ...
+[full] enriched 500/3950  (85s)
+[full] enriched 1000/3950  (157s)
+[full] enriched 1500/3950  (225s)
+[full] enriched 2000/3950  (293s)
+[full] enriched 2500/3950  (362s)
+[full] enriched 3000/3950  (430s)
+[full] enriched 3500/3950  (499s)
+[full] enrichment done in 551s
+[full] md5->header + taxdump ...
+[full] wrote /home/freiburger/Documents/EmilyKin/bvbrc_alignment_hits/asv_top500_alignment_hits_gpu.json (1167 MB)
+
+[full stats] {
+  "gpu": "NVIDIA GeForce RTX 5070 Ti",
+  "mode": "full_exhaustive",
+  "n_asvs": 3950,
+  "n_refs": 459301,
+  "topk": 500,
+  "asv_batch": 24,
+  "gpu_exhaustive_wall_s": 12984.8,
+  "gpu_exhaustive_gcups": 57.3,
+  "cpu_exhaustive_extrapolated_h": 28.0,
+  "total_wall_s": 13598.1,
+  "comparison_vs_pipeline": {
+    "depth_compared": 20,
+    "pct_pipeline_top20_overlap_with_gpu_top20": 97.606,
+    "pct_asvs_full_20of20_overlap": 90.886,
+    "pct_asvs_gpu_top1_in_pipeline_top20": 99.468,
+    "pct_asvs_gpu_top1_is_pipeline_top1": 99.139,
+    "n_prefilter_genuine_miss_top20_hits": 1696,
+    "n_asvs_with_any_prefilter_miss": 219,
+    "n_pipeline_top20_hits_outside_gpu_top500": 1155
+  }
+}

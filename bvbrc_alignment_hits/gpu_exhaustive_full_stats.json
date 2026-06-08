@@ -1,0 +1,22 @@
+{
+  "gpu": "NVIDIA GeForce RTX 5070 Ti",
+  "mode": "full_exhaustive",
+  "n_asvs": 3950,
+  "n_refs": 459301,
+  "topk": 500,
+  "asv_batch": 24,
+  "gpu_exhaustive_wall_s": 12984.8,
+  "gpu_exhaustive_gcups": 57.3,
+  "cpu_exhaustive_extrapolated_h": 28.0,
+  "total_wall_s": 13598.1,
+  "comparison_vs_pipeline": {
+    "depth_compared": 20,
+    "pct_pipeline_top20_overlap_with_gpu_top20": 97.606,
+    "pct_asvs_full_20of20_overlap": 90.886,
+    "pct_asvs_gpu_top1_in_pipeline_top20": 99.468,
+    "pct_asvs_gpu_top1_is_pipeline_top1": 99.139,
+    "n_prefilter_genuine_miss_top20_hits": 1696,
+    "n_asvs_with_any_prefilter_miss": 219,
+    "n_pipeline_top20_hits_outside_gpu_top500": 1155
+  }
+}
