@@ -94,3 +94,11 @@ the 20-ASV validation sample, not the full set**. Use the GPU exhaustive output 
 > `asv_top500_alignment_hits_gpu.json` — **1.16 GB**, the full prefilter-free GPU exhaustive top-500
 > per ASV (same per-hit schema as `asv_top20_alignment_hits.json`). Regenerate with `python gpu_align.py`
 > (~3.6 h on the RTX 5070 Ti). It is `.gitignore`d; all other outputs in this folder are tracked.
+
+## Large files (> 100 MB, git-ignored)
+
+| file | size | what it is | regenerate |
+|---|---|---|---|
+| `asv_top500_alignment_hits_gpu.json` | 1.1 GB | GPU exhaustive Smith-Waterman top-500 hits per ASV | `python gpu_align.py` (exhaustive mode) |
+
+Exceeds GitHub's 100 MB limit → git-ignored (regenerable). Threshold = 100 MB (GitHub hard limit); no file is near 100 GB.
