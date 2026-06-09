@@ -1,0 +1,30 @@
+organism,functional_category,CAP1,CAP2,louvain_module,kmeans_module,in_prev_top10
+Aeromonas,,0.0624,-0.0203,1,2,True
+Azospira,,-0.2423,-0.1467,1,1,True
+Ca_Competibacter,GAOs,-0.2734,-0.1611,1,1,True
+Denitratisoma,,-0.0931,-0.2491,1,1,True
+Dokdonella,,-0.0956,-0.0944,1,1,True
+Hydrogenophaga,,-0.0879,-0.0382,1,1,True
+Pseudoxanthomonas,,-0.4509,-0.0045,1,1,True
+Sediminibacterium,,-0.5359,0.133,1,1,True
+Thauera,Putative GAOs,-0.6051,0.1136,1,1,True
+Zoogloea,Putative PAOs,-0.5292,0.1054,1,1,True
+midas_g_428,,-0.5631,0.1343,1,1,True
+Lysobacter,,0.2787,-0.1857,2,2,True
+midas_g_12887,,0.416,-0.0362,2,2,True
+midas_g_171,,0.2788,-0.235,2,2,True
+midas_g_36422,,0.2552,-0.1296,2,2,True
+midas_g_41804,,0.1299,-0.1137,2,2,True
+midas_g_61007,,0.2247,-0.1369,2,2,True
+midas_g_8672,,0.3443,-0.0771,2,2,True
+Ca_Accumulibacter,PAOs,0.4997,-0.0345,3,2,True
+Ca_Caldilinea,,0.4217,-0.0334,3,2,True
+Ca_Sarcinithrix,,0.4916,0.1106,3,2,True
+Rhodoplanes,,0.5064,0.1169,3,2,True
+alphaI_cluster,,0.4479,0.1682,3,2,True
+midas_g_2019,,0.3813,0.0661,3,2,True
+midas_g_26667,,0.381,0.1025,3,2,True
+midas_g_31688,,0.402,0.1557,3,2,True
+midas_g_3943,,0.2973,0.1345,3,2,True
+midas_g_71310,,0.421,0.029,3,2,True
+midas_g_973,,0.2017,0.1164,3,2,True

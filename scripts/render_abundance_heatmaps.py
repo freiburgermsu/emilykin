@@ -33,7 +33,12 @@ from matplotlib.patches import Patch
 from numpy import inf, isnan, log10, nan
 
 REPO = Path(__file__).resolve().parent
+# Scripts now live in scripts/; the data artifacts sit in the repo root.
+if not (REPO / 'abundances.csv').exists() and (REPO.parent / 'abundances.csv').exists():
+    REPO = REPO.parent
 os.chdir(REPO)
+OUT_DIR = REPO / 'rel_ab_heatmaps'
+OUT_DIR.mkdir(exist_ok=True)
 
 TAXONOMIC_LEVELS = ['Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus', 'Species']
 GENUS_DEPTH = TAXONOMIC_LEVELS.index('Genus')
@@ -105,7 +110,7 @@ def taxonomy_linkage(taxonomy_series):
     return Z
 
 
-def create_heatmap(df, taxonomies, title, *, suffix,
+def create_heatmap(df, taxonomies, title, *, suffix, simple=False,
                    iterativeID_color_map, genera_color_map,
                    proteo_class_color, proteo_base, iterativeID_levels,
                    phase_day_ranges):
@@ -180,30 +185,42 @@ def create_heatmap(df, taxonomies, title, *, suffix,
     cbar_x = top_pos.x0 - cbar_w - 0.02
     cm.ax_cbar.set_position([cbar_x, top_pos.y0, cbar_w, top_pos.height])
 
-    # GAO/PAO label coloring and italicization at the genus level.
-    id_levels = {}
-    for k, v in iterativeID_levels.items():
-        id_levels[k] = v
-        id_levels.setdefault(k.split('.')[0], v)
-    inverted_gao_pao = {v: k for k, vs in GAOs_PAOs.items() for v in vs}
-    for label in cm.ax_heatmap.get_yticklabels():
-        text = label.get_text()
-        for org, val in inverted_gao_pao.items():
-            if org not in text:
-                continue
-            label.set_fontweight('bold')
-            if 'GAOs' in val:
-                label.set_color('green')
-                if 'Putative' in val:
-                    label.set_color('mediumseagreen')
-            elif 'PAOs' in val:
+    if simple:
+        # Simplified labelling: only Ca_Accumulibacter (blue) and Ca_Competibacter
+        # (green) are highlighted; every other label stays plain black.
+        for label in cm.ax_heatmap.get_yticklabels():
+            text = label.get_text()
+            if 'Ca_Accumulibacter' in text:
                 label.set_color('blue')
-                if 'Putative' in val:
-                    label.set_color('cornflowerblue')
-            elif 'PHA' in val:
-                label.set_color('red')
-        if id_levels.get(text) == 'Genus':
-            label.set_fontstyle('italic')
+                label.set_fontweight('bold')
+            elif 'Ca_Competibacter' in text:
+                label.set_color('green')
+                label.set_fontweight('bold')
+    else:
+        # GAO/PAO label coloring and italicization at the genus level.
+        id_levels = {}
+        for k, v in iterativeID_levels.items():
+            id_levels[k] = v
+            id_levels.setdefault(k.split('.')[0], v)
+        inverted_gao_pao = {v: k for k, vs in GAOs_PAOs.items() for v in vs}
+        for label in cm.ax_heatmap.get_yticklabels():
+            text = label.get_text()
+            for org, val in inverted_gao_pao.items():
+                if org not in text:
+                    continue
+                label.set_fontweight('bold')
+                if 'GAOs' in val:
+                    label.set_color('green')
+                    if 'Putative' in val:
+                        label.set_color('mediumseagreen')
+                elif 'PAOs' in val:
+                    label.set_color('blue')
+                    if 'Putative' in val:
+                        label.set_color('cornflowerblue')
+                elif 'PHA' in val:
+                    label.set_color('red')
+            if id_levels.get(text) == 'Genus':
+                label.set_fontstyle('italic')
 
     # Phylum color strip to the RIGHT of the heatmap.
     hm_pos = cm.ax_heatmap.get_position()
@@ -300,7 +317,7 @@ def create_heatmap(df, taxonomies, title, *, suffix,
                     [x_fig, x_fig], [y_bot, y_top], transform=fig.transFigure,
                     color='black', linewidth=1.2, linestyle='--', alpha=0.6))
 
-    out_path = f"{title.lower().replace(' ', '_')}{suffix}.png"
+    out_path = OUT_DIR / f"{title.lower().replace(' ', '_')}{suffix}.png"
     cm.figure.savefig(out_path, bbox_inches='tight', dpi=300)
     print(f'wrote {out_path}')
 
@@ -342,7 +359,7 @@ def top10_frame(abundances, org_taxonomy):
     return df, taxonomy_series
 
 
-def main():
+def main(simple_values=(False, True)):
     sample_days = json.load(open('sample_days.json'))
     iterativeID_color_map = json.load(open('iterativeID_color_map.json'))
     proteo_class_color = json.load(open('proteo_class_color.json'))
@@ -369,7 +386,6 @@ def main():
     # ---- Non-root: top 10 ASVs/day, ASV-level labels ----
     asv_taxonomy = {org: taxonomy_string(iterativeID_taxonomy[org]) for org in abundances.columns}
     df_asv, tax_asv = top10_frame(abundances, asv_taxonomy)
-    create_heatmap(df_asv, tax_asv, 'Top 10 ASVs (% abundance)', suffix='', **shared_kwargs)
 
     # ---- Root: sum all ASVs sharing a phylogenetic root name, then top 10/day ----
     root_abundances = abundances.copy()
@@ -381,7 +397,14 @@ def main():
         if root in root_abundances.columns and root not in root_taxonomy:
             root_taxonomy[root] = taxonomy_string(taxa)
     df_root, tax_root = top10_frame(root_abundances, root_taxonomy)
-    create_heatmap(df_root, tax_root, 'Top 10 ASVs (% abundance)', suffix='_root', **shared_kwargs)
+
+    # `simple` flavours suffix '_simple'; the GAO/PAO-rich default has no suffix.
+    for simple in simple_values:
+        s = '_simple' if simple else ''
+        create_heatmap(df_asv, tax_asv, 'Top 10 ASVs (% abundance)', suffix=s,
+                       simple=simple, **shared_kwargs)
+        create_heatmap(df_root, tax_root, 'Top 10 ASVs (% abundance)', suffix='_root' + s,
+                       simple=simple, **shared_kwargs)
 
 
 if __name__ == '__main__':

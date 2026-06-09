@@ -41,7 +41,12 @@ from scipy.stats import spearmanr
 from statsmodels.stats.multitest import multipletests
 
 REPO = Path(__file__).resolve().parent
+# Scripts now live in scripts/; the data artifacts sit in the repo root.
+if not (REPO / 'abundances.csv').exists() and (REPO.parent / 'abundances.csv').exists():
+    REPO = REPO.parent
 os.chdir(REPO)
+OUT_DIR = REPO / 'abundace_correlations'
+OUT_DIR.mkdir(exist_ok=True)
 
 TAXONOMIC_LEVELS = ['Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus', 'Species']
 GENUS_DEPTH = TAXONOMIC_LEVELS.index('Genus')
@@ -142,11 +147,23 @@ def fdr_cooccurring(abund):
     return orgs
 
 
-def _style_labels(ax):
-    """Bold/color GAO-PAO organism tick labels and italicize genus-level labels."""
+def _style_labels(ax, simple=False):
+    """Bold/color GAO-PAO organism tick labels and italicize genus-level labels.
+
+    simple=True: only Ca_Accumulibacter (blue) and Ca_Competibacter (green) are
+    highlighted; every other label stays plain black.
+    """
     for getter in (ax.get_yticklabels, ax.get_xticklabels):
         for lbl in getter():
             text = lbl.get_text()
+            if simple:
+                if 'Ca_Accumulibacter' in text:
+                    lbl.set_color('blue')
+                    lbl.set_fontweight('bold')
+                elif 'Ca_Competibacter' in text:
+                    lbl.set_color('green')
+                    lbl.set_fontweight('bold')
+                continue
             for org, cat in INV_GAO_PAO.items():
                 if org in text:
                     lbl.set_fontweight('bold')
@@ -195,11 +212,15 @@ def _phylum_legend_handles(corr_matrix, taxonomies):
     return handles
 
 
-def render_one_triangle(corr_matrix, taxonomies, out_path):
+def render_one_triangle(corr_matrix, taxonomies, out_path, simple=False):
     """Lower-triangle Spearman correlation clustermap with phylum color strips,
     GAO/PAO colored boxes, a shortened-Proteobacteria Phylum legend, and the
     colorbar tucked into the empty upper-right of the triangle.
+
+    simple=True: highlight only Ca_Accumulibacter (blue) and Ca_Competibacter
+    (green) -- labels and boxes -- with all other labels plain black.
     """
+    out_path = OUT_DIR / out_path
     if corr_matrix.shape[0] < 2:
         print(f'[{out_path}] not enough organisms ({corr_matrix.shape[0]}); skipped')
         return
@@ -236,7 +257,7 @@ def render_one_triangle(corr_matrix, taxonomies, out_path):
     cm.ax_heatmap.set_yticklabels(cm.ax_heatmap.get_yticklabels(), fontsize=40, rotation=0)
     cm.ax_heatmap.set_xticklabels(
         cm.ax_heatmap.get_xticklabels(), fontsize=40, rotation=60, ha='right', rotation_mode='anchor')
-    _style_labels(cm.ax_heatmap)
+    _style_labels(cm.ax_heatmap, simple=simple)
 
     # Mask the upper triangle so only the lower triangle is drawn.
     d_row = cm.dendrogram_row.reordered_ind
@@ -251,13 +272,21 @@ def render_one_triangle(corr_matrix, taxonomies, out_path):
     heatmap_pos = cm.ax_heatmap.get_position()
     cm.ax_cbar.set_position([heatmap_pos.x1 - 0.2, heatmap_pos.y0 + 0.4, 0.06, heatmap_pos.height / 5])
 
-    # GAO/PAO colored boxes (one row strip + one column strip per organism).
+    # Colored boxes (one row strip + one column strip per organism). In simple
+    # mode only Ca_Accumulibacter (blue) and Ca_Competibacter (green) get a box.
+    simple_box = {'Ca_Accumulibacter': 'blue', 'Ca_Competibacter': 'green'}
     n_corr = len(corr_matrix.index)
     for _id in corr_matrix.index:
-        cat = INV_GAO_PAO.get(_id.split('.')[0])
-        if cat not in BOX_COLOR:
-            continue
-        color = BOX_COLOR[cat]
+        root = _id.split('.')[0]
+        if simple:
+            color = simple_box.get(root)
+            if color is None:
+                continue
+        else:
+            cat = INV_GAO_PAO.get(root)
+            if cat not in BOX_COLOR:
+                continue
+            color = BOX_COLOR[cat]
         rp = d_row.index(corr_matrix.index.get_loc(_id))
         cp = d_col.index(corr_matrix.columns.get_loc(_id))
         cm.ax_heatmap.add_patch(mpatches.Rectangle(
@@ -282,7 +311,15 @@ def build_taxonomies(orgs):
     return {o: taxonomy_string(o) for o in orgs}
 
 
-def main():
+def _render_variants(corr, cols, base, simple_values):
+    """Render one correlation figure in each requested flavour ('' / '_simple')."""
+    tax = build_taxonomies(cols)
+    for simple in simple_values:
+        s = '_simple' if simple else ''
+        render_one_triangle(corr, tax, f'{base}{s}.png', simple=simple)
+
+
+def main(simple_values=(False, True)):
     sample_days = json.load(open('sample_days.json'))
     phase_day_ranges = json.load(open('phase_day_ranges.json'))
 
@@ -294,17 +331,15 @@ def main():
 
     # non-root: significant ASVs with max relative abundance >= 0.5%
     asv_cols = [c for c in abundances.columns if c in sig and abundances[c].max() >= MIN_MAX_PCT]
-    corr_asv = spearman_matrix(abundances[asv_cols])
-    render_one_triangle(corr_asv, build_taxonomies(asv_cols),
-                        'abundance_correlatons_one_triangle.png')
+    _render_variants(spearman_matrix(abundances[asv_cols]), asv_cols,
+                     'abundance_correlatons_one_triangle', simple_values)
 
     # root: sum all ASVs per root, keep roots with a significant member and max >= 0.5%
     sig_roots = {c.split('.')[0] for c in sig}
     root_abund = aggregate_to_root(abundances)
     root_cols = [r for r in root_abund.columns if r in sig_roots and root_abund[r].max() >= MIN_MAX_PCT]
-    corr_root = spearman_matrix(root_abund[root_cols])
-    render_one_triangle(corr_root, build_taxonomies(root_cols),
-                        'abundance_correlatons_one_triangle_root.png')
+    _render_variants(spearman_matrix(root_abund[root_cols]), root_cols,
+                     'abundance_correlatons_one_triangle_root', simple_values)
 
     # ---- Per-phase figures ----
     for phase, span in phase_day_ranges.items():
@@ -322,9 +357,8 @@ def main():
             sig_phase = [c for c in abp.columns if c in po]
             abc = abp[sig_phase].loc[:, abp[sig_phase].max() >= MIN_MAX_PCT]
             if abc.shape[1] >= 2:
-                corr = spearman_matrix(abc)
-                render_one_triangle(corr, build_taxonomies(abc.columns),
-                                    f'abundance_correlatons_one_triangle_phase{phase}.png')
+                _render_variants(spearman_matrix(abc), list(abc.columns),
+                                 f'abundance_correlatons_one_triangle_phase{phase}', simple_values)
 
         # root: sum the phase table to root, then the same FDR + max filter
         abp_root = aggregate_to_root(abp)
@@ -334,9 +368,8 @@ def main():
             sig_r = [c for c in abp_root.columns if c in po_r]
             abc_r = abp_root[sig_r].loc[:, abp_root[sig_r].max() >= MIN_MAX_PCT]
             if abc_r.shape[1] >= 2:
-                corr_r = spearman_matrix(abc_r)
-                render_one_triangle(corr_r, build_taxonomies(abc_r.columns),
-                                    f'abundance_correlatons_one_triangle_phase{phase}_root.png')
+                _render_variants(spearman_matrix(abc_r), list(abc_r.columns),
+                                 f'abundance_correlatons_one_triangle_phase{phase}_root', simple_values)
 
 
 if __name__ == '__main__':

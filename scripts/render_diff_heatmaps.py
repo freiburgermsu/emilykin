@@ -29,7 +29,12 @@ from scipy.stats import wilcoxon
 from statsmodels.stats.multitest import multipletests
 
 REPO = Path(__file__).resolve().parent
+# Scripts now live in scripts/; the data artifacts sit in the repo root.
+if not (REPO / 'abundances.csv').exists() and (REPO.parent / 'abundances.csv').exists():
+    REPO = REPO.parent
 os.chdir(REPO)
+OUT_DIR = REPO / 'rel_ab_heatmaps'
+OUT_DIR.mkdir(exist_ok=True)
 
 TAXONOMIC_LEVELS = ['Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus', 'Species']
 DEFAULT_COLOR = 'lightgray'
@@ -189,7 +194,7 @@ def _draw_phase_delimiters(clustermap, df, phase_day_ranges, time_based=False):
     #     )
 
 
-def create_heatmap(df, taxonomies, title, *, mode, suffix,
+def create_heatmap(df, taxonomies, title, *, mode, suffix, simple=False,
                    iterativeID_color_map, genera_color_map,
                    proteo_class_color, proteo_base, iterativeID_levels,
                    phase_day_ranges, significance=None):
@@ -326,30 +331,42 @@ def create_heatmap(df, taxonomies, title, *, mode, suffix,
         ax.yaxis.set_label_position('right')
         ax.tick_params(axis='y', pad=4)
 
-    # GAO/PAO label coloring and italicization at the genus level.
-    id_levels = {}
-    for k, v in iterativeID_levels.items():
-        id_levels[k] = v
-        id_levels.setdefault(k.split('.')[0], v)
-    inverted_gao_pao = {v: k for k, vs in GAOs_PAOs.items() for v in vs}
-    for label in cm.ax_heatmap.get_yticklabels():
-        text = label.get_text()
-        for org, val in inverted_gao_pao.items():
-            if org not in text:
-                continue
-            label.set_fontweight('bold')
-            if 'GAOs' in val:
-                label.set_color('green')
-                if 'Putative' in val:
-                    label.set_color('mediumseagreen')
-            elif 'PAOs' in val:
+    if simple:
+        # Simplified labelling: only Ca_Accumulibacter (blue) and Ca_Competibacter
+        # (green) are highlighted; every other label stays plain black.
+        for label in cm.ax_heatmap.get_yticklabels():
+            text = label.get_text()
+            if 'Ca_Accumulibacter' in text:
                 label.set_color('blue')
-                if 'Putative' in val:
-                    label.set_color('cornflowerblue')
-            elif 'PHA' in val:
-                label.set_color('red')
-        if id_levels.get(text) == 'Genus':
-            label.set_fontstyle('italic')
+                label.set_fontweight('bold')
+            elif 'Ca_Competibacter' in text:
+                label.set_color('green')
+                label.set_fontweight('bold')
+    else:
+        # GAO/PAO label coloring and italicization at the genus level.
+        id_levels = {}
+        for k, v in iterativeID_levels.items():
+            id_levels[k] = v
+            id_levels.setdefault(k.split('.')[0], v)
+        inverted_gao_pao = {v: k for k, vs in GAOs_PAOs.items() for v in vs}
+        for label in cm.ax_heatmap.get_yticklabels():
+            text = label.get_text()
+            for org, val in inverted_gao_pao.items():
+                if org not in text:
+                    continue
+                label.set_fontweight('bold')
+                if 'GAOs' in val:
+                    label.set_color('green')
+                    if 'Putative' in val:
+                        label.set_color('mediumseagreen')
+                elif 'PAOs' in val:
+                    label.set_color('blue')
+                    if 'Putative' in val:
+                        label.set_color('cornflowerblue')
+                elif 'PHA' in val:
+                    label.set_color('red')
+            if id_levels.get(text) == 'Genus':
+                label.set_fontstyle('italic')
 
     # Move phylum color strip to the LEFT of the heatmap.
     hm_pos = cm.ax_heatmap.get_position()
@@ -464,7 +481,7 @@ def create_heatmap(df, taxonomies, title, *, mode, suffix,
                     color='lime', fontsize=34, fontweight='bold',
                     ha='center', va='center')
 
-    out_path = f"{title.lower().replace(' ', '_')}{suffix}.png"
+    out_path = OUT_DIR / f"{title.lower().replace(' ', '_')}{suffix}.png"
     cm.figure.savefig(out_path, bbox_inches='tight', dpi=300)
     print(f'wrote {out_path}')
 
@@ -534,6 +551,8 @@ def main():
                    mode='log2fc_days', suffix='_diff_innoculum', **shared_kwargs)
     create_heatmap(df_innoc, tax_innoc, 'Taxa Above 1% Max Abundance',
                    mode='log2fc_time', suffix='_diff_innoculum_time', **shared_kwargs)
+    create_heatmap(df_innoc, tax_innoc, 'Taxa Above 1% Max Abundance',
+                   mode='log2fc_time', suffix='_diff_innoculum_time_simple', simple=True, **shared_kwargs)
 
     # ---- CLR → one-sample Wilcoxon (phase vs innoculum) → BH-FDR ----
     # CLR on the full root-aggregated composition (not just filtered taxa).
