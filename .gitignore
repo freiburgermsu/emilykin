@@ -21,3 +21,8 @@ __pycache__/
 MAG_faas/
 MAG_faas.*
 mag_16s_mapping_tmp/
+
+# Synthetic per-ASV KBase genomes (~29GB, regenerable via
+# prFBA/build_synthetic_genomes_parallel.py). Track only the manifest.
+synthetic_genomes/*
+!synthetic_genomes/synthetic_genome_manifest.json
