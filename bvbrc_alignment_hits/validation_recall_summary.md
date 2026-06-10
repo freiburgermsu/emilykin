@@ -1,0 +1,17 @@
+# edlib-prefilter recall validation
+
+Exhaustive biopython local search over all unique BV-BRC 16S refs vs. the edlib(top-500)->biopython(top-20) pipeline, identical scoring and reference universe.
+
+| metric | value |
+|---|---|
+| n_asvs_validated | 20 |
+| exhaustive_top5_hits_total | 100 |
+| pct_top5_captured_in_pipeline_top20 | 100.0 |
+| n_genuine_misses_score_better_than_pipeline_20th | 0 |
+| pct_asvs_full_5of5_capture | 100.0 |
+| pct_asvs_exhaustive_top1_in_pipeline_top20 | 100.0 |
+| pct_asvs_exhaustive_top1_in_pipeline_top5 | 100.0 |
+| pct_asvs_exhaustive_top1_is_pipeline_top1_md5 | 100.0 |
+| pct_asvs_top1_score_matches_pipeline | 100.0 |
+| exhaustive_search_wall_seconds | 511.0 |
+| total_wall_seconds | 527.7 |

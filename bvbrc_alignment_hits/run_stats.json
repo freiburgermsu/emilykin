@@ -1,0 +1,22 @@
+{
+  "n_asvs": 3950,
+  "n_unique_refs": 459301,
+  "min_ref_len": 200,
+  "k1_edlib_candidates": 500,
+  "k2_final_hits": 20,
+  "workers": 60,
+  "edlib_mode": "HW (infix) adaptive-k",
+  "edlib_task": "distance",
+  "biopython": {
+    "mode": "local",
+    "match": 2.0,
+    "mismatch": -3.0,
+    "gap_open": -5.0,
+    "gap_extend": -2.0
+  },
+  "cpu_seconds_edlib_stage1": 48472.5,
+  "cpu_seconds_biopython_stage2": 9751.9,
+  "wall_seconds_scan": 978.5,
+  "wall_seconds_total": 994.8,
+  "parallel_speedup_scan": 59.5
+}
