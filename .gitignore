@@ -13,11 +13,14 @@ cooccurrence_network_*.png
 # Annotation and binning output directories
 bakta/
 bins_*/
+*.zip
+kofamscan/*
 
 # Python bytecode
 __pycache__/
 
 # MAG FAA outputs (keep tracking the .zip)
+mag/*
 MAG_faas/
 MAG_faas.*
 mag_16s_mapping_tmp/
