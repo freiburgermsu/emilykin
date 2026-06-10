@@ -26,3 +26,7 @@ mag_16s_mapping_tmp/
 # prFBA/build_synthetic_genomes_parallel.py). Track only the manifest.
 synthetic_genomes/*
 !synthetic_genomes/synthetic_genome_manifest.json
+
+# macOS AppleDouble junk + large local archives (>100MB, can't go to GitHub)
+._*
+kofamscan.zip

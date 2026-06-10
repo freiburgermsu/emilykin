@@ -1,11 +1,11 @@
 {
  "_meta": {
-  "selection": "/home/freiburger/Documents/EmilyKin/bvbrc_alignment_hits/asv_reference_selection.json",
+  "selection": "/home/freiburger/Documents/EmilyKin/bvbrc_alignment_hits/asv_reference_selection_gpu.json",
   "gene_data": "bvbrc",
   "builder": "fast",
   "n_asvs": 3950,
-  "built": 3727,
-  "abstain": 223,
+  "built": 3724,
+  "abstain": 226,
   "failed": 0
  },
  "003284e7643a47fcdab27891cced2a66": {
@@ -12410,32 +12410,6 @@
   "genome_file": "1f4491b1444e78b7fe29fbf2b44589ec.json",
   "provenance_file": "provenance/1f4491b1444e78b7fe29fbf2b44589ec.json"
  },
- "1f742ed117527371dfcf593c2f4ba2ac": {
-  "status": "built",
-  "tier": "genus",
-  "flags": [],
-  "consensus_family": "enterobacteriaceae",
-  "n_genomes": 1,
-  "genomes": [
-   "413497.13"
-  ],
-  "failed": [],
-  "scientific_name": "Enterobacteriaceae",
-  "taxonomy": "cellular organisms; Bacteria; Pseudomonadati; Pseudomonadota; Gammaproteobacteria; Enterobacterales; Enterobacteriaceae",
-  "n_features": 3164,
-  "gene_union": {
-   "n_genomes": 1,
-   "n_functions_union": 3164,
-   "n_core": 3164,
-   "n_shared": 0,
-   "n_accessory": 0,
-   "feature_tags": {
-    "core": 3164
-   }
-  },
-  "genome_file": "1f742ed117527371dfcf593c2f4ba2ac.json",
-  "provenance_file": "provenance/1f742ed117527371dfcf593c2f4ba2ac.json"
- },
  "1f751cf738ab75c07036d474fe17f89b": {
   "status": "built",
   "tier": "genus",
@@ -19794,22 +19768,22 @@
   "consensus_family": "lysobacteraceae",
   "n_genomes": 2,
   "genomes": [
-   "1871049.6",
+   "128785.61",
    "69284.5"
   ],
   "failed": [],
   "scientific_name": "Lysobacteraceae",
   "taxonomy": "cellular organisms; Bacteria; Pseudomonadati; Pseudomonadota; Gammaproteobacteria; Lysobacterales; Lysobacteraceae",
-  "n_features": 4323,
+  "n_features": 2299,
   "gene_union": {
    "n_genomes": 2,
-   "n_functions_union": 4323,
-   "n_core": 1868,
+   "n_functions_union": 2299,
+   "n_core": 1881,
    "n_shared": 0,
-   "n_accessory": 2455,
+   "n_accessory": 418,
    "feature_tags": {
-    "accessory": 2455,
-    "core": 1868
+    "core": 1881,
+    "accessory": 418
    }
   },
   "genome_file": "3095c39e6a2515c542a9f89389f1a667.json",
@@ -35643,32 +35617,6 @@
   "genome_file": "59700b269035a5f25f8d14ed0539fb79.json",
   "provenance_file": "provenance/59700b269035a5f25f8d14ed0539fb79.json"
  },
- "5986785bc73eaa8d88d016c51139dd65": {
-  "status": "built",
-  "tier": "genus",
-  "flags": [],
-  "consensus_family": "enterobacteriaceae",
-  "n_genomes": 1,
-  "genomes": [
-   "413497.13"
-  ],
-  "failed": [],
-  "scientific_name": "Enterobacteriaceae",
-  "taxonomy": "cellular organisms; Bacteria; Pseudomonadati; Pseudomonadota; Gammaproteobacteria; Enterobacterales; Enterobacteriaceae",
-  "n_features": 3164,
-  "gene_union": {
-   "n_genomes": 1,
-   "n_functions_union": 3164,
-   "n_core": 3164,
-   "n_shared": 0,
-   "n_accessory": 0,
-   "feature_tags": {
-    "core": 3164
-   }
-  },
-  "genome_file": "5986785bc73eaa8d88d016c51139dd65.json",
-  "provenance_file": "provenance/5986785bc73eaa8d88d016c51139dd65.json"
- },
  "5994e5bb83c2059b92f424907bfb70e3": {
   "status": "built",
   "tier": "genus",
@@ -36250,9 +36198,9 @@
  },
  "5aed197679198ad0c5c2cab57f631d0e": {
   "status": "built",
-  "tier": "family",
+  "tier": "species",
   "flags": [
-   "family_level_draft"
+   "score_top_dropped:reliability_gate"
   ],
   "consensus_family": null,
   "n_genomes": 1,
@@ -65158,32 +65106,6 @@
   "genome_file": "a3de1a313acf4b2066b9a21fc136a8f0.json",
   "provenance_file": "provenance/a3de1a313acf4b2066b9a21fc136a8f0.json"
  },
- "a3e42ac5904747a61cb6146e50f37a5b": {
-  "status": "built",
-  "tier": "genus",
-  "flags": [],
-  "consensus_family": "enterobacteriaceae",
-  "n_genomes": 1,
-  "genomes": [
-   "413497.13"
-  ],
-  "failed": [],
-  "scientific_name": "Enterobacteriaceae",
-  "taxonomy": "cellular organisms; Bacteria; Pseudomonadati; Pseudomonadota; Gammaproteobacteria; Enterobacterales; Enterobacteriaceae",
-  "n_features": 3164,
-  "gene_union": {
-   "n_genomes": 1,
-   "n_functions_union": 3164,
-   "n_core": 3164,
-   "n_shared": 0,
-   "n_accessory": 0,
-   "feature_tags": {
-    "core": 3164
-   }
-  },
-  "genome_file": "a3e42ac5904747a61cb6146e50f37a5b.json",
-  "provenance_file": "provenance/a3e42ac5904747a61cb6146e50f37a5b.json"
- },
  "a3e8d420ea1fa54e080ffcda9dc6d507": {
   "status": "built",
   "tier": "family",
@@ -72745,9 +72667,9 @@
  },
  "b6659ef305819aabacf82fa333d503b6": {
   "status": "built",
-  "tier": "family",
+  "tier": "species",
   "flags": [
-   "family_level_draft"
+   "score_top_dropped:reliability_gate"
   ],
   "consensus_family": null,
   "n_genomes": 2,
@@ -102834,7 +102756,7 @@
  },
  "14d2a94a12d09a88d90c4754ce23af60": {
   "status": "abstain",
-  "tier": "species",
+  "tier": "family",
   "flags": [
    "abstain_reliability",
    "score_top_dropped:reliability_gate"
@@ -102883,6 +102805,14 @@
   ],
   "midas_taxonomy": "Bacteria"
  },
+ "1f742ed117527371dfcf593c2f4ba2ac": {
+  "status": "abstain",
+  "tier": "genus",
+  "flags": [
+   "abstain_reliability"
+  ],
+  "midas_taxonomy": "Bacteria Firmicutes Clostridia Peptostreptococcales-Tissierellales Anaerovoracaceae Anaerovorax midas_s_8128"
+ },
  "1fea5ce3c0cf928345d17af098c9d695": {
   "status": "abstain",
   "tier": "below",
@@ -102925,9 +102855,10 @@
  },
  "25b9e6367954f2a0eb85a050968eaf87": {
   "status": "abstain",
-  "tier": "below",
+  "tier": "genus",
   "flags": [
-   "abstain_below_family"
+   "abstain_reliability",
+   "score_top_dropped:reliability_gate"
   ],
   "midas_taxonomy": "Eukaryota Amorphea Obazoa Opisthokonta Nucletmycea"
  },
@@ -102941,9 +102872,10 @@
  },
  "27d1e7325ba5c557615f400ee3bdc01f": {
   "status": "abstain",
-  "tier": "below",
+  "tier": "family",
   "flags": [
-   "abstain_below_family"
+   "abstain_reliability",
+   "score_top_dropped:reliability_gate"
   ],
   "midas_taxonomy": ""
  },
@@ -103080,17 +103012,19 @@
  },
  "37db70e012bf5664d4a4afaeb693b1ba": {
   "status": "abstain",
-  "tier": "below",
+  "tier": "family",
   "flags": [
-   "abstain_below_family"
+   "abstain_reliability",
+   "score_top_dropped:reliability_gate"
   ],
   "midas_taxonomy": "Bacteria"
  },
  "37e5626f48475dd1213c48298f514e2f": {
   "status": "abstain",
-  "tier": "below",
+  "tier": "species",
   "flags": [
-   "abstain_below_family"
+   "abstain_reliability",
+   "score_top_dropped:reliability_gate"
   ],
   "midas_taxonomy": "Eukaryota Amorphea Obazoa Opisthokonta Nucletmycea Fungi"
  },
@@ -103289,6 +103223,14 @@
    "abstain_below_family"
   ],
   "midas_taxonomy": "Bacteria"
+ },
+ "5986785bc73eaa8d88d016c51139dd65": {
+  "status": "abstain",
+  "tier": "genus",
+  "flags": [
+   "abstain_reliability"
+  ],
+  "midas_taxonomy": "Bacteria Firmicutes Clostridia Peptostreptococcales-Tissierellales Anaerovoracaceae Anaerovorax midas_s_8128"
  },
  "5b4676d996816a7ecafd1d3a4e823766": {
   "status": "abstain",
@@ -103790,9 +103732,10 @@
  },
  "9794354a616806c17892bec88519f87f": {
   "status": "abstain",
-  "tier": "below",
+  "tier": "species",
   "flags": [
-   "abstain_below_family"
+   "abstain_reliability",
+   "score_top_dropped:reliability_gate"
   ],
   "midas_taxonomy": "Eukaryota Amorphea Obazoa Opisthokonta Nucletmycea"
  },
@@ -103893,6 +103836,14 @@
    "abstain_reliability"
   ],
   "midas_taxonomy": "Bacteria Planctomycetota Planctomycetes Pirellulales Pirellulaceae Pirellula midas_s_2514"
+ },
+ "a3e42ac5904747a61cb6146e50f37a5b": {
+  "status": "abstain",
+  "tier": "genus",
+  "flags": [
+   "abstain_reliability"
+  ],
+  "midas_taxonomy": "Bacteria Firmicutes Clostridia Peptostreptococcales-Tissierellales Anaerovoracaceae Anaerovorax midas_s_8128"
  },
  "a5866514aeec22a7e1ef6b551fbc51c4": {
   "status": "abstain",
@@ -104146,9 +104097,10 @@
  },
  "c9c4daa9cccd911d49cd8234abf36a18": {
   "status": "abstain",
-  "tier": "below",
+  "tier": "genus",
   "flags": [
-   "abstain_below_family"
+   "abstain_reliability",
+   "score_top_dropped:reliability_gate"
   ],
   "midas_taxonomy": "Eukaryota Amorphea Obazoa Opisthokonta Nucletmycea"
  },
