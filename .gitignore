@@ -21,6 +21,7 @@ __pycache__/
 
 # MAG FAA outputs (keep tracking the .zip)
 mag/*
+meta/*
 MAG_faas/
 MAG_faas.*
 mag_16s_mapping_tmp/
