@@ -26,11 +26,14 @@ WORK = os.path.dirname(os.path.abspath(__file__))  # auto-set to this file's dir
 DATA = os.path.join(WORK, 'data')
 
 # ── Row definitions ──────────────────────────────────────────────────────────
+# Colors match KO_groups.png annotation scheme:
+#   green  = nitrite reductases (nirB/D DNRA + nirS denitrification)
+#   salmon = NO / N₂O reductases (nirK + norC/nosZ)
 ROWS = [
-    ('nirB/D',    'nirB/D  –  NADH nitrite reductase\n(DNRA: NO₂ → NH₄)',   '#6B4C9A'),
-    ('nirS',      'nirS  –  cytochrome cd₁ nitrite reductase\n(NO₂ → NO)',   '#2C7BB6'),
-    ('nirK',      'nirK  –  copper nitrite reductase\n(NO₂ → NO)',           '#1A9641'),
-    ('norC/nosZ', 'norC / nosZ  –  NO & N₂O reductases\n(NO→N₂O→N₂)',       '#D73027'),
+    ('nirB/D',    'nirB/D  –  NADH nitrite reductase\n(DNRA: NO₂ → NH₄)',   '#A5D6A7'),
+    ('nirS',      'nirS  –  cytochrome cd₁ nitrite reductase\n(NO₂ → NO)',   '#A5D6A7'),
+    ('nirK',      'nirK  –  copper nitrite reductase\n(NO₂ → NO)',           '#FFAB91'),
+    ('norC/nosZ', 'norC / nosZ  –  NO & N₂O reductases\n(NO→N₂O→N₂)',       '#FFAB91'),
 ]
 ROW_IDS = [r[0] for r in ROWS]
 
@@ -142,15 +145,18 @@ def frac(inches_from_left, width_inches, inches_from_bottom, height_inches):
     return [inches_from_left / fig_w, inches_from_bottom / fig_h,
             width_inches / fig_w, height_inches / fig_h]
 
-heat_w = n_cols * col_w
-heat_h = n_rows * row_h
-heat_l = lmargin
-heat_b = bmargin
-cat_h  = 0.20
-cat_b  = heat_b + heat_h + 0.04
+heat_w  = n_cols * col_w
+heat_h  = n_rows * row_h
+heat_l  = lmargin
+heat_b  = bmargin
+cat_h   = 0.20
+cat_b   = heat_b + heat_h + 0.04
+strip_w = 0.12   # narrow colored strip between row labels and heatmap
+strip_gap = 0.04
 
-ax_heat = fig.add_axes(frac(heat_l, heat_w, heat_b, heat_h))
-ax_cat  = fig.add_axes(frac(heat_l, heat_w, cat_b,  cat_h))
+ax_heat  = fig.add_axes(frac(heat_l, heat_w, heat_b, heat_h))
+ax_cat   = fig.add_axes(frac(heat_l, heat_w, cat_b,  cat_h))
+ax_strip = fig.add_axes(frac(heat_l - strip_w - strip_gap, strip_w, heat_b, heat_h))
 
 cmap = LinearSegmentedColormap.from_list(
     'rpkm', ['#FFFFFF', '#FEE8C8', '#FDBB84', '#E34A33', '#8B0000'], N=256)
@@ -170,6 +176,16 @@ for ax in [ax_heat]:
 ax_heat.set_yticks(range(n_rows))
 ax_heat.set_yticklabels([r[1] for r in ROWS], fontsize=7, va='center')
 ax_heat.tick_params(axis='y', length=0, pad=4)
+
+# Row color strip (matches KO_groups.png color scheme)
+for i, (_, _, color) in enumerate(ROWS):
+    ax_strip.add_patch(mpatches.Rectangle((0, i - 0.5), 1, 1, color=color, linewidth=0))
+ax_strip.set_xlim(0, 1)
+ax_strip.set_ylim(-0.5, n_rows - 0.5)
+ax_strip.set_xticks([])
+ax_strip.set_yticks([])
+for spine in ax_strip.spines.values():
+    spine.set_visible(False)
 
 # Column labels
 ax_heat.set_xticks(range(n_cols))
