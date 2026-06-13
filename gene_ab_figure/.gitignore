@@ -2,6 +2,11 @@ data/aligned_*.bam
 data/aligned_*.bam.bai
 data/combined_ref.fa
 data/combined_ref.fa.fai
+data/combined_ref.mmi
+data/index_build.log
+data/logs/
+data/counts_*.json
+data/.alignment_complete
 data/alignment.log
 pipeline_run.log
 __pycache__/
