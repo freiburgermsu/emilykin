@@ -30,6 +30,9 @@ mag_16s_mapping_tmp/
 # prFBA/build_synthetic_genomes_parallel.py). Track only the manifest.
 synthetic_genomes/*
 !synthetic_genomes/synthetic_genome_manifest.json
+# P3 (gene-richest-conspecific tie-break) variant, kept alongside for comparison; track only its manifest.
+synthetic_genomes_p3/*
+!synthetic_genomes_p3/synthetic_genome_manifest.json
 
 # macOS AppleDouble junk + large local archives (>100MB, can't go to GitHub)
 ._*
