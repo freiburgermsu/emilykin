@@ -8,6 +8,11 @@ gpkg_x/
 # copyrighted reference article (reading only; not needed to run the pipeline)
 *.pdf
 
+# Large Part B intermediates (> GitHub's 100 MB limit) — regenerable from
+# dereplicated_genomes/; see LARGE_FILES_EXCLUDED.md
+out/all_bins.fna
+out/all_bins_orf.faa
+
 # but DO track the GraftM reference package (overrides the repo-root "*.zip" rule);
 # it is a required pipeline input — see PLAN §4
 !graftM_NosZ.gpkg.refpkg.zip

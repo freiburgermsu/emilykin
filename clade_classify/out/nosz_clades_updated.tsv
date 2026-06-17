@@ -1,0 +1,14 @@
+mag	gene_id	genus	len_bp	clade	confidence	cladeI_score	cladeII_score	cladeII_best_subclade	score_margin
+CAN_1_bin.77	CAN_1_bin.77|DLHCAE_04715	UBA5066	1869	II	high	45.7	357.3	II.G	-311.6
+CAN_1_bin.98	CAN_1_bin.98|KLJHLB_03109	Accumulibacter	2298	I	high	73.1	437.6	II.D	-364.4
+CAN_2_bin.6	CAN_2_bin.6|HMFKDB_00723	Desulfobacillus	2292	I	high	77.1	442.7	II.D	-365.6
+CAN_3_bin.203	CAN_3_bin.203|NGIEFB_03466	JAEULV01	2286	I	high	79.7	353.9	II.D	-274.2
+CAN_3_bin.221	CAN_3_bin.221|ECOIAL_03204	OLB5	2028	II	high	28.3	274.9	II.B	-246.6
+CAN_5_bin.112	CAN_5_bin.112|DCCNNJ_01028	JJ008	2004	II	high	24.6	290.9	II.C	-266.3
+CAN_5_bin.147	CAN_5_bin.147|CIIJDE_02562	SpSt-398	1989	II	high	22.6	299.5	II.C	-276.9
+CAN_5_bin.40	CAN_5_bin.40|GNOLDL_01230	Giesbergeria	1932	I	low	199.7	223.9	II.G	-24.2
+CAN_5_bin.70	CAN_5_bin.70|MDDBPK_01672	Azonexus	2286	I	high	79.9	420.3	II.D	-340.5
+coasm_bin.185	coasm_bin.185|FDDLBN_03425	Accumulibacter	2298	I	high	78.4	436.6	II.D	-358.2
+coasm_bin.260	coasm_bin.260|FLKOMO_04520	JAAEKA01	1977	II	high	64.4	259.9	II.D	-195.5
+coasm_bin.481	coasm_bin.481|EGDGHF_00332	Leptovillus	2034	II	high	30.4	244.1	II.D	-213.7
+coasm_bin.55	coasm_bin.55|FCMEHI_03805	Competibacter	1932	I	low	195.4	187.5	II.G	7.9

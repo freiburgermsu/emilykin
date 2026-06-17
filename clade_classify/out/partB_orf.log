@@ -1,0 +1,7 @@
+Calling ORFs on 276 bins with pyrodigal (meta mode)...
+  50/276 bins processed, 174,447 ORFs so far
+  100/276 bins processed, 328,551 ORFs so far
+  150/276 bins processed, 502,373 ORFs so far
+  200/276 bins processed, 686,068 ORFs so far
+  250/276 bins processed, 843,010 ORFs so far
+Done: 935,110 ORFs written to /scratch1/afreiburger/emilykin/EmilyKin/clade_classify/out/all_bins_orf.faa
