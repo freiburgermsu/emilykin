@@ -1,0 +1,13 @@
+# macOS AppleDouble junk
+._*
+.DS_Store
+
+# local working extraction of the gpkg (rebuild on the server from the .zip — see PLAN §4)
+gpkg_x/
+
+# copyrighted reference article (reading only; not needed to run the pipeline)
+*.pdf
+
+# but DO track the GraftM reference package (overrides the repo-root "*.zip" rule);
+# it is a required pipeline input — see PLAN §4
+!graftM_NosZ.gpkg.refpkg.zip
