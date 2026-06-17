@@ -1,0 +1,8 @@
+Found 276 bins
+Running hmmsearch (6-frame DNA translation)...
+Traceback (most recent call last):
+  File "/scratch1/afreiburger/emilykin/EmilyKin/clade_classify/partB_scan_bins.py", line 98, in <module>
+    subprocess.run([HMMSEARCH, '--cpu', '16', '--tblout', str(tblout),
+  File "/scratch1/afreiburger/emilykin/processed/.snakemake_envs/8c703f8abdc13cdc1ef374a2bcf37f14_/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/scratch1/afreiburger/emilykin/processed/.snakemake_envs/8c703f8abdc13cdc1ef374a2bcf37f14_/bin/hmmsearch', '--cpu', '16', '--tblout', '/scratch1/afreiburger/emilykin/EmilyKin/clade_classify/out/partB_hmmsearch.tblout', '--noali', '--dnax', '-E', '1e-10', '/scratch1/afreiburger/emilykin/EmilyKin/clade_classify/out/He_269NosZ.hmm', '/scratch1/afreiburger/emilykin/EmilyKin/clade_classify/out/all_bins.fna']' returned non-zero exit status 1.
