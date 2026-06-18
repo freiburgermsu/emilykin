@@ -33,3 +33,27 @@ deterministic, so a regenerated `all_bins_orf.faa` matches the original.
 `clade_classify/He …等 - 2025 - A novel bacterial protein family … .pdf` (≈ 13 MB)
 is the source paper (He et al. 2025, *Nature* 646:152). It is excluded via the
 `*.pdf` rule (copyright; reading only, not a pipeline input).
+
+## Removed from git history (2026-06-18)
+
+Although the ignore rules above were already in place, both files had been
+committed earlier in `b527079` (on a branch line that predated those rules) and
+were then carried forward through the poplar merges, so they stayed **tracked**
+all the way to `HEAD`. That blocked `git push` to GitHub, which hard-rejects any
+single file larger than 100 MB.
+
+The two blobs were purged from the unpushed commits only (the range
+`origin/main..HEAD` — 6 commits, including 2 merges) with:
+
+```bash
+git filter-branch --force --index-filter \
+  'git rm -r --cached --ignore-unmatch \
+     clade_classify/out/all_bins.fna clade_classify/out/all_bins_orf.faa' \
+  -- origin/main..HEAD
+```
+
+Already-pushed history was left untouched, the merge structure was preserved,
+and the on-disk copies were kept (they are now correctly ignored via
+`clade_classify/.gitignore`). The pre-rewrite tip (`148aa94`) is retained
+locally under `refs/original/refs/heads/main` as a backup until it is
+garbage-collected.
