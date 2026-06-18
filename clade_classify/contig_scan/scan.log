@@ -1,0 +1,24 @@
+[0s] Phase 1: ORF-calling all contigs (pyrodigal meta, 48 threads)
+  [161s] coasm: 1,718,067 ORFs (running total 1,718,067)
+  [219s] CAN_1: 609,703 ORFs (running total 2,327,770)
+  [282s] CAN_2: 543,582 ORFs (running total 2,871,352)
+  [347s] CAN_3: 691,987 ORFs (running total 3,563,339)
+  [430s] CAN_4: 719,708 ORFs (running total 4,283,047)
+  [499s] CAN_5: 524,980 ORFs (running total 4,808,027)
+[499s] Phase 1 done: 4,808,027 ORFs -> /home/freiburger/Documents/EmilyKin/clade_classify/contig_scan/all_contigs_orf.faa
+[499s] Phase 2: pyhmmer hmmsearch (He 269NosZ HMM, E<=1e-10)
+  [508s] loaded 4,808,027 ORFs into memory; searching...
+[512s] Phase 2 done: 909 HMM hits at E<=1e-10
+[517s] Phase 4: motif done. GXHH (L-NosZ) candidates: 1
+
+===== PART C SUMMARY (all assembly contigs) =====
+Total ORFs searched:        4,808,027
+HMM hits (E<=1e-10):       909
+  DXHH (C-NosZ clade I/II):  614
+  GXHH (L-NosZ candidate):   1
+  no clear CuZ (fragments):  294
+Confirmed clade III L-NosZ (<35% id): 0
+    CAN_3::ctg17630_19  CuZ=GXHH  best=Runella_slithyformis_DSM_19594|translated_longest_orf|strand_plus|frame_2|aa_len_553  id=71.3%  -> NO_C-NosZ(pid=71.3%)
+  => Clade III L-NosZ NOT DETECTED in any assembly contig (incl. unbinned).
+[518s] DONE. Outputs in /home/freiburger/Documents/EmilyKin/clade_classify/contig_scan/
+EXIT_0

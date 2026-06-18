@@ -1,0 +1,2 @@
+orf	source	contig	len_aa	CuA	CuZ	call	hmm_score	evalue	best_chee_hit	pct_id_to_CNosZ	confirmed_LNosZ
+CAN_3::ctg17630_19	CAN_3	ctg17630	219	noCuA	GXHH	L-NosZ_cladeIII	193.0	2.1e-54	Runella_slithyformis_DSM_19594|translated_longest_orf|strand_plus|frame_2|aa_len_553	71.3%	NO_C-NosZ(pid=71.3%)

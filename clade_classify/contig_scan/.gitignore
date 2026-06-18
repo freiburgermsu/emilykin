@@ -1,0 +1,4 @@
+# Large ORF/contig intermediates (regenerable via ../scan_all_contigs.py) —
+# keep on disk, never track (GitHub 100MB limit). Track only the TSV/MD results.
+all_contigs_orf.faa
+*.fna
