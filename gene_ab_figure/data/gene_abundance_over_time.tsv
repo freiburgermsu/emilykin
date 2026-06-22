@@ -1,0 +1,9 @@
+ko_group	gene	N_stage	CAN_1	CAN_2	CAN_3	CAN_4	CAN_5	mean	max	n_MAGs_present
+nar	nar	Nitrate reduction (NO₃→NO₂)	345.204	355.286	367.481	207.792	130.294	281.211	367.481	3
+nap	nap	Nitrate reduction (NO₃→NO₂)	354.877	416.339	413.880	472.790	544.523	440.482	544.523	6
+nirB/D	nirB/D	DNRA (NO₂→NH₄)	440.580	432.887	432.373	400.269	305.703	402.362	440.580	10
+nirS	nirS	Denitrification (NO₂→NO)	245.013	303.798	305.396	308.167	294.404	291.356	308.167	9
+nirK	nirK	Denitrification (NO₂→NO)	50.817	68.475	74.562	17.938	2.696	42.898	74.562	2
+norC	norC	Denitrification (NO→N₂O)	1122.177	1266.218	1315.845	621.029	567.457	978.545	1315.845	10
+nosZ_cladeI	nosZ I	Denitrification (N₂O→N₂)	4.987	6.870	5.913	35.253	29.962	16.597	35.253	1
+nosZ_cladeII	nosZ II	Denitrification (N₂O→N₂)	231.579	228.609	229.695	300.296	317.659	261.568	317.659	12
