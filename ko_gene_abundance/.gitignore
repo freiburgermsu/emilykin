@@ -1,0 +1,5 @@
+# transient alignment intermediates (regenerable via 02_align_ko.sh)
+counts_*.json
+logs/
+.ko_align_complete
+__pycache__/

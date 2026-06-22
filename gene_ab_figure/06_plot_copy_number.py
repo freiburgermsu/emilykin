@@ -103,22 +103,16 @@ vmax = max(float(log_matrix.max()), 0.3)
 
 # ── 5. Column labels ──────────────────────────────────────────────────────────
 def fmt_label(mag):
-    m      = meta.get(mag, {})
-    genus  = m.get('genus', '')
-    iterid = m.get('iterid', '')
+    # MAG iterativeID (consistent with 04_plot_heatmap.py); short-id fallback
+    it = meta.get(mag, {}).get('iterid', '')
+    if it:
+        return it.replace('Ca_', 'Ca. ')
     if mag.startswith('CAN_'):
         parts = mag.split('_')
-        short = f"C{parts[1]}b{parts[-1].split('.')[-1]}"
-    elif mag.startswith('coasm_bin.'):
-        short = f"cob{mag.split('.')[-1]}"
-    else:
-        short = mag
-    if genus:
-        return f"{genus}\n({short})"
-    elif iterid:
-        base = iterid.split('.')[0].replace('Ca_', 'Ca.')
-        return f"{base}\n({short})"
-    return short
+        return f"C{parts[1]}b{parts[-1].split('.')[-1]}"
+    if mag.startswith('coasm_bin.'):
+        return f"cob{mag.split('.')[-1]}"
+    return mag
 
 col_labels = [fmt_label(m) for m in sorted_mags]
 
@@ -187,7 +181,7 @@ for spine in ax_strip.spines.values():
 
 # Column labels
 ax_heat.set_xticks(range(n_cols))
-ax_heat.set_xticklabels(col_labels, rotation=55, ha='right', fontsize=6.5, va='top')
+ax_heat.set_xticklabels(col_labels, rotation=55, ha='right', fontsize=6.5, va='top', fontstyle='italic')
 ax_heat.tick_params(axis='x', length=0, pad=1)
 
 # Cell annotations (raw copy number)

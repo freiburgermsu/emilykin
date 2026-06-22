@@ -115,22 +115,16 @@ vmax = max(log_mat.max(), 0.5)
 
 # Column labels
 def fmt_label(mag):
-    m = meta.get(mag, {})
-    genus = m.get('genus', '')
-    iterid = m.get('iterid', '')
+    # MAG iterativeID (consistent with 04_plot_heatmap.py); short-id fallback
+    it = meta.get(mag, {}).get('iterid', '')
+    if it:
+        return it.replace('Ca_', 'Ca. ')
     if mag.startswith('CAN_'):
         parts = mag.split('_')
-        short = f"C{parts[1]}b{parts[-1].split('.')[-1]}"
-    elif mag.startswith('coasm_bin.'):
-        short = f"cob{mag.split('.')[-1]}"
-    else:
-        short = mag
-    if genus:
-        return f"{genus}\n({short})"
-    elif iterid:
-        base = iterid.split('.')[0].replace('Ca_', 'Ca.')
-        return f"{base}\n({short})"
-    return short
+        return f"C{parts[1]}b{parts[-1].split('.')[-1]}"
+    if mag.startswith('coasm_bin.'):
+        return f"cob{mag.split('.')[-1]}"
+    return mag
 
 col_labels = [fmt_label(m) for m in sorted_mags]
 
