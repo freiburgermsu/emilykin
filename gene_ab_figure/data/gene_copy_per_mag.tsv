@@ -1,0 +1,23 @@
+MAG	iterativeID	genus	narG	narH	narI	napA	napB	nirB	nirD	nirS	nirK	norB	norC	nosZ_cladeI	nosZ_cladeII	total	nosZ_II_subclade
+CAN_1_bin.174	UBA5532_m.1	UBA5532	0	0	0	0	0	0	0	0	0	0	0	0	0	0	-
+CAN_1_bin.210	Dokdonella.14	Dokdonella	0	0	0	0	0	0	0	0	1	1	0	0	0	2	-
+CAN_1_bin.77	UBA5066_m.1	UBA5066	0	0	0	0	0	0	0	0	0	1	0	0	1	2	II.G
+CAN_1_bin.98	Ca_Accumulibacter.23	Accumulibacter	0	0	0	1	1	1	0	2	0	0	0	0	1	6	II.D
+CAN_2_bin.125	Pseudoxanthomonas_A_m.1	Pseudoxanthomonas_A	0	0	0	1	1	0	0	0	1	1	0	0	0	4	-
+CAN_2_bin.159	Pseudoxanthomonas.23	Pseudoxanthomonas	0	0	0	0	0	0	0	1	0	1	0	0	0	2	-
+CAN_2_bin.6	Denitratisoma.2	Desulfobacillus	0	0	0	1	1	1	0	2	0	0	0	0	1	6	II.D
+CAN_3_bin.203	JAEULV01_m.1	JAEULV01	0	0	0	1	1	1	0	1	0	1	1	0	1	7	II.D
+CAN_3_bin.221	OLB5_m.1	OLB5	0	0	0	0	0	0	1	0	0	0	0	0	1	2	II.B
+CAN_4_bin.116	Ca_Competibacter.49	Competibacter	0	0	0	0	0	1	0	0	0	0	0	0	0	1	-
+CAN_5_bin.106	Ca_Competibacter.139	Competibacter	1	1	0	0	0	1	0	0	0	1	1	0	0	5	-
+CAN_5_bin.112	Terrimonas.22	JJ008	0	0	0	0	0	0	0	0	0	0	0	0	1	1	II.C
+CAN_5_bin.147	Terrimonas.3	SpSt-398	0	0	0	0	0	0	0	0	0	0	0	0	1	1	II.C
+CAN_5_bin.177	Lysobacter.2	SCMT01	0	0	0	0	0	0	0	1	0	1	0	0	0	2	-
+CAN_5_bin.40	Giesbergeria_m.1	Giesbergeria	1	1	1	0	0	1	0	1	0	2	1	0	1	9	II.G
+CAN_5_bin.70	Azonexus.12	Azonexus	0	0	0	1	1	1	0	2	0	0	0	0	1	6	II.D
+CAN_5_bin.90	UBA5532_m.2	UBA5532	0	0	0	0	0	0	0	0	0	0	0	0	0	0	-
+coasm_bin.185	Ca_Accumulibacter.8	Accumulibacter	0	0	0	1	1	1	0	2	0	1	0	0	1	7	II.D
+coasm_bin.260	JAAEKA01_m.2	JAAEKA01	0	0	0	0	0	0	0	0	0	0	0	0	1	1	II.D
+coasm_bin.481	Leptovillus_m.2	Leptovillus	0	0	0	0	0	0	0	0	0	0	0	0	1	1	II.D
+coasm_bin.55	Ca_Competibacter.51	Competibacter	1	1	1	0	0	1	0	1	0	1	1	1	0	8	-
+TOTAL			3	3	2	6	6	9	1	13	2	11	4	1	12	73	

@@ -3,6 +3,7 @@ data/aligned_*.bam.bai
 data/combined_ref.fa
 data/combined_ref.fa.fai
 data/combined_ref.mmi
+data/combined_ref_21.fa
 data/index_build.log
 data/logs/
 data/counts_*.json

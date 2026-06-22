@@ -80,3 +80,27 @@ earlier step: long Nanopore reads were mapped to the dereplicated-MAG reference
 with **minimap2 (`-ax map-ont`, `--secondary=no`)** on the cluster
 (`02_build_and_align.sh`) and counted per gene. minimap2 was the read→MAG
 aligner; `nhmmer` was the gene→clade classifier. They are independent.
+
+## 6. Clade II sub-clade assignment (`07_cladeII_subclades.py`)
+
+For each of the 12 Clade-II genes, the sub-clade is the NosZREF `1577` group
+(II.A–II.H) whose HMM gives the highest `nhmmer` bit-score — the same 8 DNA HMMs
+and search as the I/II call, but keeping the full per-sub-clade score vector.
+Reported with the runner-up sub-clade and the best−runner-up **margin**
+(sub-clade-resolution confidence: `high` ≥ 40, `medium` ≥ 10, `low` < 10 bits).
+Output: `data/nosz_cladeII_subclades.tsv`.
+
+| sub-clade | n | MAGs (genus) | reference taxa | confidence |
+|-----------|--:|--------------|----------------|------------|
+| **II.D** | 7 | *Accumulibacter* ×2, *Desulfobacillus/Denitratisoma*, *Azonexus*, JAEULV01, JAAEKA01, *Leptovillus* | *Dechloromonas / Dechlorosoma* | high (margins 85–160), coasm_bin.260 & .481 medium (≈12) |
+| **II.G** | 2 | *Giesbergeria*, UBA5066 | *Desulfitobacterium* + env. | *Giesbergeria* high (60), UBA5066 medium (14) |
+| **II.C** | 2 | JJ008, SpSt-398 (both *Terrimonas*) | Bacteroidetes | **low** (II.C vs II.B margin 0.8) |
+| **II.B** | 1 | OLB5 | Bacteroidetes (*Prevotella, Gemmatimonas*) | **low** (margin 2.2) |
+
+**Caveat — Bacteroidetes II.B/II.C boundary.** II.B and II.C are both
+Bacteroidetes sub-clades; the three Bacteroidetes genes (OLB5, JJ008, SpSt-398)
+sit at their boundary (best−runner-up < 2.5 bits) and are best reported as
+"Clade II Bacteroidetes (II.B/C)". The II.D (Betaproteobacterial denitrifiers —
+*Accumulibacter*, *Azonexus*, *Denitratisoma*…) and II.G assignments are robust.
+The dominant Clade-II sub-clade in this system is **II.D**, consistent with the
+*Dechloromonas*-type reference flagged in `clade_classify/CLADE_I_II_DISCREPANCY.md`.

@@ -33,6 +33,9 @@ SAMPLES = ['CAN_1', 'CAN_2', 'CAN_3', 'CAN_4', 'CAN_5']
 # ── Row groups (N-transformation stage), top → bottom ───────────────────────
 # (group label, [(row_id, row_label), ...])
 ROW_GROUPS = [
+    ('Nitrate reduction\n(NO₃→NO₂)',
+     [('nar', 'nar  –  membrane-bound nitrate reductase (narGHI)'),
+      ('nap', 'nap  –  periplasmic nitrate reductase (napAB)')]),
     ('DNRA\n(NO₂→NH₄)',
      [('nirB/D', 'nirB/D  –  NADH nitrite reductase')]),
     ('Denitrification\n(NO₂→NO)',
@@ -125,6 +128,9 @@ def genus_of(m):
         return g
     it = meta.get(m, {}).get('iterid', '')
     return it.split('.')[0].replace('Ca_', 'Ca.') if it else short_id(m)
+def iterid_of(m):
+    it = meta.get(m, {}).get('iterid', '')
+    return it.replace('Ca_', 'Ca. ') if it else short_id(m)
 
 # ── Geometry (data units) ───────────────────────────────────────────────────
 SUB_W, GAP_X = 1.0, 0.6
@@ -210,9 +216,9 @@ for m in sorted_mags:
     for si in range(n_s):
         ax.text(bx + si * SUB_W + 0.5, total_y + 0.18, str(si + 1),
                 ha='center', va='top', fontsize=4.6, color='#555555', clip_on=False)
-    ax.text(bx + n_s * SUB_W / 2, total_y + 0.65,
-            f"{genus_of(m)}\n({short_id(m)})", ha='right', va='top',
-            rotation=45, rotation_mode='anchor', fontsize=6.6,
+    ax.text(bx + n_s * SUB_W / 2, total_y + 0.5,
+            iterid_of(m), ha='right', va='top',
+            rotation=45, rotation_mode='anchor', fontsize=6.8,
             fontstyle='italic', clip_on=False)
 
 # ── Category colour bar + legend (top) ──────────────────────────────────────
@@ -251,15 +257,17 @@ caption = (
     'Per-sample gene abundances in reads per kilobase per million mapped reads '
     '(RPKM) from long-read (Nanopore) metagenomes of the CAN system. Columns are '
     'grouped by MAG — the union of the ten most abundant high-quality MAGs per '
-    'sample — each subdivided into the five samples CAN_1–CAN_5 (sub-columns 1–5, '
-    'left→right); the coloured bar marks GAO / PAO / denitrifier classification '
-    '(mag_abundance_summary.tsv logic). Rows are denitrification/DNRA KO functions '
-    'grouped by nitrogen-transformation stage (right brackets); for nirB/D '
-    '(K00362/K00363) the cell is the maximum RPKM over the two genes. nosZ (K00376) '
-    'is split into Clade I (typical denitrifier) and Clade II (atypical / '
-    'non-denitrifier) by per-gene nhmmer classification against the NosZREF Clade I '
-    'and Clade II (sub-clades 1577 A–H) reference alignments; ○ marks a '
-    'low-confidence clade call. Grey cells indicate no detected gene.')
+    'sample, labelled by MAG iterativeID — each subdivided into the five samples '
+    'CAN_1–CAN_5 (sub-columns 1–5, left→right); the coloured bar marks GAO / PAO / '
+    'denitrifier classification (mag_abundance_summary.tsv logic). Rows are '
+    'denitrification/DNRA KO functions grouped by nitrogen-transformation stage '
+    '(right brackets); for the multi-gene rows — nar (narGHI; K00370/K00371/'
+    'K00374), nap (napAB; K02567/K02568), nirB/D (K00362/K00363) and norC '
+    '(norC/norB; K02305/K04561) — the cell is the maximum RPKM over the row’s '
+    'genes. nosZ (K00376) is split into Clade I (typical denitrifier) and Clade II '
+    '(atypical / non-denitrifier) by per-gene nhmmer classification against the '
+    'NosZREF Clade I and Clade II (sub-clades 1577 A–H) reference alignments; ○ '
+    'marks a low-confidence clade call. Grey cells indicate no detected gene.')
 fig.text(lmargin / fig_w, (bmargin - 1.05) / fig_h, caption,
          ha='left', va='top', fontsize=7.6, family='serif', wrap=True)
 # constrain caption wrap width
