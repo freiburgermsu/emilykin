@@ -37,3 +37,8 @@ synthetic_genomes_p3/*
 # macOS AppleDouble junk + large local archives (>100MB, can't go to GitHub)
 ._*
 kofamscan.zip
+
+# clade_classify concatenated bin FASTA/FAA (~1.3GB, regenerable; >100MB so
+# can't go to GitHub — these were purged once in dc13ce0, keep them untracked)
+clade_classify/out/all_bins.fna
+clade_classify/out/all_bins_orf.faa
