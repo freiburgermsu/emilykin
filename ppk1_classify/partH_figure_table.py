@@ -93,7 +93,7 @@ def lab(cl):
 def lcol(cl):
     return tcol(cl.name) if getattr(cl,"name",None) else "black"
 
-fig=plt.figure(figsize=(13,22)); ax=fig.add_subplot(111)
+fig=plt.figure(figsize=(15,40)); ax=fig.add_subplot(111)   # tall canvas: 88 tips need vertical room
 def supp(c):  # SH-aLRT/UFBoot, on internal branches only (mid-branch → clear of tip labels)
     return c.name if (not c.is_terminal() and c.name and "/" in str(c.name)) else None
 Phylo.draw(tree,axes=ax,do_show=False,label_func=lab,label_colors=lcol,
@@ -101,13 +101,14 @@ Phylo.draw(tree,axes=ax,do_show=False,label_func=lab,label_colors=lcol,
 # style: highlight our sample tips (soothing blue) + shrink branch-support labels
 for _t in ax.texts:
     s=_t.get_text().strip()
-    if s.startswith("★"):
-        _t.set_color("#12355B"); _t.set_fontweight("bold")
-        _t.set_fontsize(_t.get_fontsize()+1)
-        _t.set_bbox(dict(boxstyle="round,pad=0.3", facecolor="#CADDF2",
-                         edgecolor="#6f9fd8", linewidth=0.8, alpha=0.95))
-    elif "/" in s and s.replace("/","").replace(".","").isdigit():
-        _t.set_fontsize(4.2); _t.set_color("#8a8a8a"); _t.set_va("bottom")
+    if s.startswith("★"):                                   # our sample MAGs
+        _t.set_color("#12355B"); _t.set_fontweight("bold"); _t.set_fontsize(6.5)
+        _t.set_bbox(dict(boxstyle="round,pad=0.2", facecolor="#CADDF2",
+                         edgecolor="#6f9fd8", linewidth=0.7, alpha=0.95))
+    elif "/" in s and s.replace("/","").replace(".","").isdigit():   # branch support
+        _t.set_fontsize(3.2); _t.set_color("#9a9a9a"); _t.set_va("bottom")
+    else:                                                   # reference tip labels
+        _t.set_fontsize(4.5)
 ax.set_title("Accumulibacter ppk1 ML tree (IQ-TREE TVM+F+I+G4) — placement of 5 CAN MAG ppk1 genes\n"
  "★=our sample MAG (blue highlight); refs blue=Type I, green=Type II, orange=unclassified; rooted on Dechloromonas/Rhodocyclus outgroup",fontsize=11)
 ax.set_xlabel("substitutions / site")
