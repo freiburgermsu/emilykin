@@ -1,11 +1,15 @@
-# nosZ Clade I / II — unresolved disagreement between the result artifacts
+# nosZ Clade I / II — disagreement between the result artifacts  ✅ RESOLVED
 
-**Status: not yet resolved.** Three shipped artifacts give two different answers
-to "how many of the 13 K00376 nosZ genes are Clade I?" This document states the
-conflict explicitly, because nowhere else does. (`out/summary.md` lines 29–31
-assert a *conclusion* — "HMM calls are correct, diamond was unreliable" — but never
-shows that the two `out/` spreadsheets still carry the opposite calls, which 6
-genes differ, or why.)
+**Status: RESOLVED (tree placement).** The three artifacts have been reconciled to
+one call set — **Clade I = 2 (coasm_bin.55, CAN_5_bin.40), Clade II = 11** — by the
+phylogenetic placement described under *Recommended resolution* below and run in
+`partD_tree_placement.py` (→ `out/partD_tree_clades.tsv`). See the **RESOLUTION**
+section at the end. The rest of this document is the original problem statement, kept
+for provenance.
+
+> Historical: three shipped artifacts gave two different answers to "how many of the
+> 13 K00376 nosZ genes are Clade I?" (HMM/figure said 1, the two `out/` spreadsheets
+> said 7, differing on 6 genes). The body below diagnoses that conflict.
 
 ## TL;DR
 
@@ -103,3 +107,55 @@ phylogenetically:
 
 Until step 3, treat the Clade I count as **unresolved (between 1 and 7)** in any
 external communication.
+
+---
+
+## RESOLUTION (tree placement — all three steps done)
+
+Run: `partD_tree_placement.py` → `out/partD_tree_clades.tsv`,
+`out/partD_reference_audit.tsv`; reconciled into all artifacts by
+`partE_reconcile.py`.
+
+**Method (step 1).** The 13 query proteins were placed in the existing reference ML
+tree `out/nosz_tree.nwk` (FastTree WAG+Γ, SH-like supports; 330 Chee+Orellana C-NosZ
++ 259 He refs + 13 queries). Reference clade membership was assigned **only from
+textbook-unambiguous marker genera** — Clade I: *Pseudomonas, Paracoccus,
+Bradyrhizobium, Sinorhizobium, Rhodobacter, Shewanella, Azoarcus, Thauera, Ralstonia,
+Cupriavidus, Neisseria…*; Clade II: *Wolinella, Anaeromyxobacter, Gemmatimonas,*
+Bacteroidota (*Chryseobacterium, Prevotella, Dyadobacter, Rhodothermus…*), Chlorobi.
+The disputed Rhodocyclaceae/Comamonadaceae (*Dechloromonas, Dechlorosoma,
+Accumulibacter, Azonexus, Alicycliphilus, Acidovorax, Magnetospirillum*) were **not**
+used as anchors, so the tree placed them — and the queries — independently. The
+**Clade II clan = MRCA(Clade-II anchors) is a single-edge bipartition** of 233 tips
+containing all 35 Clade-II anchors and **0 of the 94 Clade-I anchors** (SH 0.84);
+this is rooting-independent. A tip is Clade II iff it nests inside that clan.
+
+**Result.** Clade I = **2** (coasm_bin.55 → sister *Burkholderia/Rhodoferax*, SH 0.97;
+CAN_5_bin.40 → sister *Ralstonia/Cupriavidus/Rubrivivax*, SH 0.67, borderline).
+Clade II = **11** (all others; each inside the Clade II clan, sisters = *Anaeromyxobacter,*
+Bacteroidota, *Caldilinea, Rhodothermus,* and the Clade-II Rhodocyclaceae *Dechloromonas/
+Dechlorosoma/Magnetospirillum*).
+
+**Step 2 — is NosZREF-1577D really Clade II?** Yes. Every 1577D core taxon present as a
+reference places **inside** the Clade II clan: *Dechloromonas* 3/3, *Dechlorosoma* 4/4,
+*Accumulibacter* 2/2, *Magnetospirillum* 3/3. So the `1577D = Clade II` label is correct
+and **no Clade I HMM rebuild is warranted**. The earlier hypothesis ("these are typical
+Clade I") is **refuted** for the actual nosZ *sequences*: although these genera include
+canonical denitrifiers, *these* nosZ alleles are atypical/Clade II (nosZ is mobile;
+genus ≠ allele clade). The naming-collision caveat still holds (*Accumulibacter* "clade
+IIA" is a PAO lineage label) — but here the nosZ independently *is* Clade II.
+
+**Who was right.** The HMM/figure calls were essentially correct (agree 12/13; only
+CAN_5_bin.40 moves, II→I — the gene the HMM itself flagged low-confidence). The diamond
+reclassification was wrong on **5 genes**: its genus→clade lookup assumed Rhodocyclaceae
+= Clade I, but their reference sequences are Clade II. The 5 diamond "II.D→I" flips are
+reverted.
+
+**Step 3 — reconciled.** `clade`/`final_clade` in `gene_ab_figure/data/nosz_clades.tsv`,
+`out/nosz_clades_updated.tsv`, and `out/partA_clade_I_II.tsv` now all equal the tree
+call; each method's own call is kept in side columns (`clade_hmm`, `clade_diamond`,
+`tree_clade`). `gene_rpkm_per_sample_claded.tsv` and the figure
+(`gene_abundance_figure.png/.pdf`) were regenerated (CAN_5_bin.40 nosZ RPKM moved to the
+Clade I row). The CAN-system N₂O-reduction story is therefore **predominantly atypical
+Clade II (11/13)** with two typical Clade I denitrifiers (*Competibacter* coasm_bin.55
+and the *Giesbergeria* MAG).

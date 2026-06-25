@@ -54,6 +54,15 @@ with open(os.path.join(DATA, 'taxonomy_labels.tsv')) as f:
 mags = [l.strip() for l in open(os.path.join(DATA, 'selected_mag_list.txt')) if l.strip()]
 mags.sort()
 
+# ── ppk1 classification (Accumulibacter MAGs only; ppk1_classify/) ───────────
+ppk1_type, ppk1_species = {}, {}
+ppk1_path = os.path.join(WORK, '..', 'ppk1_classify', 'ppk1_classification.tsv')
+if os.path.exists(ppk1_path):
+    with open(ppk1_path) as f:
+        for r in csv.DictReader(f, delimiter='\t'):
+            ppk1_type[r['MAG']] = r.get('ppk1_type', '')
+            ppk1_species[r['MAG']] = r.get('proposed_species', '')
+
 # ── build rows ──────────────────────────────────────────────────────────────
 COLS = [g for g, _ in GENE_KOS] + ['nosZ_cladeI', 'nosZ_cladeII']
 rows = []
@@ -66,16 +75,19 @@ for m in mags:
                            if clade_of.get(g) == 'II' and g in subclade_of})) or '-'
     total = sum(cnt[c] for c in COLS)
     rows.append({'MAG': m, 'iterativeID': iterid.get(m, ''), 'genus': genus.get(m, ''),
-                 **cnt, 'total': total, 'nosZ_II_subclade': sub})
+                 **cnt, 'total': total, 'nosZ_II_subclade': sub,
+                 'ppk1_type': ppk1_type.get(m, ''), 'ppk1_species': ppk1_species.get(m, '')})
 
 # ── write TSV ────────────────────────────────────────────────────────────────
-fields = ['MAG', 'iterativeID', 'genus'] + COLS + ['total', 'nosZ_II_subclade']
+fields = (['MAG', 'iterativeID', 'genus'] + COLS
+          + ['total', 'nosZ_II_subclade', 'ppk1_type', 'ppk1_species'])
 with open(os.path.join(DATA, 'gene_copy_per_mag.tsv'), 'w', newline='') as f:
     w = csv.DictWriter(f, fieldnames=fields, delimiter='\t')
     w.writeheader(); w.writerows(rows)
     tot = {'MAG': 'TOTAL', 'iterativeID': '', 'genus': '',
            **{c: sum(r[c] for r in rows) for c in COLS},
-           'total': sum(r['total'] for r in rows), 'nosZ_II_subclade': ''}
+           'total': sum(r['total'] for r in rows), 'nosZ_II_subclade': '',
+           'ppk1_type': '', 'ppk1_species': ''}
     w.writerow(tot)
 
 # ── write markdown ───────────────────────────────────────────────────────────
@@ -90,7 +102,10 @@ def md_table(fields, rows, tot):
 
 legend = ('Gene→KO: narG K00370, narH K00371, narI K00374, napA K02567, napB K02568, '
           'nirB K00362, nirD K00363, nirS K15864, nirK K00368, norB K04561, norC K02305, '
-          'nosZ K00376 (split by Clade I/II via nhmmer vs NosZREF). '
+          'nosZ K00376 (split by Clade I/II by tree placement, reconciled — '
+          'clade_classify/partD; subclade via nhmmer vs NosZREF). '
+          'ppk1_type/ppk1_species: Accumulibacter ppk1 clade + proposed species '
+          '(Petriglieri 2022; ppk1_classify/). '
           'Copies = distinct gene loci per MAG (genomic inventory; · = 0).')
 with open(os.path.join(DATA, 'gene_copy_per_mag.md'), 'w') as f:
     f.write('# Denitrification / DNRA gene copies per MAG (genomic inventory)\n\n')

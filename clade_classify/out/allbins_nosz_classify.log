@@ -1,0 +1,7 @@
+aligning (mafft --auto) ...
+building tree (FastTree -lg -gamma) ...
+Clade II clan: 726 tips | II-anchors 35/35 | I-anchors inside 97 | support 0.537
+
+122 nosZ bins | loci: Clade I=0 Clade II=135 Clade III=1
+wrote allbins_nosz_clades.tsv, allbins_nosz_loci_clade.bed, allbins_nosz_per_bin.tsv
+copied BED -> /home/freiburger/Documents/EmilyKin/clade_classify/server_processing/allbins_nosz_loci_clade.bed

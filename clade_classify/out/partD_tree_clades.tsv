@@ -1,0 +1,14 @@
+mag	gene_id	tree_clade	placement_support	sister_composition	nearest_ref_genera	hmm_clade	diamond_clade	cladeII_subclade
+CAN_1_bin.77	CAN_1_bin.77|DLHCAE_04715	II	0.394	{'II': 12}	Anaeromyxobacter	II	II	II.G
+CAN_1_bin.98	CAN_1_bin.98|KLJHLB_03109	II	0.524	{'II': 4}	Dechlorosoma;Dechloromonas	II	I	II.D
+CAN_2_bin.6	CAN_2_bin.6|HMFKDB_00723	II	1.000	{'II': 17}	Dechlorosoma;Dechloromonas;Candidatus;HEc-A026;HEc-A029	II	I	II.D
+CAN_3_bin.203	CAN_3_bin.203|NGIEFB_03466	II	0.937	{'II': 4}	Magnetospirillum	II	I	II.D
+CAN_3_bin.221	CAN_3_bin.221|ECOIAL_03204	II	0.915	{'II': 36}	Chryseobacterium;Prevotella;Riemerella;Dyadobacter;Pedobacter	II	II	II.B
+CAN_5_bin.112	CAN_5_bin.112|DCCNNJ_01028	II	0.973	{'II': 2}	Flavisolibacter;Havana	II	II	II.C
+CAN_5_bin.147	CAN_5_bin.147|CIIJDE_02562	II	0.973	{'II': 2}	Flavisolibacter;Havana	II	II	II.C
+CAN_5_bin.40	CAN_5_bin.40|GNOLDL_01230	I	0.671	{'I': 14}	Ralstonia;Cupriavidus;Rubrivivax;Ralstona	II	I	II.G
+CAN_5_bin.70	CAN_5_bin.70|MDDBPK_01672	II	0.524	{'II': 4}	Dechlorosoma;Dechloromonas	II	I	II.D
+coasm_bin.185	coasm_bin.185|FDDLBN_03425	II	0.524	{'II': 4}	Dechlorosoma;Dechloromonas	II	I	II.D
+coasm_bin.260	coasm_bin.260|FLKOMO_04520	II	1.000	{'II': 3}	Caldilinea	II	II	II.D
+coasm_bin.481	coasm_bin.481|EGDGHF_00332	II	0.976	{'II': 14}	Rhodothermus;Sphaerobacter;Thermomicrobium;Caldilinea	II	II	II.D
+coasm_bin.55	coasm_bin.55|FCMEHI_03805	I	0.971	{'I': 24}	Burkholderia;Rhodoferax;Aromatoleum;Thiobacillus;Azoarcus	I	I	II.G

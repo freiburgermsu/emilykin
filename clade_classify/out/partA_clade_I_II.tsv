@@ -1,14 +1,14 @@
-gene_id	mag	prior_clade	diamond_clade	top_chee_hit	top_pident	final_clade	CuA	CuZ	motif_call
-CAN_1_bin.77|DLHCAE_04715	CAN_1_bin.77	II	II	Anaeromyxobacter_sp._Fw109-5|Orellana2014|NosZ_proteinGI_152026694|len647	81.1	II	CuA	DXHH	C-NosZ_cladeI_II
-CAN_1_bin.98|KLJHLB_03109	CAN_1_bin.98	II	I	Candidatus_Accumulibacter_phosphatis_clade_IIA_str._UW-1|Orellana2014|NosZ_proteinGI_257094967|len765	92.0	I	CuA	DXHH	C-NosZ_cladeI_II
-CAN_2_bin.6|HMFKDB_00723	CAN_2_bin.6	II	I	Dechloromonas_aromatica_RCB|Orellana2014|NosZ_proteinGI_71907203|len760	86.4	I	CuA	DXHH	C-NosZ_cladeI_II
-CAN_3_bin.203|NGIEFB_03466	CAN_3_bin.203	II	I	Magnetospirillum_magneticum_AMB-1|Orellana2014|NosZ_proteinGI_83312185|len768	70.4	I	CuA	DXHH	C-NosZ_cladeI_II
-CAN_3_bin.221|ECOIAL_03204	CAN_3_bin.221	II	II	Hydrogenobacter_thermophilus_TK-6|Orellana2014|NosZ_proteinGI_288817484|len658	68.8	II	CuA	DXHH	C-NosZ_cladeI_II
-CAN_5_bin.112|DCCNNJ_01028	CAN_5_bin.112	II	unknown	Dyadobacter_fermentans_DSM_18053|Orellana2014|NosZ_proteinGI_255034499|len658	73.5	II	CuA	DXHH	C-NosZ_cladeI_II
-CAN_5_bin.147|CIIJDE_02562	CAN_5_bin.147	II	unknown	Haliscomenobacter_hydrossis_DSM_1100|Orellana2014|NosZ_proteinGI_332667397|len662	74.5	II	CuA	DXHH	C-NosZ_cladeI_II
-CAN_5_bin.40|GNOLDL_01230	CAN_5_bin.40	II	I	Alicycliphilus_denitrificans_BC|Orellana2014|NosZ_proteinGI_319763751|len644	86.8	I	CuA	DXHH	C-NosZ_cladeI_II
-CAN_5_bin.70|MDDBPK_01672	CAN_5_bin.70	II	I	Dechloromonas_aromatica_RCB|Orellana2014|NosZ_proteinGI_71907203|len760	90.5	I	CuA	DXHH	C-NosZ_cladeI_II
-coasm_bin.185|FDDLBN_03425	coasm_bin.185	II	I	Candidatus_Accumulibacter_phosphatis_clade_IIA_str._UW-1|Orellana2014|NosZ_proteinGI_257094967|len765	90.6	I	CuA	DXHH	C-NosZ_cladeI_II
-coasm_bin.260|FLKOMO_04520	coasm_bin.260	II	II	Caldilinea_aerophila_DSM_14535__NBRC_104270|Orellana2014|NosZ_proteinGI_383761670|len656	75.5	II	CuA	DXHH	C-NosZ_cladeI_II
-coasm_bin.481|EGDGHF_00332	coasm_bin.481	II	II	Rhodothermus_marinus_DSM_4252|Orellana2014|NosZ_proteinGI_268317562|len663	60.5	II	CuA	DXHH	C-NosZ_cladeI_II
-coasm_bin.55|FCMEHI_03805	coasm_bin.55	I	I	Rhodoferax_ferrireducens_T118|Orellana2014|NosZ_proteinGI_89901968|len650	73.9	I	CuA	DXHH	C-NosZ_cladeI_II
+gene_id	mag	prior_clade	diamond_clade	top_chee_hit	top_pident	final_clade	CuA	CuZ	motif_call	tree_clade	tree_support
+CAN_1_bin.77|DLHCAE_04715	CAN_1_bin.77	II	II	Anaeromyxobacter_sp._Fw109-5|Orellana2014|NosZ_proteinGI_152026694|len647	81.1	II	CuA	DXHH	C-NosZ_cladeI_II	II	0.394
+CAN_1_bin.98|KLJHLB_03109	CAN_1_bin.98	II	I	Candidatus_Accumulibacter_phosphatis_clade_IIA_str._UW-1|Orellana2014|NosZ_proteinGI_257094967|len765	92.0	II	CuA	DXHH	C-NosZ_cladeI_II	II	0.524
+CAN_2_bin.6|HMFKDB_00723	CAN_2_bin.6	II	I	Dechloromonas_aromatica_RCB|Orellana2014|NosZ_proteinGI_71907203|len760	86.4	II	CuA	DXHH	C-NosZ_cladeI_II	II	1.000
+CAN_3_bin.203|NGIEFB_03466	CAN_3_bin.203	II	I	Magnetospirillum_magneticum_AMB-1|Orellana2014|NosZ_proteinGI_83312185|len768	70.4	II	CuA	DXHH	C-NosZ_cladeI_II	II	0.937
+CAN_3_bin.221|ECOIAL_03204	CAN_3_bin.221	II	II	Hydrogenobacter_thermophilus_TK-6|Orellana2014|NosZ_proteinGI_288817484|len658	68.8	II	CuA	DXHH	C-NosZ_cladeI_II	II	0.915
+CAN_5_bin.112|DCCNNJ_01028	CAN_5_bin.112	II	unknown	Dyadobacter_fermentans_DSM_18053|Orellana2014|NosZ_proteinGI_255034499|len658	73.5	II	CuA	DXHH	C-NosZ_cladeI_II	II	0.973
+CAN_5_bin.147|CIIJDE_02562	CAN_5_bin.147	II	unknown	Haliscomenobacter_hydrossis_DSM_1100|Orellana2014|NosZ_proteinGI_332667397|len662	74.5	II	CuA	DXHH	C-NosZ_cladeI_II	II	0.973
+CAN_5_bin.40|GNOLDL_01230	CAN_5_bin.40	II	I	Alicycliphilus_denitrificans_BC|Orellana2014|NosZ_proteinGI_319763751|len644	86.8	I	CuA	DXHH	C-NosZ_cladeI_II	I	0.671
+CAN_5_bin.70|MDDBPK_01672	CAN_5_bin.70	II	I	Dechloromonas_aromatica_RCB|Orellana2014|NosZ_proteinGI_71907203|len760	90.5	II	CuA	DXHH	C-NosZ_cladeI_II	II	0.524
+coasm_bin.185|FDDLBN_03425	coasm_bin.185	II	I	Candidatus_Accumulibacter_phosphatis_clade_IIA_str._UW-1|Orellana2014|NosZ_proteinGI_257094967|len765	90.6	II	CuA	DXHH	C-NosZ_cladeI_II	II	0.524
+coasm_bin.260|FLKOMO_04520	coasm_bin.260	II	II	Caldilinea_aerophila_DSM_14535__NBRC_104270|Orellana2014|NosZ_proteinGI_383761670|len656	75.5	II	CuA	DXHH	C-NosZ_cladeI_II	II	1.000
+coasm_bin.481|EGDGHF_00332	coasm_bin.481	II	II	Rhodothermus_marinus_DSM_4252|Orellana2014|NosZ_proteinGI_268317562|len663	60.5	II	CuA	DXHH	C-NosZ_cladeI_II	II	0.976
+coasm_bin.55|FCMEHI_03805	coasm_bin.55	I	I	Rhodoferax_ferrireducens_T118|Orellana2014|NosZ_proteinGI_89901968|len650	73.9	I	CuA	DXHH	C-NosZ_cladeI_II	I	0.971

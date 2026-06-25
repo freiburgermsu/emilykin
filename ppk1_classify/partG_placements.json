@@ -1,0 +1,122 @@
+[
+ {
+  "query": "CAN_1_bin.98_ppk1",
+  "clade": "un",
+  "purity": 1.0,
+  "clade_mix": {
+   "un": 1
+  },
+  "sh_alrt": "",
+  "ufboot": "",
+  "nearest": [
+   {
+    "tip": "GCA_003538495.1_COGBHOPJ_04777",
+    "name": "Candidatus Accumulibacter sp. UBA11064",
+    "clade": "un"
+   }
+  ],
+  "n_refs_in_clan": 1
+ },
+ {
+  "query": "CAN_4_bin.64_ppk1",
+  "clade": "un",
+  "purity": 1.0,
+  "clade_mix": {
+   "un": 1
+  },
+  "sh_alrt": "100",
+  "ufboot": "100",
+  "nearest": [
+   {
+    "tip": "GCA_003538495.1_COGBHOPJ_04777",
+    "name": "Candidatus Accumulibacter sp. UBA11064",
+    "clade": "un"
+   }
+  ],
+  "n_refs_in_clan": 1
+ },
+ {
+  "query": "coasm_bin.185_ppk1",
+  "clade": "IA",
+  "purity": 1.0,
+  "clade_mix": {
+   "IA": 4
+  },
+  "sh_alrt": "99.5",
+  "ufboot": "100",
+  "nearest": [
+   {
+    "tip": "GCA_009467855.1_FFHDGLOA_00684",
+    "name": "Candidatus Accumulibacter phosphatis CANDO_1",
+    "clade": "IA"
+   },
+   {
+    "tip": "2687453699_PEBOPBNB_00179",
+    "name": "Candidatus Accumulibacter phosphatis UW3",
+    "clade": "IA"
+   },
+   {
+    "tip": "AF502189.1",
+    "name": "UCB HP1-ppk2 -02",
+    "clade": "IA"
+   },
+   {
+    "tip": "DQ868997.1",
+    "name": "UWMS_A8",
+    "clade": "IA"
+   }
+  ],
+  "n_refs_in_clan": 4
+ },
+ {
+  "query": "coasm_bin.250_ppk1",
+  "clade": "IC",
+  "purity": 1.0,
+  "clade_mix": {
+   "IC": 2
+  },
+  "sh_alrt": "100",
+  "ufboot": "100",
+  "nearest": [
+   {
+    "tip": "Delftensis_ppk1",
+    "name": "Ca. A. delftensis",
+    "clade": "IC"
+   },
+   {
+    "tip": "JN090845.1",
+    "name": "Inoc_ppk1_020",
+    "clade": "IC"
+   }
+  ],
+  "n_refs_in_clan": 2
+ },
+ {
+  "query": "coasm_bin.347_ppk1",
+  "clade": "IIA",
+  "purity": 1.0,
+  "clade_mix": {
+   "IIA": 3
+  },
+  "sh_alrt": "81.9",
+  "ufboot": "99",
+  "nearest": [
+   {
+    "tip": "GCA_000024165.1_DGOCCOHL_01070",
+    "name": "Candidatus Accumulibacter phosphatis UW1",
+    "clade": "IIA"
+   },
+   {
+    "tip": "POS2015-07-16-bin.58_MDFNDMIC_02139",
+    "name": "Candidatus Accumulibacter phosphatis UW9-POB",
+    "clade": "IIA"
+   },
+   {
+    "tip": "UW5_GNJGOIBN_01044",
+    "name": "Candidatus Accumulibacter phosphatis UW5",
+    "clade": "IIA"
+   }
+  ],
+  "n_refs_in_clan": 3
+ }
+]

@@ -1,0 +1,337 @@
+IQ-TREE multicore version 2.4.0 for Linux x86 64-bit built Feb  7 2025
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor, Heiko Schmidt,
+Dominik Schrempf, Michael Woodhams, Ly Trong Nhan, Thomas Wong
+
+Host:    frankensteinsmonster (AVX2, FMA3, 188 GB RAM)
+Command: /tmp/claude-1000/-home-freiburger-Documents-EmilyKin/54d19025-cf62-4bcd-9541-7da35391cf98/scratchpad/tools/iqtree-2.4.0-Linux-intel/bin/iqtree2 -s ppk1_classify/ppk1_aligned.afa -m MFP -B 1000 -alrt 1000 -T AUTO -ntmax 4 --seqtype DNA --prefix ppk1_classify/ppk1_tree -redo
+Seed:    891917 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Tue Jun 23 16:39:32 2026
+Kernel:  AVX+FMA - auto-detect threads (64 CPU cores detected)
+
+Reading alignment file ppk1_classify/ppk1_aligned.afa ... Fasta format detected
+Reading fasta file: done in 0.00189401 secs using 82.84% CPU
+Alignment most likely contains DNA/RNA sequences
+WARNING: 34 sites contain only gaps or ambiguous characters.
+Alignment has 88 sequences with 2315 columns, 1185 distinct patterns
+922 parsimony-informative, 262 singleton sites, 1131 constant sites
+                                     Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 0.000120339 secs
+   1  CAN_1_bin.98_ppk1                      7.47%    passed     35.87%
+   2  CAN_4_bin.64_ppk1                      8.51%    passed     30.25%
+   3  coasm_bin.185_ppk1                     8.38%    passed     71.68%
+   4  coasm_bin.250_ppk1                     8.38%    passed     59.18%
+   5  coasm_bin.347_ppk1                     8.38%    passed     57.43%
+   6  GCA_000584955.2_BALNIADD_02612         4.15%    passed     33.47%
+   7  GCA_000585035.2_BIOCIAGG_04430         8.38%    passed     44.29%
+   8  GCA_000024165.1_DGOCCOHL_01070         8.38%    passed     56.98%
+   9  GCA_000584975.2_FLOKBKCF_00068         8.38%    passed      6.90%
+  10  GCA_000585015.1_JPAJMACA_00169         8.38%    passed     58.01%
+  11  GCA_002345285.1_NKDODKIB_03753         8.38%    passed     58.01%
+  12  GCA_002433845.1_PENGGAAI_03274         8.38%    passed     58.01%
+  13  GCA_003542235.1_LHMBCMGL_01997         8.38%    passed     90.00%
+  14  GCA_005524045.1_CHBPCNLK_00370         8.38%    passed     85.49%
+  15  GCA_000987395.1_IJAMOEGB_03109         8.38%    passed     23.97%
+  16  GCA_005889575.1_AEPCJOJA_01401         8.38%    passed     22.57%
+  17  GCA_002425405.1_NLEBCEFB_01950         8.38%    passed     43.31%
+  18  GCA_002345025.1_KFEAILBB_02335         8.38%    passed     90.61%
+  19  GCA_003487685.1_BPGNMNNK_01401         8.38%    passed     90.61%
+  20  GCA_003535635.1_FMDBLDOA_00549         8.38%    passed     90.61%
+  21  GCA_000584995.1_NPHLOHBO_00818         8.73%    passed     90.63%
+  22  GCA_000585095.1_DDBAAEFF_02735        26.91%    passed     62.57%
+  23  GCA_009467855.1_FFHDGLOA_00684         8.38%    passed     76.44%
+  24  2687453699_PEBOPBNB_00179              8.38%    passed     73.92%
+  25  GCA_000585075.1_LMKBKINC_00287         8.38%    passed     53.23%
+  26  GCA_002455435.1_LJMNPMKE_00197         8.38%    passed     53.23%
+  27  GCA_000987445.1_DIPJCKAO_01419         8.38%    passed     71.52%
+  28  GCA_000585055.1_JMBGGNHN_01742         8.25%    passed     63.34%
+  29  GCA_002352265.1_FOOMNIKE_04153         8.25%    passed     63.34%
+  30  GCA_900089955.1_LKKGGHDO_04133         7.99%    passed     90.29%
+  31  GCA_003332265.1_BFLDHLJO_03541         8.38%    passed     76.26%
+  32  GCA_003538495.1_COGBHOPJ_04777         8.51%    passed     39.00%
+  33  GCA_001897745.1_LNFOKPNO_00497         8.38%    failed      0.00%
+  34  GCA_002304785.1_GBHPAPPJ_02574         9.03%    passed     40.72%
+  35  UW5_GNJGOIBN_01044                     8.38%    passed     56.98%
+  36  UW6_NHBDKAOG_02407                    19.01%    passed     18.57%
+  37  UW7_CEKMHFBL_01627                     8.38%    passed     49.96%
+  38  UW4_BBLLADNB_00506                     8.38%    passed     73.19%
+  39  coassembly-bin.12_NEBHPJKH_02141       8.38%    passed     42.94%
+  40  POS2015-07-16-bin.58_MDFNDMIC_02139    8.38%    passed     56.98%
+  41  POS2015-08-06-bin.38_GJNGNMCM_02976    8.25%    passed     96.43%
+  42  coassembly-bin.185_DDNMEPEE_00732      8.38%    passed      7.46%
+  43  POS2015-07-24-bin.16_KIDBIGLJ_02792    8.38%    passed     47.58%
+  44  POS2015-07-24-bin.54_CBBJMKLB_01263    8.38%    passed     62.08%
+  45  Delftensis_ppk1                        8.38%    passed     49.61%
+  46  HM046427.1                            53.17%    passed     52.25%
+  47  HM046429.1                            53.17%    passed     95.16%
+  48  EU432714.1                            56.54%    passed     40.09%
+  49  EU432715.1                            56.50%    passed     86.57%
+  50  EU432725.1                            56.50%    passed     40.74%
+  51  EU432854.1                            56.50%    passed     68.84%
+  52  EU432858.1                            56.50%    passed     66.33%
+  53  EU432875.1                            56.50%    passed     96.21%
+  54  EU432877.1                            56.50%    passed     96.26%
+  55  EU432878.1                            56.50%    passed     85.95%
+  56  EU432879.1                            56.50%    passed     86.41%
+  57  EU432886.1                            56.50%    passed     97.31%
+  58  EU432888.1                            56.50%    passed     97.67%
+  59  EU432892.1                            56.50%    passed     53.98%
+  60  EU432899.1                            56.54%    passed     82.06%
+  61  EU432919.1                            56.50%    passed     93.58%
+  62  EU433103.1                            56.50%    passed     59.65%
+  63  EU433137.1                            56.50%    passed     57.06%
+  64  EU433141.1                            56.50%    passed     66.95%
+  65  EU433164.1                            56.50%    passed     60.08%
+  66  EU432609.1                            56.50%    passed     74.32%
+  67  KP738019.1                            51.53%    passed     85.30%
+  68  KP737972.1                            52.14%    passed     82.51%
+  69  KP738077.1                            51.49%    passed     85.69%
+  70  JN090842.1                            51.71%    passed     99.13%
+  71  JN090845.1                            51.66%    passed     88.66%
+  72  KP738109.1                            52.14%    passed     98.78%
+  73  EF559332.1                            51.79%    passed     25.77%
+  74  EF559333.1                            51.66%    passed     51.80%
+  75  EF559339.1                            51.66%    passed     86.87%
+  76  EF559337.1                            51.66%    passed     76.86%
+  77  EF559347.1                            51.66%    passed     89.30%
+  78  EF559348.1                            51.66%    passed     98.92%
+  79  EF559353.1                            51.66%    passed     75.70%
+  80  EF559350.1                            51.66%    passed     66.24%
+  81  KP737900.1                            51.79%    passed     75.34%
+  82  AF502189.1                            46.65%    passed     78.97%
+  83  DQ868997.1                            52.96%    passed     74.25%
+  84  EF559318.1                            52.96%    passed     77.64%
+  85  JQ726388.1                            53.22%    passed     34.18%
+  86  AF502200.1                             8.38%    passed     71.75%
+  87  GCA_009617575.1_DDDFOMMO_00589         8.12%    passed     10.38%
+  88  GCA_000012425.1_PPKBJJNL_02919        10.06%    passed     38.76%
+WARNING: 39 sequences contain more than 50% gaps/ambiguity
+****  TOTAL                                 29.43%  1 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: UW5_GNJGOIBN_01044 is identical to GCA_000024165.1_DGOCCOHL_01070 but kept for subsequent analysis
+NOTE: GCA_002345285.1_NKDODKIB_03753 is identical to GCA_000585015.1_JPAJMACA_00169 but kept for subsequent analysis
+NOTE: GCA_003487685.1_BPGNMNNK_01401 is identical to GCA_002345025.1_KFEAILBB_02335 but kept for subsequent analysis
+NOTE: GCA_002455435.1_LJMNPMKE_00197 is identical to GCA_000585075.1_LMKBKINC_00287 but kept for subsequent analysis
+NOTE: GCA_002352265.1_FOOMNIKE_04153 is identical to GCA_000585055.1_JMBGGNHN_01742 but kept for subsequent analysis
+NOTE: 3 identical sequences (see below) will be ignored for subsequent analysis
+NOTE: POS2015-07-16-bin.58_MDFNDMIC_02139 (identical to GCA_000024165.1_DGOCCOHL_01070) is ignored but added at the end
+NOTE: GCA_002433845.1_PENGGAAI_03274 (identical to GCA_000585015.1_JPAJMACA_00169) is ignored but added at the end
+NOTE: GCA_003535635.1_FMDBLDOA_00549 (identical to GCA_002345025.1_KFEAILBB_02335) is ignored but added at the end
+Alignment was printed to ppk1_classify/ppk1_tree.uniqueseq.phy
+
+For your convenience alignment with unique sequences printed to ppk1_classify/ppk1_tree.uniqueseq.phy
+
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.010 seconds
+Measuring multi-threading efficiency up to 4 CPU cores
+Increase to 10 rounds for branch lengths
+38 trees examined
+Threads: 1 / Time: 4.032 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -48844
+Threads: 2 / Time: 3.560 sec / Speedup: 1.132 / Efficiency: 57% / LogL: -48844
+Threads: 3 / Time: 4.492 sec / Speedup: 0.898 / Efficiency: 30% / LogL: -48844
+BEST NUMBER OF THREADS: 2
+
+Perform fast likelihood tree search using GTR+I+G model...
+Estimate model parameters (epsilon = 5.000)
+Perform nearest neighbor interchange...
+Estimate model parameters (epsilon = 1.000)
+1. Initial log-likelihood: -24836.201
+Optimal log-likelihood: -24836.034
+Rate parameters:  A-C: 1.67572  A-G: 8.13068  A-T: 1.74175  C-G: 3.23104  C-T: 9.37366  G-T: 1.00000
+Base frequencies:  A: 0.201  C: 0.323  G: 0.291  T: 0.186
+Proportion of invariable sites: 0.254
+Gamma shape alpha: 0.638
+Parameters optimization took 1 rounds (0.040 sec)
+Time for fast ML tree search: 0.479 seconds
+
+NOTE: ModelFinder requires 37 MB RAM!
+ModelFinder will test up to 484 DNA models (sample size: 2315 epsilon: 0.100) ...
+ No. Model         -LnL         df  AIC          AICc         BIC
+  1  GTR+F         27229.453    175 54808.906    54837.704    55814.660
+  2  GTR+F+I       25458.374    176 51268.749    51297.890    52280.250
+  3  GTR+F+G4      24854.025    176 50060.049    50089.191    51071.550
+  4  GTR+F+I+G4    24835.775    177 50025.550    50055.036    51042.798
+  5  GTR+F+R2      24962.319    177 50278.637    50308.124    51295.886
+  6  GTR+F+R3      24834.878    179 50027.755    50057.938    51056.498
+  7  GTR+F+R4      24821.147    181 50004.295    50035.183    51044.532
+  8  GTR+F+R5      24820.827    183 50007.653    50039.255    51059.385
+ 14  GTR+F+I+R2    24862.157    178 50080.315    50110.148    51103.310
+ 15  GTR+F+I+R3    24827.272    180 50014.544    50045.078    51049.034
+ 16  GTR+F+I+R4    24823.381    182 50010.762    50042.006    51056.746
+ 26  SYM+I+G4      25038.922    174 50425.844    50454.302    51425.851
+ 29  SYM+R4        25027.701    178 50411.403    50441.236    51434.398
+ 37  SYM+I+R3      25032.229    177 50418.457    50447.944    51435.706
+ 48  TVM+F+I+G4    24838.600    176 50029.199    50058.340    51040.700
+ 51  TVM+F+R4      24825.101    180 50010.201    50040.736    51044.691
+ 59  TVM+F+I+R3    24830.591    179 50019.182    50049.365    51047.924
+ 70  TVMe+I+G4     25039.001    173 50424.001    50452.121    51418.261
+ 73  TVMe+R4       25028.254    177 50410.507    50439.994    51427.756
+ 81  TVMe+I+R3     25032.286    176 50416.573    50445.714    51428.074
+ 92  TIM3+F+I+G4   24878.272    175 50106.545    50135.343    51112.299
+ 95  TIM3+F+R4     24863.278    179 50084.556    50114.739    51113.298
+103  TIM3+F+I+R3   24869.788    178 50095.576    50125.410    51118.572
+114  TIM3e+I+G4    25157.874    172 50659.748    50687.532    51648.261
+117  TIM3e+R4      25145.110    176 50642.220    50671.362    51653.721
+125  TIM3e+I+R3    25150.607    175 50651.214    50680.013    51656.968
+136  TIM2+F+I+G4   24898.259    175 50146.518    50175.316    51152.271
+139  TIM2+F+R4     24883.899    179 50125.797    50155.980    51154.540
+147  TIM2+F+I+R3   24888.769    178 50133.538    50163.372    51156.534
+158  TIM2e+I+G4    25221.948    172 50787.896    50815.679    51776.408
+161  TIM2e+R4      25214.200    176 50780.401    50809.542    51791.902
+169  TIM2e+I+R3    25216.402    175 50782.805    50811.603    51788.559
+180  TIM+F+I+G4    24860.989    175 50071.977    50100.776    51077.731
+183  TIM+F+R4      24845.520    179 50049.040    50079.223    51077.783
+191  TIM+F+I+R3    24851.602    178 50059.203    50089.037    51082.199
+202  TIMe+I+G4     25166.911    172 50677.822    50705.606    51666.335
+205  TIMe+R4       25155.223    176 50662.445    50691.587    51673.946
+213  TIMe+I+R3     25160.029    175 50670.058    50698.856    51675.812
+224  TPM3u+F+I+G4  24881.307    174 50110.615    50139.072    51110.621
+227  TPM3u+F+R4    24866.292    178 50088.583    50118.416    51111.578
+235  TPM3u+F+I+R3  24873.260    177 50100.521    50130.007    51117.769
+246  TPM3+I+G4     25158.581    171 50659.162    50686.612    51641.928
+249  TPM3+R4       25145.859    175 50641.717    50670.516    51647.471
+257  TPM3+I+R3     25151.340    174 50650.679    50679.137    51650.686
+268  TPM2u+F+I+G4  24901.130    174 50150.261    50178.718    51150.267
+271  TPM2u+F+R4    24887.302    178 50130.604    50160.438    51153.600
+279  TPM2u+F+I+R3  24892.158    177 50138.316    50167.803    51155.565
+290  TPM2+I+G4     25222.550    171 50787.099    50814.548    51769.864
+293  TPM2+R4       25214.401    175 50778.803    50807.601    51784.557
+301  TPM2+I+R3     25216.842    174 50781.684    50810.142    51781.691
+312  K3Pu+F+I+G4   24863.751    174 50075.502    50103.960    51075.509
+315  K3Pu+F+R4     24848.739    178 50053.478    50083.312    51076.474
+323  K3Pu+F+I+R3   24854.613    177 50063.227    50092.713    51080.475
+334  K3P+I+G4      25167.134    171 50676.268    50703.718    51659.034
+337  K3P+R4        25155.301    175 50660.603    50689.401    51666.356
+345  K3P+I+R3      25160.173    174 50668.346    50696.804    51668.353
+356  TN+F+I+G4     24918.214    174 50184.428    50212.886    51184.435
+359  TN+F+R4       24902.006    178 50160.012    50189.846    51183.008
+367  TN+F+I+R3     24907.960    177 50169.920    50199.406    51187.168
+378  TNe+I+G4      25301.843    171 50945.686    50973.136    51928.452
+381  TNe+R4        25290.324    175 50930.649    50959.447    51936.402
+389  TNe+I+R3      25294.975    174 50937.951    50966.409    51937.958
+400  HKY+F+I+G4    24921.067    173 50188.134    50216.253    51182.393
+403  HKY+F+R4      24905.095    177 50164.189    50193.675    51181.437
+411  HKY+F+I+R3    24911.156    176 50174.312    50203.454    51185.813
+422  K2P+I+G4      25301.990    170 50943.980    50971.098    51920.998
+425  K2P+R4        25290.374    174 50928.749    50957.207    51928.756
+433  K2P+I+R3      25295.055    173 50936.111    50964.230    51930.370
+444  F81+F+I+G4    25773.493    172 51890.985    51918.769    52879.498
+447  F81+F+R4      25763.034    176 51878.069    51907.210    52889.570
+455  F81+F+I+R3    25767.074    175 51884.149    51912.947    52889.903
+466  JC+I+G4       25940.934    169 52219.869    52246.657    53191.140
+469  JC+R4         25932.191    173 52210.382    52238.502    53204.642
+477  JC+I+R3       25935.191    172 52214.382    52242.166    53202.895
+Akaike Information Criterion:           GTR+F+R4
+Corrected Akaike Information Criterion: GTR+F+R4
+Bayesian Information Criterion:         TVM+F+I+G4
+Best-fit model: TVM+F+I+G4 chosen according to BIC
+
+All model information printed to ppk1_classify/ppk1_tree.model.gz
+CPU time for ModelFinder: 89.995 seconds (0h:1m:29s)
+Wall-clock time for ModelFinder: 44.639 seconds (0h:0m:44s)
+Generating 1000 samples for ultrafast bootstrap (seed: 891917)...
+
+NOTE: 17 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+Thoroughly optimizing +I+G parameters from 10 start values...
+Init pinv, alpha: 0.000, 0.865 / Estimate: 0.000, 0.345 / LogL: -24856.361
+Init pinv, alpha: 0.054, 0.865 / Estimate: 0.248, 0.624 / LogL: -24839.357
+Init pinv, alpha: 0.109, 0.865 / Estimate: 0.250, 0.627 / LogL: -24839.311
+Init pinv, alpha: 0.163, 0.865 / Estimate: 0.249, 0.625 / LogL: -24839.353
+Init pinv, alpha: 0.217, 0.865 / Estimate: 0.249, 0.625 / LogL: -24839.362
+Init pinv, alpha: 0.271, 0.865 / Estimate: 0.273, 0.680 / LogL: -24838.628
+Init pinv, alpha: 0.326, 0.865 / Estimate: 0.305, 0.769 / LogL: -24838.476
+Init pinv, alpha: 0.380, 0.865 / Estimate: 0.315, 0.801 / LogL: -24838.740
+Init pinv, alpha: 0.434, 0.865 / Estimate: 0.314, 0.796 / LogL: -24838.703
+Init pinv, alpha: 0.489, 0.865 / Estimate: 0.316, 0.802 / LogL: -24838.777
+Optimal pinv,alpha: 0.305, 0.769 / LogL: -24838.476
+
+Parameters optimization took 8.108 sec
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 0.0232041 secs using 201.6% CPU
+Computing ML distances took 0.023431 sec (of wall-clock time) 0.047005 sec (of CPU time)
+Setting up auxiliary I and S matrices: done in 0.000817583 secs using 204.5% CPU
+Computing RapidNJ tree took 0.012896 sec (of wall-clock time) 0.006870 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -24958.922
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 1.000 second
+Computing log-likelihood of 98 initial trees ... 1.043 seconds
+Current best score: -24838.476
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -24838.249
+Estimate model parameters (epsilon = 0.100)
+UPDATE BEST LOG-LIKELIHOOD: -24838.151
+BETTER TREE FOUND at iteration 3: -24838.150
+UPDATE BEST LOG-LIKELIHOOD: -24838.150
+Iteration 10 / LogL: -24838.150 / Time: 0h:0m:57s
+UPDATE BEST LOG-LIKELIHOOD: -24838.150
+UPDATE BEST LOG-LIKELIHOOD: -24838.150
+UPDATE BEST LOG-LIKELIHOOD: -24838.150
+Iteration 20 / LogL: -24838.150 / Time: 0h:0m:59s
+Finish initializing candidate tree set (7)
+Current best tree score: -24838.150 / CPU time: 6.977
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Iteration 30 / LogL: -24855.648 / Time: 0h:1m:2s (0h:0m:45s left)
+Iteration 40 / LogL: -24838.156 / Time: 0h:1m:5s (0h:0m:33s left)
+Iteration 50 / LogL: -24838.166 / Time: 0h:1m:8s (0h:0m:26s left)
+Log-likelihood cutoff on original alignment: -24870.059
+Iteration 60 / LogL: -24838.158 / Time: 0h:1m:12s (0h:0m:20s left)
+Iteration 70 / LogL: -24841.865 / Time: 0h:1m:15s (0h:0m:14s left)
+Iteration 80 / LogL: -24845.760 / Time: 0h:1m:18s (0h:0m:9s left)
+Iteration 90 / LogL: -24838.367 / Time: 0h:1m:21s (0h:0m:5s left)
+Iteration 100 / LogL: -24841.869 / Time: 0h:1m:24s (0h:0m:1s left)
+Log-likelihood cutoff on original alignment: -24871.497
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 1.000
+TREE SEARCH COMPLETED AFTER 104 ITERATIONS / Time: 0h:1m:25s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -24838.150
+2. Current log-likelihood: -24838.138
+Optimal log-likelihood: -24838.128
+Rate parameters:  A-C: 1.62238  A-G: 8.52180  A-T: 1.70349  C-G: 3.13399  C-T: 8.52180  G-T: 1.00000
+Base frequencies:  A: 0.201  C: 0.323  G: 0.291  T: 0.186
+Proportion of invariable sites: 0.301
+Gamma shape alpha: 0.755
+Parameters optimization took 2 rounds (0.067 sec)
+BEST SCORE FOUND : -24838.128
+
+Testing tree branches by SH-like aLRT with 1000 replicates...
+1.298 sec.
+Creating bootstrap support values...
+Split supports printed to NEXUS file ppk1_classify/ppk1_tree.splits.nex
+Total tree length: 3.993
+
+Total number of iterations: 104
+CPU time used for tree search: 62.775 sec (0h:1m:2s)
+Wall-clock time used for tree search: 32.773 sec (0h:0m:32s)
+Total CPU time used: 171.994 sec (0h:2m:51s)
+Total wall-clock time used: 87.199 sec (0h:1m:27s)
+
+Computing bootstrap consensus tree...
+Reading input file ppk1_classify/ppk1_tree.splits.nex...
+85 taxa and 327 splits.
+Consensus tree written to ppk1_classify/ppk1_tree.contree
+Reading input trees file ppk1_classify/ppk1_tree.contree
+Log-likelihood of consensus tree: -24838.219
+
+Analysis results written to: 
+  IQ-TREE report:                ppk1_classify/ppk1_tree.iqtree
+  Maximum-likelihood tree:       ppk1_classify/ppk1_tree.treefile
+  Likelihood distances:          ppk1_classify/ppk1_tree.mldist
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          ppk1_classify/ppk1_tree.splits.nex
+  Consensus tree:                ppk1_classify/ppk1_tree.contree
+  Screen log file:               ppk1_classify/ppk1_tree.log
+
+Date and Time: Tue Jun 23 16:41:00 2026

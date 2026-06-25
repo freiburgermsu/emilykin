@@ -33,6 +33,10 @@ Clade II total = **374** sequences across 7 sub-clades; reference total = **531*
   composition of the `1577*` sets, which are the canonical atypical /
   non-denitrifier Clade II lineages (Bacteroidetes, Gemmatimonadetes,
   Desulfo* Firmicutes, *Dechloromonas*, *Salinibacter*).
+  **Independently verified (tree placement, Part D):** the `1577D` core taxa
+  (*Dechloromonas* 3/3, *Dechlorosoma* 4/4, *Accumulibacter* 2/2,
+  *Magnetospirillum* 3/3) all fall inside the Clade II clan, so treating `1577D`
+  as Clade II is correct — not a file-name artifact.
 - **Folder housekeeping (non-content).** The folder was renamed from
   `literature_claudeI␣II` (the separator was a stray private-use Unicode
   character, U+F027) to `literature_claudeI_II`, and macOS AppleDouble sidecar
@@ -67,10 +71,22 @@ Clade II total = **374** sequences across 7 sub-clades; reference total = **531*
 
 ## 4. Result
 
-12 / 13 = **Clade II** (10 unambiguous, margins −195 to −366 bits;
-`CAN_5_bin.40` *Giesbergeria* low-confidence at −24). 1 = **Clade I**,
-`coasm_bin.55` *Competibacter*, low-confidence at **+7.9 bits** (a near-tie:
-195.4 vs 187.5). Full per-gene scores in `data/nosz_clades.tsv`.
+This nucleotide-HMM step originally called 12 / 13 = **Clade II** (10 unambiguous,
+margins −195 to −366 bits; `CAN_5_bin.40` *Giesbergeria* low-confidence at −24) and
+1 = **Clade I** (`coasm_bin.55` *Competibacter*, low-confidence +7.9 bits).
+
+**Superseded by phylogenetic placement (the authoritative call).** A separate
+diamond reclassification disagreed (7 Clade I), so the call was settled by placing
+the 13 proteins in a Chee+Orellana + He reference ML tree and assigning each to the
+Clade I / II monophyletic group it nests in (see
+`../clade_classify/partD_tree_placement.py`,
+`../clade_classify/CLADE_I_II_DISCREPANCY.md` → RESOLUTION). The tree confirms this
+HMM step on 12/13; the single change is **`CAN_5_bin.40` → Clade I** (it places with
+*Ralstonia/Cupriavidus/Rubrivivax*, SH 0.67). It also rejects all five of the
+diamond Clade-I flips. **Final reconciled set: Clade I = 2** (`coasm_bin.55`,
+`CAN_5_bin.40`)**, Clade II = 11.** `data/nosz_clades.tsv` now carries this call in
+`clade` (with `clade_hmm`, `clade_diamond`, `tree_clade`, `tree_support` alongside),
+and the figure's Clade I / II rows were regenerated accordingly.
 
 ## 5. Distinction from the abundance (RPKM) step
 

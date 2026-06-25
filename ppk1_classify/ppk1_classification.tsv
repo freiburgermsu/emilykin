@@ -1,0 +1,8 @@
+MAG	ppk1_type	proposed_species	SH-aLRT/UFBoot	top_pid	nearest_reference	note
+CAN_1_bin.98	Type I (unclassified)		/	87.7% (IE)	Candidatus Accumulibacter sp. UBA11064	Type I, divergent/novel (max id ~88%, no established clade)
+CAN_4_bin.225	no ppk1 recovered					Accumulibacter, ~92% size but 99 contigs (N50 85 kb); no ppk1 ORF assembled - gene likely split across a contig break (KO K00937=1 = sub-HMM fragment, not a full gene)
+CAN_4_bin.64	Type I (unclassified)		100/100	99.1% (un)	Candidatus Accumulibacter sp. UBA11064	Type I, unclassified (≈UBA11064, 99% id; ~88% to named clades)
+coasm_bin.185	IA	Ca. Accumulibacter regalis	99.5/100	100.0% (IA)	Candidatus Accumulibacter phosphatis CANDO_1; Candidatus Accumulibacter phosphatis UW3; UCB HP1-ppk2 -02	clade IA
+coasm_bin.250	IC	Ca. Accumulibacter delftensis	100/100	99.8% (IC)	Ca. A. delftensis; Inoc_ppk1_020	clade IC (delftensis vs meliphilus: closest delftensis)
+coasm_bin.347	IIA	Ca. Accumulibacter phosphatis	81.9/99	99.4% (IIA)	Candidatus Accumulibacter phosphatis UW1; Candidatus Accumulibacter phosphatis UW9-POB; Candidatus Accumulibacter phosphatis UW5	clade IIA (phosphatis lineage, UW1 type strain)
+coasm_bin.476	no ppk1 recovered					Accumulibacter, ~55% complete (2.2 Mb, 4 contigs); ppk1 not recovered in the assembly

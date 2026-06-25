@@ -42,3 +42,8 @@ kofamscan.zip
 # can't go to GitHub — these were purged once in dc13ce0, keep them untracked)
 clade_classify/out/all_bins.fna
 clade_classify/out/all_bins_orf.faa
+
+# copyrighted reference PDFs (reading only)
+*.pdf
+# cloned public reference DB (re-clone: see ppk1_classify/SUMMARY_ppk1.md)
+ppk1_classify/ppk1_Database/

@@ -1,0 +1,22 @@
+==================================================================
+[Wed Jun 24 04:46:40 PM CDT 2026] START all-bins nosZ pipeline (tmux session: nosz)
+[Wed Jun 24 04:46:40 PM CDT 2026] step 1/2: extract_all_nosz.py
+scanning 276 bins (He 269NosZ HMM, E<=1e-30) ...
+  ...60/276
+  ...120/276
+  ...180/276
+  ...240/276
+
+nosZ loci: 136  in 122 bins (C-NosZ 135, L-NosZ 1)
+KO K00376 bins=118  HMM nosZ bins=122  overlap=117  KO-only=1  HMM-only=5
+wrote allbins_nosz_query.faa/.ffn, allbins_nosz_loci.tsv, allbins_nosz_copynumber.tsv
+[Wed Jun 24 05:20:04 PM CDT 2026] step 2/2: allbins_tree_classify.py
+aligning (mafft --auto) ...
+building tree (FastTree) ...
+Traceback (most recent call last):
+  File "/home/freiburger/Documents/EmilyKin/clade_classify/allbins_tree_classify.py", line 58, in <module>
+    subprocess.run([str(FASTTREE)],stdin=i,stdout=o,check=True,stderr=subprocess.DEVNULL)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/freiburger/Documents/emilykin_tools/FastTree']' returned non-zero exit status 1.
+[Wed Jun 24 05:20:08 PM CDT 2026] *** CLASSIFY FAILED ***
