@@ -30,7 +30,7 @@ from collections import defaultdict
 
 # ============================ CONFIG — edit to match the server ============================
 SAMTOOLS = "/scratch1/afreiburger/emilykin/processed/.snakemake_envs/88fdb48d4d745c55ec2cd90b407de422_/bin/samtools"
-BAM_DIR  = "/scratch1/afreiburger/emilykin/gene_ab_figure/data"   # holds aligned_<sample>_sorted.bam
+BAM_DIR  = "/scratch/afreiburger/nosz_allbins"   # full 276-MAG dereplicated-ref BAMs (built by build_and_map_276ref.sh); was gene_ab_figure/data (21-MAG focal, covered only 13/122 nosZ bins)
 BAM_TMPL = "aligned_{sample}_sorted.bam"
 SAMPLES  = ["CAN_1", "CAN_2", "CAN_3", "CAN_4", "CAN_5"]
 BED      = "allbins_nosz_loci_clade.bed"
