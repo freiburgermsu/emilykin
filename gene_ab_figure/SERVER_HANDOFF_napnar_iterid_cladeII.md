@@ -201,8 +201,8 @@ def iterid_of(m):
 ```
 
 `meta[m]['iterid']` is already loaded from `taxonomy_labels.tsv`
-(`mag_iterativeID`). Examples: `Ca. Accumulibacter.23`, `Dokdonella.14`,
-`UBA5066_m.1`, `Denitratisoma.2`. Update the caption to say columns are labelled by
+(`mag_iterativeID`). Examples: `Accumulibacter.1_m`, `Dokdonella.2_m`,
+`Thermoanaerobaculia.1_m`, `Desulfobacillus.1_m`. Update the caption to say columns are labelled by
 MAG iterativeID and that nar/nap/nirB/D/norC cells are the max over their subunit
 genes.
 

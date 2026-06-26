@@ -20,6 +20,8 @@ import seaborn as sns
 from _gao_pao_label_helper import color_axis_labels, order_param_rows
 
 ROOT = '/Users/andrewfreiburger/Documents/Research/EmilyKin'
+if not os.path.isdir(ROOT):  # fall back to repo root on the Linux box
+    ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
 ABUND_MIN = 0.01
@@ -34,9 +36,9 @@ print(f'{"genera" if GENERA else "ASVs"} with max rel. abundance >= {ABUND_MIN*1
 
 # ---- load extended correlation table (originals + ValueEnviromental2 new params) ----
 partial_ext = pd.read_csv(
-    'modeling_files/correlations/correlation_with_time_partial_extended_genera.csv'
+    'correlations/correlation_with_time_partial_extended_genera.csv'
     if GENERA else
-    'modeling_files/correlations/correlation_with_time_partial_extended.csv'
+    'correlations/correlation_with_time_partial_extended.csv'
 )
 
 # Same ValueEnviromental2 param list as the extend script
@@ -106,7 +108,7 @@ plt.setp(ax.get_xticklabels(), rotation=70, ha='right', rotation_mode='anchor')
 color_axis_labels(ax, axis='x')
 plt.tight_layout()
 
-out = ('modeling_files/correlations/correlation_heatmap_full_with_partial_extended_1pc'
+out = ('correlations/correlation_heatmap_full_with_partial_extended_1pc'
        f'{"_genera" if GENERA else ""}.png')
 plt.savefig(out, dpi=200, bbox_inches='tight')
 plt.close(fig)

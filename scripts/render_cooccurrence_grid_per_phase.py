@@ -20,8 +20,9 @@ from statsmodels.stats.multitest import multipletests
 import render_cooccurrence_grid as rcg
 
 ROOT = '/Users/andrewfreiburger/Documents/Research/EmilyKin'
-if not os.path.isdir(ROOT):  # fall back to the repo dir this script lives in (e.g. Linux box)
-    ROOT = os.path.dirname(os.path.abspath(__file__))
+if not os.path.isdir(ROOT):  # fall back to the repo root (this script lives in scripts/)
+    _here = os.path.dirname(os.path.abspath(__file__))
+    ROOT = _here if os.path.exists(os.path.join(_here, 'abundances.csv')) else os.path.dirname(_here)
 os.chdir(ROOT)
 
 EXCLUDE_DAYS_HEAD = 14  # drop the first N days of each phase

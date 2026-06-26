@@ -5,5 +5,5 @@ nirB/D	nirB/D	DNRA (NO₂→NH₄)	440.580	432.887	432.373	400.269	305.703	402.3
 nirS	nirS	Denitrification (NO₂→NO)	245.013	303.798	305.396	308.167	294.404	291.356	308.167	9
 nirK	nirK	Denitrification (NO₂→NO)	50.817	68.475	74.562	17.938	2.696	42.898	74.562	2
 norC	norC	Denitrification (NO→N₂O)	1122.177	1266.218	1315.845	621.029	567.457	978.545	1315.845	10
-nosZ_cladeI	nosZ I	Denitrification (N₂O→N₂)	4.987	6.870	5.913	35.253	29.962	16.597	35.253	1
-nosZ_cladeII	nosZ II	Denitrification (N₂O→N₂)	231.579	228.609	229.695	300.296	317.659	261.568	317.659	12
+nosZ_cladeI	nosZ I	Denitrification (N₂O→N₂)	40.517	95.456	90.242	39.331	31.892	59.487	95.456	2
+nosZ_cladeII	nosZ II	Denitrification (N₂O→N₂)	196.049	140.023	145.366	296.217	315.729	218.677	315.729	11

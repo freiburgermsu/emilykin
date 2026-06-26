@@ -19,6 +19,8 @@ import seaborn as sns
 from _gao_pao_label_helper import color_axis_labels, order_param_rows
 
 ROOT = '/Users/andrewfreiburger/Documents/Research/EmilyKin'
+if not os.path.isdir(ROOT):  # fall back to repo root on the Linux box
+    ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
 ABUND_MIN = 0.01
@@ -39,9 +41,9 @@ env_numeric_cols = env.drop(columns=[c for c in env.columns
 NEW_PARAMS = list(env_numeric_cols)
 
 dual_ext = pd.read_csv(
-    'modeling_files/correlations/correlation_dual_qvalue_table_extended_genera.csv'
+    'correlations/correlation_dual_qvalue_table_extended_genera.csv'
     if GENERA else
-    'modeling_files/correlations/correlation_dual_qvalue_table_extended.csv'
+    'correlations/correlation_dual_qvalue_table_extended.csv'
 )
 conf = dual_ext[(dual_ext['confirmed'] == True) & (dual_ext['ASV'].isin(keep_asvs))].copy()
 print(f'confirmed rows after abundance filter: {len(conf)}')
@@ -92,7 +94,7 @@ plt.setp(ax.get_xticklabels(), rotation=70, ha='right', rotation_mode='anchor')
 color_axis_labels(ax, axis='x')
 plt.tight_layout()
 
-out = ('modeling_files/correlations/correlation_heatmap_confirmed_bio_extended_1pc_filtered'
+out = ('correlations/correlation_heatmap_confirmed_bio_extended_1pc_filtered'
        f'{"_genera" if GENERA else ""}.png')
 plt.savefig(out, dpi=300, bbox_inches='tight')
 plt.close(fig)

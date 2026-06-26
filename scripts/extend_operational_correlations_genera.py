@@ -26,7 +26,11 @@ from scipy.stats import spearmanr, rankdata, pearsonr, t as tdist
 from statsmodels.stats.multitest import multipletests
 
 ROOT = '/Users/andrewfreiburger/Documents/Research/EmilyKin'
+if not os.path.isdir(ROOT):  # fall back to the repo dir this script lives in (e.g. Linux box)
+    ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
+# correlation tables live under correlations/ in this repo (modeling_files/correlations/ on the Mac layout)
+CORR_DIR = 'correlations' if os.path.isdir('correlations') else 'modeling_files/correlations'
 
 # ---------- genus-aggregated abundances ----------
 ab = pd.read_csv('abundances.csv').set_index('sample')
@@ -48,7 +52,7 @@ ab_by_day = ab_by_day[ab_by_day.index.notna()].groupby(level=0).mean()
 ab_by_day.index = ab_by_day.index.astype(float)
 
 # ---------- ORIGINAL-pipeline parameter set ----------
-orig = pd.read_csv('modeling_files/correlations/correlation_with_time_partial.csv')
+orig = pd.read_csv(f'{CORR_DIR}/correlation_with_time_partial.csv')
 ORIG_PARAMS = sorted(orig['parameter'].unique().tolist())
 print(f'original-pipeline params to recompute: {len(ORIG_PARAMS)}')
 
@@ -180,8 +184,8 @@ print(f'  time-partial passing (q_partial<0.05): {int((df["q_partial"] < 0.05).s
 dual_cols = ['parameter', 'ASV', 'rho_interp', 'p_interp', 'n_interp',
              'rho_meas', 'p_meas', 'n_meas', 'q_interp', 'q_meas', 'confirmed']
 partial_cols = dual_cols + ['rho_partial', 'p_partial', 'n_partial', 'q_partial']
-out_dual = 'modeling_files/correlations/correlation_dual_qvalue_table_extended_genera.csv'
-out_partial = 'modeling_files/correlations/correlation_with_time_partial_extended_genera.csv'
+out_dual = f'{CORR_DIR}/correlation_dual_qvalue_table_extended_genera.csv'
+out_partial = f'{CORR_DIR}/correlation_with_time_partial_extended_genera.csv'
 df[dual_cols].to_csv(out_dual, index=False)
 df[partial_cols].to_csv(out_partial, index=False)
 print(f'wrote {out_dual}')

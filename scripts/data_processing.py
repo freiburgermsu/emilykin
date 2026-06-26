@@ -41,15 +41,25 @@ def _(mo):
 
 @app.cell
 def _(dump, mo, taxonomy):
+    import re as _re
+    _HASDIGIT = _re.compile(r'\d')
     levels = ['Kingdom', 'Phylum', 'Class', 'Order', 'Family', 'Genus', 'Species']
     iterativeIDs, _iterativeID_levels, iterativeID_phylums, taxonIDs, iterativeID_taxonomy = ({}, {}, {}, {}, {})
     for _seq, _taxa in taxonomy.items():
-        best_level = 'Kingdom'
+        # iterativeID root = the DEEPEST taxonomic level among Kingdom..Genus
+        # (Species excluded) whose value is non-empty AND contains no digit.
+        # Numeric placeholders (midas_g_171, SM1A02, Pir4_lineage, ...) are
+        # skipped and the next-shallower clean label is used.
+        best_level, OGtaxon = ('Kingdom', '')
         for level, taxon in _taxa.items():
-            if taxon == '' or level == 'Species':
-                break
-            best_level = level
-        OGtaxon = _taxa[best_level]
+            if level == 'Species':
+                continue
+            _v = str(taxon).strip()
+            if _v and _v.lower() not in ('nan', 'none') and not _HASDIGIT.search(_v):
+                best_level, OGtaxon = (level, _v)
+        if not OGtaxon:
+            OGtaxon = (str(_taxa.get('Kingdom', '')).strip() or 'Bacteria')
+            best_level = 'Kingdom'
         taxon = OGtaxon + '.1'
         while taxon in iterativeIDs:
             taxon, _count = ('.'.join(taxon.split('.')[:-1]), int(taxon.split('.')[-1]))

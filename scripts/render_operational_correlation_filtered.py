@@ -2,7 +2,7 @@
 - restricts rows to the 6 biological KPIs the user requested
 - filters ASVs to those with max relative abundance >= 1%
 - writes correlation_heatmap_confirmed_bio_1pc_filtered.png in the same
-  modeling_files/correlations/ directory
+  correlations/ directory
 """
 import os, sys
 import numpy as np
@@ -18,6 +18,8 @@ import seaborn as sns
 from _gao_pao_label_helper import color_axis_labels
 
 ROOT = '/Users/andrewfreiburger/Documents/Research/EmilyKin'
+if not os.path.isdir(ROOT):  # fall back to repo root on the Linux box
+    ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
 ABUND_MIN = 0.01  # 1% max relative abundance threshold
@@ -34,9 +36,9 @@ KPI_DISPLAY = {
 
 # --- inputs ---
 dual = pd.read_csv(
-    'modeling_files/correlations/correlation_dual_qvalue_table_extended_genera.csv'
+    'correlations/correlation_dual_qvalue_table_extended_genera.csv'
     if GENERA else
-    'modeling_files/correlations/correlation_dual_qvalue_table.csv'
+    'correlations/correlation_dual_qvalue_table.csv'
 )
 ab = pd.read_csv('abundances.csv').set_index('sample')
 if GENERA:
@@ -87,7 +89,7 @@ plt.setp(ax.get_xticklabels(), rotation=70, ha='right', rotation_mode='anchor')
 color_axis_labels(ax, axis='x')
 plt.tight_layout()
 
-out = ('modeling_files/correlations/correlation_heatmap_confirmed_bio_1pc_filtered'
+out = ('correlations/correlation_heatmap_confirmed_bio_1pc_filtered'
        f'{"_genera" if GENERA else ""}.png')
 plt.savefig(out, dpi=300, bbox_inches='tight')
 plt.close(fig)

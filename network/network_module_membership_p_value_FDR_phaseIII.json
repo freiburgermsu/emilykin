@@ -1,617 +1,6 @@
 {
   "module_1": {
-    "size": 605,
-    "type": "louvain",
-    "members": [
-      "AAP99.2",
-      "AAP99.7",
-      "AAP99.8",
-      "ABY1.1",
-      "Acetoanaerobium.3",
-      "Acidibacter.3",
-      "Acidobacteriae.1",
-      "Acidovorax.3",
-      "Acinetobacter.3",
-      "Aestuariimicrobium.2",
-      "Afipia.2",
-      "Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium.4",
-      "Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium.5",
-      "Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium.6",
-      "Amaricoccus.2",
-      "Aminobacter.2",
-      "Aminobacter.3",
-      "Anaerolinea.4",
-      "Anaerolineaceae.3",
-      "Aquimonas.1",
-      "Arenimonas.1",
-      "Arenimonas.3",
-      "Arenimonas.4",
-      "Arenimonas.5",
-      "Arenimonas.6",
-      "Arenimonas.7",
-      "Azoarcus.1",
-      "Azonexus.1",
-      "Azonexus.10",
-      "Azonexus.13",
-      "Azonexus.15",
-      "Azonexus.5",
-      "Azonexus.7",
-      "Azonexus.8",
-      "Azovibrio.1",
-      "Babeliales.10",
-      "Babeliales.11",
-      "Bacteria.100",
-      "Bacteria.111",
-      "Bacteria.116",
-      "Bacteria.123",
-      "Bacteria.97",
-      "Bacteroidia.2",
-      "Bdellovibrio.13",
-      "Bdellovibrio.18",
-      "Bdellovibrio.19",
-      "Bdellovibrio.3",
-      "Bdellovibrio.4",
-      "Bdellovibrio.5",
-      "Bdellovibrio.7",
-      "Bdellovibrionaceae.5",
-      "Beijerinckiaceae.3",
-      "Blastocatella.4",
-      "Blastocatella.5",
-      "Blastomonas.1",
-      "Bosea.10",
-      "Bosea.3",
-      "Bosea.5",
-      "Bosea.8",
-      "Bradyrhizobium.1",
-      "Brevundimonas.11",
-      "Brevundimonas.12",
-      "Brevundimonas.4",
-      "Brevundimonas.7",
-      "Bryobacter.11",
-      "Bryobacter.12",
-      "Bryobacter.14",
-      "Ca_Accumulibacter.24",
-      "Ca_Accumulibacter.25",
-      "Ca_Accumulibacter.3",
-      "Ca_Alysiosphaera.3",
-      "Ca_Alysiosphaera.4",
-      "Ca_Bealeia.3",
-      "Ca_Competibacter.100",
-      "Ca_Competibacter.103",
-      "Ca_Competibacter.106",
-      "Ca_Competibacter.107",
-      "Ca_Competibacter.108",
-      "Ca_Competibacter.109",
-      "Ca_Competibacter.111",
-      "Ca_Competibacter.115",
-      "Ca_Competibacter.118",
-      "Ca_Competibacter.131",
-      "Ca_Competibacter.135",
-      "Ca_Competibacter.136",
-      "Ca_Competibacter.139",
-      "Ca_Competibacter.140",
-      "Ca_Competibacter.146",
-      "Ca_Competibacter.148",
-      "Ca_Competibacter.151",
-      "Ca_Competibacter.153",
-      "Ca_Competibacter.154",
-      "Ca_Competibacter.157",
-      "Ca_Competibacter.166",
-      "Ca_Competibacter.169",
-      "Ca_Competibacter.172",
-      "Ca_Competibacter.174",
-      "Ca_Competibacter.175",
-      "Ca_Competibacter.185",
-      "Ca_Competibacter.188",
-      "Ca_Competibacter.190",
-      "Ca_Competibacter.192",
-      "Ca_Competibacter.193",
-      "Ca_Competibacter.194",
-      "Ca_Competibacter.195",
-      "Ca_Competibacter.202",
-      "Ca_Competibacter.203",
-      "Ca_Competibacter.204",
-      "Ca_Competibacter.206",
-      "Ca_Competibacter.208",
-      "Ca_Competibacter.211",
-      "Ca_Competibacter.24",
-      "Ca_Competibacter.30",
-      "Ca_Competibacter.34",
-      "Ca_Competibacter.50",
-      "Ca_Competibacter.52",
-      "Ca_Competibacter.63",
-      "Ca_Competibacter.73",
-      "Ca_Competibacter.81",
-      "Ca_Competibacter.83",
-      "Ca_Competibacter.85",
-      "Ca_Competibacter.94",
-      "Ca_Competibacter.95",
-      "Ca_Competibacter.97",
-      "Ca_Competibacter.99",
-      "Ca_Contendobacter.2",
-      "Ca_Defluviifilum.2",
-      "Ca_Epiflobacter.4",
-      "Ca_Obscuribacter.3",
-      "Ca_Phosphoribacter.1",
-      "Ca_Villigracilis.3",
-      "Ca_Villigracilis.9",
-      "Cephaloticoccus.2",
-      "Chelatococcus_asaccharovorans.1",
-      "Chitinophagaceae.3",
-      "Chlorobium.1",
-      "Christensenellaceae_R-7_group.1",
-      "Christensenellaceae_R-7_group.12",
-      "Christensenellaceae_R-7_group.13",
-      "Christensenellaceae_R-7_group.2",
-      "Chryseobacterium.3",
-      "Chryseobacterium.4",
-      "Chryseobacterium.5",
-      "Chryseobacterium.6",
-      "Chryseobacterium.9",
-      "Cloacibacterium.1",
-      "Cloacibacterium.14",
-      "Cloacibacterium.2",
-      "Cloacibacterium.7",
-      "Comamonadaceae.17",
-      "Comamonadaceae.24",
-      "Comamonadaceae.30",
-      "Comamonadaceae.31",
-      "Comamonadaceae.32",
-      "Comamonadaceae.33",
-      "Comamonadaceae.38",
-      "Comamonadaceae.40",
-      "Comamonadaceae.42",
-      "Comamonadaceae.47",
-      "Comamonadaceae.54",
-      "Comamonadaceae.66",
-      "Comamonadaceae.69",
-      "Comamonadaceae.8",
-      "Comamonadaceae.9",
-      "Corynebacterium.1",
-      "Corynebacterium.3",
-      "Cytophaga_xylanolytica_group.1",
-      "Dechlorobacter.4",
-      "Defluviicoccus.10",
-      "Defluviicoccus.12",
-      "Defluviicoccus.13",
-      "Defluviicoccus.3",
-      "Defluviicoccus.4",
-      "Defluviicoccus.5",
-      "Defluviicoccus.6",
-      "Defluviicoccus.7",
-      "Defluviimonas.2",
-      "Denitratisoma.4",
-      "Denitratisoma.8",
-      "Denitromonas.1",
-      "Desulfobacterium_catecholicum_group.1",
-      "Desulfomicrobium.2",
-      "Desulfovibrio.17",
-      "Desulfovibrio.18",
-      "Desulfovibrio.21",
-      "Desulfovibrio.23",
-      "Desulfovibrio.24",
-      "Devosia.1",
-      "Devosia.11",
-      "Devosia.12",
-      "Diaphorobacter.1",
-      "Dietzia.1",
-      "Dinghuibacter.2",
-      "Dokdonella.17",
-      "Dokdonella.4",
-      "Dokdonella.9",
-      "Dongia.3",
-      "Edaphobaculum.2",
-      "Edaphobaculum.4",
-      "Edaphobaculum.9",
-      "Emticicia.1",
-      "Exiguobacterium.1",
-      "Exiguobacterium.3",
-      "Ferruginibacter.13",
-      "Ferruginibacter.17",
-      "Ferruginibacter.2",
-      "Ferruginibacter.20",
-      "Ferruginibacter.23",
-      "Ferruginibacter.3",
-      "Ferruginibacter.7",
-      "Fimbriiglobus.2",
-      "Flavihumibacter.1",
-      "Flavitalea.4",
-      "Flavitalea.5",
-      "Flavobacterium.11",
-      "Flavobacterium.12",
-      "Flavobacterium.15",
-      "Flavobacterium.18",
-      "Flavobacterium.2",
-      "Flavobacterium.20",
-      "Flavobacterium.21",
-      "Flavobacterium.25",
-      "Flavobacterium.28",
-      "Flavobacterium.32",
-      "Flavobacterium.4",
-      "Flavobacterium.5",
-      "Flavobacterium.8",
-      "Flavobacterium.9",
-      "Fluviicola.4",
-      "Fusibacter.1",
-      "Fusibacter.4",
-      "Gemmatimonas.2",
-      "Gemmatimonas.3",
-      "Gemmobacter.1",
-      "Gemmobacter.3",
-      "Geothrix.2",
-      "Glutamicibacter.1",
-      "Haliangium.4",
-      "Haliangium.5",
-      "Haliangium.8",
-      "Haliangium.9",
-      "Haliscomenobacter.2",
-      "Halomonas.3",
-      "Herpetosiphon.4",
-      "Hoeflea.1",
-      "Holophagaceae.2",
-      "Hydrogenedensaceae.3",
-      "Hydrogenophaga.1",
-      "Hydrogenophaga.6",
-      "Hyphomicrobium.6",
-      "Idiomarina_sp..1",
-      "Ignavibacterium.2",
-      "Inhella.1",
-      "Inhella.3",
-      "Intrasporangiaceae.4",
-      "JGI_0001001-H03.1",
-      "KCM-B-112.1",
-      "Kocuria.3",
-      "Lacunisphaera.7",
-      "Lacunisphaera.8",
-      "Lautropia.1",
-      "Lautropia.2",
-      "Leadbetterella.13",
-      "Leadbetterella.14",
-      "Leadbetterella.15",
-      "Leifsonia.2",
-      "Leptonema.1",
-      "Leucobacter.2",
-      "Luteimonas.1",
-      "Luteimonas.10",
-      "Luteimonas.2",
-      "Luteimonas.5",
-      "Luteimonas.6",
-      "Luteimonas.7",
-      "Luteitalea.2",
-      "Luteitalea.4",
-      "Luteolibacter.9",
-      "Lysinibacillus.1",
-      "Mesorhizobium.10",
-      "Mesorhizobium.11",
-      "Mesorhizobium.20",
-      "Mesorhizobium.21",
-      "Mesorhizobium.3",
-      "Mesorhizobium.9",
-      "Methylotenera.1",
-      "Micrococcaceae.2",
-      "Micropruina.2",
-      "Microscillaceae.2",
-      "Millisia.1",
-      "Mycobacterium.11",
-      "Mycobacterium.9",
-      "NS9_marine_group.2",
-      "Nannocystis.2",
-      "Niabella.2",
-      "Nitrosomonas.1",
-      "Nitrospira.2",
-      "Niveibacterium.1",
-      "Nordella.1",
-      "OLB12.10",
-      "OLB12.4",
-      "Ochrobactrum.1",
-      "Oikopleura.1",
-      "Oikopleura.3",
-      "Oikopleura.4",
-      "P3OB-42.1",
-      "P3OB-42.3",
-      "Pajaroellobacter.3",
-      "Paludibacter.6",
-      "Paludisphaera.3",
-      "Paludisphaera.6",
-      "Pannonibacter.1",
-      "Pannonibacter.2",
-      "Paracoccus.1",
-      "Paracoccus.12",
-      "Paracoccus.16",
-      "Paracoccus.17",
-      "Paracoccus.3",
-      "Paracoccus.7",
-      "Paracoccus.9",
-      "Pedobacter.6",
-      "Pedomicrobium.4",
-      "Peptostreptococcales-Tissierellales.1",
-      "Persicitalea.3",
-      "Phenylobacterium.1",
-      "Phenylobacterium.2",
-      "Phreatobacter.1",
-      "Pir4_lineage.4",
-      "Pir4_lineage.5",
-      "Pirellula.1",
-      "Pirellula.5",
-      "Pirellula.8",
-      "Piscinibacter.1",
-      "Planctomicrobium.2",
-      "Planococcus.1",
-      "Plasticicumulans.4",
-      "Propioniciclava.1",
-      "Propionivibrio.1",
-      "Prosthecobacter.2",
-      "Prosthecobacter.4",
-      "Prosthecobacter.6",
-      "Proteiniclasticum.1",
-      "Pseudofulvimonas.1",
-      "Pseudofulvimonas.2",
-      "Pseudofulvimonas.3",
-      "Pseudomonas.11",
-      "Pseudomonas.12",
-      "Pseudomonas.7",
-      "Pseudomonas.8",
-      "Pseudomonas.9",
-      "Pseudorhodoplanes.2",
-      "Pseudorhodoplanes.4",
-      "Pseudoxanthomonas.1",
-      "Pseudoxanthomonas.21",
-      "Pseudoxanthomonas.23",
-      "Pseudoxanthomonas.3",
-      "Pseudoxanthomonas.6",
-      "Reyranella.1",
-      "Reyranella.3",
-      "Reyranella.8",
-      "Reyranella.9",
-      "Rheinheimera.13",
-      "Rheinheimera.3",
-      "Rheinheimera.4",
-      "Rhizobiaceae.10",
-      "Rhizobiaceae.11",
-      "Rhizobiaceae.3",
-      "Rhizobiaceae.5",
-      "Rhizobiaceae.9",
-      "Rhodanobacteraceae.1",
-      "Rhodobacter.5",
-      "Rhodobacter.7",
-      "Rhodobacter.8",
-      "Rhodobacter.9",
-      "Rhodobacteraceae.11",
-      "Rhodobacteraceae.13",
-      "Rhodobacteraceae.14",
-      "Rhodobacteraceae.15",
-      "Rhodobacteraceae.19",
-      "Rhodobacteraceae.22",
-      "Rhodocyclaceae.12",
-      "Rhodocyclaceae.16",
-      "Rhodocyclaceae.8",
-      "Rhodoferax.1",
-      "Romboutsia.4",
-      "Roseiflexaceae.1",
-      "Roseomonas.4",
-      "Runella.1",
-      "Runella.3",
-      "Runella.5",
-      "Runella.6",
-      "Runella.7",
-      "Rurimicrobium.2",
-      "SH-PL14.6",
-      "SM1A02.12",
-      "SM1A02.15",
-      "SM1A02.2",
-      "SM1A02.25",
-      "SM1A02.28",
-      "SM1A02.29",
-      "SM1A02.4",
-      "SM2D12.1",
-      "Sandaracinus.3",
-      "Sediminibacterium.5",
-      "Shewanella.1",
-      "Shinella.1",
-      "Shinella.2",
-      "Simplicispira.1",
-      "Singulisphaera.10",
-      "Sphingomonas.8",
-      "Sphingopyxis.10",
-      "Sphingopyxis.11",
-      "Sphingopyxis.14",
-      "Sphingopyxis.19",
-      "Sphingopyxis.2",
-      "Sphingopyxis.21",
-      "Sphingopyxis.23",
-      "Sphingopyxis.5",
-      "Sphingosinicella.1",
-      "Stappia.1",
-      "Stenotrophomonas.1",
-      "Stenotrophomonas.2",
-      "Sulfuritalea.2",
-      "Sulfuritalea.4",
-      "Taibaiella.5",
-      "Terrimonas.15",
-      "Terrimonas.16",
-      "Terrimonas.19",
-      "Terrimonas.23",
-      "Terrimonas.24",
-      "Tetrasphaera.3",
-      "Thauera.30",
-      "Thauera.32",
-      "Thauera.33",
-      "Thauera.34",
-      "Thauera.39",
-      "Thauera.47",
-      "Thauera.49",
-      "Thauera.54",
-      "Thauera.56",
-      "Thauera.57",
-      "Thauera.60",
-      "Thauera.68",
-      "Thauera.73",
-      "Thauera.81",
-      "Thauera.96",
-      "Treponema.1",
-      "Trichococcus.1",
-      "Tundrisphaera.1",
-      "Turneriella.2",
-      "Undibacterium.2",
-      "Xanthobacteraceae.2",
-      "Xanthobacteraceae.5",
-      "Xanthobacteraceae.7",
-      "Xanthomonadaceae.3",
-      "Zoogloea.11",
-      "Zoogloea.2",
-      "Zoogloea.3",
-      "midas_f_43946.2",
-      "midas_g_100.1",
-      "midas_g_100664.2",
-      "midas_g_100664.3",
-      "midas_g_10587.2",
-      "midas_g_113674.1",
-      "midas_g_115012.1",
-      "midas_g_116209.3",
-      "midas_g_1166.2",
-      "midas_g_1178.1",
-      "midas_g_1194.1",
-      "midas_g_120.1",
-      "midas_g_1221.1",
-      "midas_g_1341.2",
-      "midas_g_1400.1",
-      "midas_g_1409.5",
-      "midas_g_14268.2",
-      "midas_g_14365.1",
-      "midas_g_14365.2",
-      "midas_g_155.1",
-      "midas_g_15976.2",
-      "midas_g_16643.3",
-      "midas_g_1668.3",
-      "midas_g_17492.1",
-      "midas_g_17586.1",
-      "midas_g_17587.1",
-      "midas_g_179.2",
-      "midas_g_1792.1",
-      "midas_g_18395.1",
-      "midas_g_1919.1",
-      "midas_g_201.3",
-      "midas_g_2019.1",
-      "midas_g_2019.3",
-      "midas_g_20677.1",
-      "midas_g_2138.2",
-      "midas_g_21520.1",
-      "midas_g_225.1",
-      "midas_g_22753.3",
-      "midas_g_23116.2",
-      "midas_g_23392.1",
-      "midas_g_2400.2",
-      "midas_g_24113.1",
-      "midas_g_251.1",
-      "midas_g_25102.1",
-      "midas_g_25102.4",
-      "midas_g_25399.1",
-      "midas_g_25511.2",
-      "midas_g_2555.2",
-      "midas_g_2621.1",
-      "midas_g_268.3",
-      "midas_g_268.4",
-      "midas_g_27488.1",
-      "midas_g_27887.1",
-      "midas_g_28177.2",
-      "midas_g_2842.12",
-      "midas_g_2842.3",
-      "midas_g_28815.1",
-      "midas_g_28875.1",
-      "midas_g_29103.1",
-      "midas_g_2947.1",
-      "midas_g_30400.3",
-      "midas_g_30400.4",
-      "midas_g_30513.1",
-      "midas_g_310.3",
-      "midas_g_3100.1",
-      "midas_g_31688.8",
-      "midas_g_33416.2",
-      "midas_g_343.2",
-      "midas_g_3487.3",
-      "midas_g_3487.4",
-      "midas_g_3487.5",
-      "midas_g_35427.1",
-      "midas_g_35446.1",
-      "midas_g_35446.4",
-      "midas_g_36032.1",
-      "midas_g_36032.4",
-      "midas_g_36815.1",
-      "midas_g_36817.2",
-      "midas_g_37691.1",
-      "midas_g_37891.1",
-      "midas_g_3838.2",
-      "midas_g_3838.4",
-      "midas_g_399.2",
-      "midas_g_399.4",
-      "midas_g_40724.3",
-      "midas_g_41102.2",
-      "midas_g_41102.4",
-      "midas_g_41920.1",
-      "midas_g_428.3",
-      "midas_g_428.6",
-      "midas_g_4299.1",
-      "midas_g_434.2",
-      "midas_g_4351.1",
-      "midas_g_43884.1",
-      "midas_g_4464.1",
-      "midas_g_45788.3",
-      "midas_g_48622.5",
-      "midas_g_497.1",
-      "midas_g_50688.3",
-      "midas_g_52.2",
-      "midas_g_534.1",
-      "midas_g_53862.2",
-      "midas_g_53862.3",
-      "midas_g_5463.2",
-      "midas_g_547.2",
-      "midas_g_547.3",
-      "midas_g_547.4",
-      "midas_g_547.5",
-      "midas_g_547.7",
-      "midas_g_5621.2",
-      "midas_g_56678.1",
-      "midas_g_57380.2",
-      "midas_g_5763.1",
-      "midas_g_59074.1",
-      "midas_g_5914.2",
-      "midas_g_6092.2",
-      "midas_g_6692.2",
-      "midas_g_675.2",
-      "midas_g_690.1",
-      "midas_g_694.2",
-      "midas_g_694.3",
-      "midas_g_70.1",
-      "midas_g_7059.1",
-      "midas_g_7235.2",
-      "midas_g_7280.1",
-      "midas_g_739.1",
-      "midas_g_75.1",
-      "midas_g_75834.1",
-      "midas_g_7617.4",
-      "midas_g_764.2",
-      "midas_g_7694.2",
-      "midas_g_77369.2",
-      "midas_g_79561.4",
-      "midas_g_81.2",
-      "midas_g_8129.1",
-      "midas_g_81585.2",
-      "midas_g_82505.1",
-      "midas_g_8315.1",
-      "midas_g_8637.1",
-      "midas_g_8808.4",
-      "midas_g_8849.1",
-      "midas_g_89500.1",
-      "midas_g_90568.1",
-      "midas_g_9266.1",
-      "midas_g_973.4",
-      "midas_g_973.5",
-      "midas_g_9818.1",
-      "midas_o_2276.1"
-    ]
-  },
-  "module_2": {
-    "size": 220,
+    "size": 168,
     "type": "louvain",
     "members": [
       "Acidovorax.1",
@@ -619,21 +8,26 @@
       "Amaricoccus.3",
       "Anaerolinea.13",
       "Anaerolinea.5",
+      "Anaerolineaceae.15",
+      "Anaerolineaceae.24",
+      "Anaerolineaceae.31",
+      "Anaerolineae.16",
+      "Anaerolineae.19",
+      "Anaerolineae.2",
       "Aquimonas.4",
       "Aquimonas.5",
       "Aridibacter.1",
-      "Aurantisolimonas.3",
       "Azonexus.12",
       "Azonexus.3",
       "Azonexus.6",
       "Azospira.1",
       "Azospira.3",
-      "Bacteria.126",
-      "Bacteroidetes_vadinHA17.2",
+      "Bacillales.3",
+      "Bacteria.176",
+      "Bacteroidales.13",
       "Bdellovibrio.28",
-      "Bdellovibrionaceae.4",
-      "Blastopirellula.1",
-      "Blvii28_wastewater-sludge_group.3",
+      "Blastocatellaceae.4",
+      "Bradymonadales.2",
       "Brevundimonas.8",
       "Bryobacter.8",
       "Ca_Accumulibacter.23",
@@ -647,270 +41,2136 @@
       "Ca_Competibacter.57",
       "Ca_Competibacter.65",
       "Ca_Epiflobacter.2",
-      "Ca_Flexifilum.2",
+      "Ca_Falkowbacteria.7",
+      "Ca_Gottesmanbacteria.3",
       "Ca_Leptovillus.11",
       "Ca_Leptovillus.9",
+      "Ca_Nomurabacteria.4",
+      "Ca_Pacebacteria.2",
+      "Ca_Pacebacteria.7",
+      "Ca_Pacebacteria.8",
       "Ca_Sarcinithrix.1",
       "Ca_Villigracilis.10",
       "Ca_Villigracilis.12",
       "Ca_Villigracilis.4",
-      "Chitinophagaceae.2",
-      "Christensenellaceae_R-7_group.14",
-      "Clostridia_vadinBB60_group.2",
-      "Clostridium_sensu_stricto_13.1",
-      "Comamonadaceae.39",
-      "Comamonadaceae.53",
+      "Chitinophagales.9",
+      "Christensenellaceae.15",
+      "Chthoniobacteraceae.3",
+      "Clostridia.2",
+      "Clostridiaceae.7",
+      "Comamonadaceae.56",
       "Defluviimonas.1",
       "Denitratisoma.2",
       "Denitratisoma.3",
       "Desulfobulbus.4",
-      "Desulfomicrobium.3",
       "Dokdonella.2",
       "Dokdonella.20",
-      "Edaphobaculum.13",
-      "Ellin6067.1",
-      "Flexifilaceae.2",
+      "Flavobacteriales.5",
+      "Flavobacteriales.7",
+      "Flexifilaceae.1",
+      "Flexifilaceae.34",
+      "Flexifilaceae.38",
+      "Flexifilaceae.42",
+      "Flexifilaceae.55",
+      "Flexifilaceae.58",
+      "Flexifilaceae.61",
+      "Flexifilaceae.78",
+      "Flexifilaceae.9",
       "Fungi.1",
-      "Fusibacter.3",
-      "Hydrogenophaga.2",
+      "Gammaproteobacteria.7",
+      "Gracilibacteria.19",
+      "Gracilibacteria.30",
+      "Holophagae.8",
+      "Hungateiclostridiaceae.3",
+      "Hydrogenedensaceae.16",
+      "Hydrogenedensaceae.8",
       "Hydrogenophaga.5",
-      "Hyphomicrobium.16",
-      "Ignavibacteriales.1",
-      "Ignavibacterium.1",
+      "Ignavibacteria.12",
+      "Ignavibacteria.13",
+      "Ignavibacteria.31",
+      "Ignavibacteria.5",
+      "Ignavibacteria.7",
+      "Ignavibacteriales.12",
+      "Ignavibacteriales.13",
+      "Ignavibacteriales.2",
+      "Ignavibacteriales.8",
       "Ignavibacterium.4",
-      "JGI_0001001-H03.2",
-      "LD29.3",
+      "Kapabacteriales.18",
+      "Kiritimatiellae.6",
+      "Kryptoniales.1",
       "Leadbetterella.18",
+      "Lentimicrobiaceae.10",
       "Lentimicrobium.2",
-      "Lentimicrobium.8",
       "Leptolinea.14",
-      "Leptolinea.4",
       "Longilinea.1",
       "Lysobacter.2",
-      "M2PT2-76_termite_group.1",
-      "Mesorhizobium.15",
       "Mesorhizobium.22",
-      "Mesorhizobium.4",
-      "OLB15.2",
-      "Ornatilinea.1",
+      "Micavibrionales.2",
+      "Microscillaceae.15",
+      "Myxococcaceae.5",
+      "Myxococcaceae.6",
+      "Nucletmycea.6",
       "Paracoccus.13",
-      "Parcubacteria.3",
-      "Pedomicrobium.5",
+      "Parcubacteria.5",
+      "Patescibacteria.2",
       "Persicitalea.2",
       "Phaeodactylibacter.3",
-      "Phreatobacter.3",
       "Phreatobacter.5",
-      "Pir4_lineage.11",
+      "Phycisphaeraceae.22",
+      "Pirellulaceae.44",
+      "Pleomorphomonadaceae.3",
+      "Polyangia.9",
+      "Prolixibacteraceae.8",
       "Prosthecobacter.3",
       "Pseudomonas.13",
       "Pseudomonas.18",
       "Pseudomonas.4",
       "Pseudoxanthomonas.2",
       "Rheinheimera.9",
-      "Rhizobiaceae.4",
+      "Rhizobiales.23",
+      "Rhizobiales.5",
+      "Rhodanobacteraceae.5",
       "Rhodobacter.1",
-      "Rhodobacter.13",
       "Rhodobacter.3",
       "Rhodobacteraceae.1",
-      "Rhodobacteraceae.6",
-      "Rhodopirellula.3",
+      "Rhodobacteraceae.10",
+      "Rhodobacteraceae.30",
+      "Rhodobacteraceae.7",
+      "Rhodocyclaceae.20",
+      "Rhodocyclaceae.24",
       "Rhodoplanes.1",
-      "Runella.2",
-      "Runella.4",
-      "Rurimicrobium.1",
+      "Rhodospirillales.3",
       "Rurimicrobium.3",
-      "SM1A02.19",
-      "SM1A02.21",
+      "Saprospiraceae.13",
+      "Saprospiraceae.16",
+      "Saprospiraceae.3",
+      "Sericytochromatia.2",
+      "Sphingobacteriales.30",
+      "Sphingobacteriales.34",
+      "Sphingobacteriales.50",
+      "Sphingobacteriales.53",
+      "Sphingobacteriales.6",
+      "Spirochaetaceae.10",
+      "Spirochaetaceae.16",
+      "Spirochaetaceae.21",
+      "Spirochaetaceae.25",
+      "Spirochaetaceae.3",
+      "Spirochaetaceae.30",
+      "Spirochaetota.4",
+      "Sporomusaceae.5",
       "Sulfuritalea.5",
       "Terrimicrobium.3",
-      "Terrimonas.21",
       "Terrimonas.22",
-      "Terrimonas.26",
       "Terrimonas.3",
-      "Thauera.48",
       "Thauera.50",
-      "Thermomonas.1",
+      "Thermomicrobiales.15",
       "Thermomonas.2",
       "Vicingus.1",
+      "Victivallales.5",
       "Williamwhitmaniaceae.1",
+      "Williamwhitmaniaceae.4",
       "Xanthobacter.1",
-      "Xanthomonadaceae.5",
-      "alphaI_cluster.1",
-      "midas_g_100370.2",
-      "midas_g_10471.2",
-      "midas_g_11580.1",
-      "midas_g_1159.2",
-      "midas_g_1166.4",
-      "midas_g_11689.1",
-      "midas_g_118806.1",
-      "midas_g_12111.1",
-      "midas_g_12426.1",
-      "midas_g_12777.1",
-      "midas_g_12864.3",
-      "midas_g_12887.2",
-      "midas_g_13168.1",
-      "midas_g_13287.1",
-      "midas_g_13682.1",
-      "midas_g_1409.2",
-      "midas_g_1421.1",
-      "midas_g_15015.2",
-      "midas_g_155.3",
-      "midas_g_16643.2",
-      "midas_g_16643.5",
-      "midas_g_171.18",
-      "midas_g_17667.1",
-      "midas_g_179.1",
-      "midas_g_18382.4",
-      "midas_g_19225.3",
-      "midas_g_1955.3",
-      "midas_g_2019.2",
-      "midas_g_2126.2",
-      "midas_g_22263.8",
-      "midas_g_225.2",
-      "midas_g_225.3",
-      "midas_g_23270.1",
-      "midas_g_23286.1",
-      "midas_g_2383.2",
-      "midas_g_23973.2",
-      "midas_g_2400.5",
-      "midas_g_25177.3",
-      "midas_g_26526.2",
-      "midas_g_26667.2",
-      "midas_g_268.2",
-      "midas_g_27875.1",
-      "midas_g_2835.2",
-      "midas_g_30400.1",
-      "midas_g_31688.3",
-      "midas_g_3252.4",
-      "midas_g_32568.1",
-      "midas_g_3277.2",
-      "midas_g_32820.2",
-      "midas_g_33416.3",
-      "midas_g_33468.1",
-      "midas_g_3374.3",
-      "midas_g_34828.2",
-      "midas_g_3487.1",
-      "midas_g_36032.2",
-      "midas_g_36081.4",
-      "midas_g_36422.1",
-      "midas_g_36817.3",
-      "midas_g_38143.1",
-      "midas_g_3846.1",
-      "midas_g_3846.4",
-      "midas_g_3943.1",
-      "midas_g_41804.1",
-      "midas_g_422.2",
-      "midas_g_4708.2",
-      "midas_g_4708.3",
-      "midas_g_48042.1",
-      "midas_g_50918.2",
-      "midas_g_5121.1",
-      "midas_g_53756.1",
-      "midas_g_53968.2",
-      "midas_g_5467.1",
-      "midas_g_55441.1",
-      "midas_g_58094.1",
-      "midas_g_58094.2",
-      "midas_g_5889.2",
-      "midas_g_6092.1",
-      "midas_g_61007.2",
-      "midas_g_6223.2",
-      "midas_g_627.1",
-      "midas_g_6489.3",
-      "midas_g_67307.1",
-      "midas_g_694.5",
-      "midas_g_7101.3",
-      "midas_g_71310.7",
-      "midas_g_82802.1",
-      "midas_g_8282.1",
-      "midas_g_8282.2",
-      "midas_g_83150.3",
-      "midas_g_8672.1",
-      "midas_g_86814.3",
-      "midas_g_87066.4",
-      "midas_g_87076.2",
-      "midas_g_94.1",
-      "midas_g_94.2",
-      "midas_g_945.3",
-      "midas_g_9628.1",
-      "midas_g_973.8"
+      "alphaI_cluster.1"
+    ]
+  },
+  "module_2": {
+    "size": 85,
+    "type": "louvain",
+    "members": [
+      "Acetoanaerobium.3",
+      "Aquimonas.1",
+      "Arenimonas.1",
+      "Bacteria.119",
+      "Bacteria.151",
+      "Beijerinckiaceae.5",
+      "Blastopirellula.1",
+      "Bosea.10",
+      "Bosea.3",
+      "Brevundimonas.4",
+      "Bryobacter.12",
+      "Ca_Competibacter.109",
+      "Ca_Competibacter.52",
+      "Ca_Flexifilum.2",
+      "Ca_Pacebacteria.4",
+      "Ca_Zambryskibacteria.2",
+      "Chelatococcus_asaccharovorans.1",
+      "Chitinophagaceae.14",
+      "Chlorobium.1",
+      "Chloroflexi.2",
+      "Chryseobacterium.3",
+      "Cloacibacterium.7",
+      "Comamonadaceae.27",
+      "Comamonadaceae.34",
+      "Comamonadaceae.36",
+      "Comamonadaceae.42",
+      "Comamonadaceae.69",
+      "Defluviicoccus.13",
+      "Defluviicoccus.3",
+      "Desulfuromonadia.3",
+      "Exiguobacterium.3",
+      "Fimbriimonadaceae.12",
+      "Flavitalea.5",
+      "Flavobacteriaceae.1",
+      "Flavobacteriales.3",
+      "Flavobacterium.25",
+      "Flexifilaceae.13",
+      "Flexifilaceae.33",
+      "Flexifilaceae.41",
+      "Flexifilaceae.51",
+      "Flexifilaceae.63",
+      "Gemmatimonas.3",
+      "Gemmobacter.1",
+      "Gracilibacteria.15",
+      "Gracilibacteria.6",
+      "Haliangium.4",
+      "Hoeflea.1",
+      "Hyphomicrobium.16",
+      "Kapabacteriales.11",
+      "Leptonema.1",
+      "Luteimonas.1",
+      "Luteimonas.2",
+      "Luteimonas.6",
+      "Mesorhizobium.3",
+      "Mesorhizobium.4",
+      "Microscillaceae.24",
+      "Parcubacteria.3",
+      "Pedomicrobium.5",
+      "Phreatobacter.3",
+      "Phycisphaeraceae.20",
+      "Phycisphaeraceae.34",
+      "Pirellulaceae.38",
+      "Planctomycetota.15",
+      "Planctomycetota.9",
+      "Pseudofulvimonas.2",
+      "Pseudomonas.9",
+      "Pseudoxanthomonas.23",
+      "Rhizobiaceae.11",
+      "Rhodobacter.13",
+      "Rhodobacter.5",
+      "Rhodobacteraceae.14",
+      "Rhodobacteraceae.27",
+      "Rickettsiales.15",
+      "Runella.4",
+      "Rurimicrobium.1",
+      "Sandaracinaceae.2",
+      "Saprospiraceae.5",
+      "Sphingopyxis.21",
+      "Taibaiella.5",
+      "Terrimonas.21",
+      "Terrimonas.26",
+      "Thauera.34",
+      "Thermomonas.1",
+      "Xanthomonadaceae.6",
+      "Zoogloea.11"
     ]
   },
   "module_3": {
-    "size": 37,
+    "size": 77,
     "type": "louvain",
     "members": [
+      "Actinobacteria.11",
+      "Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium.5",
       "Alphaproteobacteria.12",
-      "Aminobacter.6",
-      "Azoarcus.2",
+      "Anaerolineaceae.26",
+      "Babeliaceae.1",
+      "Babeliales.17",
       "Bauldia.3",
       "Bdellovibrio.23",
+      "Bdellovibrio.5",
+      "Bdellovibrionaceae.7",
+      "Beijerinckiaceae.6",
+      "Blastocatella.4",
       "Blastocatellaceae.3",
-      "Ca_Accumulibacter.2",
+      "Blastocatellaceae.6",
+      "Ca_Accumulibacter.25",
+      "Ca_Competibacter.103",
+      "Ca_Competibacter.135",
       "Ca_Competibacter.143",
+      "Ca_Competibacter.174",
       "Ca_Competibacter.179",
-      "Ca_Competibacter.32",
+      "Ca_Competibacter.185",
+      "Ca_Competibacter.190",
+      "Ca_Competibacter.194",
+      "Ca_Competibacter.202",
+      "Ca_Competibacter.203",
+      "Ca_Competibacter.50",
+      "Ca_Competibacter.63",
+      "Ca_Competibacter.81",
+      "Ca_Competibacter.83",
       "Ca_Competibacter.87",
-      "Ca_Sarcinithrix.2",
+      "Ca_Competibacter.97",
+      "Cephaloticoccus.2",
+      "Chryseobacterium.9",
       "Chryseolinea.1",
+      "Corynebacterium.3",
+      "Dechlorobacter.4",
       "Desulfovibrio.16",
       "Devosia.10",
-      "Edaphobaculum.6",
-      "Hyphomicrobium.17",
+      "Fimbriiglobus.2",
+      "Flexifilaceae.10",
+      "Flexifilaceae.24",
+      "Fusibacter.4",
+      "Gracilibacteria.10",
       "Idiomarina_sp..3",
-      "Pedobacter.3",
-      "Propionivibrio.2",
+      "Kapabacteriales.24",
+      "Lacibacterium_aquatile.5",
+      "Leadbetterella.15",
+      "Micavibrionales.4",
+      "Micavibrionales.8",
+      "Myxococcaceae.8",
+      "Ochrobactrum.1",
+      "Paludibaculum.3",
+      "Persicitalea.3",
+      "Phenylobacterium.2",
+      "Pirellula.1",
+      "Plasticicumulans.4",
+      "Reyranella.1",
       "Rheinheimera.1",
+      "Rhizobiaceae.10",
+      "Rhizobiales.10",
+      "Rhizobiales.17",
       "Rhodococcus.2",
-      "env.OPS_17.3",
-      "midas_g_10077.1",
-      "midas_g_10077.3",
-      "midas_g_11527.1",
-      "midas_g_118.1",
-      "midas_g_22236.5",
-      "midas_g_22263.9",
-      "midas_g_27537.1",
-      "midas_g_32820.1",
-      "midas_g_3492.1",
-      "midas_g_35446.2",
-      "midas_g_36817.1",
-      "midas_g_3970.2",
-      "midas_g_4436.1",
-      "midas_g_57689.5"
+      "Rhodocyclaceae.13",
+      "Rhodopirellula.3",
+      "Romboutsia.4",
+      "Runella.6",
+      "Sphingobacteriales.11",
+      "Sphingobacteriales.36",
+      "Sphingobacteriales.48",
+      "Sphingobacteriales.7",
+      "Sphingomonas.8",
+      "Sphingopyxis.14",
+      "Spirochaetaceae.23",
+      "Spirochaetaceae.24",
+      "Spirosomaceae.1",
+      "Terrimonas.16",
+      "Terrimonas.23"
     ]
   },
   "module_4": {
-    "size": 3,
+    "size": 71,
     "type": "louvain",
     "members": [
-      "midas_g_10951.2",
-      "midas_g_1334.2",
-      "midas_g_1409.4"
+      "Acidithiobacillaceae.1",
+      "Afipia.2",
+      "Azonexus.5",
+      "Azovibrio.1",
+      "Bacteria.86",
+      "Bacteroidia.9",
+      "Burkholderiales.4",
+      "Ca_Accumulibacter.3",
+      "Ca_Competibacter.100",
+      "Ca_Competibacter.107",
+      "Ca_Competibacter.115",
+      "Ca_Competibacter.139",
+      "Ca_Competibacter.195",
+      "Ca_Contendobacter.2",
+      "Christensenellaceae.13",
+      "Christensenellaceae.2",
+      "Chryseobacterium.4",
+      "Comamonadaceae.24",
+      "Comamonadaceae.41",
+      "Comamonadaceae.50",
+      "Denitromonas.1",
+      "Dermatophilaceae.2",
+      "Desulfomicrobium.2",
+      "Desulfovibrio.17",
+      "Devosia.1",
+      "Dongia.3",
+      "Ferruginibacter.20",
+      "Flavobacterium.15",
+      "Flavobacterium.18",
+      "Flavobacterium.20",
+      "Flexifilaceae.17",
+      "Flexifilaceae.46",
+      "Gemmatimonas.2",
+      "Geothrix.2",
+      "Haliangium.5",
+      "Ignavibacteriales.3",
+      "Kapabacteriales.17",
+      "Kocuria.3",
+      "Lautropia.2",
+      "Luteolibacter.9",
+      "Mesorhizobium.10",
+      "Mycobacterium.11",
+      "Nordella.1",
+      "Paludibaculum.12",
+      "Paludibaculum.8",
+      "Paracoccus.1",
+      "Paracoccus.9",
+      "Phycisphaeraceae.28",
+      "Phycisphaeraceae.3",
+      "Propioniciclava.1",
+      "Prosthecobacter.6",
+      "Proteiniclasticum.1",
+      "Pseudomonas.8",
+      "Pseudorhodoplanes.4",
+      "Roseiflexaceae.10",
+      "Rubinisphaeraceae.9",
+      "Runella.5",
+      "Sphingobacteriales.15",
+      "Sphingopyxis.10",
+      "Sphingopyxis.19",
+      "Sphingopyxis.2",
+      "Spirochaetaceae.11",
+      "Sulfuritalea.2",
+      "Sumerlaeaceae.1",
+      "Sutterellaceae.9",
+      "Thauera.32",
+      "Thauera.33",
+      "Thauera.73",
+      "Thauera.96",
+      "Xanthobacteraceae.2",
+      "Xanthomonadaceae.4"
     ]
   },
   "module_5": {
+    "size": 60,
+    "type": "louvain",
+    "members": [
+      "Acinetobacter.3",
+      "Aminobacter.6",
+      "Azoarcus.2",
+      "Babeliales.3",
+      "Bacteria.137",
+      "Blastocatella.5",
+      "Bradymonadales.1",
+      "Bryobacter.11",
+      "Burkholderiales.6",
+      "Ca_Accumulibacter.2",
+      "Ca_Competibacter.106",
+      "Ca_Competibacter.111",
+      "Ca_Competibacter.154",
+      "Ca_Competibacter.157",
+      "Ca_Competibacter.208",
+      "Ca_Competibacter.24",
+      "Ca_Competibacter.32",
+      "Ca_Competibacter.34",
+      "Ca_Competibacter.95",
+      "Ca_Sarcinithrix.2",
+      "Caldilineaceae.2",
+      "Chryseobacterium.5",
+      "Comamonadaceae.43",
+      "Comamonadaceae.72",
+      "Edaphobaculum.6",
+      "Ferruginibacter.13",
+      "Ferruginibacter.3",
+      "Flavobacteriales.10",
+      "Flavobacterium.21",
+      "Flavobacterium.32",
+      "Glutamicibacter.1",
+      "Haliangium.8",
+      "Haliangium.9",
+      "Hydrogenedensaceae.18",
+      "Hyphomicrobium.17",
+      "Lautropia.1",
+      "Leucobacter.2",
+      "Pajaroellobacter.3",
+      "Paludisphaera.6",
+      "Paracaedibacteraceae.9",
+      "Paracoccus.3",
+      "Pedobacter.3",
+      "Pedomicrobium.4",
+      "Phenylobacterium.1",
+      "Phycisphaeraceae.5",
+      "Planctomycetota.21",
+      "Planctomycetota.6",
+      "Propionibacteriaceae.1",
+      "Propionivibrio.2",
+      "Reyranella.9",
+      "Rheinheimera.3",
+      "Runella.1",
+      "Saprospiraceae.7",
+      "Sericytochromatia.4",
+      "Solirubrobacterales.2",
+      "Sphingobacteriales.2",
+      "Sphingobacteriales.21",
+      "Sphingobacteriales.38",
+      "Terrimonas.15",
+      "Thauera.39"
+    ]
+  },
+  "module_6": {
+    "size": 54,
+    "type": "louvain",
+    "members": [
+      "Anaerolineaceae.17",
+      "Babeliales.18",
+      "Bacteria.120",
+      "Bacteria.140",
+      "Bacteria.85",
+      "Bdellovibrionaceae.9",
+      "Bradyrhizobium.1",
+      "Burkholderiales.8",
+      "Ca_Competibacter.108",
+      "Ca_Competibacter.148",
+      "Ca_Competibacter.153",
+      "Ca_Competibacter.169",
+      "Ca_Epiflobacter.4",
+      "Caldilineaceae.14",
+      "Caldilineaceae.7",
+      "Chitinophagaceae.11",
+      "Christensenellaceae.1",
+      "Christensenellaceae.14",
+      "Comamonadaceae.9",
+      "Devosia.12",
+      "Dinghuibacter.2",
+      "Exiguobacterium.1",
+      "Ferruginibacter.2",
+      "Flavobacteriales.8",
+      "Flexifilaceae.49",
+      "Fusibacter.1",
+      "Gammaproteobacteria.8",
+      "Gemmatimonadaceae.3",
+      "Lacunisphaera.8",
+      "Luteimonas.5",
+      "Micropruina.2",
+      "Nitrospira.2",
+      "Paludibacter.6",
+      "Paludisphaera.3",
+      "Paracaedibacteraceae.15",
+      "Paracoccus.17",
+      "Phycisphaeraceae.26",
+      "Pirellula.8",
+      "Prosthecobacter.4",
+      "Pseudoxanthomonas.1",
+      "Rhizobiales.20",
+      "Rhodocyclaceae.25",
+      "Rurimicrobium.2",
+      "Sandaracinus.3",
+      "Spirochaetaceae.9",
+      "Stenotrophomonas.1",
+      "Sutterellaceae.8",
+      "Tetrasphaera.3",
+      "Thauera.56",
+      "Thauera.57",
+      "Thauera.68",
+      "Treponema.1",
+      "Verrucomicrobiaceae.8",
+      "Xanthobacteraceae.12"
+    ]
+  },
+  "module_7": {
+    "size": 38,
+    "type": "louvain",
+    "members": [
+      "Acidovorax.3",
+      "Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium.4",
+      "Anaerolineae.23",
+      "Arenimonas.4",
+      "Azonexus.7",
+      "Bacteria.156",
+      "Bacteria.162",
+      "Bdellovibrio.3",
+      "Blastomonas.1",
+      "Ca_Competibacter.118",
+      "Ca_Competibacter.204",
+      "Ca_Competibacter.206",
+      "Ca_Competibacter.30",
+      "Ca_Defluviifilum.2",
+      "Ca_Komeilibacteria.3",
+      "Ca_Villigracilis.3",
+      "Caldilineaceae.9",
+      "Comamonadaceae.45",
+      "Defluviimonas.2",
+      "Dietzia.1",
+      "Ferruginibacter.17",
+      "Gracilibacteria.1",
+      "Halomonas.3",
+      "Isosphaeraceae.4",
+      "Kapabacteriales.6",
+      "Microscillaceae.18",
+      "Microtrichaceae.8",
+      "Mycobacterium.9",
+      "Nannocystis.2",
+      "Nitrosomonas.1",
+      "Oikopleura.3",
+      "Patescibacteria.1",
+      "Pedobacter.6",
+      "Polyangiaceae.2",
+      "Rheinheimera.13",
+      "Rhodobacter.9",
+      "Thauera.49",
+      "Thauera.60"
+    ]
+  },
+  "module_8": {
+    "size": 31,
+    "type": "louvain",
+    "members": [
+      "Aurantisolimonas.3",
+      "Bacteroidales.10",
+      "Bacteroidia.11",
+      "Bacteroidia.17",
+      "Bacteroidia.19",
+      "Chitinophagaceae.18",
+      "Chitinophagales.10",
+      "Desulfobacterium_catecholicum_group.1",
+      "Desulfomicrobium.3",
+      "Edaphobaculum.9",
+      "Flavobacterium.2",
+      "Fusibacter.3",
+      "Gracilibacteria.2",
+      "Hydrogenophaga.1",
+      "Hydrogenophaga.2",
+      "Ignavibacterium.2",
+      "Lentimicrobium.8",
+      "Leptolinea.4",
+      "Lysinibacillus.1",
+      "Oikopleura.1",
+      "Phycisphaeraceae.32",
+      "Prolixibacteraceae.6",
+      "Pseudofulvimonas.1",
+      "Puniceicoccaceae.5",
+      "Rhizobiaceae.4",
+      "Rhodobacteraceae.22",
+      "Runella.2",
+      "Shinella.1",
+      "Spirochaetota.1",
+      "Thauera.48",
+      "Zoogloea.3"
+    ]
+  },
+  "module_9": {
+    "size": 22,
+    "type": "louvain",
+    "members": [
+      "Azonexus.15",
+      "Bacillales.7",
+      "Bacteria.173",
+      "Bdellovibrio.13",
+      "Chitinophagales.8",
+      "Defluviicoccus.10",
+      "Desulfobacterota.4",
+      "Dokdonella.17",
+      "Edaphobaculum.13",
+      "Flavobacterium.4",
+      "Flexifilaceae.45",
+      "Gammaproteobacteria.9",
+      "Hydrogenedensaceae.14",
+      "Myxococcaceae.11",
+      "Planctomycetota.13",
+      "Planctomycetota.4",
+      "Rhodobacteraceae.33",
+      "Rhodothermaceae.5",
+      "Rickettsiales.3",
+      "Runella.3",
+      "Sphingobacteriales.44",
+      "Zoogloea.2"
+    ]
+  },
+  "module_10": {
+    "size": 17,
+    "type": "louvain",
+    "members": [
+      "Anaerolineaceae.12",
+      "Anaerolineaceae.3",
+      "Anaerolineae.24",
+      "Brevundimonas.7",
+      "Caldilineaceae.10",
+      "Caldilineaceae.4",
+      "Flexifilaceae.56",
+      "Holophagaceae.9",
+      "Hydrogenedensaceae.4",
+      "Ignavibacterium.1",
+      "Leifsonia.2",
+      "Micrococcaceae.2",
+      "Millisia.1",
+      "Niabella.2",
+      "Pseudomonas.7",
+      "Rhizobiales.21",
+      "Sphingobacteriales.19"
+    ]
+  },
+  "module_11": {
+    "size": 15,
+    "type": "louvain",
+    "members": [
+      "Armatimonadota.4",
+      "Bdellovibrionaceae.6",
+      "Ca_Komeilibacteria.2",
+      "Defluviicoccus.4",
+      "Elusimicrobia.3",
+      "Fimbriimonadaceae.4",
+      "Flexifilaceae.30",
+      "Flexifilaceae.36",
+      "Flexifilaceae.52",
+      "Inhella.3",
+      "Luteitalea.2",
+      "Mesorhizobium.15",
+      "Mesorhizobium.21",
+      "Nitrosomonadaceae.1",
+      "Polyangia.17"
+    ]
+  },
+  "module_12": {
+    "size": 10,
+    "type": "louvain",
+    "members": [
+      "Acidibacter.3",
+      "Azoarcus.1",
+      "Flexifilaceae.64",
+      "Holophagaceae.4",
+      "Hyphomicrobium.6",
+      "Phreatobacter.1",
+      "Pirellulaceae.37",
+      "Rhizobiaceae.8",
+      "Rhodobacteraceae.34",
+      "Turneriella.2"
+    ]
+  },
+  "module_13": {
+    "size": 5,
+    "type": "louvain",
+    "members": [
+      "Bosea.8",
+      "Ca_Bealeia.3",
+      "Cloacibacterium.2",
+      "Paracaedibacteraceae.1",
+      "Planococcus.1"
+    ]
+  },
+  "module_14": {
+    "size": 3,
+    "type": "louvain",
+    "members": [
+      "Ca_Competibacter.211",
+      "Reyranella.3",
+      "Rhizobiaceae.9"
+    ]
+  },
+  "module_15": {
+    "size": 3,
+    "type": "louvain",
+    "members": [
+      "Ca_Villigracilis.9",
+      "Flavobacterium.5",
+      "Microscillaceae.11"
+    ]
+  },
+  "module_16": {
+    "size": 3,
+    "type": "louvain",
+    "members": [
+      "Desulfovibrio.24",
+      "Ornatilinea.1",
+      "Peptostreptococcales-Tissierellales.1"
+    ]
+  },
+  "module_17": {
+    "size": 3,
+    "type": "louvain",
+    "members": [
+      "Luteitalea.4",
+      "Rhodanobacteraceae.8",
+      "Sutterellaceae.3"
+    ]
+  },
+  "module_18": {
     "size": 2,
     "type": "louvain",
     "members": [
-      "OLB15.3",
-      "Rhizobiaceae.8"
+      "Propionivibrio.1",
+      "Roseomonas.4"
+    ]
+  },
+  "module_19": {
+    "size": 2,
+    "type": "louvain",
+    "members": [
+      "Fluviicola.4",
+      "Sericytochromatia.1"
+    ]
+  },
+  "module_20": {
+    "size": 2,
+    "type": "louvain",
+    "members": [
+      "Bacteria.166",
+      "Ca_Competibacter.85"
+    ]
+  },
+  "module_21": {
+    "size": 2,
+    "type": "louvain",
+    "members": [
+      "Actinobacteria.6",
+      "Ca_Competibacter.73"
     ]
   },
   "singleton_1": {
     "size": 1,
     "type": "isolate_singleton",
     "members": [
-      "Cephaloticoccus.1"
+      "Arenimonas.3"
     ]
   },
   "singleton_2": {
     "size": 1,
     "type": "isolate_singleton",
     "members": [
-      "Ca_Parvibacillus.1"
+      "Inhella.1"
     ]
   },
   "singleton_3": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rickettsiales.7"
+    ]
+  },
+  "singleton_4": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Kapabacteriales.8"
+    ]
+  },
+  "singleton_5": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Sphingobacteriales.9"
+    ]
+  },
+  "singleton_6": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Pseudomonas.11"
+    ]
+  },
+  "singleton_7": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Xanthomonadaceae.3"
+    ]
+  },
+  "singleton_8": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Bdellovibrio.4"
+    ]
+  },
+  "singleton_9": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Competibacter.136"
+    ]
+  },
+  "singleton_10": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Bosea.5"
+    ]
+  },
+  "singleton_11": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Obscuribacter.3"
+    ]
+  },
+  "singleton_12": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Prosthecobacter.2"
+    ]
+  },
+  "singleton_13": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ferruginibacter.7"
+    ]
+  },
+  "singleton_14": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rhodanobacteraceae.1"
+    ]
+  },
+  "singleton_15": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Sphingobacteriales.3"
+    ]
+  },
+  "singleton_16": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Flavobacterium.12"
+    ]
+  },
+  "singleton_17": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Aminobacter.2"
+    ]
+  },
+  "singleton_18": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Anaerolinea.4"
+    ]
+  },
+  "singleton_19": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Arenimonas.5"
+    ]
+  },
+  "singleton_20": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Arenimonas.6"
+    ]
+  },
+  "singleton_21": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Azonexus.10"
+    ]
+  },
+  "singleton_22": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Azonexus.8"
+    ]
+  },
+  "singleton_23": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Bacteria.84"
+    ]
+  },
+  "singleton_24": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Bacteria.89"
+    ]
+  },
+  "singleton_25": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Bacteria.90"
+    ]
+  },
+  "singleton_26": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Bacteria.94"
+    ]
+  },
+  "singleton_27": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Bdellovibrio.18"
+    ]
+  },
+  "singleton_28": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Bdellovibrio.19"
+    ]
+  },
+  "singleton_29": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Bdellovibrio.7"
+    ]
+  },
+  "singleton_30": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Methylotenera.1"
+    ]
+  },
+  "singleton_31": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Brevundimonas.12"
+    ]
+  },
+  "singleton_32": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Bryobacter.14"
+    ]
+  },
+  "singleton_33": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Accumulibacter.24"
+    ]
+  },
+  "singleton_34": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Alysiosphaera.4"
+    ]
+  },
+  "singleton_35": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Competibacter.131"
+    ]
+  },
+  "singleton_36": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Competibacter.140"
+    ]
+  },
+  "singleton_37": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Competibacter.146"
+    ]
+  },
+  "singleton_38": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Competibacter.151"
+    ]
+  },
+  "singleton_39": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Competibacter.172"
+    ]
+  },
+  "singleton_40": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Competibacter.188"
+    ]
+  },
+  "singleton_41": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Competibacter.193"
+    ]
+  },
+  "singleton_42": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Competibacter.94"
+    ]
+  },
+  "singleton_43": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Competibacter.99"
+    ]
+  },
+  "singleton_44": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Phosphoribacter.1"
+    ]
+  },
+  "singleton_45": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Comamonadaceae.35"
+    ]
+  },
+  "singleton_46": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Comamonadaceae.57"
+    ]
+  },
+  "singleton_47": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Comamonadaceae.8"
+    ]
+  },
+  "singleton_48": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Corynebacterium.1"
+    ]
+  },
+  "singleton_49": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Defluviicoccus.12"
+    ]
+  },
+  "singleton_50": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Defluviicoccus.5"
+    ]
+  },
+  "singleton_51": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Defluviicoccus.7"
+    ]
+  },
+  "singleton_52": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Denitratisoma.4"
+    ]
+  },
+  "singleton_53": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Denitratisoma.8"
+    ]
+  },
+  "singleton_54": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Desulfovibrio.18"
+    ]
+  },
+  "singleton_55": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Desulfovibrio.21"
+    ]
+  },
+  "singleton_56": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Desulfovibrio.23"
+    ]
+  },
+  "singleton_57": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Devosia.11"
+    ]
+  },
+  "singleton_58": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Diaphorobacter.1"
+    ]
+  },
+  "singleton_59": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Dokdonella.4"
+    ]
+  },
+  "singleton_60": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Flavitalea.4"
+    ]
+  },
+  "singleton_61": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Flavobacterium.11"
+    ]
+  },
+  "singleton_62": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Flavobacterium.8"
+    ]
+  },
+  "singleton_63": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Flexifilaceae.31"
+    ]
+  },
+  "singleton_64": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rhodobacteraceae.16"
+    ]
+  },
+  "singleton_65": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Gammaproteobacteria.10"
+    ]
+  },
+  "singleton_66": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Gracilibacteria.17"
+    ]
+  },
+  "singleton_67": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Gracilibacteria.4"
+    ]
+  },
+  "singleton_68": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Herpetosiphon.4"
+    ]
+  },
+  "singleton_69": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Holophagae.4"
+    ]
+  },
+  "singleton_70": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Holophagae.5"
+    ]
+  },
+  "singleton_71": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Hydrogenophaga.6"
+    ]
+  },
+  "singleton_72": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ignavibacteriales.11"
+    ]
+  },
+  "singleton_73": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Kapabacteriales.3"
+    ]
+  },
+  "singleton_74": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Kiritimatiellae.8"
+    ]
+  },
+  "singleton_75": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Leadbetterella.14"
+    ]
+  },
+  "singleton_76": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Luteimonas.7"
+    ]
+  },
+  "singleton_77": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Mesorhizobium.9"
+    ]
+  },
+  "singleton_78": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Micavibrionales.1"
+    ]
+  },
+  "singleton_79": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Micavibrionales.3"
+    ]
+  },
+  "singleton_80": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Micavibrionales.6"
+    ]
+  },
+  "singleton_81": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Micropepsaceae.1"
+    ]
+  },
+  "singleton_82": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Microscillaceae.5"
+    ]
+  },
+  "singleton_83": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Niveibacterium.1"
+    ]
+  },
+  "singleton_84": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Oikopleura.4"
+    ]
+  },
+  "singleton_85": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Oligoflexia.6"
+    ]
+  },
+  "singleton_86": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Pannonibacter.1"
+    ]
+  },
+  "singleton_87": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Pannonibacter.2"
+    ]
+  },
+  "singleton_88": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Phycisphaeraceae.16"
+    ]
+  },
+  "singleton_89": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Phycisphaeraceae.31"
+    ]
+  },
+  "singleton_90": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Piscinibacter.1"
+    ]
+  },
+  "singleton_91": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Prototheca_moriformis.2"
+    ]
+  },
+  "singleton_92": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Pseudofulvimonas.3"
+    ]
+  },
+  "singleton_93": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Pseudomonas.12"
+    ]
+  },
+  "singleton_94": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Pseudorhodoplanes.2"
+    ]
+  },
+  "singleton_95": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rheinheimera.4"
+    ]
+  },
+  "singleton_96": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rhizobiaceae.3"
+    ]
+  },
+  "singleton_97": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rhodobacter.7"
+    ]
+  },
+  "singleton_98": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rhodobacteraceae.23"
+    ]
+  },
+  "singleton_99": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rhodospirillales.14"
+    ]
+  },
+  "singleton_100": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rubinisphaeraceae.1"
+    ]
+  },
+  "singleton_101": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Runella.7"
+    ]
+  },
+  "singleton_102": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Shinella.2"
+    ]
+  },
+  "singleton_103": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Simplicispira.1"
+    ]
+  },
+  "singleton_104": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Sphingobacteriales.13"
+    ]
+  },
+  "singleton_105": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Paracoccus.12"
+    ]
+  },
+  "singleton_106": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Sphingopyxis.11"
+    ]
+  },
+  "singleton_107": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Sphingopyxis.23"
+    ]
+  },
+  "singleton_108": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Stenotrophomonas.2"
+    ]
+  },
+  "singleton_109": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Sulfuritalea.4"
+    ]
+  },
+  "singleton_110": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Thauera.30"
+    ]
+  },
+  "singleton_111": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ferruginibacter.23"
+    ]
+  },
+  "singleton_112": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Trichococcus.1"
+    ]
+  },
+  "singleton_113": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Verrucomicrobiaceae.6"
+    ]
+  },
+  "singleton_114": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Xanthobacteraceae.7"
+    ]
+  },
+  "singleton_115": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Actinomycetaceae.2"
+    ]
+  },
+  "singleton_116": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Planctomycetales.1"
+    ]
+  },
+  "singleton_117": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Undibacterium.2"
+    ]
+  },
+  "singleton_118": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Stappia.1"
+    ]
+  },
+  "singleton_119": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Flexifilaceae.40"
+    ]
+  },
+  "singleton_120": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Pirellula.5"
+    ]
+  },
+  "singleton_121": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Flavobacterium.9"
+    ]
+  },
+  "singleton_122": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Sphingopyxis.5"
+    ]
+  },
+  "singleton_123": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Planctomicrobium.2"
+    ]
+  },
+  "singleton_124": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Thauera.81"
+    ]
+  },
+  "singleton_125": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Edaphobaculum.4"
+    ]
+  },
+  "singleton_126": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Cloacibacterium.14"
+    ]
+  },
+  "singleton_127": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Competibacter.175"
+    ]
+  },
+  "singleton_128": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Desulfitobacteriales.1"
+    ]
+  },
+  "singleton_129": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Aminobacter.3"
+    ]
+  },
+  "singleton_130": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Comamonadaceae.33"
+    ]
+  },
+  "singleton_131": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Gemmobacter.3"
+    ]
+  },
+  "singleton_132": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Competibacter.192"
+    ]
+  },
+  "singleton_133": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Verrucomicrobiales.2"
+    ]
+  },
+  "singleton_134": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Bacteria.87"
+    ]
+  },
+  "singleton_135": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Tundrisphaera.1"
+    ]
+  },
+  "singleton_136": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Flavobacteriales.4"
+    ]
+  },
+  "singleton_137": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Defluviicoccus.6"
+    ]
+  },
+  "singleton_138": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Azonexus.13"
+    ]
+  },
+  "singleton_139": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Amaricoccus.2"
+    ]
+  },
+  "singleton_140": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Gammaproteobacteria.24"
+    ]
+  },
+  "singleton_141": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rhodobacter.8"
+    ]
+  },
+  "singleton_142": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Thauera.54"
+    ]
+  },
+  "singleton_143": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Pseudoxanthomonas.6"
+    ]
+  },
+  "singleton_144": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Paracoccus.16"
+    ]
+  },
+  "singleton_145": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rhodoferax.1"
+    ]
+  },
+  "singleton_146": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rhizobiaceae.5"
+    ]
+  },
+  "singleton_147": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Azonexus.1"
+    ]
+  },
+  "singleton_148": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Shewanella.1"
+    ]
+  },
+  "singleton_149": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Xanthobacteraceae.9"
+    ]
+  },
+  "singleton_150": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Edaphobaculum.2"
+    ]
+  },
+  "singleton_151": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Sphingobacteriales.10"
+    ]
+  },
+  "singleton_152": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Pseudoxanthomonas.21"
+    ]
+  },
+  "singleton_153": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Sediminibacterium.5"
+    ]
+  },
+  "singleton_154": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Dokdonella.9"
+    ]
+  },
+  "singleton_155": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Flavihumibacter.1"
+    ]
+  },
+  "singleton_156": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Emticicia.1"
+    ]
+  },
+  "singleton_157": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Alysiosphaera.3"
+    ]
+  },
+  "singleton_158": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rhodocyclaceae.17"
+    ]
+  },
+  "singleton_159": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Intrasporangiaceae.4"
+    ]
+  },
+  "singleton_160": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Thauera.47"
+    ]
+  },
+  "singleton_161": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Luteimonas.10"
+    ]
+  },
+  "singleton_162": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Comamonadaceae.17"
+    ]
+  },
+  "singleton_163": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Mesorhizobium.20"
+    ]
+  },
+  "singleton_164": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Cloacibacterium.1"
+    ]
+  },
+  "singleton_165": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Reyranella.8"
+    ]
+  },
+  "singleton_166": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Xanthobacteraceae.11"
+    ]
+  },
+  "singleton_167": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Arenimonas.7"
+    ]
+  },
+  "singleton_168": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Idiomarina_sp..1"
+    ]
+  },
+  "singleton_169": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Singulisphaera.10"
+    ]
+  },
+  "singleton_170": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rhodobacteraceae.17"
+    ]
+  },
+  "singleton_171": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Leadbetterella.13"
+    ]
+  },
+  "singleton_172": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Paracoccus.7"
+    ]
+  },
+  "singleton_173": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Pseudoxanthomonas.3"
+    ]
+  },
+  "singleton_174": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Sphingosinicella.1"
+    ]
+  },
+  "singleton_175": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Phycisphaeraceae.13"
+    ]
+  },
+  "singleton_176": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Aestuariimicrobium.2"
+    ]
+  },
+  "singleton_177": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rhodobacteraceae.3"
+    ]
+  },
+  "singleton_178": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Haliscomenobacter.2"
+    ]
+  },
+  "singleton_179": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Cytophaga_xylanolytica_group.1"
+    ]
+  },
+  "singleton_180": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Terrimonas.24"
+    ]
+  },
+  "singleton_181": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Rhodobacteraceae.18"
+    ]
+  },
+  "singleton_182": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Terrimonas.19"
+    ]
+  },
+  "singleton_183": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Chitinophagaceae.19"
+    ]
+  },
+  "singleton_184": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Acidobacteriae.1"
+    ]
+  },
+  "singleton_185": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Mesorhizobium.11"
+    ]
+  },
+  "singleton_186": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Actinobacteria.4"
+    ]
+  },
+  "singleton_187": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Chryseobacterium.6"
+    ]
+  },
+  "singleton_188": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Xanthobacteraceae.4"
+    ]
+  },
+  "singleton_189": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Competibacter.166"
+    ]
+  },
+  "singleton_190": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Flavobacterium.28"
+    ]
+  },
+  "singleton_191": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Lacunisphaera.7"
+    ]
+  },
+  "singleton_192": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium.6"
+    ]
+  },
+  "singleton_193": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Holophagaceae.1"
+    ]
+  },
+  "singleton_194": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Brevundimonas.11"
+    ]
+  },
+  "singleton_195": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Cephaloticoccus.1"
+    ]
+  },
+  "singleton_196": {
+    "size": 1,
+    "type": "isolate_singleton",
+    "members": [
+      "Ca_Parvibacillus.1"
+    ]
+  },
+  "singleton_197": {
     "size": 1,
     "type": "isolate_singleton",
     "members": [

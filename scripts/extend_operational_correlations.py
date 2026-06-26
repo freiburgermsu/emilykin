@@ -28,11 +28,13 @@ import seaborn as sns
 from _gao_pao_label_helper import color_axis_labels, order_param_rows
 
 ROOT = '/Users/andrewfreiburger/Documents/Research/EmilyKin'
+if not os.path.isdir(ROOT):
+    ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
 # ---------------- inputs ----------------
-existing_dual = pd.read_csv('modeling_files/correlations/correlation_dual_qvalue_table.csv')
-existing_partial = pd.read_csv('modeling_files/correlations/correlation_with_time_partial.csv')
+existing_dual = pd.read_csv('correlations/correlation_dual_qvalue_table.csv')
+existing_partial = pd.read_csv('correlations/correlation_with_time_partial.csv')
 
 ab = pd.read_csv('abundances.csv').set_index('sample')
 
@@ -169,8 +171,8 @@ dual_cols = ['parameter', 'ASV', 'rho_interp', 'p_interp', 'n_interp',
 partial_cols = dual_cols + ['rho_partial', 'p_partial', 'n_partial', 'q_partial']
 dual_extended = pd.concat([existing_dual, new[dual_cols]], ignore_index=True)
 partial_extended = pd.concat([existing_partial, new[partial_cols]], ignore_index=True)
-dual_extended.to_csv('modeling_files/correlations/correlation_dual_qvalue_table_extended.csv', index=False)
-partial_extended.to_csv('modeling_files/correlations/correlation_with_time_partial_extended.csv', index=False)
+dual_extended.to_csv('correlations/correlation_dual_qvalue_table_extended.csv', index=False)
+partial_extended.to_csv('correlations/correlation_with_time_partial_extended.csv', index=False)
 print(f'extended tables: dual {dual_extended.shape}, partial {partial_extended.shape}')
 
 # ---------------- render extended heatmap ----------------
@@ -230,7 +232,7 @@ plt.setp(ax.get_xticklabels(), rotation=70, ha='right', rotation_mode='anchor')
 color_axis_labels(ax, axis='x')
 plt.tight_layout()
 
-out = 'modeling_files/correlations/correlation_heatmap_full_with_partial_extended.png'
+out = 'correlations/correlation_heatmap_full_with_partial_extended.png'
 plt.savefig(out, dpi=200, bbox_inches='tight')
 plt.close(fig)
 print(f'wrote {out}')
