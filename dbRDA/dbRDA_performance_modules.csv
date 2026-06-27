@@ -1,24 +1,24 @@
 organism,functional_category,CAP1,CAP2,louvain_module,kmeans_module,in_prev_top10
-Ca_Competibacter,GAOs,-0.2304,-0.156,1,2,True
-Cloacibacterium,,-0.5522,0.0908,1,1,True
-Gemmobacter,,-0.5302,0.0305,1,1,True
-Pseudoxanthomonas,,-0.4237,0.0033,1,1,True
-Sediminibacterium,,-0.5185,0.1197,1,1,True
-Thauera,Putative GAOs,-0.5812,0.0964,1,1,True
-Zoogloea,Putative PAOs,-0.4854,0.0857,1,1,True
-Aeromonas,,0.0311,-0.0438,2,2,True
-Azospira,,-0.1777,-0.1773,2,2,True
-Denitratisoma,,-0.0383,-0.2525,2,2,True
-Dokdonella,,-0.1147,-0.0351,2,2,True
-Holophagae,,0.1485,0.0637,2,3,True
-Hydrogenophaga,,-0.0729,-0.0442,2,2,True
-Lysobacter,,0.2665,-0.13,2,3,True
-Ca_Accumulibacter,PAOs,0.4922,-0.0232,3,3,True
-Ca_Caldilinea,,0.3673,0.0177,3,3,True
-Ca_Leptovillus,,0.4468,-0.0554,3,3,True
-Ca_Sarcinithrix,,0.435,0.1288,3,3,True
-Ignavibacteria,,0.3416,-0.1746,3,3,True
-Rhizobiales,,0.3814,0.1323,3,3,True
-Rhodoplanes,,0.4463,0.1311,3,3,True
-Rhodothermaceae,,0.3848,0.1206,3,3,True
-alphaI_cluster,,0.4189,0.1545,3,3,True
+Cloacibacterium,,-0.5896,0.0904,1,1,True
+Gemmobacter,,-0.565,0.0304,1,1,True
+Pseudoxanthomonas,,-0.4361,-0.0135,1,1,True
+Sediminibacterium,,-0.567,0.1234,1,1,True
+Thauera,Putative GAOs,-0.6271,0.1027,1,1,True
+Zoogloea,Putative PAOs,-0.5507,0.0988,1,1,True
+Aeromonas,,0.016,-0.0242,2,2,True
+Azospira,,-0.1857,-0.1549,2,2,True
+Ca_Competibacter,GAOs,-0.2091,-0.1852,2,2,True
+Denitratisoma,,-0.0497,-0.2379,2,2,True
+Dokdonella,,-0.1413,-0.0624,2,2,True
+Hydrogenophaga,,-0.0995,-0.0191,2,2,True
+Ca_Accumulibacter,PAOs,0.4975,-0.0117,3,3,True
+Ca_Caldilinea,,0.4037,-0.0149,3,3,True
+Ca_Leptovillus,,0.5023,-0.0748,3,3,True
+Ca_Sarcinithrix,,0.4919,0.1054,3,3,True
+Holophagae,,0.2091,0.0846,3,3,True
+Ignavibacteria,,0.3732,-0.1783,3,3,True
+Lysobacter,,0.2811,-0.151,3,3,True
+Rhizobiales,,0.4111,0.1436,3,3,True
+Rhodoplanes,,0.5086,0.1079,3,3,True
+Rhodothermaceae,,0.4165,0.0953,3,3,True
+alphaI_cluster,,0.4595,0.1526,3,3,True

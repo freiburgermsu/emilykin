@@ -708,10 +708,13 @@ PERF_KPIS = [
     'specific denitrification rates [mg NO2–N g−1\xa0VSS−1 h−1]',
     'N removal (ppm) [N-ppn]',
     'P removal [P%]',
+    'specific denitrifying P uptake rate',
+    'anoxic:aerobic P uptake rate ratio',
 ]
 # Display-label overrides for the performance panel arrows (units stripped, etc.)
 PERF_LABELS = {
     'specific denitrification rates [mg NO2–N g−1\xa0VSS−1 h−1]': 'specific denitrification rates',
+    'anoxic:aerobic P uptake rate ratio': 'anoxic:aerobic P uptake ratio',
 }
 
 # Curated "operational drivers" set replacing the old all-of-ValueEnviromental2 env

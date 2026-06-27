@@ -160,95 +160,141 @@ Ca_Sarcinithrix,M3,V,True,environment,cumulative aeration,I,-0.4896,-0.9553,0.51
 Rhodoplanes,M3,V,True,environment,cumulative aeration,I,-0.5039,-0.9539,0.5283,21,False
 Ca_Accumulibacter,M3,V,True,environment,cumulative aeration,I,-0.5137,-0.9983,0.5146,22,False
 Ca_Leptovillus,M3,IV,True,environment,cumulative aeration,I,-0.5376,-0.9982,0.5386,23,False
-Ca_Accumulibacter,M3,V,True,performance,N removal (ppm) [N-ppn],V,0.4591,0.9317,0.4928,1,False
-Ca_Leptovillus,M3,IV,True,performance,N removal (ppm) [N-ppn],V,0.4308,0.9567,0.4503,2,True
-Ignavibacteria,M3,IV,True,performance,N removal (ppm) [N-ppn],V,0.3831,0.9986,0.3836,3,True
-Rhodoplanes,M3,V,True,performance,N removal (ppm) [N-ppn],V,0.3544,0.7619,0.4652,4,False
-Ca_Sarcinithrix,M3,V,True,performance,N removal (ppm) [N-ppn],V,0.345,0.7606,0.4536,5,False
-Ca_Caldilinea,M3,IV,True,performance,N removal (ppm) [N-ppn],V,0.3284,0.893,0.3677,6,False
-alphaI_cluster,M3,V,True,performance,N removal (ppm) [N-ppn],V,0.3199,0.7164,0.4465,7,False
-Rhodothermaceae,M3,V,True,performance,N removal (ppm) [N-ppn],V,0.3025,0.7502,0.4033,8,False
-Lysobacter,M2,IV,True,performance,N removal (ppm) [N-ppn],V,0.2963,0.9994,0.2965,9,True
-Rhizobiales,M3,V,True,performance,N removal (ppm) [N-ppn],V,0.2946,0.7299,0.4037,10,False
-Holophagae,M2,V,True,performance,N removal (ppm) [N-ppn],V,0.1097,0.679,0.1616,11,False
-Denitratisoma,M2,III,True,performance,N removal (ppm) [N-ppn],V,0.0677,0.265,0.2554,12,False
-Aeromonas,M2,III,True,performance,N removal (ppm) [N-ppn],V,0.0462,0.8605,0.0537,13,False
-Hydrogenophaga,M2,III,True,performance,N removal (ppm) [N-ppn],V,-0.0487,-0.5707,0.0852,14,False
-Azospira,M2,II,True,performance,N removal (ppm) [N-ppn],V,-0.0903,-0.3596,0.2511,15,False
-Dokdonella,M2,IV,True,performance,N removal (ppm) [N-ppn],V,-0.0905,-0.7546,0.1199,16,False
-Ca_Competibacter,M1,II,True,performance,N removal (ppm) [N-ppn],V,-0.147,-0.5284,0.2782,17,False
-Pseudoxanthomonas,M1,I,True,performance,N removal (ppm) [N-ppn],V,-0.3884,-0.9167,0.4237,18,False
-Zoogloea,M1,I,True,performance,N removal (ppm) [N-ppn],V,-0.4783,-0.9704,0.4929,19,False
-Gemmobacter,M1,I,True,performance,N removal (ppm) [N-ppn],V,-0.4968,-0.9354,0.5311,20,False
-Sediminibacterium,M1,I,True,performance,N removal (ppm) [N-ppn],V,-0.5224,-0.9816,0.5322,21,False
-Cloacibacterium,M1,I,True,performance,N removal (ppm) [N-ppn],V,-0.5414,-0.9675,0.5596,22,False
-Thauera,M1,I,True,performance,N removal (ppm) [N-ppn],V,-0.5702,-0.9678,0.5891,23,False
-Ca_Accumulibacter,M3,V,True,performance,P removal [P%],V,0.4153,0.8428,0.4928,1,False
-Ca_Leptovillus,M3,IV,True,performance,P removal [P%],V,0.3969,0.8814,0.4503,2,False
-Ignavibacteria,M3,IV,True,performance,P removal [P%],V,0.3797,0.9898,0.3836,3,False
-Lysobacter,M2,IV,True,performance,P removal [P%],V,0.2926,0.987,0.2965,4,False
-Ca_Caldilinea,M3,IV,True,performance,P removal [P%],V,0.2897,0.7879,0.3677,5,False
-Rhodoplanes,M3,V,True,performance,P removal [P%],V,0.2888,0.6208,0.4652,6,False
-Ca_Sarcinithrix,M3,V,True,performance,P removal [P%],V,0.2809,0.6192,0.4536,7,False
-alphaI_cluster,M3,V,True,performance,P removal [P%],V,0.2529,0.5663,0.4465,8,False
-Rhodothermaceae,M3,V,True,performance,P removal [P%],V,0.2446,0.6067,0.4033,9,False
-Rhizobiales,M3,V,True,performance,P removal [P%],V,0.2351,0.5824,0.4037,10,False
-Denitratisoma,M2,III,True,performance,P removal [P%],V,0.1145,0.4482,0.2554,11,False
-Holophagae,M2,V,True,performance,P removal [P%],V,0.0844,0.5226,0.1616,12,False
-Aeromonas,M2,III,True,performance,P removal [P%],V,0.0507,0.9434,0.0537,13,False
-Hydrogenophaga,M2,III,True,performance,P removal [P%],V,-0.034,-0.3994,0.0852,14,False
-Azospira,M2,II,True,performance,P removal [P%],V,-0.0428,-0.1705,0.2511,15,False
-Dokdonella,M2,IV,True,performance,P removal [P%],V,-0.0734,-0.6119,0.1199,16,False
-Ca_Competibacter,M1,II,True,performance,P removal [P%],V,-0.098,-0.3524,0.2782,17,False
-Pseudoxanthomonas,M1,I,True,performance,P removal [P%],V,-0.3479,-0.8211,0.4237,18,False
-Zoogloea,M1,I,True,performance,P removal [P%],V,-0.4458,-0.9045,0.4929,19,False
-Gemmobacter,M1,I,True,performance,P removal [P%],V,-0.4506,-0.8484,0.5311,20,False
-Sediminibacterium,M1,I,True,performance,P removal [P%],V,-0.4925,-0.9255,0.5322,21,False
-Cloacibacterium,M1,I,True,performance,P removal [P%],V,-0.5033,-0.8994,0.5596,22,False
-Thauera,M1,I,True,performance,P removal [P%],V,-0.5302,-0.9,0.5891,23,False
-Ignavibacteria,M3,IV,True,performance,peakN2O [mg/L],IV,0.3467,0.9038,0.3836,1,False
-Ca_Accumulibacter,M3,V,True,performance,peakN2O [mg/L],IV,0.3186,0.6466,0.4928,2,False
-Ca_Leptovillus,M3,IV,True,performance,peakN2O [mg/L],IV,0.3165,0.7029,0.4503,3,False
-Lysobacter,M2,IV,True,performance,peakN2O [mg/L],IV,0.2656,0.8957,0.2965,4,False
-Ca_Caldilinea,M3,IV,True,performance,peakN2O [mg/L],IV,0.2101,0.5712,0.3677,5,False
-Denitratisoma,M2,III,True,performance,peakN2O [mg/L],IV,0.1767,0.6919,0.2554,6,True
-Rhodoplanes,M3,V,True,performance,peakN2O [mg/L],IV,0.1684,0.3619,0.4652,7,False
-Ca_Sarcinithrix,M3,V,True,performance,peakN2O [mg/L],IV,0.1633,0.36,0.4536,8,False
-Rhodothermaceae,M3,V,True,performance,peakN2O [mg/L],IV,0.1392,0.3452,0.4033,9,False
-alphaI_cluster,M3,V,True,performance,peakN2O [mg/L],IV,0.1331,0.298,0.4465,10,False
-Rhizobiales,M3,V,True,performance,peakN2O [mg/L],IV,0.1278,0.3167,0.4037,11,False
-Aeromonas,M2,III,True,performance,peakN2O [mg/L],IV,0.0537,0.9993,0.0537,12,True
-Holophagae,M2,V,True,performance,peakN2O [mg/L],IV,0.04,0.2479,0.1616,13,False
-Azospira,M2,II,True,performance,peakN2O [mg/L],IV,0.0321,0.1278,0.2511,14,True
-Hydrogenophaga,M2,III,True,performance,peakN2O [mg/L],IV,-0.0095,-0.1112,0.0852,15,True
-Ca_Competibacter,M1,II,True,performance,peakN2O [mg/L],IV,-0.0169,-0.0607,0.2782,16,True
-Dokdonella,M2,IV,True,performance,peakN2O [mg/L],IV,-0.0421,-0.3514,0.1199,17,True
-Pseudoxanthomonas,M1,I,True,performance,peakN2O [mg/L],IV,-0.2611,-0.6162,0.4237,18,True
-Gemmobacter,M1,I,True,performance,peakN2O [mg/L],IV,-0.3476,-0.6545,0.5311,19,True
-Zoogloea,M1,I,True,performance,peakN2O [mg/L],IV,-0.364,-0.7385,0.4929,20,True
-Cloacibacterium,M1,I,True,performance,peakN2O [mg/L],IV,-0.4088,-0.7305,0.5596,21,True
-Sediminibacterium,M1,I,True,performance,peakN2O [mg/L],IV,-0.4111,-0.7725,0.5322,22,True
-Thauera,M1,I,True,performance,peakN2O [mg/L],IV,-0.4309,-0.7314,0.5891,23,True
-Rhodoplanes,M3,V,True,performance,specific denitrification rates,V,0.4651,0.9998,0.4652,1,True
-Ca_Accumulibacter,M3,V,True,performance,specific denitrification rates,V,0.4624,0.9384,0.4928,2,True
-Ca_Sarcinithrix,M3,V,True,performance,specific denitrification rates,V,0.4535,0.9998,0.4536,3,True
-alphaI_cluster,M3,V,True,performance,specific denitrification rates,V,0.446,0.9989,0.4465,4,True
-Ca_Leptovillus,M3,IV,True,performance,specific denitrification rates,V,0.4094,0.9093,0.4503,5,False
-Rhizobiales,M3,V,True,performance,specific denitrification rates,V,0.4035,0.9996,0.4037,6,True
-Rhodothermaceae,M3,V,True,performance,specific denitrification rates,V,0.4033,1.0,0.4033,7,True
-Ca_Caldilinea,M3,IV,True,performance,specific denitrification rates,V,0.3556,0.967,0.3677,8,True
-Ignavibacteria,M3,IV,True,performance,specific denitrification rates,V,0.2732,0.7121,0.3836,9,False
-Lysobacter,M2,IV,True,performance,specific denitrification rates,V,0.2149,0.725,0.2965,10,False
-Holophagae,M2,V,True,performance,specific denitrification rates,V,0.1608,0.995,0.1616,11,True
-Aeromonas,M2,III,True,performance,specific denitrification rates,V,0.0165,0.3066,0.0537,12,False
-Hydrogenophaga,M2,III,True,performance,specific denitrification rates,V,-0.0828,-0.9716,0.0852,13,False
-Denitratisoma,M2,III,True,performance,specific denitrification rates,V,-0.1126,-0.4407,0.2554,14,False
-Dokdonella,M2,IV,True,performance,specific denitrification rates,V,-0.1199,-1.0,0.1199,15,False
-Azospira,M2,II,True,performance,specific denitrification rates,V,-0.2229,-0.8877,0.2511,16,False
-Ca_Competibacter,M1,II,True,performance,specific denitrification rates,V,-0.2666,-0.9584,0.2782,17,False
-Pseudoxanthomonas,M1,I,True,performance,specific denitrification rates,V,-0.403,-0.9512,0.4237,18,False
-Zoogloea,M1,I,True,performance,specific denitrification rates,V,-0.437,-0.8867,0.4929,19,False
-Sediminibacterium,M1,I,True,performance,specific denitrification rates,V,-0.4585,-0.8615,0.5322,20,False
-Gemmobacter,M1,I,True,performance,specific denitrification rates,V,-0.4964,-0.9347,0.5311,21,False
-Cloacibacterium,M1,I,True,performance,specific denitrification rates,V,-0.4992,-0.8921,0.5596,22,False
-Thauera,M1,I,True,performance,specific denitrification rates,V,-0.5252,-0.8915,0.5891,23,False
+Ca_Leptovillus,M3,IV,True,performance,N removal (ppm) [N-ppn],V,0.4952,0.9751,0.5079,1,True
+Ca_Accumulibacter,M3,V,True,performance,N removal (ppm) [N-ppn],V,0.4678,0.9401,0.4977,2,False
+Rhodoplanes,M3,V,True,performance,N removal (ppm) [N-ppn],V,0.4347,0.8361,0.5199,3,False
+Ca_Sarcinithrix,M3,V,True,performance,N removal (ppm) [N-ppn],V,0.4201,0.835,0.503,4,False
+Ignavibacteria,M3,IV,True,performance,N removal (ppm) [N-ppn],V,0.4125,0.9973,0.4136,5,True
+Ca_Caldilinea,M3,IV,True,performance,N removal (ppm) [N-ppn],V,0.3815,0.9445,0.4039,6,False
+alphaI_cluster,M3,V,True,performance,N removal (ppm) [N-ppn],V,0.3728,0.7698,0.4842,7,False
+Rhodothermaceae,M3,V,True,performance,N removal (ppm) [N-ppn],V,0.3535,0.8273,0.4273,8,False
+Rhizobiales,M3,V,True,performance,N removal (ppm) [N-ppn],V,0.3309,0.7599,0.4355,9,False
+Lysobacter,M3,IV,True,performance,N removal (ppm) [N-ppn],V,0.3168,0.9927,0.3191,10,False
+Holophagae,M3,V,True,performance,N removal (ppm) [N-ppn],V,0.1641,0.7274,0.2256,11,False
+Denitratisoma,M2,III,True,performance,N removal (ppm) [N-ppn],V,0.0401,0.1648,0.2431,12,False
+Aeromonas,M2,III,True,performance,N removal (ppm) [N-ppn],V,0.0237,0.8156,0.029,13,False
+Hydrogenophaga,M2,III,True,performance,N removal (ppm) [N-ppn],V,-0.0858,-0.8466,0.1013,14,False
+Dokdonella,M2,IV,True,performance,N removal (ppm) [N-ppn],V,-0.109,-0.7057,0.1544,15,False
+Azospira,M2,II,True,performance,N removal (ppm) [N-ppn],V,-0.1168,-0.4829,0.2418,16,False
+Ca_Competibacter,M2,II,True,performance,N removal (ppm) [N-ppn],V,-0.1276,-0.4569,0.2793,17,False
+Pseudoxanthomonas,M1,I,True,performance,N removal (ppm) [N-ppn],V,-0.4015,-0.9201,0.4363,18,False
+Gemmobacter,M1,I,True,performance,N removal (ppm) [N-ppn],V,-0.5375,-0.9499,0.5658,19,False
+Zoogloea,M1,I,True,performance,N removal (ppm) [N-ppn],V,-0.549,-0.9812,0.5595,20,False
+Sediminibacterium,M1,I,True,performance,N removal (ppm) [N-ppn],V,-0.5731,-0.9877,0.5803,21,False
+Cloacibacterium,M1,I,True,performance,N removal (ppm) [N-ppn],V,-0.5822,-0.976,0.5965,22,False
+Thauera,M1,I,True,performance,N removal (ppm) [N-ppn],V,-0.6216,-0.9782,0.6354,23,False
+Ca_Leptovillus,M3,IV,True,performance,P removal [P%],V,0.4569,0.8996,0.5079,1,False
+Ca_Accumulibacter,M3,V,True,performance,P removal [P%],V,0.4173,0.8385,0.4977,2,False
+Ignavibacteria,M3,IV,True,performance,P removal [P%],V,0.4087,0.9881,0.4136,3,False
+Rhodoplanes,M3,V,True,performance,P removal [P%],V,0.3589,0.6903,0.5199,4,False
+Ca_Sarcinithrix,M3,V,True,performance,P removal [P%],V,0.3465,0.6889,0.503,5,False
+Ca_Caldilinea,M3,IV,True,performance,P removal [P%],V,0.3416,0.8457,0.4039,6,False
+Lysobacter,M3,IV,True,performance,P removal [P%],V,0.3173,0.9943,0.3191,7,True
+alphaI_cluster,M3,V,True,performance,P removal [P%],V,0.2932,0.6054,0.4842,8,False
+Rhodothermaceae,M3,V,True,performance,P removal [P%],V,0.29,0.6787,0.4273,9,False
+Rhizobiales,M3,V,True,performance,P removal [P%],V,0.2583,0.5931,0.4355,10,False
+Holophagae,M3,V,True,performance,P removal [P%],V,0.1248,0.5533,0.2256,11,False
+Denitratisoma,M2,III,True,performance,P removal [P%],V,0.0933,0.3838,0.2431,12,False
+Aeromonas,M2,III,True,performance,P removal [P%],V,0.0269,0.9254,0.029,13,False
+Azospira,M2,II,True,performance,P removal [P%],V,-0.0658,-0.2722,0.2418,14,False
+Ca_Competibacter,M2,II,True,performance,P removal [P%],V,-0.0681,-0.2437,0.2793,15,False
+Hydrogenophaga,M2,III,True,performance,P removal [P%],V,-0.0714,-0.7042,0.1013,16,False
+Dokdonella,M2,IV,True,performance,P removal [P%],V,-0.0814,-0.5271,0.1544,17,False
+Pseudoxanthomonas,M1,I,True,performance,P removal [P%],V,-0.3524,-0.8076,0.4363,18,False
+Gemmobacter,M1,I,True,performance,P removal [P%],V,-0.4835,-0.8546,0.5658,19,False
+Zoogloea,M1,I,True,performance,P removal [P%],V,-0.5103,-0.9121,0.5595,20,False
+Cloacibacterium,M1,I,True,performance,P removal [P%],V,-0.5377,-0.9014,0.5965,22,False
+Sediminibacterium,M1,I,True,performance,P removal [P%],V,-0.5377,-0.9266,0.5803,21,False
+Thauera,M1,I,True,performance,P removal [P%],V,-0.5756,-0.9058,0.6354,23,False
+Ca_Leptovillus,M3,IV,True,performance,anoxic:aerobic P uptake ratio,V,0.4236,0.8341,0.5079,1,False
+Ignavibacteria,M3,IV,True,performance,anoxic:aerobic P uptake ratio,V,0.3967,0.9592,0.4136,2,False
+Ca_Accumulibacter,M3,V,True,performance,anoxic:aerobic P uptake ratio,V,0.3779,0.7593,0.4977,3,False
+Ca_Caldilinea,M3,IV,True,performance,anoxic:aerobic P uptake ratio,V,0.3102,0.7679,0.4039,4,False
+Lysobacter,M3,IV,True,performance,anoxic:aerobic P uptake ratio,V,0.31,0.9715,0.3191,5,False
+Rhodoplanes,M3,V,True,performance,anoxic:aerobic P uptake ratio,V,0.3061,0.5888,0.5199,6,False
+Ca_Sarcinithrix,M3,V,True,performance,anoxic:aerobic P uptake ratio,V,0.2954,0.5872,0.503,7,False
+Rhodothermaceae,M3,V,True,performance,anoxic:aerobic P uptake ratio,V,0.2461,0.5759,0.4273,8,False
+alphaI_cluster,M3,V,True,performance,anoxic:aerobic P uptake ratio,V,0.2397,0.4951,0.4842,9,False
+Rhizobiales,M3,V,True,performance,anoxic:aerobic P uptake ratio,V,0.2097,0.4816,0.4355,10,False
+Denitratisoma,M2,III,True,performance,anoxic:aerobic P uptake ratio,V,0.1221,0.5023,0.2431,11,False
+Holophagae,M3,V,True,performance,anoxic:aerobic P uptake ratio,V,0.0989,0.4385,0.2256,12,False
+Aeromonas,M2,III,True,performance,anoxic:aerobic P uptake ratio,V,0.0281,0.9673,0.029,13,False
+Ca_Competibacter,M2,II,True,performance,anoxic:aerobic P uptake ratio,V,-0.0317,-0.1136,0.2793,14,False
+Azospira,M2,II,True,performance,anoxic:aerobic P uptake ratio,V,-0.0345,-0.1428,0.2418,15,False
+Hydrogenophaga,M2,III,True,performance,anoxic:aerobic P uptake ratio,V,-0.0612,-0.6043,0.1013,16,False
+Dokdonella,M2,IV,True,performance,anoxic:aerobic P uptake ratio,V,-0.0634,-0.4103,0.1544,17,False
+Pseudoxanthomonas,M1,I,True,performance,anoxic:aerobic P uptake ratio,V,-0.3154,-0.7227,0.4363,18,False
+Gemmobacter,M1,I,True,performance,anoxic:aerobic P uptake ratio,V,-0.4405,-0.7786,0.5658,19,False
+Zoogloea,M1,I,True,performance,anoxic:aerobic P uptake ratio,V,-0.4756,-0.8501,0.5595,20,False
+Cloacibacterium,M1,I,True,performance,anoxic:aerobic P uptake ratio,V,-0.4989,-0.8364,0.5965,21,False
+Sediminibacterium,M1,I,True,performance,anoxic:aerobic P uptake ratio,V,-0.5042,-0.8689,0.5803,22,False
+Thauera,M1,I,True,performance,anoxic:aerobic P uptake ratio,V,-0.535,-0.842,0.6354,23,False
+Ignavibacteria,M3,IV,True,performance,peakN2O [mg/L],IV,0.3717,0.8986,0.4136,1,False
+Ca_Leptovillus,M3,IV,True,performance,peakN2O [mg/L],IV,0.3709,0.7303,0.5079,2,False
+Ca_Accumulibacter,M3,V,True,performance,peakN2O [mg/L],IV,0.3185,0.64,0.4977,3,False
+Lysobacter,M3,IV,True,performance,peakN2O [mg/L],IV,0.293,0.9183,0.3191,4,False
+Ca_Caldilinea,M3,IV,True,performance,peakN2O [mg/L],IV,0.2627,0.6502,0.4039,5,False
+Rhodoplanes,M3,V,True,performance,peakN2O [mg/L],IV,0.2317,0.4457,0.5199,6,False
+Ca_Sarcinithrix,M3,V,True,performance,peakN2O [mg/L],IV,0.2233,0.4439,0.503,7,False
+Rhodothermaceae,M3,V,True,performance,peakN2O [mg/L],IV,0.1843,0.4314,0.4273,8,False
+alphaI_cluster,M3,V,True,performance,peakN2O [mg/L],IV,0.1662,0.3432,0.4842,9,False
+Denitratisoma,M2,III,True,performance,peakN2O [mg/L],IV,0.1554,0.6395,0.2431,10,True
+Rhizobiales,M3,V,True,performance,peakN2O [mg/L],IV,0.1431,0.3286,0.4355,11,False
+Holophagae,M3,V,True,performance,peakN2O [mg/L],IV,0.0637,0.2824,0.2256,12,False
+Aeromonas,M2,III,True,performance,peakN2O [mg/L],IV,0.0289,0.9961,0.029,13,True
+Ca_Competibacter,M2,II,True,performance,peakN2O [mg/L],IV,0.015,0.0537,0.2793,14,True
+Azospira,M2,II,True,performance,peakN2O [mg/L],IV,0.0059,0.0243,0.2418,15,True
+Dokdonella,M2,IV,True,performance,peakN2O [mg/L],IV,-0.039,-0.2524,0.1544,16,True
+Hydrogenophaga,M2,III,True,performance,peakN2O [mg/L],IV,-0.0469,-0.4629,0.1013,17,True
+Pseudoxanthomonas,M1,I,True,performance,peakN2O [mg/L],IV,-0.2606,-0.5973,0.4363,18,True
+Gemmobacter,M1,I,True,performance,peakN2O [mg/L],IV,-0.3751,-0.663,0.5658,19,True
+Zoogloea,M1,I,True,performance,peakN2O [mg/L],IV,-0.4198,-0.7503,0.5595,20,True
+Cloacibacterium,M1,I,True,performance,peakN2O [mg/L],IV,-0.4374,-0.7332,0.5965,21,True
+Sediminibacterium,M1,I,True,performance,peakN2O [mg/L],IV,-0.4492,-0.7741,0.5803,22,True
+Thauera,M1,I,True,performance,peakN2O [mg/L],IV,-0.4703,-0.7402,0.6354,23,True
+Rhodoplanes,M3,V,True,performance,specific denitrification rates,V,0.5169,0.9941,0.5199,1,True
+Ca_Sarcinithrix,M3,V,True,performance,specific denitrification rates,V,0.5002,0.9943,0.503,2,True
+alphaI_cluster,M3,V,True,performance,specific denitrification rates,V,0.4842,1.0,0.4842,3,True
+Ca_Accumulibacter,M3,V,True,performance,specific denitrification rates,V,0.469,0.9423,0.4977,4,False
+Ca_Leptovillus,M3,IV,True,performance,specific denitrification rates,V,0.4538,0.8936,0.5079,5,False
+Rhizobiales,M3,V,True,performance,specific denitrification rates,V,0.4354,0.9998,0.4355,6,True
+Rhodothermaceae,M3,V,True,performance,specific denitrification rates,V,0.4254,0.9957,0.4273,7,True
+Ca_Caldilinea,M3,IV,True,performance,specific denitrification rates,V,0.3788,0.9378,0.4039,8,False
+Ignavibacteria,M3,IV,True,performance,specific denitrification rates,V,0.2989,0.7226,0.4136,9,False
+Holophagae,M3,V,True,performance,specific denitrification rates,V,0.2251,0.9978,0.2256,10,True
+Lysobacter,M3,IV,True,performance,specific denitrification rates,V,0.2199,0.6892,0.3191,11,False
+Aeromonas,M2,III,True,performance,specific denitrification rates,V,0.0076,0.2615,0.029,12,False
+Hydrogenophaga,M2,III,True,performance,specific denitrification rates,V,-0.1005,-0.9918,0.1013,13,False
+Denitratisoma,M2,III,True,performance,specific denitrification rates,V,-0.1215,-0.5001,0.2431,14,False
+Dokdonella,M2,IV,True,performance,specific denitrification rates,V,-0.1537,-0.9952,0.1544,15,False
+Azospira,M2,II,True,performance,specific denitrification rates,V,-0.2248,-0.9296,0.2418,16,False
+Ca_Competibacter,M2,II,True,performance,specific denitrification rates,V,-0.2565,-0.9183,0.2793,17,False
+Pseudoxanthomonas,M1,I,True,performance,specific denitrification rates,V,-0.4185,-0.9591,0.4363,18,False
+Zoogloea,M1,I,True,performance,specific denitrification rates,V,-0.4922,-0.8799,0.5595,19,False
+Sediminibacterium,M1,I,True,performance,specific denitrification rates,V,-0.5001,-0.8618,0.5803,20,False
+Gemmobacter,M1,I,True,performance,specific denitrification rates,V,-0.5272,-0.9318,0.5658,21,False
+Cloacibacterium,M1,I,True,performance,specific denitrification rates,V,-0.5319,-0.8917,0.5965,22,False
+Thauera,M1,I,True,performance,specific denitrification rates,V,-0.5636,-0.887,0.6354,23,False
+Rhodoplanes,M3,V,True,performance,specific denitrifying P uptake rate,V,0.5167,0.9939,0.5199,1,False
+Ca_Sarcinithrix,M3,V,True,performance,specific denitrifying P uptake rate,V,0.4999,0.9937,0.503,2,False
+Ca_Accumulibacter,M3,V,True,performance,specific denitrifying P uptake rate,V,0.494,0.9926,0.4977,3,True
+Ca_Leptovillus,M3,IV,True,performance,specific denitrifying P uptake rate,V,0.4926,0.9698,0.5079,4,False
+alphaI_cluster,M3,V,True,performance,specific denitrifying P uptake rate,V,0.4723,0.9754,0.4842,5,False
+Rhodothermaceae,M3,V,True,performance,specific denitrifying P uptake rate,V,0.4238,0.992,0.4273,6,False
+Rhizobiales,M3,V,True,performance,specific denitrifying P uptake rate,V,0.4232,0.9719,0.4355,7,False
+Ca_Caldilinea,M3,IV,True,performance,specific denitrifying P uptake rate,V,0.4003,0.9909,0.4039,8,True
+Ignavibacteria,M3,IV,True,performance,specific denitrifying P uptake rate,V,0.3539,0.8557,0.4136,9,False
+Lysobacter,M3,IV,True,performance,specific denitrifying P uptake rate,V,0.265,0.8303,0.3191,10,False
+Holophagae,M3,V,True,performance,specific denitrifying P uptake rate,V,0.2164,0.9593,0.2256,11,False
+Aeromonas,M2,III,True,performance,specific denitrifying P uptake rate,V,0.0135,0.4652,0.029,12,False
+Denitratisoma,M2,III,True,performance,specific denitrifying P uptake rate,V,-0.0728,-0.2997,0.2431,13,False
+Hydrogenophaga,M2,III,True,performance,specific denitrifying P uptake rate,V,-0.1009,-0.9958,0.1013,14,False
+Dokdonella,M2,IV,True,performance,specific denitrifying P uptake rate,V,-0.1467,-0.95,0.1544,15,False
+Azospira,M2,II,True,performance,specific denitrifying P uptake rate,V,-0.2,-0.8271,0.2418,16,False
+Ca_Competibacter,M2,II,True,performance,specific denitrifying P uptake rate,V,-0.2263,-0.8102,0.2793,17,False
+Pseudoxanthomonas,M1,I,True,performance,specific denitrifying P uptake rate,V,-0.4353,-0.9977,0.4363,18,False
+Zoogloea,M1,I,True,performance,specific denitrifying P uptake rate,V,-0.5383,-0.9622,0.5595,19,False
+Sediminibacterium,M1,I,True,performance,specific denitrifying P uptake rate,V,-0.5521,-0.9515,0.5803,20,False
+Gemmobacter,M1,I,True,performance,specific denitrifying P uptake rate,V,-0.5593,-0.9884,0.5658,21,False
+Cloacibacterium,M1,I,True,performance,specific denitrifying P uptake rate,V,-0.5779,-0.9688,0.5965,22,False
+Thauera,M1,I,True,performance,specific denitrifying P uptake rate,V,-0.6139,-0.9662,0.6354,23,False
