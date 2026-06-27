@@ -137,6 +137,9 @@ render_gao_pao(rcg.G, rcg._mean_rel_abund, "")
 
 # ---- per-phase ----
 abf = read_csv("abundances.csv", header=0).set_index("sample")
+if os.environ.get("NETWORK_MAG_ONLY") == "1":   # keep only MAG-representative ASV nodes
+    _mag_ids = set(json.load(open("mag_iterativeID_old_to_new.json")).values())
+    abf = abf[[c for c in abf.columns if c in _mag_ids]]
 for phase, span in phr.items():
     lo = max(span["start"], EXCLUDE_DAYS_BELOW)
     kp = [s for s in abf.index if lo <= int(sd[s]) <= span["end"]]

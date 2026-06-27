@@ -32,6 +32,14 @@ iterativeID_level = {_ID: content.get(level_3, 'Unknown') for _ID, content in it
 _significantly_connected_organisms = [str(x) for x in np.load('FDR_passing_pairs.npy')]
 _significantly_connected_organisms.append('Methanobacteriaceae.1')
 
+# Optional: restrict the node universe to ASVs whose iterativeID is also a MAG
+# iterativeID (the genome-resolved / MAG-representative ASVs).  Toggled via env.
+import os as _os
+if _os.environ.get('NETWORK_MAG_ONLY') == '1':
+    _mag_ids = set(json.load(open('mag_iterativeID_old_to_new.json')).values())
+    _significantly_connected_organisms = [x for x in _significantly_connected_organisms if x in _mag_ids]
+    print(f'[MAG-only] node universe = {len(_significantly_connected_organisms)} MAG-matching ASVs')
+
 iterativeID_color_map_local = json.load(open('iterativeID_color_map.json', 'r'))
 order_color_map_local = json.load(open('Phylum_color_map.json', 'r'))
 

@@ -91,6 +91,10 @@ def build_phase_graph(abund):
 
 
 abund_full = read_csv('abundances.csv', header=0).set_index('sample')
+if os.environ.get('NETWORK_MAG_ONLY') == '1':   # keep only MAG-representative ASV nodes
+    _mag_ids = set(json.load(open('mag_iterativeID_old_to_new.json')).values())
+    abund_full = abund_full[[c for c in abund_full.columns if c in _mag_ids]]
+    print(f'[MAG-only] {abund_full.shape[1]} MAG-matching ASV columns')
 
 for phase, span in phase_day_ranges.items():
     lo = span['start'] + EXCLUDE_DAYS_HEAD
