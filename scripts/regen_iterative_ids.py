@@ -142,29 +142,32 @@ mag_case  = {}
 m_counter = defaultdict(int)
 
 for mag in mag_order:
-    g = gtdb(mag, "Genus")
-    if g and not numeric(g):                       # case 1
-        m_counter[g] += 1
-        mag_new[mag]  = f"{g}.{m_counter[g]}_m"
-        mag_case[mag] = "1_gtdb_genus"
-        continue
+    # Priority: a mapped ASV that AGREES with the MAG's GTDB taxonomy (at the
+    # deepest defined non-numeric GTDB rank) wins over the GTDB-derived label.
     r_rank, r_val = deepest_nonnum_gtdb(mag)
     agree = []
-    if r_rank and r_rank != "Domain" and r_val:     # case 2 candidate (no trivial Domain match)
+    if r_rank and r_rank != "Domain" and r_val:     # no trivial Domain match
         asv_rank = GTDB2ASV_RANK[r_rank]
         for h in mag_asvs.get(mag, []):
             av = clean(taxonomy.get(h, {}).get(asv_rank, ""))
             if av and av.lower() == r_val.lower():
                 agree.append(h)
-    if agree:                                        # case 2
+    if agree:                                        # >=1 mapped ASV agrees -> inherit
         best = max(agree, key=lambda h: (mean_ab.get(h, 0.0), hash2new.get(h, "")))
-        mag_new[mag]  = hash2new[best]               # inherit ASV id, no suffix
-        mag_case[mag] = "2_asv_inherit"
+        mag_new[mag]  = hash2new[best]               # most-abundant AGREEING ASV id, no suffix
+        mag_case[mag] = "asv_inherit"
         continue
-    lbl = r_val if r_val else "Bacteria"             # case 3
-    m_counter[lbl] += 1
-    mag_new[mag]  = f"{lbl}.{m_counter[lbl]}_m"
-    mag_case[mag] = "3_lowest_gtdb"
+    # No agreeing ASV (all mapped ASVs disagree, or none mapped) -> GTDB-defined label
+    g = gtdb(mag, "Genus")
+    if g and not numeric(g):                         # GTDB genus defined & non-numeric
+        m_counter[g] += 1
+        mag_new[mag]  = f"{g}.{m_counter[g]}_m"
+        mag_case[mag] = "gtdb_genus"
+    else:                                            # lowest defined non-numeric GTDB label
+        lbl = r_val if r_val else "Bacteria"
+        m_counter[lbl] += 1
+        mag_new[mag]  = f"{lbl}.{m_counter[lbl]}_m"
+        mag_case[mag] = "gtdb_lowest"
 
 # ── colour map (replicates data_processing.py cell @169-210 with new ids) ──────
 import matplotlib.pyplot as plt

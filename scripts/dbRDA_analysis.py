@@ -61,8 +61,9 @@ N_JOBS = int(os.environ.get('DBRDA_NJOBS', '-1'))
 
 # ----- paths ---------------------------------------------------------------
 ROOT = Path('/Users/andrewfreiburger/Documents/Research/EmilyKin')
-if not ROOT.exists():  # fall back to the repo dir this script lives in (e.g. Linux box)
-    ROOT = Path(__file__).resolve().parent
+if not ROOT.exists():  # fall back to the repo root (this script lives in scripts/)
+    _here = Path(__file__).resolve().parent
+    ROOT = _here if (_here / 'table_rel_export.csv').exists() else _here.parent
 # R: long_file <- file.path(base_dir, "table_rel_full.csv")
 LONG_FILE = ROOT / 'table_rel_full.csv'
 if not LONG_FILE.exists():  # fall back to the file actually committed to this repo
@@ -70,8 +71,15 @@ if not LONG_FILE.exists():  # fall back to the file actually committed to this r
 # R: xlsx_file <- file.path(base_dir, "dbRDAdataset.xlsx") with sheets Performance & Environmental
 XLSX_FILE = ROOT / 'dbRDAdataset.xlsx'
 
-OUT_DIR = ROOT / 'graphs' / 'dbRDA'
+OUT_DIR = ROOT / 'dbRDA'
 OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+# Map each ASV (seq hash) to its iterativeID ROOT (the genus-level new-nomenclature
+# label) so the ordination aggregates/labels organisms by iterativeID root rather
+# than raw GTDB/MiDAS Genus (which still held numeric placeholders like midas_g_*).
+import json as _json
+_ITERIDS = _json.load(open(ROOT / 'iterativeIDs.json'))   # iterativeID -> seq hash
+SEQ2ROOT = {h: iid.split('.')[0] for iid, h in _ITERIDS.items()}
 
 # ----- stage colors & B-id → stage mapping (matches R) ---------------------
 STAGE_COLORS = {
@@ -151,20 +159,27 @@ def build_abundance_matrix(
     fade genera that fall outside the previously-mandated set.
     """
     tab = pd.read_csv(long_file, low_memory=False)
+    # iterativeID root per ASV (genus-level new-nomenclature label); the same input
+    # rows as before (those with a defined Genus) are kept, but organisms are now
+    # aggregated/labelled by root, merging genera that share a root (e.g. numeric
+    # midas_g_* placeholders collapse onto their non-numeric family/order label).
+    tab = tab[tab['Genus'].notna()].copy()
+    tab['root'] = tab['seq'].map(SEQ2ROOT)
+    tab = tab[tab['root'].notna()]
     # filter to phases I–V
     tab_stage = tab[tab['Phase'].isin(['I', 'II', 'III', 'IV', 'V'])].copy()
 
-    # genus relative abundance per sample (sum the species within each genus)
+    # root relative abundance per sample (sum the ASVs within each root)
     abund_all = (
-        tab_stage.dropna(subset=['Genus'])
-        .groupby(['sample', 'Phase', 'Genus'], as_index=False)
+        tab_stage
+        .groupby(['sample', 'Phase', 'root'], as_index=False)
         .agg(rel_ab=('rel_ab', 'sum'))
     )
 
-    # previously-mandated set: top 10 genera per stage (union) by mean rel. abundance
+    # previously-mandated set: top 10 roots per stage (union) by mean rel. abundance
     top_genus = (
-        tab_stage.dropna(subset=['Genus'])
-        .groupby(['Phase', 'Genus'], as_index=False)
+        tab_stage
+        .groupby(['Phase', 'root'], as_index=False)
         .agg(mean_rel_ab=('rel_ab', 'mean'))
     )
     top_per_stage = (
@@ -172,18 +187,18 @@ def build_abundance_matrix(
         .groupby('Phase', as_index=False)
         .head(10)
     )
-    top10_genera = set(top_per_stage['Genus'].unique())
+    top10_genera = set(top_per_stage['root'].unique())
 
     if max_rel_threshold is None:
         keep_genera = sorted(top10_genera)
     else:
-        genus_max = abund_all.groupby('Genus')['rel_ab'].max()
+        genus_max = abund_all.groupby('root')['rel_ab'].max()
         keep_genera = sorted(genus_max[genus_max >= max_rel_threshold].index)
 
-    # sample × genus matrix
-    abund_long = abund_all[abund_all['Genus'].isin(keep_genera)]
+    # sample × root matrix
+    abund_long = abund_all[abund_all['root'].isin(keep_genera)]
     Y_wide = abund_long.pivot_table(
-        index=['sample', 'Phase'], columns='Genus', values='rel_ab', fill_value=0,
+        index=['sample', 'Phase'], columns='root', values='rel_ab', fill_value=0,
     ).reset_index()
 
     # sort: by phase order (I…V), then sample

@@ -1,10 +1,10 @@
 MAG	Genus	Species	mag_iterativeID
 CAN_1_bin.174	UBA5532	UBA5532 sp002426885	Gracilibacteria.30
-CAN_1_bin.210	Dokdonella		Dokdonella.2_m
+CAN_1_bin.210	Dokdonella		Dokdonella.14
 CAN_1_bin.77	UBA5066		Thermoanaerobaculia.1_m
 CAN_1_bin.98	Accumulibacter	Accumulibacter sp014879755	Accumulibacter.1_m
 CAN_2_bin.125	Pseudoxanthomonas_A	Pseudoxanthomonas_A mexicana	Pseudoxanthomonas_A.1_m
-CAN_2_bin.159	Pseudoxanthomonas	Pseudoxanthomonas sp017302035	Pseudoxanthomonas.1_m
+CAN_2_bin.159	Pseudoxanthomonas	Pseudoxanthomonas sp017302035	Pseudoxanthomonas.23
 CAN_2_bin.6	Desulfobacillus		Desulfobacillus.1_m
 CAN_3_bin.203	JAEULV01	JAEULV01 sp016793065	Ancalomicrobiaceae.1_m
 CAN_3_bin.221	OLB5	OLB5 sp002344125	Ignavibacteria.31
@@ -14,7 +14,7 @@ CAN_5_bin.112	JJ008		Terrimonas.22
 CAN_5_bin.147	SpSt-398	SpSt-398 sp017303415	Terrimonas.3
 CAN_5_bin.177	SCMT01	SCMT01 sp019510125	Lysobacter.2
 CAN_5_bin.40	Giesbergeria	Giesbergeria sp026647025	Giesbergeria.1_m
-CAN_5_bin.70	Azonexus	Azonexus sp017302355	Azonexus.2_m
+CAN_5_bin.70	Azonexus	Azonexus sp017302355	Azonexus.12
 CAN_5_bin.90	UBA5532	UBA5532 sp002426885	Gracilibacteria.25
 coasm_bin.185	Accumulibacter	Accumulibacter sp000585075	Accumulibacter.4_m
 coasm_bin.260	JAAEKA01		Ca_Sarcinithrix.1

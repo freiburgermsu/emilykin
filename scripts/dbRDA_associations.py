@@ -104,11 +104,13 @@ ENV_VEC_RAW = {"Cumulative aeration": "cumulative aeration"}
 def peak_phase_map(long_file: Path) -> dict:
     tab = pd.read_csv(long_file, low_memory=False)
     tab = tab[tab['Phase'].isin(['I', 'II', 'III', 'IV', 'V'])]
-    gp = (tab.dropna(subset=['Genus']).groupby(['Genus', 'Phase'])['rel_ab']
-          .mean().reset_index())
+    tab = tab[tab['Genus'].notna()].copy()
+    tab['root'] = tab['seq'].map(M.SEQ2ROOT)   # key by iterativeID root, matching the ordination
+    tab = tab[tab['root'].notna()]
+    gp = (tab.groupby(['root', 'Phase'])['rel_ab'].mean().reset_index())
     order = ['I', 'II', 'III', 'IV', 'V']
     out = {}
-    for g, sub in gp.groupby('Genus'):
+    for g, sub in gp.groupby('root'):
         s = sub.set_index('Phase')['rel_ab'].reindex(order).fillna(0)
         out[g] = s.idxmax() if s.sum() > 0 else ''
     return out

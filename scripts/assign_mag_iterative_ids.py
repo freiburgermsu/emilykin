@@ -8,25 +8,26 @@ using the current nomenclature.
 
 Assignment rules (in priority order):
 
-  case 1 — GTDB genus root                       =>  ``{Genus}.{N}_m``
-      The GTDB Genus is defined and non-numeric (contains no digit).
+  asv_inherit — inherit a mapped ASV's iterativeID  =>  ``{ASV_iterativeID}``  (no suffix)
+      Among the ASVs mapped to this MAG at species/genus/family confidence (the
+      ``weak`` tier is excluded), keep those whose taxonomy AGREES with the MAG's
+      GTDB taxonomy at the DEEPEST GTDB rank that is defined and non-numeric
+      (Phylum..Genus; Domain is never a valid match rank).  Taxonomically
+      disagreeing ASVs are ignored.  Of the agreeing ASVs, inherit the iterativeID
+      of the one with the highest mean relative abundance.  The MAG and that
+      representative ASV then share a label (e.g. ``Dokdonella.5``).  This takes
+      priority over the GTDB-derived label.
 
-  case 2 — inherit a mapped ASV's iterativeID     =>  ``{ASV_iterativeID}``  (no suffix)
-      Reached when case 1 does not apply.  Among the ASVs mapped to this MAG at
-      species/genus/family confidence (the ``weak`` tier is excluded), keep those
-      whose taxonomy agrees with the MAG's GTDB taxonomy at the DEEPEST GTDB rank
-      that is defined and non-numeric (Phylum..Genus; Domain is never a valid
-      match rank).  Of the survivors, inherit the iterativeID of the one with the
-      highest mean relative abundance.  The MAG and that representative ASV then
-      share a label (e.g. ``Bdellovibrio.13``).
+  gtdb_genus  — GTDB genus root                     =>  ``{Genus}.{N}_m``
+      Reached when no mapped ASV agrees: the GTDB Genus is defined and non-numeric.
 
-  case 3 — lowest GTDB label root                 =>  ``{label}.{N}_m``
-      Reached when GTDB does not resolve the genus (undefined/numeric) AND no
-      mapped ASV agrees.  ``label`` = the deepest GTDB rank value (Domain..Genus)
+  gtdb_lowest — lowest GTDB label root              =>  ``{label}.{N}_m``
+      Reached when no mapped ASV agrees AND GTDB does not resolve the genus
+      (undefined/numeric).  ``label`` = the deepest GTDB rank value (Domain..Genus)
       that is defined and non-numeric.
 
-  ``_m`` is appended AFTER the per-root running count; case-2 (inherited) IDs
-  carry no suffix.  Per-root counters are shared across cases 1 and 3.
+  ``_m`` is appended AFTER the per-root running count; inherited IDs carry no
+  suffix.  Per-root counters are shared across the two GTDB-derived cases.
 
 GTDB taxonomy is read from the authoritative ``mag_abundance_summary.json``.
 ASV iterativeIDs / taxonomy come from the (regenerated) ``iterativeIDs.json`` and
@@ -84,24 +85,27 @@ def deepest_nonnum_gtdb(mag):
     return chosen
 
 def assign(mag, counter):
-    g = gtdb(mag, "Genus")
-    if g and not numeric(g):                                    # case 1
-        counter[g] += 1
-        return f"{g}.{counter[g]}_m", "1_gtdb_genus"
+    # A mapped ASV that agrees with the MAG's GTDB taxonomy (deepest non-numeric
+    # GTDB rank) takes priority over the GTDB-derived label; disagreeing ASVs are
+    # ignored.
     r_rank, r_val = deepest_nonnum_gtdb(mag)
     agree = []
-    if r_rank and r_rank != "Domain" and r_val:                 # case 2
+    if r_rank and r_rank != "Domain" and r_val:
         ar = GTDB2ASV_RANK[r_rank]
         for h in mag_to_hashes.get(mag, []):
             av = _clean(taxonomy.get(h, {}).get(ar, ""))
             if av and av.lower() == r_val.lower():
                 agree.append(h)
-    if agree:
+    if agree:                                                   # most-abundant AGREEING ASV
         best = max(agree, key=lambda h: (mean_ab.get(h, 0.0), hash2id.get(h, "")))
-        return hash2id[best], "2_asv_inherit"
-    lbl = r_val if r_val else "Bacteria"                        # case 3
+        return hash2id[best], "asv_inherit"
+    g = gtdb(mag, "Genus")                                      # GTDB-defined fallback
+    if g and not numeric(g):
+        counter[g] += 1
+        return f"{g}.{counter[g]}_m", "gtdb_genus"
+    lbl = r_val if r_val else "Bacteria"
     counter[lbl] += 1
-    return f"{lbl}.{counter[lbl]}_m", "3_lowest_gtdb"
+    return f"{lbl}.{counter[lbl]}_m", "gtdb_lowest"
 
 # ── compute in CSV row order ──────────────────────────────────────────────────
 lines = CSV.read_text().splitlines(keepends=True)
@@ -127,7 +131,7 @@ CSV.write_text("".join(out))
 cc = Counter(kinds.values())
 dups = {v: c for v, c in Counter(assigned.values()).items() if c > 1}
 print(f"Wrote {CSV.name}: {len(assigned)} MAGs")
-print(f"  case 1 GTDB genus       (_m): {cc['1_gtdb_genus']}")
-print(f"  case 2 inherited ASV id      : {cc['2_asv_inherit']}")
-print(f"  case 3 lowest GTDB label (_m): {cc['3_lowest_gtdb']}")
+print(f"  inherited agreeing ASV id    : {cc['asv_inherit']}")
+print(f"  GTDB genus               (_m): {cc['gtdb_genus']}")
+print(f"  lowest GTDB label        (_m): {cc['gtdb_lowest']}")
 print(f"  duplicate iterativeIDs       : {len(dups)}  {dups}")
