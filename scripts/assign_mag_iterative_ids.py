@@ -59,6 +59,11 @@ def numeric(s):
 def _clean(v):
     s = str(v).strip()
     return "" if s.lower() in ("", "nan", "none") else s
+def norm(v):
+    # Compensate for naming-convention differences (Ca_ prefixes, GTDB _A/_F/_m
+    # suffixes, sensu_stricto, ...) by comparing the longest token of split('_').
+    v = _clean(v)
+    return max(v.split("_"), key=len).lower() if v else ""
 
 ids       = json.loads(IDS_JSON.read_text())          # iid -> hash
 hash2id   = {h: i for i, h in ids.items()}
@@ -94,7 +99,7 @@ def assign(mag, counter):
         ar = GTDB2ASV_RANK[r_rank]
         for h in mag_to_hashes.get(mag, []):
             av = _clean(taxonomy.get(h, {}).get(ar, ""))
-            if av and av.lower() == r_val.lower():
+            if av and norm(av) == norm(r_val):
                 agree.append(h)
     if agree:                                                   # most-abundant AGREEING ASV
         best = max(agree, key=lambda h: (mean_ab.get(h, 0.0), hash2id.get(h, "")))

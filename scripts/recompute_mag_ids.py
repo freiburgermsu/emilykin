@@ -19,6 +19,11 @@ HASDIGIT = re.compile(r"\d")
 def numeric(s): return bool(HASDIGIT.search(str(s)))
 def clean(v):
     s = str(v).strip(); return "" if s.lower() in ("", "nan", "none") else s
+def norm(v):
+    # Compensate for naming-convention differences (Ca_ prefixes, GTDB _A/_F/_m
+    # suffixes, sensu_stricto, ...) by comparing the longest token of split('_').
+    v = clean(v)
+    return max(v.split("_"), key=len).lower() if v else ""
 GTDB = ["Domain", "Phylum", "Class", "Order", "Family", "Genus"]
 G2A = {"Domain": "Kingdom", "Phylum": "Phylum", "Class": "Class",
        "Order": "Order", "Family": "Family", "Genus": "Genus"}
@@ -55,7 +60,7 @@ for m in order:
         ar = G2A[rr]
         for h in mapped.get(m, []):
             av = clean(taxonomy.get(h, {}).get(ar, ""))
-            if av and av.lower() == rv.lower():
+            if av and norm(av) == norm(rv):
                 agree.append(h)
     if agree:                                              # most-abundant AGREEING ASV
         best = max(agree, key=lambda h: (mean_ab.get(h, 0.0), hash2id.get(h, "")))
