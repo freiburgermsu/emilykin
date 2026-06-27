@@ -66,13 +66,13 @@ CURATED_ENV = [
 ]
 # curated genera per env vector (base 29-genus fit), for the base table
 CURATED_ENV_GENERA = {
- "DO avg": "Thauera; midas_g_428; Sediminibacterium; Zoogloea; Pseudoxanthomonas",
- "Cumulative aeration": "Thauera; Zoogloea; midas_g_428; Sediminibacterium; Pseudoxanthomonas",
- "N_Ax-2": "Pseudoxanthomonas; Thauera; Zoogloea; midas_g_428; Sediminibacterium; Ca. Competibacter",
+ "DO avg": "Thauera; Kapabacteriales; Sediminibacterium; Zoogloea; Pseudoxanthomonas",
+ "Cumulative aeration": "Thauera; Zoogloea; Kapabacteriales; Sediminibacterium; Pseudoxanthomonas",
+ "N_Ax-2": "Pseudoxanthomonas; Thauera; Zoogloea; Kapabacteriales; Sediminibacterium; Ca. Competibacter",
  "Acetate": "Ca. Competibacter; Azospira; Hydrogenophaga; Dokdonella; Denitratisoma",
  "C/N": "Denitratisoma; Dokdonella; Azospira; Ca. Competibacter; Hydrogenophaga",
- "Propionate": "Rhodoplanes; Ca. Sarcinithrix; alpha I-cluster; Ca. Accumulibacter; midas_g_31688; midas_g_71310; midas_g_3943; midas_g_973",
- "N/P": "Ca. Accumulibacter; midas_g_171; Ca. Caldilinea; midas_g_12887; Lysobacter; midas_g_8672",
+ "Propionate": "Rhodoplanes; Ca. Sarcinithrix; alpha I-cluster; Ca. Accumulibacter; Rhizobiales; Gracilibacteria; Rhodospirillales; Holophagae",
+ "N/P": "Ca. Accumulibacter; Ignavibacteria; Ca. Caldilinea; Flexifilaceae; Lysobacter; Saprospiraceae",
 }
 CURATED_PERF = [
  ("Specific denitrification rate", "V", "M3",
@@ -85,10 +85,10 @@ CURATED_PERF = [
   "N2O accumulation tracked the Phase III-IV incomplete-denitrification/nutrient-removal cluster. Aeromonas points purest toward N2O but is near-origin (weak). Azospira and Ca. Competibacter are NOT N2O-associated."),
 ]
 CURATED_PERF_GENERA = {
- "Specific denitrification rate": "Rhodoplanes; Ca. Sarcinithrix; Ca. Accumulibacter; alpha I-cluster; midas_g_31688; midas_g_71310; midas_g_3943; midas_g_26667; midas_g_973",
- "N removal (concentration)": "Ca. Accumulibacter; midas_g_71310; Rhodoplanes; Ca. Sarcinithrix; midas_g_12887; Ca. Caldilinea; Lysobacter; midas_g_36422",
- "P removal": "Ca. Accumulibacter; midas_g_171; midas_g_71310; Lysobacter; midas_g_12887; Ca. Caldilinea",
- "Peak N2O": "midas_g_171; Ca. Accumulibacter; Lysobacter; midas_g_36422; midas_g_61007; Denitratisoma",
+ "Specific denitrification rate": "Rhodoplanes; Ca. Sarcinithrix; Ca. Accumulibacter; alpha I-cluster; Rhizobiales; Gracilibacteria; Rhodospirillales; Anaerolineae; Holophagae",
+ "N removal (concentration)": "Ca. Accumulibacter; Gracilibacteria; Rhodoplanes; Ca. Sarcinithrix; Flexifilaceae; Ca. Caldilinea; Lysobacter; Ca. Falkowbacteria",
+ "P removal": "Ca. Accumulibacter; Ignavibacteria; Gracilibacteria; Lysobacter; Flexifilaceae; Ca. Caldilinea",
+ "Peak N2O": "Ignavibacteria; Ca. Accumulibacter; Lysobacter; Ca. Falkowbacteria; Gracilibacteria; Denitratisoma",
 }
 # map display vector name -> raw biplot column name (performance panel)
 PERF_VEC_RAW = {
@@ -187,10 +187,10 @@ def _write_base_assoc():
     perf = [(v, CURATED_PERF_GENERA[v], ph, mod, interp) for (v, ph, mod, interp) in CURATED_PERF]
     perf += [
         ("Opposite high-performance vectors",
-         "Thauera; Zoogloea; Sediminibacterium; midas_g_428; Pseudoxanthomonas", "I", "M1",
+         "Thauera; Zoogloea; Sediminibacterium; Kapabacteriales; Pseudoxanthomonas", "I", "M1",
          "The early aerobic community is the geometric inverse of all later denitrification/removal/N2O states (strongly negative projections)."),
         ("Weak / near-origin",
-         "Aeromonas; Hydrogenophaga; midas_g_41804; Dokdonella; midas_g_973", "Transitional", "mixed",
+         "Aeromonas; Hydrogenophaga; Ignavibacteriales; Dokdonella; Holophagae", "Transitional", "mixed",
          "Weak/non-specific performance association (smallest |CAP|); Aeromonas's faint signal points to N2O."),
     ]
     pd.DataFrame(env, columns=cols).to_csv(OUT / 'dbRDA_environmental_vector_associations.csv', index=False)
