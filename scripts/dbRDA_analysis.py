@@ -532,6 +532,7 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
                annotation: str | None = None, xs_mode: bool = False,
                arrow_label_offsets: dict[str, tuple[float, float]] | None = None,
                labels_below_head: tuple[str, ...] = (),
+               declutter_arrow_labels: bool = False,
                show_vector_labels: bool = True,
                label_samples: bool = False,
                modules: pd.Series | None = None,
@@ -589,13 +590,21 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
     # 2. constraint arrows — layered above everything else, with bordered labels
     #    (labels suppressed entirely for the _nodes variants)
     _y_all = pd.concat([sites['CAP2'], species['CAP2'], biplot['CAP2']])
+    _x_all = pd.concat([sites['CAP1'], species['CAP1'], biplot['CAP1']])
     _y_span = float(_y_all.max() - _y_all.min()) or 1.0
+    _xlim_right_override = None
+    _label_bbox = dict(boxstyle='round,pad=0.25', facecolor='white',
+                       edgecolor=arrow_color, linewidth=1.0, alpha=0.92)
+    _declutter_items = []
     for var, row in biplot.iterrows():
         x, y = row['CAP1'], row['CAP2']
         ax.annotate('', xy=(x, y), xytext=(0, 0),
                     arrowprops=dict(arrowstyle='->', color=arrow_color, lw=2),
                     zorder=10)
         if not show_vector_labels:
+            continue
+        if declutter_arrow_labels:
+            _declutter_items.append((var, x, y))   # placed as a right-hand column below
             continue
         # default placement: out 10%
         x_lab, y_lab = x * 1.1, y * 1.1
@@ -618,9 +627,25 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
             y_lab = y - 0.05 * _y_span
         ax.text(x_lab, y_lab, var, color=arrow_color, fontsize=12,
                 ha='center', va='center', fontweight='bold',
-                bbox=dict(boxstyle='round,pad=0.25', facecolor='white',
-                          edgecolor=arrow_color, linewidth=1.0, alpha=0.92),
-                zorder=11)
+                bbox=_label_bbox, zorder=11)
+    if declutter_arrow_labels and _declutter_items:
+        # Deterministic, guaranteed-non-overlapping placement: stack the labels as a
+        # vertical column to the right of the point cloud (ordered by arrow-tip
+        # height so leader lines don't cross), each tied to its arrowhead by a thin
+        # leader line.  The x-limit is widened below (declutter_arrow_labels) to fit.
+        import numpy as _np
+        items = sorted(_declutter_items, key=lambda t: t[2], reverse=True)
+        y_lo, y_hi = float(_y_all.min()), float(_y_all.max())
+        _m = 0.06 * (y_hi - y_lo)
+        ys = _np.linspace(y_hi - _m, y_lo + _m, len(items))
+        x_col = max(0.0, max(t[1] for t in items)) * 1.08 + 0.03
+        _xlim_right_override = x_col + 0.52 * (float(_x_all.max()) - float(_x_all.min()))
+        for (var, xt, yt), y_lab in zip(items, ys):
+            ax.annotate(var, xy=(xt, yt), xytext=(x_col, y_lab),
+                        ha='left', va='center', fontsize=11, fontweight='bold',
+                        color=arrow_color, bbox=_label_bbox,
+                        arrowprops=dict(arrowstyle='-', color=arrow_color, lw=0.8, alpha=0.8),
+                        zorder=11)
 
     # 3. sample dots, colored by the dataset's own Phase assignment (stages is
     #    aligned to sample_ids). NOTE: the R script's B17–B60 stage_from_id map
@@ -652,7 +677,8 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
     all_y = pd.concat([sites['CAP2'], species['CAP2'], biplot['CAP2']])
     pad_x = 0.18 * (all_x.max() - all_x.min())
     pad_y = 0.18 * (all_y.max() - all_y.min())
-    ax.set_xlim(all_x.min() - pad_x, all_x.max() + pad_x)
+    _right = _xlim_right_override if _xlim_right_override is not None else all_x.max() + pad_x
+    ax.set_xlim(all_x.min() - pad_x, _right)
     ax.set_ylim(all_y.min() - pad_y, all_y.max() + pad_y)
     if ylim is not None:
         ax.set_ylim(*ylim)
@@ -663,7 +689,9 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
                    markersize=10, label=f'Phase {s}')
         for s in ['I', 'II', 'III', 'IV', 'V']
     ]
-    leg_phase = ax.legend(handles=legend_handles, loc='upper right', frameon=False)
+    leg_phase = ax.legend(handles=legend_handles,
+                          loc='upper left' if declutter_arrow_labels else 'upper right',
+                          frameon=False)
     ax.add_artist(leg_phase)
 
     # second legend: module color key (sizes), only on _modules figures
@@ -713,8 +741,12 @@ PERF_KPIS = [
 ]
 # Display-label overrides for the performance panel arrows (units stripped, etc.)
 PERF_LABELS = {
-    'specific denitrification rates [mg NO2–N g−1\xa0VSS−1 h−1]': 'specific denitrification rates',
-    'anoxic:aerobic P uptake rate ratio': 'anoxic:aerobic P uptake ratio',
+    'specific denitrification rates [mg NO2–N g−1\xa0VSS−1 h−1]': 'specific denitrification rate',
+    'specific denitrifying P uptake rate': 'denitrifying P-uptake rate',
+    'anoxic:aerobic P uptake rate ratio': 'anoxic:aerobic P-uptake ratio',
+    'N removal (ppm) [N-ppn]': 'N removal',
+    'P removal [P%]': 'P removal',
+    'peakN2O [mg/L]': 'peak N2O',
 }
 
 # Curated "operational drivers" set replacing the old all-of-ValueEnviromental2 env
@@ -1060,8 +1092,7 @@ def run_dbrda_suite(Y: pd.DataFrame, sample_ids: list[str], stages: list[str], *
         'P removal': (+0.06, 0.0),
     }
     PERF_LABELS_BELOW = ('peakN2O', 'P removal')
-    _perf_label_kw = dict(arrow_label_offsets=PERF_LABEL_OFFSETS,
-                          labels_below_head=PERF_LABELS_BELOW)
+    _perf_label_kw = dict(declutter_arrow_labels=True)
     plot_dbrda(
         res_p, stages=stages_p, sample_ids=Y_p.index.tolist(),
         title=f'db-RDA: {genus_desc} ~ Performance (sample-level X)',

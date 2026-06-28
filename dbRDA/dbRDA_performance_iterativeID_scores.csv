@@ -1,180 +1,180 @@
-iterativeID,functional_category,CAP1,CAP2,module,peak_phase,best_performance_driver,proj:specific denitrification rates,proj:specific denitrifying P uptake rate,proj:anoxic:aerobic P uptake ratio,proj:P removal [P%],proj:N removal (ppm) [N-ppn],proj:peakN2O [mg/L]
-Defluviicoccus,GAOs,-0.174,-0.046,M2,II,specific denitrifying P uptake rate,-0.394,-0.39,-0.238,-0.262,-0.304,-0.164
-Ca_Competibacter,GAOs,-0.09,-0.077,M3,II,specific denitrification rates,-0.242,-0.214,-0.051,-0.07,-0.108,0.006
-Rhodocyclaceae,Other PHA storing potential+ function,0.116,0.007,M7,V,N removal (ppm) [N-ppn],0.247,0.256,0.192,0.204,0.225,0.15
-Pseudomonas,Other PHA storing potential+ function,-0.017,-0.011,M4,III,specific denitrifying P uptake rate,-0.044,-0.041,-0.016,-0.019,-0.025,-0.006
-Ca_Accumulibacter,PAOs,0.222,-0.007,M10,V,specific denitrifying P uptake rate,0.458,0.484,0.393,0.414,0.449,0.32
-Azonexus,PAOs,0.071,-0.038,M8,III,specific denitrification rates,0.122,0.147,0.174,0.176,0.177,0.163
-Thauera,Putative GAOs,-0.281,0.042,M1,I,specific denitrifying P uptake rate,-0.556,-0.605,-0.543,-0.565,-0.599,-0.463
-Amaricoccus,Putative GAOs,-0.008,0.001,M4,III,P removal [P%],-0.017,-0.018,-0.016,-0.017,-0.018,-0.013
-Zoogloea,Putative PAOs,-0.247,0.04,M1,I,specific denitrification rates,-0.487,-0.531,-0.481,-0.501,-0.53,-0.412
-Paracoccus,Putative PAOs,0.15,0.012,M10,V,specific denitrification rates,0.322,0.331,0.243,0.26,0.288,0.189
-Sutterellaceae,,-0.267,0.051,M1,I,specific denitrification rates,-0.521,-0.572,-0.531,-0.551,-0.58,-0.459
-Kapabacteriales,,-0.268,0.044,M1,I,anoxic:aerobic P uptake ratio,-0.529,-0.577,-0.524,-0.545,-0.576,-0.449
-Stenotrophomonas,,-0.264,0.053,M1,I,N removal (ppm) [N-ppn],-0.514,-0.566,-0.528,-0.548,-0.576,-0.457
-Chelatococcus_asaccharovorans,,-0.262,0.012,M1,I,anoxic:aerobic P uptake ratio,-0.538,-0.571,-0.47,-0.495,-0.535,-0.386
-Flavobacterium,,-0.264,0.033,M1,I,anoxic:aerobic P uptake ratio,-0.528,-0.571,-0.501,-0.523,-0.557,-0.423
-Cloacibacterium,,-0.264,0.038,M1,I,N removal (ppm) [N-ppn],-0.524,-0.568,-0.508,-0.53,-0.562,-0.433
-Taibaiella,,-0.254,-0.001,M1,I,specific denitrification rates,-0.53,-0.556,-0.438,-0.464,-0.505,-0.352
-Sediminibacterium,,-0.254,0.052,M1,I,specific denitrifying P uptake rate,-0.494,-0.544,-0.51,-0.528,-0.555,-0.442
-Gemmobacter,,-0.252,0.012,M1,I,anoxic:aerobic P uptake ratio,-0.518,-0.549,-0.453,-0.477,-0.515,-0.372
-Rhodobacteraceae,,0.244,0.043,M9,V,peakN2O [mg/L],0.541,0.545,0.364,0.395,0.448,0.267
-Inhella,,-0.251,0.028,M1,I,P removal [P%],-0.504,-0.543,-0.472,-0.494,-0.527,-0.398
-Aminobacter,,-0.249,0.024,M1,I,peakN2O [mg/L],-0.503,-0.54,-0.464,-0.485,-0.519,-0.388
-Xanthobacteraceae,,-0.246,0.023,M1,I,P removal [P%],-0.497,-0.533,-0.456,-0.478,-0.511,-0.381
-Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium,,-0.244,0.037,M1,I,specific denitrification rates,-0.484,-0.527,-0.474,-0.493,-0.522,-0.404
-Flavitalea,,-0.24,-0.0,M2,I,specific denitrifying P uptake rate,-0.502,-0.526,-0.416,-0.44,-0.479,-0.335
-Niabella,,-0.238,0.028,M1,I,specific denitrifying P uptake rate,-0.478,-0.516,-0.45,-0.47,-0.501,-0.379
-Leadbetterella,,0.224,0.066,M9,V,anoxic:aerobic P uptake ratio,0.514,0.505,0.297,0.329,0.386,0.199
-Rhodoplanes,,0.225,0.056,M9,V,N removal (ppm) [N-ppn],0.51,0.506,0.313,0.344,0.397,0.218
-Arenimonas,,-0.223,-0.052,M2,II,P removal [P%],-0.501,-0.499,-0.315,-0.344,-0.396,-0.222
-Chitinophagaceae,,-0.225,-0.003,M2,I,peakN2O [mg/L],-0.472,-0.494,-0.385,-0.408,-0.446,-0.308
-Ca_Sarcinithrix,,0.218,0.055,M9,V,peakN2O [mg/L],0.493,0.49,0.302,0.332,0.384,0.21
-Pannonibacter,,-0.225,0.0,M2,II,peakN2O [mg/L],-0.47,-0.493,-0.39,-0.413,-0.45,-0.315
-Ca_Villigracilis,,0.224,-0.008,M10,IV,specific denitrification rates,0.462,0.489,0.399,0.42,0.455,0.326
-Ca_Leptovillus,,0.225,-0.027,M10,IV,specific denitrification rates,0.452,0.487,0.427,0.446,0.475,0.361
-Niveibacterium,,-0.218,-0.005,M2,I,anoxic:aerobic P uptake ratio,-0.459,-0.479,-0.371,-0.394,-0.431,-0.295
-Sphingopyxis,,-0.22,0.024,M2,I,P removal [P%],-0.442,-0.476,-0.413,-0.432,-0.461,-0.348
-alphaI_cluster,,0.202,0.071,M9,V,peakN2O [mg/L],0.471,0.458,0.252,0.283,0.337,0.16
-Planctomycetota,,-0.207,-0.03,M2,II,anoxic:aerobic P uptake ratio,-0.453,-0.46,-0.318,-0.343,-0.386,-0.238
-Aurantisolimonas,,-0.205,-0.02,M2,II,specific denitrifying P uptake rate,-0.441,-0.453,-0.328,-0.351,-0.391,-0.252
-Phaeodactylibacter,,0.204,0.007,M10,V,P removal [P%],0.431,0.449,0.345,0.366,0.402,0.274
-Lentimicrobium,,-0.207,0.022,M2,I,specific denitrification rates,-0.417,-0.449,-0.389,-0.407,-0.434,-0.327
-Persicitalea,,0.198,0.049,M9,V,N removal (ppm) [N-ppn],0.448,0.446,0.277,0.304,0.351,0.194
-Defluviimonas,,0.187,0.078,M9,V,P removal [P%],0.445,0.427,0.218,0.248,0.302,0.129
-Shinella,,-0.201,-0.008,M2,II,P removal [P%],-0.424,-0.441,-0.337,-0.358,-0.394,-0.267
-Bosea,,-0.198,-0.005,M2,II,specific denitrification rates,-0.416,-0.434,-0.336,-0.356,-0.39,-0.268
-Pirellulaceae,,0.192,0.031,M10,V,P removal [P%],0.423,0.428,0.29,0.314,0.355,0.215
-Mesorhizobium,,0.188,0.05,M9,V,anoxic:aerobic P uptake ratio,0.427,0.422,0.257,0.282,0.328,0.176
-Terrimicrobium,,0.193,0.019,M10,IV,N removal (ppm) [N-ppn],0.416,0.426,0.307,0.329,0.366,0.236
-Hungateiclostridiaceae,,0.18,0.07,M9,V,P removal [P%],0.425,0.41,0.216,0.244,0.294,0.132
-Anaerolineae,,0.192,0.021,M10,V,anoxic:aerobic P uptake ratio,0.415,0.424,0.303,0.325,0.363,0.231
-Pseudoxanthomonas,,-0.193,-0.003,M2,I,specific denitrifying P uptake rate,-0.406,-0.424,-0.33,-0.35,-0.383,-0.264
-Pleomorphomonadaceae,,0.181,0.066,M9,V,specific denitrification rates,0.423,0.41,0.222,0.25,0.299,0.139
-Chryseobacterium,,-0.192,0.04,M2,I,specific denitrification rates,-0.374,-0.412,-0.387,-0.401,-0.421,-0.336
-Rhodothermaceae,,0.185,0.05,M9,V,specific denitrifying P uptake rate,0.421,0.416,0.252,0.278,0.323,0.173
-Rhizobiales,,0.18,0.064,M9,V,specific denitrifying P uptake rate,0.42,0.409,0.224,0.252,0.3,0.142
-Phreatobacter,,0.188,0.038,M10,V,P removal [P%],0.418,0.419,0.273,0.297,0.339,0.197
-Millisia,,0.184,0.043,M10,V,specific denitrifying P uptake rate,0.414,0.412,0.26,0.284,0.327,0.183
-Ignavibacteria,,0.169,-0.078,M8,IV,peakN2O [mg/L],0.298,0.352,0.398,0.404,0.409,0.368
-Anaerolineaceae,,0.187,-0.011,M10,IV,N removal (ppm) [N-ppn],0.384,0.408,0.339,0.357,0.384,0.28
-Gammaproteobacteria,,-0.18,-0.04,M2,II,specific denitrifying P uptake rate,-0.403,-0.402,-0.257,-0.281,-0.322,-0.183
-Ca_Caldilinea,,0.181,0.002,M10,IV,specific denitrifying P uptake rate,0.38,0.398,0.312,0.33,0.361,0.25
-Flexifilaceae,,0.172,-0.055,M8,IV,specific denitrifying P uptake rate,0.32,0.363,0.372,0.382,0.394,0.334
-Pseudofulvimonas,,-0.175,-0.025,M2,II,specific denitrifying P uptake rate,-0.383,-0.389,-0.269,-0.29,-0.326,-0.201
-Brevundimonas,,-0.179,0.027,M2,I,peakN2O [mg/L],-0.355,-0.386,-0.347,-0.362,-0.383,-0.296
-Novosphingobium,,0.161,0.064,M9,V,P removal [P%],0.38,0.367,0.192,0.217,0.262,0.115
-Gracilibacteria,,0.173,0.002,M10,V,specific denitrifying P uptake rate,0.363,0.38,0.298,0.316,0.345,0.239
-Edaphobaculum,,0.151,0.086,M9,V,specific denitrifying P uptake rate,0.375,0.35,0.145,0.172,0.222,0.064
-Xanthobacter,,0.165,0.027,M10,V,specific denitrification rates,0.364,0.368,0.25,0.27,0.305,0.185
-Terrimonas,,0.166,-0.008,M10,V,N removal (ppm) [N-ppn],0.341,0.362,0.298,0.313,0.338,0.244
-Microtrichaceae,,0.153,0.055,M9,V,anoxic:aerobic P uptake ratio,0.358,0.348,0.191,0.214,0.255,0.12
-Micavibrionales,,0.159,0.029,M10,V,anoxic:aerobic P uptake ratio,0.352,0.355,0.236,0.256,0.291,0.173
-Phycisphaeraceae,,-0.152,-0.008,M2,I,specific denitrification rates,-0.323,-0.335,-0.253,-0.27,-0.297,-0.2
-Bacteria,,-0.154,0.022,M2,I,N removal (ppm) [N-ppn],-0.307,-0.333,-0.297,-0.31,-0.329,-0.253
-Saprospiraceae,,0.141,-0.045,M8,IV,N removal (ppm) [N-ppn],0.263,0.298,0.304,0.312,0.322,0.272
-Rhodospirillales,,0.135,0.049,M9,V,specific denitrification rates,0.317,0.307,0.167,0.188,0.224,0.105
-Lysobacter,,0.129,-0.062,M8,IV,anoxic:aerobic P uptake ratio,0.225,0.268,0.308,0.312,0.315,0.286
-Runella,,-0.141,-0.022,M2,III,specific denitrification rates,-0.31,-0.314,-0.214,-0.231,-0.261,-0.159
-Ca_Bealeia,,-0.14,-0.029,M2,II,N removal (ppm) [N-ppn],-0.313,-0.313,-0.202,-0.22,-0.252,-0.145
-Herpetosiphon,,0.132,0.047,M9,V,P removal [P%],0.31,0.301,0.165,0.185,0.22,0.104
-Thermomicrobiales,,0.136,-0.033,M8,IV,peakN2O [mg/L],0.262,0.291,0.281,0.29,0.303,0.246
-Bacteroidia,,0.12,0.068,M9,V,P removal [P%],0.298,0.278,0.116,0.137,0.177,0.052
-Puniceicoccaceae,,-0.134,-0.014,M2,II,peakN2O [mg/L],-0.289,-0.296,-0.213,-0.228,-0.254,-0.163
-Lacihabitans,,0.124,0.043,M9,V,specific denitrifying P uptake rate,0.288,0.281,0.156,0.175,0.208,0.1
-Azoarcus,,0.113,0.059,M9,V,N removal (ppm) [N-ppn],0.277,0.261,0.115,0.135,0.171,0.057
-Holophagaceae,,-0.09,0.087,M4,I,anoxic:aerobic P uptake ratio,-0.127,-0.177,-0.274,-0.271,-0.26,-0.274
-Chthoniobacteraceae,,-0.11,-0.062,M3,III,specific denitrifying P uptake rate,-0.272,-0.254,-0.105,-0.125,-0.161,-0.047
-Bryobacter,,-0.102,-0.085,M3,III,specific denitrification rates,-0.272,-0.242,-0.06,-0.082,-0.124,0.004
-Sphingobacteriales,,0.105,-0.046,M8,IV,N removal (ppm) [N-ppn],0.188,0.22,0.245,0.25,0.253,0.226
-Fusibacter,,-0.103,-0.038,M2,II,P removal [P%],-0.242,-0.234,-0.127,-0.143,-0.171,-0.079
-Ca_Falkowbacteria,,0.1,-0.042,M8,III,P removal [P%],0.18,0.209,0.229,0.234,0.238,0.21
-Ca_Pacebacteria,,0.096,-0.05,M8,IV,peakN2O [mg/L],0.165,0.198,0.234,0.236,0.238,0.219
-Bacteroidales,,0.107,0.002,M7,V,specific denitrifying P uptake rate,0.225,0.235,0.183,0.194,0.212,0.146
-Prosthecobacter,,0.097,-0.044,M8,IV,peakN2O [mg/L],0.172,0.203,0.227,0.231,0.234,0.21
-Aquimonas,,-0.09,-0.067,M3,III,P removal [P%],-0.234,-0.211,-0.064,-0.082,-0.117,-0.011
-Anaerolinea,,0.071,-0.075,M8,IV,specific denitrifying P uptake rate,0.096,0.139,0.226,0.222,0.212,0.227
-Azospira,,-0.082,-0.074,M3,II,P removal [P%],-0.222,-0.196,-0.042,-0.06,-0.095,0.011
-Hyphomicrobium,,0.091,0.046,M7,V,specific denitrification rates,0.221,0.209,0.095,0.11,0.139,0.049
-Microscillaceae,,-0.079,-0.08,M3,III,N removal (ppm) [N-ppn],-0.221,-0.191,-0.028,-0.047,-0.084,0.026
-Leptolinea,,0.085,-0.051,M8,IV,peakN2O [mg/L],0.142,0.175,0.216,0.218,0.217,0.205
-Rurimicrobium,,0.099,-0.005,M7,IV,N removal (ppm) [N-ppn],0.204,0.217,0.179,0.188,0.203,0.147
-Desulfuromonadia,,-0.088,-0.043,M3,II,specific denitrification rates,-0.214,-0.202,-0.094,-0.109,-0.136,-0.05
-Holophagae,,0.09,0.036,M7,V,anoxic:aerobic P uptake ratio,0.212,0.205,0.106,0.12,0.146,0.064
-Hoeflea,,0.096,-0.017,M8,IV,specific denitrification rates,0.19,0.207,0.189,0.197,0.208,0.162
-Devosiaceae,,0.09,0.029,M7,V,anoxic:aerobic P uptake ratio,0.207,0.203,0.115,0.128,0.152,0.075
-Solirubrobacterales,,0.095,-0.019,M8,IV,N removal (ppm) [N-ppn],0.186,0.204,0.19,0.197,0.207,0.164
-Desulfobulbus,,0.092,0.022,M7,V,anoxic:aerobic P uptake ratio,0.207,0.206,0.128,0.141,0.162,0.09
-Ignavibacteriales,,0.088,-0.031,M8,IV,anoxic:aerobic P uptake ratio,0.162,0.185,0.195,0.199,0.204,0.176
-Fimbriimonadaceae,,0.082,-0.035,M8,IV,P removal [P%],0.146,0.171,0.189,0.192,0.195,0.173
-Victivallales,,0.085,0.016,M7,V,specific denitrification rates,0.188,0.19,0.126,0.136,0.155,0.092
-Ca_Parvibacillus,,0.06,-0.058,M8,IV,specific denitrification rates,0.086,0.119,0.182,0.18,0.174,0.182
-Polyangia,,0.08,0.011,M7,V,P removal [P%],0.174,0.178,0.123,0.133,0.149,0.093
-Parcubacteria,,-0.058,-0.077,M3,II,specific denitrifying P uptake rate,-0.174,-0.144,0.006,-0.011,-0.043,0.051
-Sulfuritalea,,0.011,-0.089,M3,III,specific denitrifying P uptake rate,-0.039,0.004,0.14,0.128,0.104,0.166
-Spirochaetota,,0.073,0.018,M7,V,N removal (ppm) [N-ppn],0.166,0.164,0.103,0.113,0.13,0.072
-Flavobacteriales,,0.05,-0.055,M6,IV,specific denitrifying P uptake rate,0.065,0.096,0.161,0.158,0.15,0.163
-Myxococcaceae,,0.072,0.017,M7,V,anoxic:aerobic P uptake ratio,0.163,0.162,0.102,0.111,0.128,0.071
-Luteimonas,,-0.068,0.029,M4,I,peakN2O [mg/L],-0.122,-0.142,-0.157,-0.16,-0.162,-0.144
-Denitratisoma,,-0.019,-0.11,M3,III,specific denitrifying P uptake rate,-0.117,-0.067,0.116,0.099,0.063,0.16
-Exiguobacterium,,0.066,0.031,M7,V,specific denitrifying P uptake rate,0.16,0.152,0.071,0.082,0.102,0.038
-Cephaloticoccus,,-0.045,-0.091,M3,III,anoxic:aerobic P uptake ratio,-0.156,-0.118,0.046,0.029,-0.005,0.093
-Rhodobacter,,0.071,-0.002,M7,III,specific denitrification rates,0.147,0.156,0.126,0.133,0.144,0.103
-Chlorobium,,0.071,-0.002,M7,IV,N removal (ppm) [N-ppn],0.146,0.155,0.126,0.133,0.144,0.103
-Microbacterium,,0.063,0.028,M7,V,P removal [P%],0.152,0.145,0.071,0.082,0.1,0.04
-Rhodanobacteraceae,,0.021,-0.069,M3,III,peakN2O [mg/L],-0.006,0.029,0.13,0.122,0.105,0.147
-Denitromonas,,-0.066,0.014,M4,I,anoxic:aerobic P uptake ratio,-0.128,-0.142,-0.134,-0.138,-0.145,-0.116
-Dokdonella,,-0.06,-0.026,M4,IV,P removal [P%],-0.143,-0.137,-0.069,-0.079,-0.096,-0.04
-Pedomicrobium,,0.01,-0.074,M3,IV,anoxic:aerobic P uptake ratio,-0.03,0.006,0.118,0.108,0.089,0.14
-Leifsonia,,0.059,0.013,M7,V,P removal [P%],0.132,0.132,0.084,0.092,0.105,0.06
-Leptonema,,-0.038,-0.073,M3,II,peakN2O [mg/L],-0.131,-0.1,0.033,0.019,-0.008,0.071
-Ca_Gottesmanbacteria,,0.048,-0.033,M6,IV,P removal [P%],0.076,0.097,0.127,0.128,0.126,0.123
-Clostridiaceae,,0.049,-0.031,M6,IV,N removal (ppm) [N-ppn],0.08,0.1,0.127,0.127,0.126,0.121
-Elusimicrobia,,0.003,-0.072,M3,III,specific denitrifying P uptake rate,-0.045,-0.01,0.103,0.093,0.072,0.127
-Caldilineaceae,,0.035,-0.041,M6,II,peakN2O [mg/L],0.044,0.067,0.115,0.113,0.107,0.118
-Ignavibacterium,,-0.001,-0.069,M3,III,specific denitrifying P uptake rate,-0.051,-0.019,0.091,0.081,0.061,0.115
-Devosia,,0.05,0.014,M7,V,peakN2O [mg/L],0.115,0.113,0.068,0.075,0.087,0.046
-Ca_Flexifilum,,-0.034,-0.064,M3,III,specific denitrification rates,-0.115,-0.088,0.028,0.016,-0.008,0.062
-Lentimicrobiaceae,,0.027,-0.045,M6,IV,P removal [P%],0.025,0.049,0.108,0.104,0.095,0.114
-Bradymonadales,,0.044,-0.027,M6,III,N removal (ppm) [N-ppn],0.073,0.09,0.113,0.113,0.113,0.107
-Patescibacteria,,0.043,-0.029,M6,III,N removal (ppm) [N-ppn],0.069,0.087,0.112,0.113,0.111,0.108
-Chitinophagales,,0.044,-0.017,M6,III,peakN2O [mg/L],0.079,0.092,0.099,0.101,0.103,0.09
-Hydrogenophaga,,-0.045,-0.014,M4,III,P removal [P%],-0.103,-0.101,-0.058,-0.065,-0.076,-0.038
-Melioribacteraceae,,0.037,-0.028,M6,IV,P removal [P%],0.059,0.075,0.102,0.102,0.1,0.099
-Vicingus,,0.012,-0.05,M3,III,N removal (ppm) [N-ppn],-0.011,0.014,0.088,0.082,0.07,0.101
-Longilinea,,0.033,-0.032,M6,IV,specific denitrifying P uptake rate,0.046,0.064,0.1,0.099,0.095,0.1
-Kiritimatiellae,,0.013,-0.046,M5,III,specific denitrifying P uptake rate,-0.004,0.019,0.085,0.08,0.069,0.096
-Blastopirellula,,-0.029,-0.051,M3,III,peakN2O [mg/L],-0.096,-0.075,0.02,0.01,-0.01,0.047
-Bacillales,,0.042,-0.002,M6,III,peakN2O [mg/L],0.086,0.092,0.076,0.079,0.086,0.062
-Bdellovibrio,,-0.028,-0.044,M3,II,specific denitrifying P uptake rate,-0.09,-0.072,0.011,0.002,-0.016,0.036
-Dechlorobacter,,-0.038,0.003,M4,I,P removal [P%],-0.076,-0.082,-0.069,-0.073,-0.078,-0.058
-Fungi,,0.028,-0.024,M6,III,peakN2O [mg/L],0.042,0.056,0.081,0.08,0.078,0.08
-Oligoflexia,,-0.011,-0.054,M3,II,anoxic:aerobic P uptake ratio,-0.062,-0.037,0.054,0.045,0.027,0.076
-Hydrogenedensaceae,,-0.013,-0.053,M3,IV,N removal (ppm) [N-ppn],-0.065,-0.041,0.048,0.04,0.022,0.071
-Turneriella,,0.006,-0.036,M5,IV,P removal [P%],-0.012,0.005,0.06,0.056,0.046,0.071
-Sandaracinaceae,,-0.015,-0.049,M3,III,N removal (ppm) [N-ppn],-0.066,-0.045,0.041,0.032,0.015,0.063
-Ca_Epiflobacter,,0.01,-0.027,M5,III,specific denitrification rates,0.003,0.016,0.054,0.051,0.045,0.06
-Kryptoniales,,0.02,-0.018,M5,III,N removal (ppm) [N-ppn],0.028,0.039,0.058,0.057,0.055,0.057
-Pirellula,,0.021,0.019,M4,V,anoxic:aerobic P uptake ratio,0.057,0.05,0.01,0.015,0.024,-0.004
-Prolixibacteraceae,,0.01,-0.025,M5,III,N removal (ppm) [N-ppn],0.003,0.016,0.051,0.048,0.043,0.056
-Thermomonas,,-0.013,-0.039,M3,III,specific denitrifying P uptake rate,-0.054,-0.037,0.031,0.024,0.011,0.048
-Williamwhitmaniaceae,,0.011,-0.021,M5,III,P removal [P%],0.008,0.02,0.048,0.046,0.042,0.052
-Acidovorax,,0.008,-0.023,M5,III,specific denitrifying P uptake rate,0.001,0.013,0.045,0.043,0.037,0.05
-Ca_Nomurabacteria,,-0.005,-0.033,M5,III,specific denitrification rates,-0.033,-0.018,0.036,0.031,0.021,0.049
-Sporomusaceae,,0.018,-0.011,M5,III,anoxic:aerobic P uptake ratio,0.029,0.036,0.046,0.046,0.046,0.044
-Christensenellaceae,,0.012,-0.016,M5,III,specific denitrification rates,0.015,0.024,0.043,0.042,0.04,0.044
-Spirochaetaceae,,0.0,-0.025,M5,III,anoxic:aerobic P uptake ratio,-0.017,-0.005,0.034,0.031,0.023,0.043
-Acidaminobacter,,-0.018,-0.005,M4,III,peakN2O [mg/L],-0.04,-0.04,-0.025,-0.027,-0.032,-0.017
-Sericytochromatia,,0.011,-0.014,M5,III,specific denitrification rates,0.014,0.022,0.038,0.038,0.036,0.039
-Aeromonas,,0.007,-0.015,M4,III,specific denitrification rates,0.004,0.012,0.032,0.031,0.028,0.035
-Methanothrix,,0.005,-0.015,M4,III,N removal (ppm) [N-ppn],-0.001,0.007,0.029,0.027,0.023,0.032
-Caldisericales,,0.006,-0.011,M4,III,P removal [P%],0.004,0.01,0.025,0.024,0.022,0.027
-Ca_Magasanikbacteria,,0.003,-0.011,M4,III,specific denitrification rates,-0.001,0.004,0.02,0.019,0.016,0.023
-Beggiatoa,,0.003,-0.01,M4,III,peakN2O [mg/L],-0.001,0.004,0.019,0.018,0.016,0.022
-Rheinheimera,,0.006,-0.008,M4,III,P removal [P%],0.006,0.011,0.021,0.02,0.019,0.022
-Ca_Methanofastidiosum,,0.001,-0.011,M4,III,specific denitrifying P uptake rate,-0.006,-0.001,0.016,0.014,0.011,0.019
-Ochrobactrum,,-0.004,-0.012,M4,III,N removal (ppm) [N-ppn],-0.016,-0.011,0.009,0.007,0.003,0.014
-Smithella,,0.002,-0.008,M4,III,peakN2O [mg/L],-0.001,0.003,0.014,0.014,0.012,0.016
-Neochlamydia,,-0.002,-0.008,M4,III,P removal [P%],-0.01,-0.007,0.006,0.005,0.002,0.01
-Planococcus,,-0.003,-0.0,M4,II,anoxic:aerobic P uptake ratio,-0.006,-0.006,-0.005,-0.005,-0.006,-0.004
-Beijerinckiaceae,,-0.001,0.001,M4,II,N removal (ppm) [N-ppn],-0.001,-0.002,-0.003,-0.003,-0.003,-0.003
+iterativeID,functional_category,CAP1,CAP2,module,peak_phase,best_performance_driver,proj:specific denitrification rate,proj:denitrifying P-uptake rate,proj:anoxic:aerobic P-uptake ratio,proj:P removal,proj:N removal,proj:peak N2O
+Defluviicoccus,GAOs,-0.174,-0.046,M2,II,anoxic:aerobic P-uptake ratio,-0.394,-0.39,-0.238,-0.262,-0.304,-0.164
+Ca_Competibacter,GAOs,-0.09,-0.077,M3,II,denitrifying P-uptake rate,-0.242,-0.214,-0.051,-0.07,-0.108,0.006
+Rhodocyclaceae,Other PHA storing potential+ function,0.116,0.007,M7,V,anoxic:aerobic P-uptake ratio,0.247,0.256,0.192,0.204,0.225,0.15
+Pseudomonas,Other PHA storing potential+ function,-0.017,-0.011,M4,III,N removal,-0.044,-0.041,-0.016,-0.019,-0.025,-0.006
+Ca_Accumulibacter,PAOs,0.222,-0.007,M10,V,N removal,0.458,0.484,0.393,0.414,0.449,0.32
+Azonexus,PAOs,0.071,-0.038,M8,III,peak N2O,0.122,0.147,0.174,0.176,0.177,0.163
+Thauera,Putative GAOs,-0.281,0.042,M1,I,specific denitrification rate,-0.556,-0.605,-0.543,-0.565,-0.599,-0.463
+Amaricoccus,Putative GAOs,-0.008,0.001,M4,III,peak N2O,-0.017,-0.018,-0.016,-0.017,-0.018,-0.013
+Zoogloea,Putative PAOs,-0.247,0.04,M1,I,N removal,-0.487,-0.531,-0.481,-0.501,-0.53,-0.412
+Paracoccus,Putative PAOs,0.15,0.012,M10,V,P removal,0.322,0.331,0.243,0.26,0.288,0.189
+Sutterellaceae,,-0.267,0.051,M1,I,specific denitrification rate,-0.521,-0.572,-0.531,-0.551,-0.58,-0.459
+Kapabacteriales,,-0.268,0.044,M1,I,N removal,-0.529,-0.577,-0.524,-0.545,-0.576,-0.449
+Stenotrophomonas,,-0.264,0.053,M1,I,denitrifying P-uptake rate,-0.514,-0.566,-0.528,-0.548,-0.576,-0.457
+Chelatococcus_asaccharovorans,,-0.262,0.012,M1,I,N removal,-0.538,-0.571,-0.47,-0.495,-0.535,-0.386
+Flavobacterium,,-0.264,0.033,M1,I,anoxic:aerobic P-uptake ratio,-0.528,-0.571,-0.501,-0.523,-0.557,-0.423
+Cloacibacterium,,-0.264,0.038,M1,I,denitrifying P-uptake rate,-0.524,-0.568,-0.508,-0.53,-0.562,-0.433
+Taibaiella,,-0.254,-0.001,M1,I,specific denitrification rate,-0.53,-0.556,-0.438,-0.464,-0.505,-0.352
+Sediminibacterium,,-0.254,0.052,M1,I,anoxic:aerobic P-uptake ratio,-0.494,-0.544,-0.51,-0.528,-0.555,-0.442
+Gemmobacter,,-0.252,0.012,M1,I,denitrifying P-uptake rate,-0.518,-0.549,-0.453,-0.477,-0.515,-0.372
+Rhodobacteraceae,,0.244,0.043,M9,V,P removal,0.541,0.545,0.364,0.395,0.448,0.267
+Inhella,,-0.251,0.028,M1,I,peak N2O,-0.504,-0.543,-0.472,-0.494,-0.527,-0.398
+Aminobacter,,-0.249,0.024,M1,I,P removal,-0.503,-0.54,-0.464,-0.485,-0.519,-0.388
+Xanthobacteraceae,,-0.246,0.023,M1,I,peak N2O,-0.497,-0.533,-0.456,-0.478,-0.511,-0.381
+Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium,,-0.244,0.037,M1,I,anoxic:aerobic P-uptake ratio,-0.484,-0.527,-0.474,-0.493,-0.522,-0.404
+Flavitalea,,-0.24,-0.0,M2,I,anoxic:aerobic P-uptake ratio,-0.502,-0.526,-0.416,-0.44,-0.479,-0.335
+Niabella,,-0.238,0.028,M1,I,peak N2O,-0.478,-0.516,-0.45,-0.47,-0.501,-0.379
+Leadbetterella,,0.224,0.066,M9,V,N removal,0.514,0.505,0.297,0.329,0.386,0.199
+Rhodoplanes,,0.225,0.056,M9,V,specific denitrification rate,0.51,0.506,0.313,0.344,0.397,0.218
+Arenimonas,,-0.223,-0.052,M2,II,specific denitrification rate,-0.501,-0.499,-0.315,-0.344,-0.396,-0.222
+Chitinophagaceae,,-0.225,-0.003,M2,I,P removal,-0.472,-0.494,-0.385,-0.408,-0.446,-0.308
+Ca_Sarcinithrix,,0.218,0.055,M9,V,N removal,0.493,0.49,0.302,0.332,0.384,0.21
+Pannonibacter,,-0.225,0.0,M2,II,specific denitrification rate,-0.47,-0.493,-0.39,-0.413,-0.45,-0.315
+Ca_Villigracilis,,0.224,-0.008,M10,IV,specific denitrification rate,0.462,0.489,0.399,0.42,0.455,0.326
+Ca_Leptovillus,,0.225,-0.027,M10,IV,denitrifying P-uptake rate,0.452,0.487,0.427,0.446,0.475,0.361
+Niveibacterium,,-0.218,-0.005,M2,I,denitrifying P-uptake rate,-0.459,-0.479,-0.371,-0.394,-0.431,-0.295
+Sphingopyxis,,-0.22,0.024,M2,I,peak N2O,-0.442,-0.476,-0.413,-0.432,-0.461,-0.348
+alphaI_cluster,,0.202,0.071,M9,V,N removal,0.471,0.458,0.252,0.283,0.337,0.16
+Planctomycetota,,-0.207,-0.03,M2,II,denitrifying P-uptake rate,-0.453,-0.46,-0.318,-0.343,-0.386,-0.238
+Aurantisolimonas,,-0.205,-0.02,M2,II,P removal,-0.441,-0.453,-0.328,-0.351,-0.391,-0.252
+Phaeodactylibacter,,0.204,0.007,M10,V,specific denitrification rate,0.431,0.449,0.345,0.366,0.402,0.274
+Lentimicrobium,,-0.207,0.022,M2,I,peak N2O,-0.417,-0.449,-0.389,-0.407,-0.434,-0.327
+Persicitalea,,0.198,0.049,M9,V,peak N2O,0.448,0.446,0.277,0.304,0.351,0.194
+Defluviimonas,,0.187,0.078,M9,V,denitrifying P-uptake rate,0.445,0.427,0.218,0.248,0.302,0.129
+Shinella,,-0.201,-0.008,M2,II,denitrifying P-uptake rate,-0.424,-0.441,-0.337,-0.358,-0.394,-0.267
+Bosea,,-0.198,-0.005,M2,II,peak N2O,-0.416,-0.434,-0.336,-0.356,-0.39,-0.268
+Pirellulaceae,,0.192,0.031,M10,V,specific denitrification rate,0.423,0.428,0.29,0.314,0.355,0.215
+Mesorhizobium,,0.188,0.05,M9,V,peak N2O,0.427,0.422,0.257,0.282,0.328,0.176
+Terrimicrobium,,0.193,0.019,M10,IV,peak N2O,0.416,0.426,0.307,0.329,0.366,0.236
+Hungateiclostridiaceae,,0.18,0.07,M9,V,anoxic:aerobic P-uptake ratio,0.425,0.41,0.216,0.244,0.294,0.132
+Anaerolineae,,0.192,0.021,M10,V,N removal,0.415,0.424,0.303,0.325,0.363,0.231
+Pseudoxanthomonas,,-0.193,-0.003,M2,I,specific denitrification rate,-0.406,-0.424,-0.33,-0.35,-0.383,-0.264
+Pleomorphomonadaceae,,0.181,0.066,M9,V,anoxic:aerobic P-uptake ratio,0.423,0.41,0.222,0.25,0.299,0.139
+Chryseobacterium,,-0.192,0.04,M2,I,P removal,-0.374,-0.412,-0.387,-0.401,-0.421,-0.336
+Rhodothermaceae,,0.185,0.05,M9,V,peak N2O,0.421,0.416,0.252,0.278,0.323,0.173
+Rhizobiales,,0.18,0.064,M9,V,specific denitrification rate,0.42,0.409,0.224,0.252,0.3,0.142
+Phreatobacter,,0.188,0.038,M10,V,specific denitrification rate,0.418,0.419,0.273,0.297,0.339,0.197
+Millisia,,0.184,0.043,M10,V,denitrifying P-uptake rate,0.414,0.412,0.26,0.284,0.327,0.183
+Ignavibacteria,,0.169,-0.078,M8,IV,specific denitrification rate,0.298,0.352,0.398,0.404,0.409,0.368
+Anaerolineaceae,,0.187,-0.011,M10,IV,N removal,0.384,0.408,0.339,0.357,0.384,0.28
+Gammaproteobacteria,,-0.18,-0.04,M2,II,denitrifying P-uptake rate,-0.403,-0.402,-0.257,-0.281,-0.322,-0.183
+Ca_Caldilinea,,0.181,0.002,M10,IV,anoxic:aerobic P-uptake ratio,0.38,0.398,0.312,0.33,0.361,0.25
+Flexifilaceae,,0.172,-0.055,M8,IV,N removal,0.32,0.363,0.372,0.382,0.394,0.334
+Pseudofulvimonas,,-0.175,-0.025,M2,II,N removal,-0.383,-0.389,-0.269,-0.29,-0.326,-0.201
+Brevundimonas,,-0.179,0.027,M2,I,denitrifying P-uptake rate,-0.355,-0.386,-0.347,-0.362,-0.383,-0.296
+Novosphingobium,,0.161,0.064,M9,V,specific denitrification rate,0.38,0.367,0.192,0.217,0.262,0.115
+Gracilibacteria,,0.173,0.002,M10,V,P removal,0.363,0.38,0.298,0.316,0.345,0.239
+Edaphobaculum,,0.151,0.086,M9,V,specific denitrification rate,0.375,0.35,0.145,0.172,0.222,0.064
+Xanthobacter,,0.165,0.027,M10,V,N removal,0.364,0.368,0.25,0.27,0.305,0.185
+Terrimonas,,0.166,-0.008,M10,V,specific denitrification rate,0.341,0.362,0.298,0.313,0.338,0.244
+Microtrichaceae,,0.153,0.055,M9,V,N removal,0.358,0.348,0.191,0.214,0.255,0.12
+Micavibrionales,,0.159,0.029,M10,V,P removal,0.352,0.355,0.236,0.256,0.291,0.173
+Phycisphaeraceae,,-0.152,-0.008,M2,I,peak N2O,-0.323,-0.335,-0.253,-0.27,-0.297,-0.2
+Bacteria,,-0.154,0.022,M2,I,P removal,-0.307,-0.333,-0.297,-0.31,-0.329,-0.253
+Saprospiraceae,,0.141,-0.045,M8,IV,P removal,0.263,0.298,0.304,0.312,0.322,0.272
+Rhodospirillales,,0.135,0.049,M9,V,N removal,0.317,0.307,0.167,0.188,0.224,0.105
+Lysobacter,,0.129,-0.062,M8,IV,peak N2O,0.225,0.268,0.308,0.312,0.315,0.286
+Runella,,-0.141,-0.022,M2,III,denitrifying P-uptake rate,-0.31,-0.314,-0.214,-0.231,-0.261,-0.159
+Ca_Bealeia,,-0.14,-0.029,M2,II,N removal,-0.313,-0.313,-0.202,-0.22,-0.252,-0.145
+Herpetosiphon,,0.132,0.047,M9,V,specific denitrification rate,0.31,0.301,0.165,0.185,0.22,0.104
+Thermomicrobiales,,0.136,-0.033,M8,IV,N removal,0.262,0.291,0.281,0.29,0.303,0.246
+Bacteroidia,,0.12,0.068,M9,V,denitrifying P-uptake rate,0.298,0.278,0.116,0.137,0.177,0.052
+Puniceicoccaceae,,-0.134,-0.014,M2,II,P removal,-0.289,-0.296,-0.213,-0.228,-0.254,-0.163
+Lacihabitans,,0.124,0.043,M9,V,anoxic:aerobic P-uptake ratio,0.288,0.281,0.156,0.175,0.208,0.1
+Azoarcus,,0.113,0.059,M9,V,specific denitrification rate,0.277,0.261,0.115,0.135,0.171,0.057
+Holophagaceae,,-0.09,0.087,M4,I,N removal,-0.127,-0.177,-0.274,-0.271,-0.26,-0.274
+Chthoniobacteraceae,,-0.11,-0.062,M3,III,denitrifying P-uptake rate,-0.272,-0.254,-0.105,-0.125,-0.161,-0.047
+Bryobacter,,-0.102,-0.085,M3,III,peak N2O,-0.272,-0.242,-0.06,-0.082,-0.124,0.004
+Sphingobacteriales,,0.105,-0.046,M8,IV,anoxic:aerobic P-uptake ratio,0.188,0.22,0.245,0.25,0.253,0.226
+Fusibacter,,-0.103,-0.038,M2,II,anoxic:aerobic P-uptake ratio,-0.242,-0.234,-0.127,-0.143,-0.171,-0.079
+Ca_Falkowbacteria,,0.1,-0.042,M8,III,denitrifying P-uptake rate,0.18,0.209,0.229,0.234,0.238,0.21
+Ca_Pacebacteria,,0.096,-0.05,M8,IV,denitrifying P-uptake rate,0.165,0.198,0.234,0.236,0.238,0.219
+Bacteroidales,,0.107,0.002,M7,V,peak N2O,0.225,0.235,0.183,0.194,0.212,0.146
+Prosthecobacter,,0.097,-0.044,M8,IV,anoxic:aerobic P-uptake ratio,0.172,0.203,0.227,0.231,0.234,0.21
+Aquimonas,,-0.09,-0.067,M3,III,peak N2O,-0.234,-0.211,-0.064,-0.082,-0.117,-0.011
+Anaerolinea,,0.071,-0.075,M8,IV,peak N2O,0.096,0.139,0.226,0.222,0.212,0.227
+Azospira,,-0.082,-0.074,M3,II,peak N2O,-0.222,-0.196,-0.042,-0.06,-0.095,0.011
+Hyphomicrobium,,0.091,0.046,M7,V,denitrifying P-uptake rate,0.221,0.209,0.095,0.11,0.139,0.049
+Microscillaceae,,-0.079,-0.08,M3,III,specific denitrification rate,-0.221,-0.191,-0.028,-0.047,-0.084,0.026
+Leptolinea,,0.085,-0.051,M8,IV,P removal,0.142,0.175,0.216,0.218,0.217,0.205
+Rurimicrobium,,0.099,-0.005,M7,IV,specific denitrification rate,0.204,0.217,0.179,0.188,0.203,0.147
+Desulfuromonadia,,-0.088,-0.043,M3,II,specific denitrification rate,-0.214,-0.202,-0.094,-0.109,-0.136,-0.05
+Holophagae,,0.09,0.036,M7,V,denitrifying P-uptake rate,0.212,0.205,0.106,0.12,0.146,0.064
+Hoeflea,,0.096,-0.017,M8,IV,specific denitrification rate,0.19,0.207,0.189,0.197,0.208,0.162
+Devosiaceae,,0.09,0.029,M7,V,anoxic:aerobic P-uptake ratio,0.207,0.203,0.115,0.128,0.152,0.075
+Solirubrobacterales,,0.095,-0.019,M8,IV,specific denitrification rate,0.186,0.204,0.19,0.197,0.207,0.164
+Desulfobulbus,,0.092,0.022,M7,V,P removal,0.207,0.206,0.128,0.141,0.162,0.09
+Ignavibacteriales,,0.088,-0.031,M8,IV,anoxic:aerobic P-uptake ratio,0.162,0.185,0.195,0.199,0.204,0.176
+Fimbriimonadaceae,,0.082,-0.035,M8,IV,peak N2O,0.146,0.171,0.189,0.192,0.195,0.173
+Victivallales,,0.085,0.016,M7,V,anoxic:aerobic P-uptake ratio,0.188,0.19,0.126,0.136,0.155,0.092
+Ca_Parvibacillus,,0.06,-0.058,M8,IV,specific denitrification rate,0.086,0.119,0.182,0.18,0.174,0.182
+Polyangia,,0.08,0.011,M7,V,anoxic:aerobic P-uptake ratio,0.174,0.178,0.123,0.133,0.149,0.093
+Parcubacteria,,-0.058,-0.077,M3,II,specific denitrification rate,-0.174,-0.144,0.006,-0.011,-0.043,0.051
+Sulfuritalea,,0.011,-0.089,M3,III,peak N2O,-0.039,0.004,0.14,0.128,0.104,0.166
+Spirochaetota,,0.073,0.018,M7,V,P removal,0.166,0.164,0.103,0.113,0.13,0.072
+Flavobacteriales,,0.05,-0.055,M6,IV,specific denitrification rate,0.065,0.096,0.161,0.158,0.15,0.163
+Myxococcaceae,,0.072,0.017,M7,V,specific denitrification rate,0.163,0.162,0.102,0.111,0.128,0.071
+Luteimonas,,-0.068,0.029,M4,I,specific denitrification rate,-0.122,-0.142,-0.157,-0.16,-0.162,-0.144
+Denitratisoma,,-0.019,-0.11,M3,III,specific denitrification rate,-0.117,-0.067,0.116,0.099,0.063,0.16
+Exiguobacterium,,0.066,0.031,M7,V,specific denitrification rate,0.16,0.152,0.071,0.082,0.102,0.038
+Cephaloticoccus,,-0.045,-0.091,M3,III,anoxic:aerobic P-uptake ratio,-0.156,-0.118,0.046,0.029,-0.005,0.093
+Rhodobacter,,0.071,-0.002,M7,III,N removal,0.147,0.156,0.126,0.133,0.144,0.103
+Chlorobium,,0.071,-0.002,M7,IV,N removal,0.146,0.155,0.126,0.133,0.144,0.103
+Microbacterium,,0.063,0.028,M7,V,P removal,0.152,0.145,0.071,0.082,0.1,0.04
+Rhodanobacteraceae,,0.021,-0.069,M3,III,P removal,-0.006,0.029,0.13,0.122,0.105,0.147
+Denitromonas,,-0.066,0.014,M4,I,P removal,-0.128,-0.142,-0.134,-0.138,-0.145,-0.116
+Dokdonella,,-0.06,-0.026,M4,IV,specific denitrification rate,-0.143,-0.137,-0.069,-0.079,-0.096,-0.04
+Pedomicrobium,,0.01,-0.074,M3,IV,P removal,-0.03,0.006,0.118,0.108,0.089,0.14
+Leifsonia,,0.059,0.013,M7,V,denitrifying P-uptake rate,0.132,0.132,0.084,0.092,0.105,0.06
+Leptonema,,-0.038,-0.073,M3,II,anoxic:aerobic P-uptake ratio,-0.131,-0.1,0.033,0.019,-0.008,0.071
+Ca_Gottesmanbacteria,,0.048,-0.033,M6,IV,N removal,0.076,0.097,0.127,0.128,0.126,0.123
+Clostridiaceae,,0.049,-0.031,M6,IV,anoxic:aerobic P-uptake ratio,0.08,0.1,0.127,0.127,0.126,0.121
+Elusimicrobia,,0.003,-0.072,M3,III,peak N2O,-0.045,-0.01,0.103,0.093,0.072,0.127
+Caldilineaceae,,0.035,-0.041,M6,II,P removal,0.044,0.067,0.115,0.113,0.107,0.118
+Ignavibacterium,,-0.001,-0.069,M3,III,N removal,-0.051,-0.019,0.091,0.081,0.061,0.115
+Devosia,,0.05,0.014,M7,V,denitrifying P-uptake rate,0.115,0.113,0.068,0.075,0.087,0.046
+Ca_Flexifilum,,-0.034,-0.064,M3,III,N removal,-0.115,-0.088,0.028,0.016,-0.008,0.062
+Lentimicrobiaceae,,0.027,-0.045,M6,IV,specific denitrification rate,0.025,0.049,0.108,0.104,0.095,0.114
+Bradymonadales,,0.044,-0.027,M6,III,denitrifying P-uptake rate,0.073,0.09,0.113,0.113,0.113,0.107
+Patescibacteria,,0.043,-0.029,M6,III,anoxic:aerobic P-uptake ratio,0.069,0.087,0.112,0.113,0.111,0.108
+Chitinophagales,,0.044,-0.017,M6,III,N removal,0.079,0.092,0.099,0.101,0.103,0.09
+Hydrogenophaga,,-0.045,-0.014,M4,III,peak N2O,-0.103,-0.101,-0.058,-0.065,-0.076,-0.038
+Melioribacteraceae,,0.037,-0.028,M6,IV,denitrifying P-uptake rate,0.059,0.075,0.102,0.102,0.1,0.099
+Vicingus,,0.012,-0.05,M3,III,specific denitrification rate,-0.011,0.014,0.088,0.082,0.07,0.101
+Longilinea,,0.033,-0.032,M6,IV,peak N2O,0.046,0.064,0.1,0.099,0.095,0.1
+Kiritimatiellae,,0.013,-0.046,M5,III,specific denitrification rate,-0.004,0.019,0.085,0.08,0.069,0.096
+Blastopirellula,,-0.029,-0.051,M3,III,peak N2O,-0.096,-0.075,0.02,0.01,-0.01,0.047
+Bacillales,,0.042,-0.002,M6,III,N removal,0.086,0.092,0.076,0.079,0.086,0.062
+Bdellovibrio,,-0.028,-0.044,M3,II,N removal,-0.09,-0.072,0.011,0.002,-0.016,0.036
+Dechlorobacter,,-0.038,0.003,M4,I,peak N2O,-0.076,-0.082,-0.069,-0.073,-0.078,-0.058
+Fungi,,0.028,-0.024,M6,III,P removal,0.042,0.056,0.081,0.08,0.078,0.08
+Oligoflexia,,-0.011,-0.054,M3,II,peak N2O,-0.062,-0.037,0.054,0.045,0.027,0.076
+Hydrogenedensaceae,,-0.013,-0.053,M3,IV,denitrifying P-uptake rate,-0.065,-0.041,0.048,0.04,0.022,0.071
+Turneriella,,0.006,-0.036,M5,IV,N removal,-0.012,0.005,0.06,0.056,0.046,0.071
+Sandaracinaceae,,-0.015,-0.049,M3,III,anoxic:aerobic P-uptake ratio,-0.066,-0.045,0.041,0.032,0.015,0.063
+Ca_Epiflobacter,,0.01,-0.027,M5,III,P removal,0.003,0.016,0.054,0.051,0.045,0.06
+Kryptoniales,,0.02,-0.018,M5,III,P removal,0.028,0.039,0.058,0.057,0.055,0.057
+Pirellula,,0.021,0.019,M4,V,anoxic:aerobic P-uptake ratio,0.057,0.05,0.01,0.015,0.024,-0.004
+Prolixibacteraceae,,0.01,-0.025,M5,III,specific denitrification rate,0.003,0.016,0.051,0.048,0.043,0.056
+Thermomonas,,-0.013,-0.039,M3,III,peak N2O,-0.054,-0.037,0.031,0.024,0.011,0.048
+Williamwhitmaniaceae,,0.011,-0.021,M5,III,P removal,0.008,0.02,0.048,0.046,0.042,0.052
+Acidovorax,,0.008,-0.023,M5,III,N removal,0.001,0.013,0.045,0.043,0.037,0.05
+Ca_Nomurabacteria,,-0.005,-0.033,M5,III,peak N2O,-0.033,-0.018,0.036,0.031,0.021,0.049
+Sporomusaceae,,0.018,-0.011,M5,III,specific denitrification rate,0.029,0.036,0.046,0.046,0.046,0.044
+Christensenellaceae,,0.012,-0.016,M5,III,denitrifying P-uptake rate,0.015,0.024,0.043,0.042,0.04,0.044
+Spirochaetaceae,,0.0,-0.025,M5,III,P removal,-0.017,-0.005,0.034,0.031,0.023,0.043
+Acidaminobacter,,-0.018,-0.005,M4,III,anoxic:aerobic P-uptake ratio,-0.04,-0.04,-0.025,-0.027,-0.032,-0.017
+Sericytochromatia,,0.011,-0.014,M5,III,anoxic:aerobic P-uptake ratio,0.014,0.022,0.038,0.038,0.036,0.039
+Aeromonas,,0.007,-0.015,M4,III,peak N2O,0.004,0.012,0.032,0.031,0.028,0.035
+Methanothrix,,0.005,-0.015,M4,III,P removal,-0.001,0.007,0.029,0.027,0.023,0.032
+Caldisericales,,0.006,-0.011,M4,III,P removal,0.004,0.01,0.025,0.024,0.022,0.027
+Ca_Magasanikbacteria,,0.003,-0.011,M4,III,P removal,-0.001,0.004,0.02,0.019,0.016,0.023
+Beggiatoa,,0.003,-0.01,M4,III,peak N2O,-0.001,0.004,0.019,0.018,0.016,0.022
+Rheinheimera,,0.006,-0.008,M4,III,P removal,0.006,0.011,0.021,0.02,0.019,0.022
+Ca_Methanofastidiosum,,0.001,-0.011,M4,III,denitrifying P-uptake rate,-0.006,-0.001,0.016,0.014,0.011,0.019
+Ochrobactrum,,-0.004,-0.012,M4,III,N removal,-0.016,-0.011,0.009,0.007,0.003,0.014
+Smithella,,0.002,-0.008,M4,III,specific denitrification rate,-0.001,0.003,0.014,0.014,0.012,0.016
+Neochlamydia,,-0.002,-0.008,M4,III,peak N2O,-0.01,-0.007,0.006,0.005,0.002,0.01
+Planococcus,,-0.003,-0.0,M4,II,N removal,-0.006,-0.006,-0.005,-0.005,-0.006,-0.004
+Beijerinckiaceae,,-0.001,0.001,M4,II,peak N2O,-0.001,-0.002,-0.003,-0.003,-0.003,-0.003

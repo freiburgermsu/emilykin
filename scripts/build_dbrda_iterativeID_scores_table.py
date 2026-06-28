@@ -23,9 +23,8 @@ ev = pd.read_csv(ROOT / "dbRDA_evidence_genus_vector_5%.csv")
 ev = ev[ev["panel"].str.contains("perf", case=False)].copy()
 
 # vector order: keep the file's order, but surface the two new P-uptake dims
-VEC_ORDER = ["specific denitrification rates", "specific denitrifying P uptake rate",
-             "anoxic:aerobic P uptake ratio", "P removal [P%]",
-             "N removal (ppm) [N-ppn]", "peakN2O [mg/L]"]
+VEC_ORDER = ["specific denitrification rate", "denitrifying P-uptake rate",
+             "anoxic:aerobic P-uptake ratio", "P removal", "N removal", "peak N2O"]
 vecs = [v for v in VEC_ORDER if v in set(ev["vector"])] + \
        [v for v in sorted(ev["vector"].unique()) if v not in VEC_ORDER]
 
