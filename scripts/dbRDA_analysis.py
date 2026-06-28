@@ -593,6 +593,7 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
     _y_span = float(_y_all.max() - _y_all.min()) or 1.0
     _label_bbox = dict(boxstyle='round,pad=0.25', facecolor='white',
                        edgecolor=arrow_color, linewidth=1.0, alpha=0.92)
+    _rot_items = []
     for var, row in biplot.iterrows():
         x, y = row['CAP1'], row['CAP2']
         ax.annotate('', xy=(x, y), xytext=(0, 0),
@@ -600,18 +601,10 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
                     zorder=10)
         if not show_vector_labels:
             continue
-        # rotate selected labels to run ALONG their arrow so near-parallel arrows'
-        # labels (e.g. peak N2O / P removal / anoxic:aerobic ratio) don't overlap
+        # rotated labels: collected and drawn together after the loop so the set
+        # can be fanned apart along its shared thin (perpendicular) dimension
         if any(key in var for key in rotate_labels):
-            import math as _math
-            ang = _math.degrees(_math.atan2(y, x))
-            if ang > 90:
-                ang -= 180
-            elif ang < -90:
-                ang += 180
-            ax.text(x * 1.08, y * 1.08, var, color=arrow_color, fontsize=12,
-                    ha='center', va='center', fontweight='bold', rotation=ang,
-                    rotation_mode='anchor', bbox=_label_bbox, zorder=11)
+            _rot_items.append((var, x, y))
             continue
         # default placement: out 10%
         x_lab, y_lab = x * 1.1, y * 1.1
@@ -634,6 +627,32 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
         ax.text(x_lab, y_lab, var, color=arrow_color, fontsize=12,
                 ha='center', va='center', fontweight='bold',
                 bbox=_label_bbox, zorder=11)
+
+    # rotated vector labels: each runs ALONG its arrow; the set is fanned apart
+    # along the shared perpendicular (thin) dimension so adjacent labels clear
+    # each other by ~half a label thickness.
+    if _rot_items:
+        import math as _math
+        rot = []
+        for _v, _x, _y in _rot_items:
+            _a = _math.degrees(_math.atan2(_y, _x))
+            if _a > 90:
+                _a -= 180
+            elif _a < -90:
+                _a += 180
+            rot.append((_v, _x, _y, _a))
+        rot.sort(key=lambda t: t[3])
+        _n = len(rot)
+        _perp = _math.radians(sum(t[3] for t in rot) / _n + 90)
+        _thick_pts = 12 * 1.7                 # rotated label thin-dimension (text + bbox), pt
+        _step_pts = 1.5 * _thick_pts          # center-to-center -> gap ~ half the thickness
+        for _i, (_v, _x, _y, _a) in enumerate(rot):
+            _k = _i - (_n - 1) / 2.0
+            _off = (_k * _step_pts * _math.cos(_perp), _k * _step_pts * _math.sin(_perp))
+            ax.annotate(_v, xy=(_x * 1.08, _y * 1.08), xytext=_off,
+                        textcoords='offset points', rotation=_a, rotation_mode='anchor',
+                        color=arrow_color, fontsize=12, fontweight='bold',
+                        ha='center', va='center', bbox=_label_bbox, zorder=11)
 
     # 3. sample dots, colored by the dataset's own Phase assignment (stages is
     #    aligned to sample_ids). NOTE: the R script's B17–B60 stage_from_id map
