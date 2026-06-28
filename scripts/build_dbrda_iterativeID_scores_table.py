@@ -24,7 +24,7 @@ ev = ev[ev["panel"].str.contains("perf", case=False)].copy()
 
 # vector order: keep the file's order, but surface the two new P-uptake dims
 VEC_ORDER = ["specific denitrification rate", "denitrifying P-uptake rate",
-             "anoxic:aerobic P-uptake ratio", "P removal", "N removal", "peak N2O"]
+             "anoxic:aerobic P ratio", "P removal", "N removal", "peak N2O"]
 vecs = [v for v in VEC_ORDER if v in set(ev["vector"])] + \
        [v for v in sorted(ev["vector"].unique()) if v not in VEC_ORDER]
 

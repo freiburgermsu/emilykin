@@ -1,22 +1,22 @@
-| iterativeID | functional_category | CAP1 | CAP2 | peak_phase | best_performance_driver | proj:specific denitrification rate | proj:denitrifying P-uptake rate | proj:anoxic:aerobic P-uptake ratio | proj:P removal | proj:N removal | proj:peak N2O |
+| iterativeID | functional_category | CAP1 | CAP2 | peak_phase | best_performance_driver | proj:specific denitrification rate | proj:denitrifying P-uptake rate | proj:anoxic:aerobic P ratio | proj:P removal | proj:N removal | proj:peak N2O |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Thauera | Putative GAOs | -0.281 | 0.042 | I | specific denitrification rate | -0.556 | -0.605 | -0.543 | -0.565 | -0.599 | -0.463 |
 | Sutterellaceae |  | -0.267 | 0.051 | I | specific denitrification rate | -0.521 | -0.572 | -0.531 | -0.551 | -0.58 | -0.459 |
 | Kapabacteriales |  | -0.268 | 0.044 | I | N removal | -0.529 | -0.577 | -0.524 | -0.545 | -0.576 | -0.449 |
 | Stenotrophomonas |  | -0.264 | 0.053 | I | denitrifying P-uptake rate | -0.514 | -0.566 | -0.528 | -0.548 | -0.576 | -0.457 |
-| Flavobacterium |  | -0.264 | 0.033 | I | anoxic:aerobic P-uptake ratio | -0.528 | -0.571 | -0.501 | -0.523 | -0.557 | -0.423 |
+| Flavobacterium |  | -0.264 | 0.033 | I | anoxic:aerobic P ratio | -0.528 | -0.571 | -0.501 | -0.523 | -0.557 | -0.423 |
 | Chelatococcus_asaccharovorans |  | -0.262 | 0.012 | I | N removal | -0.538 | -0.571 | -0.47 | -0.495 | -0.535 | -0.386 |
 | Cloacibacterium |  | -0.264 | 0.038 | I | denitrifying P-uptake rate | -0.524 | -0.568 | -0.508 | -0.53 | -0.562 | -0.433 |
 | Taibaiella |  | -0.254 | -0.001 | I | specific denitrification rate | -0.53 | -0.556 | -0.438 | -0.464 | -0.505 | -0.352 |
-| Sediminibacterium |  | -0.254 | 0.052 | I | anoxic:aerobic P-uptake ratio | -0.494 | -0.544 | -0.51 | -0.528 | -0.555 | -0.442 |
+| Sediminibacterium |  | -0.254 | 0.052 | I | anoxic:aerobic P ratio | -0.494 | -0.544 | -0.51 | -0.528 | -0.555 | -0.442 |
 | Gemmobacter |  | -0.252 | 0.012 | I | denitrifying P-uptake rate | -0.518 | -0.549 | -0.453 | -0.477 | -0.515 | -0.372 |
 | Rhodobacteraceae |  | 0.244 | 0.043 | V | P removal | 0.541 | 0.545 | 0.364 | 0.395 | 0.448 | 0.267 |
 | Inhella |  | -0.251 | 0.028 | I | peak N2O | -0.504 | -0.543 | -0.472 | -0.494 | -0.527 | -0.398 |
 | Aminobacter |  | -0.249 | 0.024 | I | P removal | -0.503 | -0.54 | -0.464 | -0.485 | -0.519 | -0.388 |
 | Xanthobacteraceae |  | -0.246 | 0.023 | I | peak N2O | -0.497 | -0.533 | -0.456 | -0.478 | -0.511 | -0.381 |
 | Zoogloea | Putative PAOs | -0.247 | 0.04 | I | N removal | -0.487 | -0.531 | -0.481 | -0.501 | -0.53 | -0.412 |
-| Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium |  | -0.244 | 0.037 | I | anoxic:aerobic P-uptake ratio | -0.484 | -0.527 | -0.474 | -0.493 | -0.522 | -0.404 |
-| Flavitalea |  | -0.24 | -0.0 | I | anoxic:aerobic P-uptake ratio | -0.502 | -0.526 | -0.416 | -0.44 | -0.479 | -0.335 |
+| Allorhizobium-Neorhizobium-Pararhizobium-Rhizobium |  | -0.244 | 0.037 | I | anoxic:aerobic P ratio | -0.484 | -0.527 | -0.474 | -0.493 | -0.522 | -0.404 |
+| Flavitalea |  | -0.24 | -0.0 | I | anoxic:aerobic P ratio | -0.502 | -0.526 | -0.416 | -0.44 | -0.479 | -0.335 |
 | Niabella |  | -0.238 | 0.028 | I | peak N2O | -0.478 | -0.516 | -0.45 | -0.47 | -0.501 | -0.379 |
 | Leadbetterella |  | 0.224 | 0.066 | V | N removal | 0.514 | 0.505 | 0.297 | 0.329 | 0.386 | 0.199 |
 | Rhodoplanes |  | 0.225 | 0.056 | V | specific denitrification rate | 0.51 | 0.506 | 0.313 | 0.344 | 0.397 | 0.218 |

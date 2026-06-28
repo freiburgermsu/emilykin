@@ -1,4 +1,4 @@
-organism,peak N2O,specific denitrification rate,N removal,P removal,denitrifying P-uptake rate,anoxic:aerobic P-uptake ratio
+organism,peak N2O,specific denitrification rate,N removal,P removal,denitrifying P-uptake rate,anoxic:aerobic P ratio
 Aeromonas,0.9961,0.2615,0.8156,0.9254,0.4652,0.9673
 Azospira,0.0243,-0.9296,-0.4829,-0.2722,-0.8271,-0.1428
 Ca_Accumulibacter,0.64,0.9423,0.9401,0.8385,0.9926,0.7593

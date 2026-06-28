@@ -532,7 +532,7 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
                annotation: str | None = None, xs_mode: bool = False,
                arrow_label_offsets: dict[str, tuple[float, float]] | None = None,
                labels_below_head: tuple[str, ...] = (),
-               declutter_arrow_labels: bool = False,
+               rotate_labels: tuple[str, ...] = (),
                show_vector_labels: bool = True,
                label_samples: bool = False,
                modules: pd.Series | None = None,
@@ -590,12 +590,9 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
     # 2. constraint arrows — layered above everything else, with bordered labels
     #    (labels suppressed entirely for the _nodes variants)
     _y_all = pd.concat([sites['CAP2'], species['CAP2'], biplot['CAP2']])
-    _x_all = pd.concat([sites['CAP1'], species['CAP1'], biplot['CAP1']])
     _y_span = float(_y_all.max() - _y_all.min()) or 1.0
-    _xlim_right_override = None
     _label_bbox = dict(boxstyle='round,pad=0.25', facecolor='white',
                        edgecolor=arrow_color, linewidth=1.0, alpha=0.92)
-    _declutter_items = []
     for var, row in biplot.iterrows():
         x, y = row['CAP1'], row['CAP2']
         ax.annotate('', xy=(x, y), xytext=(0, 0),
@@ -603,8 +600,18 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
                     zorder=10)
         if not show_vector_labels:
             continue
-        if declutter_arrow_labels:
-            _declutter_items.append((var, x, y))   # placed as a right-hand column below
+        # rotate selected labels to run ALONG their arrow so near-parallel arrows'
+        # labels (e.g. peak N2O / P removal / anoxic:aerobic ratio) don't overlap
+        if any(key in var for key in rotate_labels):
+            import math as _math
+            ang = _math.degrees(_math.atan2(y, x))
+            if ang > 90:
+                ang -= 180
+            elif ang < -90:
+                ang += 180
+            ax.text(x * 1.08, y * 1.08, var, color=arrow_color, fontsize=12,
+                    ha='center', va='center', fontweight='bold', rotation=ang,
+                    rotation_mode='anchor', bbox=_label_bbox, zorder=11)
             continue
         # default placement: out 10%
         x_lab, y_lab = x * 1.1, y * 1.1
@@ -615,37 +622,18 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
             elif 'C/N' in var:
                 x_lab, y_lab = x + 0.12, y
         # explicit per-variable label offsets (substring match) to separate
-        # overlapping labels (e.g. peakN2O vs P removal in the performance panel)
+        # overlapping labels
         if arrow_label_offsets:
             for key, (dx, dy) in arrow_label_offsets.items():
                 if key in var:
                     x_lab, y_lab = x_lab + dx, y_lab + dy
                     break
-        # park selected labels just below their arrowhead (~5% of fig height gap);
-        # keep any horizontal offset so near-parallel arrows' labels don't overlap
+        # park selected labels just below their arrowhead (~5% of fig height gap)
         if any(key in var for key in labels_below_head):
             y_lab = y - 0.05 * _y_span
         ax.text(x_lab, y_lab, var, color=arrow_color, fontsize=12,
                 ha='center', va='center', fontweight='bold',
                 bbox=_label_bbox, zorder=11)
-    if declutter_arrow_labels and _declutter_items:
-        # Deterministic, guaranteed-non-overlapping placement: stack the labels as a
-        # vertical column to the right of the point cloud (ordered by arrow-tip
-        # height so leader lines don't cross), each tied to its arrowhead by a thin
-        # leader line.  The x-limit is widened below (declutter_arrow_labels) to fit.
-        import numpy as _np
-        items = sorted(_declutter_items, key=lambda t: t[2], reverse=True)
-        y_lo, y_hi = float(_y_all.min()), float(_y_all.max())
-        _m = 0.06 * (y_hi - y_lo)
-        ys = _np.linspace(y_hi - _m, y_lo + _m, len(items))
-        x_col = max(0.0, max(t[1] for t in items)) * 1.08 + 0.03
-        _xlim_right_override = x_col + 0.52 * (float(_x_all.max()) - float(_x_all.min()))
-        for (var, xt, yt), y_lab in zip(items, ys):
-            ax.annotate(var, xy=(xt, yt), xytext=(x_col, y_lab),
-                        ha='left', va='center', fontsize=11, fontweight='bold',
-                        color=arrow_color, bbox=_label_bbox,
-                        arrowprops=dict(arrowstyle='-', color=arrow_color, lw=0.8, alpha=0.8),
-                        zorder=11)
 
     # 3. sample dots, colored by the dataset's own Phase assignment (stages is
     #    aligned to sample_ids). NOTE: the R script's B17–B60 stage_from_id map
@@ -677,8 +665,7 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
     all_y = pd.concat([sites['CAP2'], species['CAP2'], biplot['CAP2']])
     pad_x = 0.18 * (all_x.max() - all_x.min())
     pad_y = 0.18 * (all_y.max() - all_y.min())
-    _right = _xlim_right_override if _xlim_right_override is not None else all_x.max() + pad_x
-    ax.set_xlim(all_x.min() - pad_x, _right)
+    ax.set_xlim(all_x.min() - pad_x, all_x.max() + pad_x)
     ax.set_ylim(all_y.min() - pad_y, all_y.max() + pad_y)
     if ylim is not None:
         ax.set_ylim(*ylim)
@@ -689,9 +676,7 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
                    markersize=10, label=f'Phase {s}')
         for s in ['I', 'II', 'III', 'IV', 'V']
     ]
-    leg_phase = ax.legend(handles=legend_handles,
-                          loc='upper left' if declutter_arrow_labels else 'upper right',
-                          frameon=False)
+    leg_phase = ax.legend(handles=legend_handles, loc='upper right', frameon=False)
     ax.add_artist(leg_phase)
 
     # second legend: module color key (sizes), only on _modules figures
@@ -743,7 +728,7 @@ PERF_KPIS = [
 PERF_LABELS = {
     'specific denitrification rates [mg NO2–N g−1\xa0VSS−1 h−1]': 'specific denitrification rate',
     'specific denitrifying P uptake rate': 'denitrifying P-uptake rate',
-    'anoxic:aerobic P uptake rate ratio': 'anoxic:aerobic P-uptake ratio',
+    'anoxic:aerobic P uptake rate ratio': 'anoxic:aerobic P ratio',
     'N removal (ppm) [N-ppn]': 'N removal',
     'P removal [P%]': 'P removal',
     'peakN2O [mg/L]': 'peak N2O',
@@ -1085,14 +1070,10 @@ def run_dbrda_suite(Y: pd.DataFrame, sample_ids: list[str], stages: list[str], *
         f'db-RDA model:      constrained={100*pm_full_p["F_like_ratio"]:.1f}%  p={pm_full_p["p"]:.3f}\n'
         f'permutations={N_PERM}'
     )
-    # peakN2O and P removal arrows point in nearly the same direction; nudge their
-    # labels apart horizontally and park them just below their respective arrowheads.
-    PERF_LABEL_OFFSETS = {
-        'peakN2O':   (-0.06, 0.0),
-        'P removal': (+0.06, 0.0),
-    }
-    PERF_LABELS_BELOW = ('peakN2O', 'P removal')
-    _perf_label_kw = dict(declutter_arrow_labels=True)
+    # peak N2O, P removal and the anoxic:aerobic ratio arrows point in nearly the
+    # same direction; rotate those labels to run along their arrows so they don't
+    # overlap (all other vector labels keep the default tip placement).
+    _perf_label_kw = dict(rotate_labels=('peak N2O', 'P removal', 'anoxic:aerobic'))
     plot_dbrda(
         res_p, stages=stages_p, sample_ids=Y_p.index.tolist(),
         title=f'db-RDA: {genus_desc} ~ Performance (sample-level X)',
