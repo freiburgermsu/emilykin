@@ -644,8 +644,21 @@ def plot_dbrda(res: dict, *, stages: list[str], sample_ids: list[str], title: st
         rot.sort(key=lambda t: t[3])
         _n = len(rot)
         _perp = _math.radians(sum(t[3] for t in rot) / _n + 90)
-        _thick_pts = 12 * 1.7                 # rotated label thin-dimension (text + bbox), pt
-        _step_pts = 1.5 * _thick_pts          # center-to-center -> gap ~ half the thickness
+        # measure the rotated label's thin dimension (text + bbox height) so the
+        # fan uses a small, explicit gap rather than a guessed fraction
+        _thick_pts = 12 * 1.6                 # fallback estimate (pt)
+        try:
+            _fig = ax.figure
+            _pb = ax.text(0.5, 0.5, max((t[0] for t in rot), key=len),
+                          transform=ax.transAxes, fontsize=12, fontweight='bold',
+                          bbox=_label_bbox)
+            _fig.canvas.draw()
+            _ext = (_pb.get_bbox_patch() or _pb).get_window_extent(_fig.canvas.get_renderer())
+            _thick_pts = _ext.height * 72.0 / _fig.dpi
+            _pb.remove()
+        except Exception:
+            pass
+        _step_pts = _thick_pts + 1.5          # center-to-center: just ~1.5 pt of padding
         for _i, (_v, _x, _y, _a) in enumerate(rot):
             _k = _i - (_n - 1) / 2.0
             _off = (_k * _step_pts * _math.cos(_perp), _k * _step_pts * _math.sin(_perp))
