@@ -28,6 +28,7 @@ iid2mag = {v: k for k, v in json.loads((ROOT / "mag_iterativeID_old_to_new.json"
 # (output network key, source membership file)
 NETWORKS = [
     ("aggregate", "network_module_membership_p_value_FDR.json"),
+    ("allphases", "network_module_membership_p_value_FDR_allphases.json"),
     ("phaseI",    "network_module_membership_p_value_FDR_phaseI.json"),
     ("phaseIII",  "network_module_membership_p_value_FDR_phaseIII.json"),
     ("phaseIV",   "network_module_membership_p_value_FDR_phaseIV.json"),
@@ -38,8 +39,10 @@ out = {
     "_description": (
         "MAG-resolved Louvain-module membership of each co-occurrence network. "
         "Members are the MAG-representative ASV nodes (iterativeID) with their "
-        "underlying MAG bin name. Networks: aggregate + per-phase (phase II has no "
-        "FDR-passing co-occurrence network, so no modules)."
+        "underlying MAG bin name. Networks: 'aggregate' (all days, fixed resolution), "
+        "'allphases' (per-phase methodology pooled across phases I-V: first 14 days of "
+        "each phase dropped, FDR recomputed, ~15-community resolution), and per-phase "
+        "(phase II has no FDR-passing co-occurrence network, so no modules)."
     ),
     "networks": {},
 }

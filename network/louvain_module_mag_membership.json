@@ -1,5 +1,5 @@
 {
-  "_description": "MAG-resolved Louvain-module membership of each co-occurrence network. Members are the MAG-representative ASV nodes (iterativeID) with their underlying MAG bin name. Networks: aggregate + per-phase (phase II has no FDR-passing co-occurrence network, so no modules).",
+  "_description": "MAG-resolved Louvain-module membership of each co-occurrence network. Members are the MAG-representative ASV nodes (iterativeID) with their underlying MAG bin name. Networks: 'aggregate' (all days, fixed resolution), 'allphases' (per-phase methodology pooled across phases I-V: first 14 days of each phase dropped, FDR recomputed, ~15-community resolution), and per-phase (phase II has no FDR-passing co-occurrence network, so no modules).",
   "networks": {
     "aggregate": {
       "module_1": {
@@ -577,6 +577,600 @@
           {
             "iterativeID": "Vicingus.1",
             "MAG": "CAN_4_bin.142"
+          }
+        ]
+      }
+    },
+    "allphases": {
+      "module_1": {
+        "size": 55,
+        "type": "louvain",
+        "members": [
+          {
+            "iterativeID": "Amaricoccus.3",
+            "MAG": "coasm_bin.497"
+          },
+          {
+            "iterativeID": "Anaerolineaceae.24",
+            "MAG": "CAN_5_bin.180"
+          },
+          {
+            "iterativeID": "Anaerolineaceae.3",
+            "MAG": "coasm_bin.47"
+          },
+          {
+            "iterativeID": "Anaerolineae.2",
+            "MAG": "coasm_bin.543"
+          },
+          {
+            "iterativeID": "Azonexus.12",
+            "MAG": "CAN_5_bin.70"
+          },
+          {
+            "iterativeID": "Azospira.1",
+            "MAG": "CAN_5_bin.97"
+          },
+          {
+            "iterativeID": "Bacteroidales.13",
+            "MAG": "coasm_bin.188"
+          },
+          {
+            "iterativeID": "Brevundimonas.7",
+            "MAG": "CAN_4_bin.35"
+          },
+          {
+            "iterativeID": "Ca_Accumulibacter.23",
+            "MAG": "CAN_1_bin.98"
+          },
+          {
+            "iterativeID": "Ca_Accumulibacter.8",
+            "MAG": "coasm_bin.185"
+          },
+          {
+            "iterativeID": "Ca_Caldilinea.1",
+            "MAG": "CAN_4_bin.107"
+          },
+          {
+            "iterativeID": "Ca_Caldilinea.2",
+            "MAG": "CAN_5_bin.62"
+          },
+          {
+            "iterativeID": "Ca_Competibacter.26",
+            "MAG": "CAN_4_bin.25"
+          },
+          {
+            "iterativeID": "Ca_Competibacter.49",
+            "MAG": "CAN_4_bin.116"
+          },
+          {
+            "iterativeID": "Ca_Competibacter.51",
+            "MAG": "coasm_bin.55"
+          },
+          {
+            "iterativeID": "Ca_Falkowbacteria.7",
+            "MAG": "CAN_1_bin.195"
+          },
+          {
+            "iterativeID": "Ca_Leptovillus.9",
+            "MAG": "coasm_bin.481"
+          },
+          {
+            "iterativeID": "Ca_Pacebacteria.2",
+            "MAG": "coasm_bin.561"
+          },
+          {
+            "iterativeID": "Ca_Pacebacteria.8",
+            "MAG": "coasm_bin.407"
+          },
+          {
+            "iterativeID": "Ca_Pacebacteria.9",
+            "MAG": "coasm_bin.383"
+          },
+          {
+            "iterativeID": "Ca_Sarcinithrix.1",
+            "MAG": "coasm_bin.260"
+          },
+          {
+            "iterativeID": "Ca_Villigracilis.10",
+            "MAG": "CAN_4_bin.11"
+          },
+          {
+            "iterativeID": "Ca_Villigracilis.4",
+            "MAG": "coasm_bin.448"
+          },
+          {
+            "iterativeID": "Chitinophagaceae.18",
+            "MAG": "coasm_bin.409"
+          },
+          {
+            "iterativeID": "Dokdonella.20",
+            "MAG": "coasm_bin.417"
+          },
+          {
+            "iterativeID": "Flavobacteriales.7",
+            "MAG": "coasm_bin.579"
+          },
+          {
+            "iterativeID": "Gracilibacteria.30",
+            "MAG": "CAN_1_bin.174"
+          },
+          {
+            "iterativeID": "Hydrogenedensaceae.8",
+            "MAG": "coasm_bin.305"
+          },
+          {
+            "iterativeID": "Ignavibacteria.13",
+            "MAG": "CAN_4_bin.197"
+          },
+          {
+            "iterativeID": "Ignavibacteria.31",
+            "MAG": "CAN_3_bin.221"
+          },
+          {
+            "iterativeID": "Ignavibacteria.5",
+            "MAG": "CAN_1_bin.2"
+          },
+          {
+            "iterativeID": "Ignavibacteria.7",
+            "MAG": "coasm_bin.337"
+          },
+          {
+            "iterativeID": "Leadbetterella.18",
+            "MAG": "coasm_bin.373"
+          },
+          {
+            "iterativeID": "Leptolinea.4",
+            "MAG": "coasm_bin.22"
+          },
+          {
+            "iterativeID": "Lysobacter.2",
+            "MAG": "CAN_5_bin.177"
+          },
+          {
+            "iterativeID": "Mesorhizobium.15",
+            "MAG": "coasm_bin.514"
+          },
+          {
+            "iterativeID": "Mesorhizobium.22",
+            "MAG": "CAN_4_bin.44"
+          },
+          {
+            "iterativeID": "Mesorhizobium.4",
+            "MAG": "coasm_bin.340"
+          },
+          {
+            "iterativeID": "Mesorhizobium.9",
+            "MAG": "coasm_bin.555"
+          },
+          {
+            "iterativeID": "Myxococcaceae.6",
+            "MAG": "coasm_bin.556"
+          },
+          {
+            "iterativeID": "Novosphingobium.2",
+            "MAG": "coasm_bin.535"
+          },
+          {
+            "iterativeID": "Paracoccus.13",
+            "MAG": "coasm_bin.219"
+          },
+          {
+            "iterativeID": "Phaeodactylibacter.3",
+            "MAG": "CAN_4_bin.238"
+          },
+          {
+            "iterativeID": "Prosthecobacter.3",
+            "MAG": "coasm_bin.201"
+          },
+          {
+            "iterativeID": "Rhodobacter.13",
+            "MAG": "CAN_3_bin.10"
+          },
+          {
+            "iterativeID": "Rhodobacteraceae.1",
+            "MAG": "coasm_bin.31"
+          },
+          {
+            "iterativeID": "Rhodoplanes.1",
+            "MAG": "coasm_bin.484"
+          },
+          {
+            "iterativeID": "Rhodospirillales.3",
+            "MAG": "CAN_5_bin.2"
+          },
+          {
+            "iterativeID": "Rhodothermaceae.5",
+            "MAG": "coasm_bin.238"
+          },
+          {
+            "iterativeID": "Saprospiraceae.13",
+            "MAG": "coasm_bin.53"
+          },
+          {
+            "iterativeID": "Sphingobacteriales.30",
+            "MAG": "coasm_bin.142"
+          },
+          {
+            "iterativeID": "Sphingobacteriales.53",
+            "MAG": "coasm_bin.400"
+          },
+          {
+            "iterativeID": "Terrimicrobium.3",
+            "MAG": "coasm_bin.578"
+          },
+          {
+            "iterativeID": "Terrimonas.22",
+            "MAG": "CAN_5_bin.112"
+          },
+          {
+            "iterativeID": "alphaI_cluster.1",
+            "MAG": "coasm_bin.386"
+          }
+        ]
+      },
+      "module_2": {
+        "size": 23,
+        "type": "louvain",
+        "members": [
+          {
+            "iterativeID": "Anaerolinea.13",
+            "MAG": "coasm_bin.473"
+          },
+          {
+            "iterativeID": "Aquimonas.4",
+            "MAG": "CAN_4_bin.154"
+          },
+          {
+            "iterativeID": "Aquimonas.5",
+            "MAG": "coasm_bin.85"
+          },
+          {
+            "iterativeID": "Azospira.3",
+            "MAG": "CAN_4_bin.208"
+          },
+          {
+            "iterativeID": "Bdellovibrio.13",
+            "MAG": "CAN_1_bin.180"
+          },
+          {
+            "iterativeID": "Blastopirellula.1",
+            "MAG": "coasm_bin.60"
+          },
+          {
+            "iterativeID": "Bryobacter.8",
+            "MAG": "coasm_bin.231"
+          },
+          {
+            "iterativeID": "Ca_Villigracilis.12",
+            "MAG": "coasm_bin.315"
+          },
+          {
+            "iterativeID": "Cephaloticoccus.1",
+            "MAG": "coasm_bin.70"
+          },
+          {
+            "iterativeID": "Chthoniobacteraceae.3",
+            "MAG": "coasm_bin.468"
+          },
+          {
+            "iterativeID": "Dokdonella.2",
+            "MAG": "coasm_bin.321"
+          },
+          {
+            "iterativeID": "Elusimicrobia.3",
+            "MAG": "coasm_bin.518"
+          },
+          {
+            "iterativeID": "Hydrogenophaga.5",
+            "MAG": "coasm_bin.255"
+          },
+          {
+            "iterativeID": "Ignavibacterium.4",
+            "MAG": "CAN_4_bin.166"
+          },
+          {
+            "iterativeID": "Leptonema.1",
+            "MAG": "coasm_bin.110"
+          },
+          {
+            "iterativeID": "Phycisphaeraceae.22",
+            "MAG": "coasm_bin.358"
+          },
+          {
+            "iterativeID": "Planctomycetota.9",
+            "MAG": "coasm_bin.161"
+          },
+          {
+            "iterativeID": "Rhodanobacteraceae.5",
+            "MAG": "coasm_bin.28"
+          },
+          {
+            "iterativeID": "Rhodocyclaceae.20",
+            "MAG": "coasm_bin.265"
+          },
+          {
+            "iterativeID": "Saprospiraceae.3",
+            "MAG": "coasm_bin.156"
+          },
+          {
+            "iterativeID": "Terrimonas.3",
+            "MAG": "CAN_5_bin.147"
+          },
+          {
+            "iterativeID": "Thermomonas.2",
+            "MAG": "coasm_bin.449"
+          },
+          {
+            "iterativeID": "Vicingus.1",
+            "MAG": "CAN_4_bin.142"
+          }
+        ]
+      },
+      "module_3": {
+        "size": 23,
+        "type": "louvain",
+        "members": [
+          {
+            "iterativeID": "Azonexus.1",
+            "MAG": "coasm_bin.256"
+          },
+          {
+            "iterativeID": "Brevundimonas.4",
+            "MAG": "CAN_2_bin.151"
+          },
+          {
+            "iterativeID": "Flavitalea.4",
+            "MAG": "coasm_bin.492"
+          },
+          {
+            "iterativeID": "Flavobacterium.25",
+            "MAG": "coasm_bin.539"
+          },
+          {
+            "iterativeID": "Gammaproteobacteria.7",
+            "MAG": "coasm_bin.233"
+          },
+          {
+            "iterativeID": "Gemmobacter.1",
+            "MAG": "coasm_bin.392"
+          },
+          {
+            "iterativeID": "Hydrogenophaga.1",
+            "MAG": "coasm_bin.51"
+          },
+          {
+            "iterativeID": "Hydrogenophaga.6",
+            "MAG": "coasm_bin.563"
+          },
+          {
+            "iterativeID": "Inhella.3",
+            "MAG": "coasm_bin.171"
+          },
+          {
+            "iterativeID": "Luteimonas.2",
+            "MAG": "CAN_3_bin.43"
+          },
+          {
+            "iterativeID": "Niabella.2",
+            "MAG": "CAN_3_bin.205"
+          },
+          {
+            "iterativeID": "Niveibacterium.1",
+            "MAG": "coasm_bin.208"
+          },
+          {
+            "iterativeID": "Phycisphaeraceae.13",
+            "MAG": "coasm_bin.350"
+          },
+          {
+            "iterativeID": "Phycisphaeraceae.31",
+            "MAG": "coasm_bin.27"
+          },
+          {
+            "iterativeID": "Pseudorhodobacter.1",
+            "MAG": "coasm_bin.338"
+          },
+          {
+            "iterativeID": "Runella.3",
+            "MAG": "coasm_bin.362"
+          },
+          {
+            "iterativeID": "Sediminibacterium.5",
+            "MAG": "coasm_bin.364"
+          },
+          {
+            "iterativeID": "Sphingobacteriales.16",
+            "MAG": "coasm_bin.114"
+          },
+          {
+            "iterativeID": "Thauera.34",
+            "MAG": "CAN_4_bin.236"
+          },
+          {
+            "iterativeID": "Xanthobacteraceae.4",
+            "MAG": "coasm_bin.290"
+          },
+          {
+            "iterativeID": "Zoogloea.11",
+            "MAG": "CAN_2_bin.23"
+          },
+          {
+            "iterativeID": "Zoogloea.2",
+            "MAG": "coasm_bin.222"
+          },
+          {
+            "iterativeID": "Zoogloea.3",
+            "MAG": "CAN_3_bin.216"
+          }
+        ]
+      },
+      "module_4": {
+        "size": 13,
+        "type": "louvain",
+        "members": [
+          {
+            "iterativeID": "Azoarcus.1",
+            "MAG": "coasm_bin.131"
+          },
+          {
+            "iterativeID": "Bacteroidia.11",
+            "MAG": "CAN_5_bin.173"
+          },
+          {
+            "iterativeID": "Bacteroidia.19",
+            "MAG": "CAN_5_bin.145"
+          },
+          {
+            "iterativeID": "Ca_Accumulibacter.2",
+            "MAG": "coasm_bin.250"
+          },
+          {
+            "iterativeID": "Ca_Competibacter.139",
+            "MAG": "CAN_5_bin.106"
+          },
+          {
+            "iterativeID": "Ca_Villigracilis.9",
+            "MAG": "coasm_bin.240"
+          },
+          {
+            "iterativeID": "Chlorobium.1",
+            "MAG": "coasm_bin.84"
+          },
+          {
+            "iterativeID": "Defluviicoccus.4",
+            "MAG": "coasm_bin.538"
+          },
+          {
+            "iterativeID": "Gemmatimonas.3",
+            "MAG": "coasm_bin.183"
+          },
+          {
+            "iterativeID": "Herpetosiphon.4",
+            "MAG": "coasm_bin.209"
+          },
+          {
+            "iterativeID": "Ignavibacterium.2",
+            "MAG": "coasm_bin.441"
+          },
+          {
+            "iterativeID": "Oligoflexia.6",
+            "MAG": "coasm_bin.206"
+          },
+          {
+            "iterativeID": "Phreatobacter.3",
+            "MAG": "coasm_bin.289"
+          }
+        ]
+      },
+      "module_5": {
+        "size": 5,
+        "type": "louvain",
+        "members": [
+          {
+            "iterativeID": "Ca_Accumulibacter.3",
+            "MAG": "coasm_bin.347"
+          },
+          {
+            "iterativeID": "Ca_Competibacter.109",
+            "MAG": "coasm_bin.365"
+          },
+          {
+            "iterativeID": "Dokdonella.17",
+            "MAG": "coasm_bin.277"
+          },
+          {
+            "iterativeID": "Myxococcaceae.11",
+            "MAG": "coasm_bin.348"
+          },
+          {
+            "iterativeID": "Pseudofulvimonas.1",
+            "MAG": "coasm_bin.485"
+          }
+        ]
+      },
+      "module_6": {
+        "size": 5,
+        "type": "louvain",
+        "members": [
+          {
+            "iterativeID": "Chitinophagaceae.14",
+            "MAG": "coasm_bin.61"
+          },
+          {
+            "iterativeID": "Defluviicoccus.13",
+            "MAG": "coasm_bin.88"
+          },
+          {
+            "iterativeID": "Phycisphaeraceae.20",
+            "MAG": "coasm_bin.153"
+          },
+          {
+            "iterativeID": "Phycisphaeraceae.34",
+            "MAG": "coasm_bin.54"
+          },
+          {
+            "iterativeID": "Thermomonas.1",
+            "MAG": "CAN_3_bin.124"
+          }
+        ]
+      },
+      "module_7": {
+        "size": 3,
+        "type": "louvain",
+        "members": [
+          {
+            "iterativeID": "Aquimonas.1",
+            "MAG": "coasm_bin.411"
+          },
+          {
+            "iterativeID": "Ca_Bealeia.3",
+            "MAG": "coasm_bin.547"
+          },
+          {
+            "iterativeID": "Sphingobacteriales.13",
+            "MAG": "coasm_bin.121"
+          }
+        ]
+      },
+      "module_8": {
+        "size": 2,
+        "type": "louvain",
+        "members": [
+          {
+            "iterativeID": "Bosea.3",
+            "MAG": "coasm_bin.399"
+          },
+          {
+            "iterativeID": "Mesorhizobium.3",
+            "MAG": "coasm_bin.280"
+          }
+        ]
+      },
+      "module_9": {
+        "size": 2,
+        "type": "louvain",
+        "members": [
+          {
+            "iterativeID": "Planctomycetota.15",
+            "MAG": "coasm_bin.139"
+          },
+          {
+            "iterativeID": "Rhodobacter.5",
+            "MAG": "coasm_bin.105"
+          }
+        ]
+      },
+      "module_10": {
+        "size": 2,
+        "type": "louvain",
+        "members": [
+          {
+            "iterativeID": "Arenimonas.7",
+            "MAG": "coasm_bin.226"
+          },
+          {
+            "iterativeID": "Xanthomonadaceae.3",
+            "MAG": "coasm_bin.75"
           }
         ]
       }
