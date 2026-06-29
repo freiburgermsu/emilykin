@@ -38,6 +38,14 @@ synthetic_genomes_p3/*
 ._*
 kofamscan.zip
 
+# KOfam profiles bundle (1.5GB; re-download from genome.jp/ftp/db/kofam/profiles.tar.gz).
+# Keep ko_list + the 3 extracted profiles actually used + the result TSV.
+kofam_new/profiles.tar.gz
+kofam_new/.profiles_ready
+
+# Local workbook backups
+MAG_target_gene_filled.*.bak.xlsx
+
 # clade_classify concatenated bin FASTA/FAA (~1.3GB, regenerable; >100MB so
 # can't go to GitHub — these were purged once in dc13ce0, keep them untracked)
 clade_classify/out/all_bins.fna
