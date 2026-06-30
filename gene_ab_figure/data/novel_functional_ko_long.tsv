@@ -1,0 +1,463 @@
+MAG	category	KO	gene	copies
+coasm_bin.55	Acetate uptake	K00925	ackA	1
+CAN_2_bin.6	Acetate uptake	K00925	ackA	1
+CAN_1_bin.210	Acetate uptake	K00925	ackA	1
+CAN_1_bin.77	Acetate uptake	K00925	ackA	1
+CAN_5_bin.112	Acetate uptake	K00925	ackA	1
+coasm_bin.260	Acetate uptake	K00925	ackA	0
+coasm_bin.481	Acetate uptake	K00925	ackA	1
+coasm_bin.55	Acetate uptake	K00625	pta	1
+CAN_2_bin.6	Acetate uptake	K00625	pta	1
+CAN_1_bin.210	Acetate uptake	K00625	pta	1
+CAN_1_bin.77	Acetate uptake	K00625	pta	0
+CAN_5_bin.112	Acetate uptake	K00625	pta	0
+coasm_bin.260	Acetate uptake	K00625	pta	0
+coasm_bin.481	Acetate uptake	K00625	pta	0
+coasm_bin.55	Acetate uptake	K01895	acs	1
+CAN_2_bin.6	Acetate uptake	K01895	acs	1
+CAN_1_bin.210	Acetate uptake	K01895	acs	1
+CAN_1_bin.77	Acetate uptake	K01895	acs	1
+CAN_5_bin.112	Acetate uptake	K01895	acs	1
+coasm_bin.260	Acetate uptake	K01895	acs	1
+coasm_bin.481	Acetate uptake	K01895	acs	1
+coasm_bin.55	Propionate uptake	K01908	prpE	1
+CAN_2_bin.6	Propionate uptake	K01908	prpE	1
+CAN_1_bin.210	Propionate uptake	K01908	prpE	1
+CAN_1_bin.77	Propionate uptake	K01908	prpE	1
+CAN_5_bin.112	Propionate uptake	K01908	prpE	0
+coasm_bin.260	Propionate uptake	K01908	prpE	0
+coasm_bin.481	Propionate uptake	K01908	prpE	1
+coasm_bin.55	Propionate uptake	K01659	prpC/mcsA	0
+CAN_2_bin.6	Propionate uptake	K01659	prpC/mcsA	0
+CAN_1_bin.210	Propionate uptake	K01659	prpC/mcsA	2
+CAN_1_bin.77	Propionate uptake	K01659	prpC/mcsA	0
+CAN_5_bin.112	Propionate uptake	K01659	prpC/mcsA	0
+coasm_bin.260	Propionate uptake	K01659	prpC/mcsA	2
+coasm_bin.481	Propionate uptake	K01659	prpC/mcsA	0
+coasm_bin.55	Propionate uptake	K01720	prpD	1
+CAN_2_bin.6	Propionate uptake	K01720	prpD	0
+CAN_1_bin.210	Propionate uptake	K01720	prpD	0
+CAN_1_bin.77	Propionate uptake	K01720	prpD	0
+CAN_5_bin.112	Propionate uptake	K01720	prpD	0
+coasm_bin.260	Propionate uptake	K01720	prpD	0
+coasm_bin.481	Propionate uptake	K01720	prpD	0
+coasm_bin.55	Propionate uptake	K01847	mcm	1
+CAN_2_bin.6	Propionate uptake	K01847	mcm	1
+CAN_1_bin.210	Propionate uptake	K01847	mcm	0
+CAN_1_bin.77	Propionate uptake	K01847	mcm	0
+CAN_5_bin.112	Propionate uptake	K01847	mcm	0
+coasm_bin.260	Propionate uptake	K01847	mcm	0
+coasm_bin.481	Propionate uptake	K01847	mcm	0
+coasm_bin.55	Propionate uptake	K01848	mcm-N	0
+CAN_2_bin.6	Propionate uptake	K01848	mcm-N	0
+CAN_1_bin.210	Propionate uptake	K01848	mcm-N	0
+CAN_1_bin.77	Propionate uptake	K01848	mcm-N	2
+CAN_5_bin.112	Propionate uptake	K01848	mcm-N	1
+coasm_bin.260	Propionate uptake	K01848	mcm-N	3
+coasm_bin.481	Propionate uptake	K01848	mcm-N	1
+coasm_bin.55	Glycogen synthesis	K00975	glgC	2
+CAN_2_bin.6	Glycogen synthesis	K00975	glgC	2
+CAN_1_bin.210	Glycogen synthesis	K00975	glgC	0
+CAN_1_bin.77	Glycogen synthesis	K00975	glgC	3
+CAN_5_bin.112	Glycogen synthesis	K00975	glgC	1
+coasm_bin.260	Glycogen synthesis	K00975	glgC	3
+coasm_bin.481	Glycogen synthesis	K00975	glgC	1
+coasm_bin.55	Glycogen synthesis	K00703	glgA	1
+CAN_2_bin.6	Glycogen synthesis	K00703	glgA	1
+CAN_1_bin.210	Glycogen synthesis	K00703	glgA	0
+CAN_1_bin.77	Glycogen synthesis	K00703	glgA	1
+CAN_5_bin.112	Glycogen synthesis	K00703	glgA	1
+coasm_bin.260	Glycogen synthesis	K00703	glgA	0
+coasm_bin.481	Glycogen synthesis	K00703	glgA	1
+coasm_bin.55	Glycogen synthesis	K00700	glgB	3
+CAN_2_bin.6	Glycogen synthesis	K00700	glgB	1
+CAN_1_bin.210	Glycogen synthesis	K00700	glgB	0
+CAN_1_bin.77	Glycogen synthesis	K00700	glgB	0
+CAN_5_bin.112	Glycogen synthesis	K00700	glgB	1
+coasm_bin.260	Glycogen synthesis	K00700	glgB	1
+coasm_bin.481	Glycogen synthesis	K00700	glgB	2
+coasm_bin.55	Glycogen degradation	K00688	glgP	1
+CAN_2_bin.6	Glycogen degradation	K00688	glgP	1
+CAN_1_bin.210	Glycogen degradation	K00688	glgP	0
+CAN_1_bin.77	Glycogen degradation	K00688	glgP	1
+CAN_5_bin.112	Glycogen degradation	K00688	glgP	1
+coasm_bin.260	Glycogen degradation	K00688	glgP	2
+coasm_bin.481	Glycogen degradation	K00688	glgP	1
+coasm_bin.55	Glycogen degradation	K01214	glgX	3
+CAN_2_bin.6	Glycogen degradation	K01214	glgX	1
+CAN_1_bin.210	Glycogen degradation	K01214	glgX	0
+CAN_1_bin.77	Glycogen degradation	K01214	glgX	1
+CAN_5_bin.112	Glycogen degradation	K01214	glgX	0
+coasm_bin.260	Glycogen degradation	K01214	glgX	2
+coasm_bin.481	Glycogen degradation	K01214	glgX	1
+coasm_bin.55	Glycogen degradation	K00705	malQ	1
+CAN_2_bin.6	Glycogen degradation	K00705	malQ	1
+CAN_1_bin.210	Glycogen degradation	K00705	malQ	0
+CAN_1_bin.77	Glycogen degradation	K00705	malQ	1
+CAN_5_bin.112	Glycogen degradation	K00705	malQ	1
+coasm_bin.260	Glycogen degradation	K00705	malQ	1
+coasm_bin.481	Glycogen degradation	K00705	malQ	1
+coasm_bin.55	PHA cycling	K00626	phaA	0
+CAN_2_bin.6	PHA cycling	K00626	phaA	1
+CAN_1_bin.210	PHA cycling	K00626	phaA	1
+CAN_1_bin.77	PHA cycling	K00626	phaA	1
+CAN_5_bin.112	PHA cycling	K00626	phaA	2
+coasm_bin.260	PHA cycling	K00626	phaA	1
+coasm_bin.481	PHA cycling	K00626	phaA	2
+coasm_bin.55	PHA cycling	K00023	phaB	1
+CAN_2_bin.6	PHA cycling	K00023	phaB	2
+CAN_1_bin.210	PHA cycling	K00023	phaB	2
+CAN_1_bin.77	PHA cycling	K00023	phaB	0
+CAN_5_bin.112	PHA cycling	K00023	phaB	0
+coasm_bin.260	PHA cycling	K00023	phaB	0
+coasm_bin.481	PHA cycling	K00023	phaB	0
+coasm_bin.55	PHA cycling	K03821	phaC	2
+CAN_2_bin.6	PHA cycling	K03821	phaC	3
+CAN_1_bin.210	PHA cycling	K03821	phaC	1
+CAN_1_bin.77	PHA cycling	K03821	phaC	0
+CAN_5_bin.112	PHA cycling	K03821	phaC	0
+coasm_bin.260	PHA cycling	K03821	phaC	0
+coasm_bin.481	PHA cycling	K03821	phaC	0
+coasm_bin.55	PHA cycling	K05973	phaZ	0
+CAN_2_bin.6	PHA cycling	K05973	phaZ	0
+CAN_1_bin.210	PHA cycling	K05973	phaZ	1
+CAN_1_bin.77	PHA cycling	K05973	phaZ	0
+CAN_5_bin.112	PHA cycling	K05973	phaZ	0
+coasm_bin.260	PHA cycling	K05973	phaZ	0
+coasm_bin.481	PHA cycling	K05973	phaZ	0
+coasm_bin.55	Gluconeogenesis	K00134	gapA	1
+CAN_2_bin.6	Gluconeogenesis	K00134	gapA	1
+CAN_1_bin.210	Gluconeogenesis	K00134	gapA	1
+CAN_1_bin.77	Gluconeogenesis	K00134	gapA	1
+CAN_5_bin.112	Gluconeogenesis	K00134	gapA	1
+coasm_bin.260	Gluconeogenesis	K00134	gapA	1
+coasm_bin.481	Gluconeogenesis	K00134	gapA	1
+coasm_bin.55	Gluconeogenesis	K01596	pckA(GTP)	1
+CAN_2_bin.6	Gluconeogenesis	K01596	pckA(GTP)	1
+CAN_1_bin.210	Gluconeogenesis	K01596	pckA(GTP)	1
+CAN_1_bin.77	Gluconeogenesis	K01596	pckA(GTP)	1
+CAN_5_bin.112	Gluconeogenesis	K01596	pckA(GTP)	1
+coasm_bin.260	Gluconeogenesis	K01596	pckA(GTP)	1
+coasm_bin.481	Gluconeogenesis	K01596	pckA(GTP)	1
+coasm_bin.55	Gluconeogenesis	K01610	pckA(ATP)	0
+CAN_2_bin.6	Gluconeogenesis	K01610	pckA(ATP)	0
+CAN_1_bin.210	Gluconeogenesis	K01610	pckA(ATP)	0
+CAN_1_bin.77	Gluconeogenesis	K01610	pckA(ATP)	1
+CAN_5_bin.112	Gluconeogenesis	K01610	pckA(ATP)	0
+coasm_bin.260	Gluconeogenesis	K01610	pckA(ATP)	0
+coasm_bin.481	Gluconeogenesis	K01610	pckA(ATP)	1
+coasm_bin.55	Gluconeogenesis	K01006	ppdk	1
+CAN_2_bin.6	Gluconeogenesis	K01006	ppdk	1
+CAN_1_bin.210	Gluconeogenesis	K01006	ppdk	0
+CAN_1_bin.77	Gluconeogenesis	K01006	ppdk	1
+CAN_5_bin.112	Gluconeogenesis	K01006	ppdk	1
+coasm_bin.260	Gluconeogenesis	K01006	ppdk	1
+coasm_bin.481	Gluconeogenesis	K01006	ppdk	1
+coasm_bin.55	Gluconeogenesis	K03841	fbp	0
+CAN_2_bin.6	Gluconeogenesis	K03841	fbp	0
+CAN_1_bin.210	Gluconeogenesis	K03841	fbp	1
+CAN_1_bin.77	Gluconeogenesis	K03841	fbp	1
+CAN_5_bin.112	Gluconeogenesis	K03841	fbp	1
+coasm_bin.260	Gluconeogenesis	K03841	fbp	0
+coasm_bin.481	Gluconeogenesis	K03841	fbp	1
+coasm_bin.55	Gluconeogenesis	K01007	pps	0
+CAN_2_bin.6	Gluconeogenesis	K01007	pps	0
+CAN_1_bin.210	Gluconeogenesis	K01007	pps	1
+CAN_1_bin.77	Gluconeogenesis	K01007	pps	0
+CAN_5_bin.112	Gluconeogenesis	K01007	pps	0
+coasm_bin.260	Gluconeogenesis	K01007	pps	0
+coasm_bin.481	Gluconeogenesis	K01007	pps	0
+coasm_bin.55	Polyphosphate	K00937	ppk1	2
+CAN_2_bin.6	Polyphosphate	K00937	ppk1	1
+CAN_1_bin.210	Polyphosphate	K00937	ppk1	1
+CAN_1_bin.77	Polyphosphate	K00937	ppk1	1
+CAN_5_bin.112	Polyphosphate	K00937	ppk1	0
+coasm_bin.260	Polyphosphate	K00937	ppk1	2
+coasm_bin.481	Polyphosphate	K00937	ppk1	2
+coasm_bin.55	Polyphosphate	K22468	ppk2	0
+CAN_2_bin.6	Polyphosphate	K22468	ppk2	0
+CAN_1_bin.210	Polyphosphate	K22468	ppk2	1
+CAN_1_bin.77	Polyphosphate	K22468	ppk2	1
+CAN_5_bin.112	Polyphosphate	K22468	ppk2	1
+coasm_bin.260	Polyphosphate	K22468	ppk2	2
+coasm_bin.481	Polyphosphate	K22468	ppk2	1
+coasm_bin.55	Polyphosphate	K01514	ppx	0
+CAN_2_bin.6	Polyphosphate	K01514	ppx	0
+CAN_1_bin.210	Polyphosphate	K01514	ppx	0
+CAN_1_bin.77	Polyphosphate	K01514	ppx	0
+CAN_5_bin.112	Polyphosphate	K01514	ppx	0
+coasm_bin.260	Polyphosphate	K01514	ppx	0
+coasm_bin.481	Polyphosphate	K01514	ppx	0
+coasm_bin.55	Phosphate transport	K02040	pstS	2
+CAN_2_bin.6	Phosphate transport	K02040	pstS	1
+CAN_1_bin.210	Phosphate transport	K02040	pstS	2
+CAN_1_bin.77	Phosphate transport	K02040	pstS	2
+CAN_5_bin.112	Phosphate transport	K02040	pstS	0
+coasm_bin.260	Phosphate transport	K02040	pstS	4
+coasm_bin.481	Phosphate transport	K02040	pstS	5
+coasm_bin.55	Phosphate transport	K02037	pstC	2
+CAN_2_bin.6	Phosphate transport	K02037	pstC	1
+CAN_1_bin.210	Phosphate transport	K02037	pstC	1
+CAN_1_bin.77	Phosphate transport	K02037	pstC	2
+CAN_5_bin.112	Phosphate transport	K02037	pstC	0
+coasm_bin.260	Phosphate transport	K02037	pstC	2
+coasm_bin.481	Phosphate transport	K02037	pstC	2
+coasm_bin.55	Phosphate transport	K02038	pstA	2
+CAN_2_bin.6	Phosphate transport	K02038	pstA	1
+CAN_1_bin.210	Phosphate transport	K02038	pstA	1
+CAN_1_bin.77	Phosphate transport	K02038	pstA	2
+CAN_5_bin.112	Phosphate transport	K02038	pstA	0
+coasm_bin.260	Phosphate transport	K02038	pstA	2
+coasm_bin.481	Phosphate transport	K02038	pstA	1
+coasm_bin.55	Phosphate transport	K02036	pstB	2
+CAN_2_bin.6	Phosphate transport	K02036	pstB	1
+CAN_1_bin.210	Phosphate transport	K02036	pstB	1
+CAN_1_bin.77	Phosphate transport	K02036	pstB	3
+CAN_5_bin.112	Phosphate transport	K02036	pstB	0
+coasm_bin.260	Phosphate transport	K02036	pstB	3
+coasm_bin.481	Phosphate transport	K02036	pstB	2
+coasm_bin.55	Phosphate transport	K07657	phoB	1
+CAN_2_bin.6	Phosphate transport	K07657	phoB	1
+CAN_1_bin.210	Phosphate transport	K07657	phoB	1
+CAN_1_bin.77	Phosphate transport	K07657	phoB	0
+CAN_5_bin.112	Phosphate transport	K07657	phoB	0
+coasm_bin.260	Phosphate transport	K07657	phoB	0
+coasm_bin.481	Phosphate transport	K07657	phoB	0
+coasm_bin.55	Phosphate transport	K07636	phoR	1
+CAN_2_bin.6	Phosphate transport	K07636	phoR	1
+CAN_1_bin.210	Phosphate transport	K07636	phoR	0
+CAN_1_bin.77	Phosphate transport	K07636	phoR	1
+CAN_5_bin.112	Phosphate transport	K07636	phoR	0
+coasm_bin.260	Phosphate transport	K07636	phoR	3
+coasm_bin.481	Phosphate transport	K07636	phoR	2
+coasm_bin.55	Type IV pili	K02650	pilA	3
+CAN_2_bin.6	Type IV pili	K02650	pilA	1
+CAN_1_bin.210	Type IV pili	K02650	pilA	1
+CAN_1_bin.77	Type IV pili	K02650	pilA	0
+CAN_5_bin.112	Type IV pili	K02650	pilA	0
+coasm_bin.260	Type IV pili	K02650	pilA	0
+coasm_bin.481	Type IV pili	K02650	pilA	0
+coasm_bin.55	Type IV pili	K02652	pilB	2
+CAN_2_bin.6	Type IV pili	K02652	pilB	3
+CAN_1_bin.210	Type IV pili	K02652	pilB	1
+CAN_1_bin.77	Type IV pili	K02652	pilB	1
+CAN_5_bin.112	Type IV pili	K02652	pilB	0
+coasm_bin.260	Type IV pili	K02652	pilB	0
+coasm_bin.481	Type IV pili	K02652	pilB	0
+coasm_bin.55	Type IV pili	K02653	pilC	1
+CAN_2_bin.6	Type IV pili	K02653	pilC	1
+CAN_1_bin.210	Type IV pili	K02653	pilC	1
+CAN_1_bin.77	Type IV pili	K02653	pilC	1
+CAN_5_bin.112	Type IV pili	K02653	pilC	0
+coasm_bin.260	Type IV pili	K02653	pilC	0
+coasm_bin.481	Type IV pili	K02653	pilC	0
+coasm_bin.55	Type IV pili	K02654	pilD	1
+CAN_2_bin.6	Type IV pili	K02654	pilD	1
+CAN_1_bin.210	Type IV pili	K02654	pilD	1
+CAN_1_bin.77	Type IV pili	K02654	pilD	1
+CAN_5_bin.112	Type IV pili	K02654	pilD	0
+coasm_bin.260	Type IV pili	K02654	pilD	0
+coasm_bin.481	Type IV pili	K02654	pilD	1
+coasm_bin.55	Type IV pili	K02662	pilM	1
+CAN_2_bin.6	Type IV pili	K02662	pilM	1
+CAN_1_bin.210	Type IV pili	K02662	pilM	1
+CAN_1_bin.77	Type IV pili	K02662	pilM	1
+CAN_5_bin.112	Type IV pili	K02662	pilM	0
+coasm_bin.260	Type IV pili	K02662	pilM	0
+coasm_bin.481	Type IV pili	K02662	pilM	0
+coasm_bin.55	Type IV pili	K02663	pilN	1
+CAN_2_bin.6	Type IV pili	K02663	pilN	1
+CAN_1_bin.210	Type IV pili	K02663	pilN	1
+CAN_1_bin.77	Type IV pili	K02663	pilN	1
+CAN_5_bin.112	Type IV pili	K02663	pilN	0
+coasm_bin.260	Type IV pili	K02663	pilN	0
+coasm_bin.481	Type IV pili	K02663	pilN	0
+coasm_bin.55	Type IV pili	K02664	pilO	1
+CAN_2_bin.6	Type IV pili	K02664	pilO	1
+CAN_1_bin.210	Type IV pili	K02664	pilO	1
+CAN_1_bin.77	Type IV pili	K02664	pilO	1
+CAN_5_bin.112	Type IV pili	K02664	pilO	0
+coasm_bin.260	Type IV pili	K02664	pilO	0
+coasm_bin.481	Type IV pili	K02664	pilO	0
+coasm_bin.55	Type IV pili	K02665	pilP	1
+CAN_2_bin.6	Type IV pili	K02665	pilP	1
+CAN_1_bin.210	Type IV pili	K02665	pilP	1
+CAN_1_bin.77	Type IV pili	K02665	pilP	0
+CAN_5_bin.112	Type IV pili	K02665	pilP	0
+coasm_bin.260	Type IV pili	K02665	pilP	0
+coasm_bin.481	Type IV pili	K02665	pilP	0
+coasm_bin.55	Type IV pili	K02666	pilQ	1
+CAN_2_bin.6	Type IV pili	K02666	pilQ	1
+CAN_1_bin.210	Type IV pili	K02666	pilQ	1
+CAN_1_bin.77	Type IV pili	K02666	pilQ	1
+CAN_5_bin.112	Type IV pili	K02666	pilQ	0
+coasm_bin.260	Type IV pili	K02666	pilQ	0
+coasm_bin.481	Type IV pili	K02666	pilQ	0
+coasm_bin.55	Type IV pili	K02669	pilT	1
+CAN_2_bin.6	Type IV pili	K02669	pilT	1
+CAN_1_bin.210	Type IV pili	K02669	pilT	1
+CAN_1_bin.77	Type IV pili	K02669	pilT	5
+CAN_5_bin.112	Type IV pili	K02669	pilT	0
+coasm_bin.260	Type IV pili	K02669	pilT	0
+coasm_bin.481	Type IV pili	K02669	pilT	0
+coasm_bin.55	Type IV pili	K02670	pilU	3
+CAN_2_bin.6	Type IV pili	K02670	pilU	2
+CAN_1_bin.210	Type IV pili	K02670	pilU	2
+CAN_1_bin.77	Type IV pili	K02670	pilU	0
+CAN_5_bin.112	Type IV pili	K02670	pilU	0
+coasm_bin.260	Type IV pili	K02670	pilU	0
+coasm_bin.481	Type IV pili	K02670	pilU	0
+coasm_bin.55	B12 transport	K16092	btuB	1
+CAN_2_bin.6	B12 transport	K16092	btuB	0
+CAN_1_bin.210	B12 transport	K16092	btuB	1
+CAN_1_bin.77	B12 transport	K16092	btuB	1
+CAN_5_bin.112	B12 transport	K16092	btuB	0
+coasm_bin.260	B12 transport	K16092	btuB	0
+coasm_bin.481	B12 transport	K16092	btuB	0
+coasm_bin.55	B12 transport	K06073	btuC	0
+CAN_2_bin.6	B12 transport	K06073	btuC	0
+CAN_1_bin.210	B12 transport	K06073	btuC	0
+CAN_1_bin.77	B12 transport	K06073	btuC	0
+CAN_5_bin.112	B12 transport	K06073	btuC	0
+coasm_bin.260	B12 transport	K06073	btuC	0
+coasm_bin.481	B12 transport	K06073	btuC	0
+coasm_bin.55	B12 transport	K06074	btuD	0
+CAN_2_bin.6	B12 transport	K06074	btuD	0
+CAN_1_bin.210	B12 transport	K06074	btuD	0
+CAN_1_bin.77	B12 transport	K06074	btuD	0
+CAN_5_bin.112	B12 transport	K06074	btuD	0
+coasm_bin.260	B12 transport	K06074	btuD	0
+coasm_bin.481	B12 transport	K06074	btuD	0
+coasm_bin.55	B12 transport	K06858	btuF	0
+CAN_2_bin.6	B12 transport	K06858	btuF	0
+CAN_1_bin.210	B12 transport	K06858	btuF	0
+CAN_1_bin.77	B12 transport	K06858	btuF	0
+CAN_5_bin.112	B12 transport	K06858	btuF	0
+coasm_bin.260	B12 transport	K06858	btuF	0
+coasm_bin.481	B12 transport	K06858	btuF	0
+coasm_bin.55	B12 transport	K03832	tonB	1
+CAN_2_bin.6	B12 transport	K03832	tonB	6
+CAN_1_bin.210	B12 transport	K03832	tonB	5
+CAN_1_bin.77	B12 transport	K03832	tonB	8
+CAN_5_bin.112	B12 transport	K03832	tonB	3
+coasm_bin.260	B12 transport	K03832	tonB	0
+coasm_bin.481	B12 transport	K03832	tonB	0
+coasm_bin.55	B12 transport	K03561	exbB	2
+CAN_2_bin.6	B12 transport	K03561	exbB	3
+CAN_1_bin.210	B12 transport	K03561	exbB	3
+CAN_1_bin.77	B12 transport	K03561	exbB	2
+CAN_5_bin.112	B12 transport	K03561	exbB	2
+coasm_bin.260	B12 transport	K03561	exbB	0
+coasm_bin.481	B12 transport	K03561	exbB	0
+coasm_bin.55	B12 transport	K03559	exbD	2
+CAN_2_bin.6	B12 transport	K03559	exbD	3
+CAN_1_bin.210	B12 transport	K03559	exbD	4
+CAN_1_bin.77	B12 transport	K03559	exbD	6
+CAN_5_bin.112	B12 transport	K03559	exbD	4
+coasm_bin.260	B12 transport	K03559	exbD	0
+coasm_bin.481	B12 transport	K03559	exbD	0
+coasm_bin.55	B12 biosynthesis	K09882	cobS-chel	0
+CAN_2_bin.6	B12 biosynthesis	K09882	cobS-chel	0
+CAN_1_bin.210	B12 biosynthesis	K09882	cobS-chel	0
+CAN_1_bin.77	B12 biosynthesis	K09882	cobS-chel	0
+CAN_5_bin.112	B12 biosynthesis	K09882	cobS-chel	0
+coasm_bin.260	B12 biosynthesis	K09882	cobS-chel	0
+coasm_bin.481	B12 biosynthesis	K09882	cobS-chel	0
+coasm_bin.55	B12 biosynthesis	K02232	cobQ	1
+CAN_2_bin.6	B12 biosynthesis	K02232	cobQ	0
+CAN_1_bin.210	B12 biosynthesis	K02232	cobQ	0
+CAN_1_bin.77	B12 biosynthesis	K02232	cobQ	0
+CAN_5_bin.112	B12 biosynthesis	K02232	cobQ	0
+coasm_bin.260	B12 biosynthesis	K02232	cobQ	0
+coasm_bin.481	B12 biosynthesis	K02232	cobQ	0
+coasm_bin.55	B12 biosynthesis	K02233	cobS	1
+CAN_2_bin.6	B12 biosynthesis	K02233	cobS	1
+CAN_1_bin.210	B12 biosynthesis	K02233	cobS	0
+CAN_1_bin.77	B12 biosynthesis	K02233	cobS	0
+CAN_5_bin.112	B12 biosynthesis	K02233	cobS	0
+coasm_bin.260	B12 biosynthesis	K02233	cobS	0
+coasm_bin.481	B12 biosynthesis	K02233	cobS	0
+coasm_bin.55	B12 biosynthesis	K00768	cobT	1
+CAN_2_bin.6	B12 biosynthesis	K00768	cobT	1
+CAN_1_bin.210	B12 biosynthesis	K00768	cobT	0
+CAN_1_bin.77	B12 biosynthesis	K00768	cobT	0
+CAN_5_bin.112	B12 biosynthesis	K00768	cobT	0
+coasm_bin.260	B12 biosynthesis	K00768	cobT	0
+coasm_bin.481	B12 biosynthesis	K00768	cobT	0
+coasm_bin.55	B12 biosynthesis	K02231	cobU	1
+CAN_2_bin.6	B12 biosynthesis	K02231	cobU	1
+CAN_1_bin.210	B12 biosynthesis	K02231	cobU	0
+CAN_1_bin.77	B12 biosynthesis	K02231	cobU	0
+CAN_5_bin.112	B12 biosynthesis	K02231	cobU	0
+coasm_bin.260	B12 biosynthesis	K02231	cobU	0
+coasm_bin.481	B12 biosynthesis	K02231	cobU	0
+coasm_bin.55	Biotin biosynthesis	K01012	bioB	1
+CAN_2_bin.6	Biotin biosynthesis	K01012	bioB	1
+CAN_1_bin.210	Biotin biosynthesis	K01012	bioB	1
+CAN_1_bin.77	Biotin biosynthesis	K01012	bioB	1
+CAN_5_bin.112	Biotin biosynthesis	K01012	bioB	0
+coasm_bin.260	Biotin biosynthesis	K01012	bioB	0
+coasm_bin.481	Biotin biosynthesis	K01012	bioB	0
+coasm_bin.55	Biotin biosynthesis	K00833	bioA	1
+CAN_2_bin.6	Biotin biosynthesis	K00833	bioA	1
+CAN_1_bin.210	Biotin biosynthesis	K00833	bioA	1
+CAN_1_bin.77	Biotin biosynthesis	K00833	bioA	0
+CAN_5_bin.112	Biotin biosynthesis	K00833	bioA	0
+coasm_bin.260	Biotin biosynthesis	K00833	bioA	0
+coasm_bin.481	Biotin biosynthesis	K00833	bioA	0
+coasm_bin.55	Biotin biosynthesis	K01935	bioD	1
+CAN_2_bin.6	Biotin biosynthesis	K01935	bioD	1
+CAN_1_bin.210	Biotin biosynthesis	K01935	bioD	0
+CAN_1_bin.77	Biotin biosynthesis	K01935	bioD	0
+CAN_5_bin.112	Biotin biosynthesis	K01935	bioD	0
+coasm_bin.260	Biotin biosynthesis	K01935	bioD	0
+coasm_bin.481	Biotin biosynthesis	K01935	bioD	0
+coasm_bin.55	Biotin biosynthesis	K00652	bioF	1
+CAN_2_bin.6	Biotin biosynthesis	K00652	bioF	1
+CAN_1_bin.210	Biotin biosynthesis	K00652	bioF	1
+CAN_1_bin.77	Biotin biosynthesis	K00652	bioF	1
+CAN_5_bin.112	Biotin biosynthesis	K00652	bioF	0
+coasm_bin.260	Biotin biosynthesis	K00652	bioF	2
+coasm_bin.481	Biotin biosynthesis	K00652	bioF	2
+coasm_bin.55	Glycoside hydrolases	K01176	amyA	0
+CAN_2_bin.6	Glycoside hydrolases	K01176	amyA	0
+CAN_1_bin.210	Glycoside hydrolases	K01176	amyA	0
+CAN_1_bin.77	Glycoside hydrolases	K01176	amyA	1
+CAN_5_bin.112	Glycoside hydrolases	K01176	amyA	0
+coasm_bin.260	Glycoside hydrolases	K01176	amyA	2
+coasm_bin.481	Glycoside hydrolases	K01176	amyA	2
+coasm_bin.55	Glycoside hydrolases	K01179	celA	0
+CAN_2_bin.6	Glycoside hydrolases	K01179	celA	0
+CAN_1_bin.210	Glycoside hydrolases	K01179	celA	0
+CAN_1_bin.77	Glycoside hydrolases	K01179	celA	0
+CAN_5_bin.112	Glycoside hydrolases	K01179	celA	1
+coasm_bin.260	Glycoside hydrolases	K01179	celA	0
+coasm_bin.481	Glycoside hydrolases	K01179	celA	1
+coasm_bin.55	Glycoside hydrolases	K01188	bglX	0
+CAN_2_bin.6	Glycoside hydrolases	K01188	bglX	0
+CAN_1_bin.210	Glycoside hydrolases	K01188	bglX	0
+CAN_1_bin.77	Glycoside hydrolases	K01188	bglX	0
+CAN_5_bin.112	Glycoside hydrolases	K01188	bglX	0
+coasm_bin.260	Glycoside hydrolases	K01188	bglX	0
+coasm_bin.481	Glycoside hydrolases	K01188	bglX	0
+coasm_bin.55	Glycoside hydrolases	K01198	xynB	0
+CAN_2_bin.6	Glycoside hydrolases	K01198	xynB	0
+CAN_1_bin.210	Glycoside hydrolases	K01198	xynB	0
+CAN_1_bin.77	Glycoside hydrolases	K01198	xynB	0
+CAN_5_bin.112	Glycoside hydrolases	K01198	xynB	1
+coasm_bin.260	Glycoside hydrolases	K01198	xynB	0
+coasm_bin.481	Glycoside hydrolases	K01198	xynB	0
+coasm_bin.55	Glycoside hydrolases	K01185	lyz	1
+CAN_2_bin.6	Glycoside hydrolases	K01185	lyz	0
+CAN_1_bin.210	Glycoside hydrolases	K01185	lyz	1
+CAN_1_bin.77	Glycoside hydrolases	K01185	lyz	0
+CAN_5_bin.112	Glycoside hydrolases	K01185	lyz	0
+coasm_bin.260	Glycoside hydrolases	K01185	lyz	0
+coasm_bin.481	Glycoside hydrolases	K01185	lyz	0
+coasm_bin.55	Glycoside hydrolases	K01183	chiA	0
+CAN_2_bin.6	Glycoside hydrolases	K01183	chiA	0
+CAN_1_bin.210	Glycoside hydrolases	K01183	chiA	0
+CAN_1_bin.77	Glycoside hydrolases	K01183	chiA	0
+CAN_5_bin.112	Glycoside hydrolases	K01183	chiA	1
+coasm_bin.260	Glycoside hydrolases	K01183	chiA	0
+coasm_bin.481	Glycoside hydrolases	K01183	chiA	0
